@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Service {
-    //utworzyć metodę która zwraca poszczególne ceny za usługi o które poprosił kontroler
+    //utworzyć metodę która zwraca średnią ceny za usługi o które poprosił kontroler
+
 
     }
