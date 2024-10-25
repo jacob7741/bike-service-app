@@ -1,3 +1,4 @@
 bike/service/app/MainServiceApp.class
-bike/service/app/controller/MainController.class
 bike/service/app/ServletInitializer.class
+bike/service/app/controller/MainController.class
+bike/service/app/model/Service.class
