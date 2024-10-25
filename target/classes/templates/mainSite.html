@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <style>
         body {
             display: flex;
@@ -32,6 +32,26 @@
             color: #0056b3;
         }
     </style>
+    <script>
+    function navigateToService(serviceId) {
+        fetch('/api/service', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({serviceId: serviceId})
+        })
+        .then(response => response.txt())
+        .then(data => alert(data))
+        .catch(error => console.error('Error', error))
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('a[href="#services#"]').addEventListener('click', function() {
+            navigateToService('services')
+        })
+    })
+</script>
 </head>
 <body>
 <div class="menu">
@@ -41,5 +61,6 @@
     <a href="#mechanics">Mechanik</a>
     <a href="#clientData">Kontakt</a>
 </div>
+
 </body>
 </html>
