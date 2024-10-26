@@ -4,7 +4,6 @@ import java.sql.*;
 
 public class DataBaseReader {
     public static void main(String[] args) {
-
         //płączenie z bazą danych
         try {
             Connection connection = DriverManager.getConnection("jdbc:h2:/Users/jacobsunny/BServiceProject/src/main/resources/bikeServices",
