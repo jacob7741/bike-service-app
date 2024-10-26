@@ -1,7 +1,26 @@
 package bike.service.app.model;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Entity
 public class Services {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "service_id")
+    private int serviceId;
+    @Column(name = "bike_service")
+    private int bikeService;
 
-
+    private double smallService;
+    private double fullService;
+    private double repair;
+    private double generalMaintance;
 }
