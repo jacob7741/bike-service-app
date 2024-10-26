@@ -12,4 +12,4 @@ import java.sql.Statement;
 public class Service {
     //utworzyć metodę która zwraca średnią cenę za usługi o które poprosił kontroler
 
-    }
+}

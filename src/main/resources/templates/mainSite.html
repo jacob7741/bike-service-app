@@ -39,18 +39,19 @@
             color: #0056b3;
         }
     </style>
+<!--    funkcja przenosi na stronę wybranej opcji-->
     <script>
         function navigateToService() {
             const serviceId = document.querySelector('#serviceSelect').value;
             window.location.href = '/' + serviceId;
         }
     </script>
-
 </head>
 <body>
 <div class="menu">
-    <h3>Wybierz opcję:</h3>
+    <h3>Dodaj serwis:</h3>
     <select id="serviceSelect" onchange="navigateToService()">
+        <option value="disabled selscted">wybierz:</option>
         <option value="smallService">Mały przegląd</option>
         <option value="fullService">Duży przegląd</option>
         <option value="reprair">Naprawa</option>
