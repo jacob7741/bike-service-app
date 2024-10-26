@@ -13,7 +13,7 @@ import lombok.Setter;
 @Entity
 public class Services {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "service_id")
     private int serviceId;
     @Column(name = "bike_service")
