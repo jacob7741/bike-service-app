@@ -11,9 +11,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Table(name = "Services")
 public class Services {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "service_id")
     private int serviceId;
+    @Column(name = "smallservices")
+    private int smallservices;
 }
