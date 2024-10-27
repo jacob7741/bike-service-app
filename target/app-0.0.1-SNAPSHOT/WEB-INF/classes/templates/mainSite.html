@@ -21,25 +21,45 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .menu a {
+        .menu select, .menu a {
             display: block;
             margin: 10px 0;
+            font-size: 18px;
+        }
+        .menu select {
+            padding: 10px;
+            border: 1px solid #007BFF;
+            border-radius: 4px;
+        }
+        .menu a {
             color: #007BFF;
             text-decoration: none;
-            font-size: 18px;
         }
         .menu a:hover {
             color: #0056b3;
         }
     </style>
+<!--    funkcja przenosi na stronę wybranej opcji-->
+    <script>
+        function navigateToService() {
+            const serviceId = document.querySelector('#serviceSelect').value;
+            window.location.href = '/' + serviceId;
+        }
+    </script>
 </head>
 <body>
 <div class="menu">
-    <h2>Wybierz opcję:</h2>
-    <a href="#services">Usługa</a>
-    <a href="#bikeModel">Rower</a>
-    <a href="#mechanics">Mechanik</a>
-    <a href="#clientData">Kontakt</a>
+    <h3>Dodaj serwis:</h3>
+    <select id="serviceSelect" onchange="navigateToService()">
+        <option value="disabled selscted">wybierz:</option>
+        <option value="smallService">Mały przegląd</option>
+        <option value="fullService">Duży przegląd</option>
+        <option value="reprair">Naprawa</option>
+        <option value="generalMaintenance">Ogólna konserwacja</option>
+    </select>
+    <a href="/bikeModel">Rower</a>
+    <a href="/mechanics">Mechanik</a>
+    <a href="/clientData">Info Klient</a>
 </div>
 </body>
 </html>

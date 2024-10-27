@@ -16,11 +16,4 @@ public class Services {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "service_id")
     private int serviceId;
-    @Column(name = "bike_service")
-    private int bikeService;
-
-    private double smallService;
-    private double fullService;
-    private double repair;
-    private double generalMaintance;
 }
