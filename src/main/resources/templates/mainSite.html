@@ -3,63 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>Serwis Rowerowy</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
         }
-        .menu {
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .login-form {
+            display: flex;
+            align-items: center;
+        }
+        .login-form input {
+            margin-right: 10px;
+            padding: 5px;
+            font-size: 14px;
+        }
+        h1 {
             text-align: center;
-            background: #fff;
+        }
+        form {
+            background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .menu select, .menu a {
-            display: block;
-            margin: 10px 0;
-            font-size: 18px;
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
         }
-        .menu select {
+        .form-group label {
+            margin-bottom: 5px;
+            text-align: center;
+            width: 100%;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            max-width: 400px;
             padding: 10px;
-            border: 1px solid #007BFF;
+            font-size: 16px;
+            border: 1px solid #ddd;
             border-radius: 4px;
         }
-        .menu a {
-            color: #007BFF;
-            text-decoration: none;
+        .form-group textarea {
+            resize: vertical;
         }
-        .menu a:hover {
-            color: #0056b3;
+        .form-group button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .navigation {
+            text-align: right;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .navigation a {
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .accept-button {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
     </style>
-<!--    funkcja przenosi na stronę wybranej opcji-->
-    <script>
-        function navigateToService() {
-            const serviceId = document.querySelector('#serviceSelect').value;
-            window.location.href = '/' + serviceId;
-        }
-    </script>
 </head>
 <body>
-<div class="menu">
-    <h3>Dodaj serwis:</h3>
-    <select id="serviceSelect" onchange="navigateToService()">
-        <option value="disabled selscted">wybierz:</option>
-        <option value="smallService">Mały przegląd</option>
-        <option value="fullService">Duży przegląd</option>
-        <option value="reprair">Naprawa</option>
-        <option value="generalMaintenance">Ogólna konserwacja</option>
-    </select>
-    <a href="/bikeModel">Rower</a>
-    <a href="/mechanics">Mechanik</a>
-    <a href="/clientData">Info Klient</a>
+<div class="header">
+    <div class="login-form">
+        <input type="text" placeholder="Login" id="login" name="login">
+        <input type="password" placeholder="Password" id="password" name="password">
+        <button type="button">Zaloguj się</button>
+    </div>
 </div>
+<h1>Dodaj rower do serwisu:</h1>
+<form onsubmit="return navigateToService(event)">
+    <div class="form-group">
+        <label for="mechanic">Mechanik</label>
+        <input list="mechanics" id="mechanic" name="mechanic" placeholder="Imię i nazwisko mechanika">
+        <datalist id="mechanics">
+            <option value="Jan Kowalski">Jan Kowalski</option>
+            <option value="Anna Nowak">Anna Nowak</option>
+            <option value="Piotr Zieliński">Piotr Zieliński</option>
+        </datalist>
+    </div>
+    <div class="form-group">
+        <label for="service">Usługa</label>
+        <input list="services" id="service" name="service" placeholder="Nazwa usługi">
+        <datalist id="services">
+            <option value="smallService">Mały Serwis</option>
+            <option value="fullService">Duży Serwis</option>
+            <option value="repair">Naprawa</option>
+            <option value="generalMaintenance">Ogólny Serwis</option>
+        </datalist>
+    </div>
+    <div class="form-group">
+        <label for="bike">Rower</label>
+        <input list="bikes" id="bike" name="bike" placeholder="Model roweru">
+        <datalist id="bikes">
+            <option value="Trek">Trek</option>
+            <option value="Giant">Giant</option>
+            <option value="Specialized">Specialized</option>
+        </datalist>
+    </div>
+    <div class="form-group">
+        <label for="customer">Dane Klienta</label>
+        <textarea id="customer" name="customer" rows="4" placeholder="Imię, nazwisko, numer telefonu, adres e-mail klienta"></textarea>
+    </div>
+    <div class="form-group">
+        <button type="submit">Dodaj Usługę</button>
+    </div>
+</form>
+<!--przycisk ktory po wybraniu smallSerwis jak sią nacisnie zwraca to co serwis kontroller -->
+<!--to jest napisane tylko dla doswiadczenia czy wspolpracuja z soba strony-->
+<!--<script>-->
+<!--    function navigateToService(event) {-->
+<!--        event.preventDefault();-->
+<!--        const service = document.querySelector('#service').value;-->
+<!--        if (service) {-->
+<!--            window.location.href = '/' + service;-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
 </body>
 </html>
