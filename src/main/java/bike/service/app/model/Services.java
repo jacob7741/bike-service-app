@@ -17,6 +17,7 @@ public class Services {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "service_id")
     private int serviceId;
+    @Getter
     @Column(name = "smallservices")
     private int smallservices;
 }
