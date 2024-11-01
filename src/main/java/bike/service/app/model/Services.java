@@ -20,4 +20,5 @@ public class Services {
     @Column(name = "smallservices")
     private final int smallservices = 50;
 
+
 }

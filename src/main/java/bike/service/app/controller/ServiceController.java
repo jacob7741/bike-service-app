@@ -14,6 +14,7 @@ public class ServiceController {
     @Autowired
     ServicesRepository servicesRepository;
 
+    //metoda odpowiedzialna za dodawanie nowego serwisu do bazy danych
     @PostMapping("/services/submit")
     public String createService(@ModelAttribute Services services, Model model) {
 
