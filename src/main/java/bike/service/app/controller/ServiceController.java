@@ -1,10 +1,12 @@
 package bike.service.app.controller;
 
+import bike.service.app.model.Services;
 import bike.service.app.model.repository.ServicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class ServiceController {
@@ -13,8 +15,10 @@ public class ServiceController {
     ServicesRepository servicesRepository;
 
     @PostMapping("/services/submit")
+    public String createService(@ModelAttribute Services services, Model model) {
 
-    public String createService() {
+        Services insertService = servicesRepository.save(services);
+        model.addAttribute(insertService);
 
         return "mainSite";
     }

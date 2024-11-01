@@ -14,10 +14,10 @@ import lombok.Setter;
 @Table(name = "Services")
 public class Services {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int serviceId;
 
     @Column(name = "smallservices")
-    private int smallservices;
+    private final int smallservices = 50;
 
 }
