@@ -21,9 +21,11 @@ public class ServiceController {
     private ServicesRepository servicesRepository;
 
     @PostMapping("/submit")
-    public String createService(Services services, Model model) {
+    public String updateService(Services services, Model model) {
+
         Services insertService = servicesConfig.createNewService(services);
         model.addAttribute("insertService", insertService);
+
         return "mainSite";
     }
 }
