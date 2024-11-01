@@ -108,53 +108,17 @@
     </div>
 </div>
 <h1>Dodaj rower do serwisu:</h1>
-<form onsubmit="return navigateToService(event)">
-    <div class="form-group">
-        <label for="mechanic">Mechanik</label>
-        <input list="mechanics" id="mechanic" name="mechanic" placeholder="Imię i nazwisko mechanika">
-        <datalist id="mechanics">
-            <option value="Jan Kowalski">Jan Kowalski</option>
-            <option value="Anna Nowak">Anna Nowak</option>
-            <option value="Piotr Zieliński">Piotr Zieliński</option>
-        </datalist>
-    </div>
+<form action="/services/submit" method="POST">
     <div class="form-group">
         <label for="service">Usługa</label>
         <input list="services" id="service" name="service" placeholder="Nazwa usługi">
         <datalist id="services">
             <option value="smallService">Mały Serwis</option>
-            <option value="fullService">Duży Serwis</option>
-            <option value="repair">Naprawa</option>
-            <option value="generalMaintenance">Ogólny Serwis</option>
         </datalist>
-    </div>
-    <div class="form-group">
-        <label for="bike">Rower</label>
-        <input list="bikes" id="bike" name="bike" placeholder="Model roweru">
-        <datalist id="bikes">
-            <option value="Trek">Trek</option>
-            <option value="Giant">Giant</option>
-            <option value="Specialized">Specialized</option>
-        </datalist>
-    </div>
-    <div class="form-group">
-        <label for="customer">Dane Klienta</label>
-        <textarea id="customer" name="customer" rows="4" placeholder="Imię, nazwisko, numer telefonu, adres e-mail klienta"></textarea>
     </div>
     <div class="form-group">
         <button type="submit">Dodaj Usługę</button>
     </div>
 </form>
-<!--przycisk ktory po wybraniu smallSerwis jak sią nacisnie zwraca to co serwis kontroller -->
-<!--to jest napisane tylko dla doswiadczenia czy wspolpracuja z soba strony-->
-<script>
-    function navigateToService(event) {
-        event.preventDefault();
-        const service = document.querySelector('#service').value;
-        if (service) {
-            window.location.href = '/' + service;
-        }
-    }
-</script>
 </body>
 </html>

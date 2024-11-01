@@ -10,11 +10,11 @@ public class DataBaseReader {
                     "sa","password" );
             Statement statement = connection.createStatement();
             //tutaj pobieram info z BikeService o serwisach i ich id
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM BikeService");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM SERVICES");
 
             while (resultSet.next()) {
-                System.out.println(resultSet.getInt("id"));
-                System.out.println(resultSet.getString("name"));
+                System.out.println(resultSet.getInt("service_id"));
+                System.out.println(resultSet.getString("smallServices"));
             }
             resultSet.close();
             statement.close();

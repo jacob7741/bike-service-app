@@ -1,6 +1,6 @@
 package bike.service.app;
 
-import bike.service.app.repository.ServicesRepository;
+import bike.service.app.model.repository.ServicesRepository;
 import org.springframework.boot.CommandLineRunner;
 
 public class DBinit implements CommandLineRunner {
