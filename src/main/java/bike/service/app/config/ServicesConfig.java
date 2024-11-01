@@ -11,38 +11,22 @@ import java.util.Optional;
 public class ServicesConfig {
 
     @Autowired
-    ServicesRepository servicesRepository;
-
+    private ServicesRepository servicesRepository;
 
     public Services createNewService(Services services) {
-
         if (services.getServiceId() == 0) {
             services = servicesRepository.save(services);
             return services;
         } else {
-
             Optional<Services> service = servicesRepository.findById((long) services.getServiceId());
-
             if (service.isPresent()) {
                 Services newServices = service.get();
                 newServices = servicesRepository.save(newServices);
-
                 return newServices;
             } else {
                 services = servicesRepository.save(services);
-
                 return services;
             }
         }
     }
-//
-//    public List<Services> getAllServices() {
-//        List<Services> result = servicesRepository.findAll();
-//
-//        if (result.size() > 0) {
-//            return result;
-//        } else {
-//            return new ArrayList<Services>();
-//        }
-//    }
 }
