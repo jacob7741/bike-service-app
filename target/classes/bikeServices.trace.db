@@ -4768,3 +4768,6 @@ select next value for services_seq [90036-224]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-11-02 12:21:36.932253+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]SERVICE_ID"; expected "SAVEPOINT, SCRIPT, SHUTDOWN"; SQL statement:
+SERVICE_ID [42001-224]
