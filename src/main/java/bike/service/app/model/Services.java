@@ -17,8 +17,10 @@ public class Services {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int serviceId;
 
-    @Column(name = "smallservices")
-    private final int smallservices = 50;
-
-
+    @Column(name = "smallservice")
+    private final int smallService = 50;
+    @Column(name = "fullservice")
+    private final int fullService = 200;
+    @Column(name = "repair")
+    private int repair;
 }

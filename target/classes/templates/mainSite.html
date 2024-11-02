@@ -108,21 +108,25 @@
     </div>
 </div>
 <h1>Dodaj rower do serwisu:</h1>
+
 <!--ten action tutaj tworzy korelacje z kodem java-->
-<form action="/mechanics/submit" method="POST">
-    <div class="form-group">
-        <label for="mechanics">Mechanik</label>
-        <input list="mechanics" id="mechanic" name="mechanic" placeholder="Nazwa mechanika">
-        <datalist id="mechanics">
-            <option value="Alojzy Wentyl">Alojzy Wentyl</option>
-        </datalist>
-    </div>
+<!--<form action="/mechanics/submit" method="POST">-->
+<!--    <div class="form-group">-->
+<!--        <label for="mechanics">Mechanik</label>-->
+<!--        <input list="mechanics" id="mechanic" name="mechanic" placeholder="Nazwa mechanika">-->
+<!--        <datalist id="mechanics">-->
+<!--            <option value="Alojzy Wentyl">Alojzy Wentyl</option>-->
+<!--        </datalist>-->
+<!--    </div>-->
+
 <form action="/services/submit" method="POST">
     <div class="form-group">
         <label for="service">Usługa</label>
         <input list="services" id="service" name="service" placeholder="Nazwa usługi">
         <datalist id="services">
-            <option value="smallService">Mały Serwis</option>
+            <option value="smallService">Mały przegląd</option>
+            <option value="fullService">Pełny przgląd</option>
+            <option value="repair">Naprawa</option>
         </datalist>
     </div>
     <div class="form-group">
