@@ -1,5 +1,4 @@
 package bike.service.app.controller;
 
-class ServiceControllerTest {
-
+public class ServiceControllerTest {
 }
