@@ -8,13 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainController {
-    //    z response zwraca napis z metody a bez tego nazwe
+//    z response zwraca napis z metody a bez tego nazwe
 //    pliku ktory znajduje sie w templates
-//  @ResponseBody
+//    @ResponseBody
     @GetMapping("/")
     public String home() {
         System.out.println("application start");
