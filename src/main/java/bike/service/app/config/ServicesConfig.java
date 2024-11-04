@@ -13,8 +13,6 @@ public class ServicesConfig {
     @Autowired
     private ServicesRepository servicesRepository;
 
-
-
     public Services createNewService(Services services) {
         if (services.getServiceId() == 0) {
             services = servicesRepository.save(services);

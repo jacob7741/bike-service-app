@@ -1,8 +1,5 @@
-bike/service/app/repository/ServicesRepository.class
+bike/service/app/model/repository/ServicesRepository.class
 bike/service/app/ServletInitializer.class
-bike/service/app/data/DataBaseReader.class
 bike/service/app/MainServiceApp.class
 bike/service/app/DBinit.class
 bike/service/app/model/Services.class
-bike/service/app/controller/MainController.class
-bike/service/app/controller/ServiceController.class
