@@ -14,19 +14,8 @@ public class ServicesConfig {
     private ServicesRepository servicesRepository;
 
     public Services createNewService(Services services) {
-        if (services.getServiceId() == 0) {
-            services = servicesRepository.save(services);
+            services.getServiceId();
+            servicesRepository.save(services);
             return services;
-        } else {
-            Optional<Services> service = servicesRepository.findById((long) services.getServiceId());
-            if (service.isPresent()) {
-                Services newServices = service.get();
-                newServices = servicesRepository.save(newServices);
-                return newServices;
-            } else {
-                services = servicesRepository.save(services);
-                return services;
-            }
-        }
     }
 }
