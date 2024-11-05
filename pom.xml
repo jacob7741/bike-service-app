@@ -69,25 +69,6 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-                    <executable>java</executable>
-                    <arguments>
-                        <argument>-XX:+EnableDynamicAgentLoading</argument>
-                        <argument>-Djdk.instrument.traceUsage</argument>
-                        <argument>
-                            -javaagent:/Users/jacobsunny/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar
-                        </argument>
-                        <argument>-jar</argument>
-                        <argument>your-application.jar</argument>
-                    </arguments>
-                </configuration>
-            </plugin>
-
-
-            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
