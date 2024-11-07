@@ -12,7 +12,6 @@ public class ServicesConfig {
     private ServicesRepository servicesRepository;
 
     public Services createNewService(Services services) {
-            services.getServiceId();
             servicesRepository.save(services);
             return services;
     }
