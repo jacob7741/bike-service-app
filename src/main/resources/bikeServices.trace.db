@@ -5106,3 +5106,93 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: /Users/jacobsunn
 	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
 	... 12 more
+2024-11-07 21:26:24.639148+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE Client (\000d\000afirst_name VARCHAR(255) NOT NULL,\000d\000alast_name VARCHAR(255) NOT NULL,\000d\000auniqId INT AUTO_INCREMENT PRIMARY KEY\000d\000a[*]phoneNumber INT NOT NULL\000d\000a)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE Client (
+first_name VARCHAR(255) NOT NULL,
+last_name VARCHAR(255) NOT NULL,
+uniqId INT AUTO_INCREMENT PRIMARY KEY
+phoneNumber INT NOT NULL
+) [42001-224]
+2024-11-07 21:26:24.645603+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE [*]Order (\000d\000amechanic VARCHAR(255) NOT NULL,\000d\000aservice VARCHAR(255) NOT NULL,\000d\000abikeModel VARCHAR(255) NOT NULL\000d\000a)"; expected "identifier"; SQL statement:
+CREATE TABLE Order (
+mechanic VARCHAR(255) NOT NULL,
+service VARCHAR(255) NOT NULL,
+bikeModel VARCHAR(255) NOT NULL
+) [42001-224]
+2024-11-07 21:26:30.234227+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE Client (\000d\000afirst_name VARCHAR(255) NOT NULL,\000d\000alast_name VARCHAR(255) NOT NULL,\000d\000auniqId INT AUTO_INCREMENT PRIMARY KEY\000d\000a[*]phoneNumber INT NOT NULL\000d\000a)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE Client (
+first_name VARCHAR(255) NOT NULL,
+last_name VARCHAR(255) NOT NULL,
+uniqId INT AUTO_INCREMENT PRIMARY KEY
+phoneNumber INT NOT NULL
+) [42001-224]
+2024-11-07 21:26:30.236504+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE [*]Order (\000d\000amechanic VARCHAR(255) NOT NULL,\000d\000aservice VARCHAR(255) NOT NULL,\000d\000abikeModel VARCHAR(255) NOT NULL\000d\000a)"; expected "identifier"; SQL statement:
+CREATE TABLE Order (
+mechanic VARCHAR(255) NOT NULL,
+service VARCHAR(255) NOT NULL,
+bikeModel VARCHAR(255) NOT NULL
+) [42001-224]
+2024-11-07 21:26:40.450267+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE Client (\000d\000afirst_name VARCHAR(255) NOT NULL,\000d\000alast_name VARCHAR(255) NOT NULL,\000d\000auniqId INT AUTO_INCREMENT PRIMARY KEY\000d\000a[*]phoneNumber INT NOT NULL\000d\000a)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE Client (
+first_name VARCHAR(255) NOT NULL,
+last_name VARCHAR(255) NOT NULL,
+uniqId INT AUTO_INCREMENT PRIMARY KEY
+phoneNumber INT NOT NULL
+) [42001-224]
+2024-11-07 21:26:41.267779+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE Client (\000d\000afirst_name VARCHAR(255) NOT NULL,\000d\000alast_name VARCHAR(255) NOT NULL,\000d\000auniqId INT AUTO_INCREMENT PRIMARY KEY\000d\000a[*]phoneNumber INT NOT NULL\000d\000a)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE Client (
+first_name VARCHAR(255) NOT NULL,
+last_name VARCHAR(255) NOT NULL,
+uniqId INT AUTO_INCREMENT PRIMARY KEY
+phoneNumber INT NOT NULL
+) [42001-224]
+2024-11-07 21:26:41.831013+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE Client (\000d\000afirst_name VARCHAR(255) NOT NULL,\000d\000alast_name VARCHAR(255) NOT NULL,\000d\000auniqId INT AUTO_INCREMENT PRIMARY KEY\000d\000a[*]phoneNumber INT NOT NULL\000d\000a)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE Client (
+first_name VARCHAR(255) NOT NULL,
+last_name VARCHAR(255) NOT NULL,
+uniqId INT AUTO_INCREMENT PRIMARY KEY
+phoneNumber INT NOT NULL
+) [42001-224]
+2024-11-07 21:26:58.699838+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE Client (\000d\000afirst_name VARCHAR(255) NOT NULL,\000d\000alast_name VARCHAR(255) NOT NULL,\000d\000auniqId INT AUTO_INCREMENT PRIMARY KEY\000d\000a[*]phoneNumber INT NOT NULL\000d\000a)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE Client (
+first_name VARCHAR(255) NOT NULL,
+last_name VARCHAR(255) NOT NULL,
+uniqId INT AUTO_INCREMENT PRIMARY KEY
+phoneNumber INT NOT NULL
+) [42001-224]
+2024-11-07 21:27:27.546977+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE [*]Order (\000d\000amechanic VARCHAR(255) NOT NULL,\000d\000aservice VARCHAR(255) NOT NULL,\000d\000abikeModel VARCHAR(255) NOT NULL\000d\000a)"; expected "identifier"; SQL statement:
+CREATE TABLE Order (
+mechanic VARCHAR(255) NOT NULL,
+service VARCHAR(255) NOT NULL,
+bikeModel VARCHAR(255) NOT NULL
+) [42001-224]
+2024-11-07 21:28:14.122823+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE [*]Order (\000d\000amechanic VARCHAR(255) NOT NULL,\000d\000aservice VARCHAR(255) NOT NULL,\000d\000abikeModel VARCHAR(255) NOT NULL\000d\000a)"; expected "identifier"; SQL statement:
+CREATE TABLE Order (
+mechanic VARCHAR(255) NOT NULL,
+service VARCHAR(255) NOT NULL,
+bikeModel VARCHAR(255) NOT NULL
+) [42001-224]
+2024-11-07 21:30:52.939842+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE RequestOrder (\000d\000amechanic VARCHAR(255) NOT NULL,\000d\000aservice VARCHAR(255) NOT NULL,\000d\000abikeModel VARCHAR(255) NOT NULL,\000d\000a[*])"; expected "identifier"; SQL statement:
+CREATE TABLE RequestOrder (
+mechanic VARCHAR(255) NOT NULL,
+service VARCHAR(255) NOT NULL,
+bikeModel VARCHAR(255) NOT NULL,
+) [42001-224]
+2024-11-07 21:31:17.839829+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE RequestOrder (\000d\000amechanic VARCHAR(255) NOT NULL,\000d\000aservice VARCHAR(255) NOT NULL,\000d\000abikeModel VARCHAR(255) NOT NULL,\000d\000a[*])"; expected "identifier"; SQL statement:
+CREATE TABLE RequestOrder (
+mechanic VARCHAR(255) NOT NULL,
+service VARCHAR(255) NOT NULL,
+bikeModel VARCHAR(255) NOT NULL,
+) [42001-224]

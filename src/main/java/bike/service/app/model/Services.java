@@ -13,14 +13,23 @@ import lombok.Setter;
 @Entity
 @Table(name = "Services")
 public class Services {
+    @Column(name = "smallservice")
+    private int smallService = 50;
+    @Column(name = "fullservice")
+    private int fullService = 200;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int serviceId;
-
-    @Column(name = "smallservice")
-    private final int smallService = 50;
-    @Column(name = "fullservice")
-    private final int fullService = 200;
     @Column(name = "repair")
     private int repair;
+
+    @Override
+    public String toString() {
+        return "Services{" +
+                "serviceId=" + serviceId +
+                ", smallService=" + smallService +
+                ", fullService=" + fullService +
+                ", repair=" + repair +
+                '}';
+    }
 }
