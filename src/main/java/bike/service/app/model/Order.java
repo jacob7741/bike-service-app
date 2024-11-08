@@ -1,8 +1,6 @@
 package bike.service.app.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +13,10 @@ import lombok.Setter;
 @Entity
 @Table(name = "RequestOrder")
 public class Order {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private int id;
     @Column(name = "mechanic")
     private String mechanic;
     @Column(name = "service")

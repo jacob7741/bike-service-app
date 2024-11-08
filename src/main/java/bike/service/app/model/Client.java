@@ -1,8 +1,6 @@
 package bike.service.app.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,13 +13,14 @@ import lombok.Setter;
 @Entity
 @Table(name = "Client")
 public class Client {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "uniqId")
+    private int uniqId;
     @Column(name = "first_name")
     private String first_name;
     @Column(name = "last_name")
     private String last_name;
-    @Column(name = "uniqId")
-    private int uniqId;
     @Column(name = "phoneNumber")
     private int phoneNumber;
 

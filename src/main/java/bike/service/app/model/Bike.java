@@ -1,8 +1,6 @@
 package bike.service.app.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +14,11 @@ import lombok.Setter;
 @Table(name = "Bike")
 public class Bike {
     //!!!zmienić nazwę w bazie danychj na brand!!!
-    @Column(name = "bike")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private int id;
+    @Column(name = "brand")
     private String brand;
     @Column(name = "modelType")
     private String modelType;
