@@ -18,9 +18,9 @@ public class Services {
     @Column(name = "serviceId")
     private int serviceId;
     @Column(name = "smallservice")
-    private int smallService = 50;
+    private int smallService;
     @Column(name = "fullservice")
-    private int fullService = 200;
+    private int fullService;
     @Column(name = "repair")
     private int repair;
 
