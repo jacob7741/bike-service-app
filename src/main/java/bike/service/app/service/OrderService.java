@@ -1,8 +1,6 @@
 package bike.service.app.service;
 
-import bike.service.app.model.Bike;
 import bike.service.app.model.Services;
-import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ServicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +11,7 @@ import java.util.Optional;
 public class OrderService {
 
     @Autowired
-    private ServicesRepository servicesRepository;
+    ServicesRepository servicesRepository;
 //    @Autowired
 //    private BikeRepository bikeRepository;
     //w tej metodzie moge opreacowac dokladnie jaki serwis ma sie dodawca i gdzi dokladnie
@@ -21,7 +19,7 @@ public class OrderService {
     //a docelowy koncept jest taki aby pojedyncze serwisy wybrane z tabeli byly zapisywane do
     //tabeli orders wraz z danymi mechanika oraz klienta
 
-//    public Bike addBike(Bike bike) {
+    //    public Bike addBike(Bike bike) {
 //        System.out.println("addBike");
 //        bike = bikeRepository.save(bike);
 //        return bike;

@@ -16,8 +16,8 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-@SpringBootTest
-@Rollback
+
+
 @ExtendWith(MockitoExtension.class)
 class OrderServiceTest {
     @Mock
@@ -31,7 +31,6 @@ class OrderServiceTest {
     @Test
     void addBike() {
         // Tutaj dodać logikę testową dla metody addBike
-
     }
 
     @Test
