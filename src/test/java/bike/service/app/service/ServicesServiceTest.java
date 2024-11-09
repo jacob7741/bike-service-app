@@ -8,10 +8,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
-
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -19,13 +15,13 @@ import static org.mockito.Mockito.*;
 
 
 @ExtendWith(MockitoExtension.class)
-class OrderServiceTest {
+class ServicesServiceTest {
     @Mock
     private ServicesRepository servicesRepository;
     @Mock
     private BikeRepository bikeRepository;
     @InjectMocks
-    private OrderService orderService;
+    private ServicesService servicesService;
 
 
     @Test
@@ -44,7 +40,7 @@ class OrderServiceTest {
         when(servicesRepository.save(any(Services.class))).thenReturn(services);
 
         // Wywołanie metody i sprawdzenie wyników
-        Services savedService = orderService.createUpdateNewService(services);
+        Services savedService = servicesService.createUpdateNewService("serviceType" ,services);
 
         // Assercje
         assertNotNull(savedService);

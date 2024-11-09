@@ -3,7 +3,7 @@ package bike.service.app.controller;
 
 import bike.service.app.model.Services;
 import bike.service.app.model.repository.ServicesRepository;
-import bike.service.app.service.OrderService;
+import bike.service.app.service.ServicesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class OrderController {
     @Autowired
-    private OrderService orderService;
+    private ServicesService servicesService;
     @Autowired
     private ServicesRepository servicesRepository;
+
     //    z response zwraca napis z metody a bez tego nazwe
     //    pliku ktory znajduje sie w templates
     //    @ResponseBody
@@ -27,7 +28,7 @@ public class OrderController {
 
     @PostMapping("/services/submit")
     public String submitService(@RequestParam String serviceType, Services services) {
-        orderService.createUpdateNewService(serviceType ,services);
+        servicesService.createUpdateNewService(serviceType, services);
         return "mainSite";
     }
 
