@@ -27,8 +27,6 @@ public class OrderService {
 
     public Services createUpdateNewService(Services services) {
         System.out.println("createUpdateService");
-//        services = servicesRepository.save(services);
-//        return services;
         if (services.getServiceId() == 0) {
             servicesRepository.save(services);
             return services;
