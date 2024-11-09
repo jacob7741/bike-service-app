@@ -13,7 +13,7 @@ public class DataBaseReader {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM SERVICES");
 
             while (resultSet.next()) {
-                System.out.print(resultSet.getInt("service_id") + " - ");
+                System.out.print(resultSet.getInt("serviceid") + " - ");
                 System.out.println(resultSet.getString("smallservice"));
             }
             resultSet.close();

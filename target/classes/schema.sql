@@ -16,9 +16,9 @@ CREATE TABLE RequestOrder (
 
 CREATE TABLE Services (
     serviceId INT AUTO_INCREMENT PRIMARY KEY,
-    smallservice INT NOT NULL,
-    fullservice INT NOT NULL,
-    repair INT NOT NULL
+    smallservice INT,
+    fullservice INT,
+    repair INT
 );
 
 CREATE TABLE Bike (
