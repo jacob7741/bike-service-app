@@ -10,6 +10,8 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
+
+
     public Client addNewClient(Client client) {
         System.out.println("newClientAdded");
         if (client.getUniqId() == 0)

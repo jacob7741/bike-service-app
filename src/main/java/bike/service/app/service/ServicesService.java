@@ -5,6 +5,8 @@ import bike.service.app.model.repository.ServicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -13,13 +15,41 @@ public class ServicesService {
     @Autowired
     private ServicesRepository servicesRepository;
 
+    public List<Services> getAllServices() {
+        System.out.println("getAllServices");
+        List<Services> servicesList = servicesRepository.findAll();
+        if ( servicesList.size() > 0) {
+            return servicesList;
+        }else {
+            return new ArrayList<Services>();
+        }
+    }
 
+    public Services getServicesById(int id) {
+        System.out.println("getServicesById");
+        Optional<Services> optionalServices = servicesRepository.findById(id);
+
+        if (optionalServices.isPresent()) {
+            return optionalServices.get();
+        } else {
+            throw new RuntimeException("servicesNotFound");
+        }
+    }
+
+    public void deletedServicesById(int id) {
+        System.out.println("deletedServiceById");
+        Optional<Services> optionalServices = servicesRepository.findById(id);
+
+        if (optionalServices.isPresent()) {
+            servicesRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("serviceNotDeleted");
+        }
+    }
     //w tej metodzie moge opreacowac dokladnie jaki serwis ma sie dodawca i gdzi dokladnie
     //pierwsza wersje ktora pisze to jet logi ktora zpisuje serwis do tabeli serwisow
     //a docelowy koncept jest taki aby pojedyncze serwisy wybrane z tabeli byly zapisywane do
     //tabeli orders wraz z danymi mechanika oraz klienta
-
-
     public Services createUpdateNewService(String serviceType, Services services) {
         System.out.println("createUpdateService");
         if (services.getServiceId() == 0) {

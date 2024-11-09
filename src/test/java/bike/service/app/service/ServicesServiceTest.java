@@ -1,15 +1,19 @@
 package bike.service.app.service;
 
 import bike.service.app.model.Services;
-import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ServicesRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -18,16 +22,9 @@ import static org.mockito.Mockito.*;
 class ServicesServiceTest {
     @Mock
     private ServicesRepository servicesRepository;
-    @Mock
-    private BikeRepository bikeRepository;
+
     @InjectMocks
     private ServicesService servicesService;
-
-
-    @Test
-    void addBike() {
-        // Tutaj dodać logikę testową dla metody addBike
-    }
 
     @Test
     void createUpdateNewService() {
@@ -40,7 +37,7 @@ class ServicesServiceTest {
         when(servicesRepository.save(any(Services.class))).thenReturn(services);
 
         // Wywołanie metody i sprawdzenie wyników
-        Services savedService = servicesService.createUpdateNewService("serviceType" ,services);
+        Services savedService = servicesService.createUpdateNewService("serviceType", services);
 
         // Assercje
         assertNotNull(savedService);
@@ -51,4 +48,36 @@ class ServicesServiceTest {
         verify(servicesRepository, times(1)).save(any(Services.class));
     }
 
-}
+
+    @Test
+    void getAllServices_ShouldReturnEmptyList_WhenNoServicesExist(){
+        List<Services> servicesList = new ArrayList<>();
+
+        when(servicesRepository.findAll()).thenReturn(servicesList);
+
+        List<Services> result = servicesService.getAllServices();
+
+        assertEquals(servicesList, result);
+        assertEquals(0, result.size());
+    }
+
+    @Test
+    void getAllServices_ShouldReturnListOfServices_WhenServicesExist() {
+        //Arrange
+        List<Services > servicesList = new ArrayList<>();
+        servicesList.add(new Services(1, 50, 100, 200));
+        servicesList.add(new Services(2, 60, 110, 210));
+        when(servicesRepository.findAll()).thenReturn(servicesList);
+        //Act
+        List<Services> result = servicesService.getAllServices();
+        // Assert
+        assertEquals(servicesList, result); assertEquals(2, result.size());
+    }
+        @Test
+        void getServicesById () {
+        }
+
+        @Test
+        void deletedServicesById () {
+        }
+    }
