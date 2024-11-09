@@ -13,13 +13,13 @@ import lombok.Setter;
 @Entity
 @Table(name = "Services")
 public class Services {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int serviceId;
     @Column(name = "smallservice")
     private int smallService = 50;
     @Column(name = "fullservice")
     private int fullService = 200;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int serviceId;
     @Column(name = "repair")
     private int repair;
 
