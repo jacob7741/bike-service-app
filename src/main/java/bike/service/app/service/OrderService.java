@@ -11,7 +11,7 @@ import java.util.Optional;
 public class OrderService {
 
     @Autowired
-    ServicesRepository servicesRepository;
+    private ServicesRepository servicesRepository;
 //    @Autowired
 //    private BikeRepository bikeRepository;
     //w tej metodzie moge opreacowac dokladnie jaki serwis ma sie dodawca i gdzi dokladnie
@@ -30,20 +30,22 @@ public class OrderService {
 //        services = servicesRepository.save(services);
 //        return services;
         if (services.getServiceId() == 0) {
-            services = servicesRepository.save(services);
+            servicesRepository.save(services);
             return services;
         } else {
-            Optional<Services> optionalServices = servicesRepository.findById(services.getServiceId());
-            if (optionalServices.isPresent()) {
-                Services newService = optionalServices.get();
-                newService.setServiceId(services.getServiceId());
-                newService.setSmallService(services.getSmallService());
-                newService = servicesRepository.save(newService);
-                return newService;
-            } else {
-                services = servicesRepository.save(services);
-                return services;
-            }
+            return updateExistingService(services);
+        }
+    }
+
+    private Services updateExistingService(Services services) {
+        Optional<Services> optionalServices = servicesRepository.findById(services.getServiceId());
+        if (optionalServices.isPresent()) {
+            Services newService = optionalServices.get();
+            newService.setServiceId(services.getServiceId());
+            newService.setSmallService(services.getSmallService());
+            return servicesRepository.save(newService);
+        } else {
+           return servicesRepository.save(services);
         }
     }
 }

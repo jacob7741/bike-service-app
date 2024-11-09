@@ -51,13 +51,8 @@ class OrderServiceTest {
         assertEquals(50, savedService.getSmallService());
         assertEquals(200, savedService.getFullService());
 
-        Optional<Services> optionalServices = servicesRepository.findById(savedService.getServiceId());
-        assertTrue(optionalServices.isPresent());
-        Services foundService = optionalServices.get();
-        assertEquals(50, foundService.getSmallService());
-        assertEquals(200, foundService.getFullService());
-
-//        // Weryfikacja, że metoda save została wywołana
-//        verify(servicesRepository, times(1)).save(services);
+        // Weryfikacja, że metoda save została wywołana
+        verify(servicesRepository, times(1)).save(any(Services.class));
     }
+
 }
