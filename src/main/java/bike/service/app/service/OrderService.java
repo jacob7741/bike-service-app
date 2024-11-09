@@ -4,6 +4,7 @@ import bike.service.app.model.Services;
 import bike.service.app.model.repository.ServicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
@@ -25,9 +26,20 @@ public class OrderService {
 //        return bike;
 //    }
 
-    public Services createUpdateNewService(Services services) {
+    public Services createUpdateNewService(String serviceType, Services services) {
         System.out.println("createUpdateService");
         if (services.getServiceId() == 0) {
+            switch (serviceType) {
+                case "smallService":
+                    services.setSmallService(50); // lub inna logika
+                    break;
+                case "fullService":
+                    services.setFullService(200); // lub inna logika
+                    break;
+                case "repair":
+                    services.setRepair(100); // lub inna logika
+                    break;
+            }
             servicesRepository.save(services);
             return services;
         } else {
@@ -41,9 +53,10 @@ public class OrderService {
             Services newService = optionalServices.get();
             newService.setServiceId(services.getServiceId());
             newService.setSmallService(services.getSmallService());
+            newService.setRepair(services.getRepair());
             return servicesRepository.save(newService);
         } else {
-           return servicesRepository.save(services);
+            return servicesRepository.save(services);
         }
     }
 }

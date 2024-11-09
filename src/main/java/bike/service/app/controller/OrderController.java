@@ -26,22 +26,8 @@ public class OrderController {
     }
 
     @PostMapping("/services/submit")
-    public String submitService(@RequestParam("serviceType") String serviceType) {
-        Services newService = new Services();
-
-        switch (serviceType) {
-            case "smallService":
-                newService.setSmallService(50); // lub inna logika
-                break;
-            case "fullService":
-                newService.setFullService(200); // lub inna logika
-                break;
-            case "repair":
-                newService.setRepair(100); // lub inna logika
-                break;
-        }
-
-        servicesRepository.save(newService);
+    public String submitService(@RequestParam String serviceType, Services services) {
+        orderService.createUpdateNewService(serviceType ,services);
         return "mainSite";
     }
 
