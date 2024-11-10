@@ -15,8 +15,8 @@ import lombok.Setter;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "uniqId")
-    private int uniqId;
+    @Column(name = "id")
+    private int id;
     @Column(name = "first_name")
     private String first_name;
     @Column(name = "last_name")
@@ -29,7 +29,7 @@ public class Client {
         return "Client{" +
                 "first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
-                ", uniqId=" + uniqId +
+                ", id=" + id +
                 ", phoneNumber=" + phoneNumber +
                 '}';
     }

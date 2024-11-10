@@ -18,7 +18,7 @@ public class ServicesService {
     public List<Services> getAllServices() {
         System.out.println("getAllServices");
         List<Services> servicesList = servicesRepository.findAll();
-        if ( servicesList.size() > 0) {
+        if (!servicesList.isEmpty()) {
             return servicesList;
         }else {
             return new ArrayList<Services>();
@@ -46,9 +46,8 @@ public class ServicesService {
             throw new RuntimeException("serviceNotDeleted");
         }
     }
-    //w tej metodzie moge opreacowac dokladnie jaki serwis ma sie dodawca i gdzi dokladnie
-    //pierwsza wersje ktora pisze to jet logi ktora zpisuje serwis do tabeli serwisow
-    //a docelowy koncept jest taki aby pojedyncze serwisy wybrane z tabeli byly zapisywane do
+
+    //pojedyncze serwisy wybrane z tabeli byly zapisywane do
     //tabeli orders wraz z danymi mechanika oraz klienta
     public Services createUpdateNewService(String serviceType, Services services) {
         System.out.println("createUpdateService");

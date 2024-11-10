@@ -13,6 +13,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "Services")
 public class Services {
+    /*TODO: do bazy dodać kolumnę "other" gdzie bedzie się wpisywać nazwę innego
+    *  oraz pamiętać aby zaktualizować metody*/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "serviceId")

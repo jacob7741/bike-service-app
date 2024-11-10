@@ -2,7 +2,6 @@ package bike.service.app.controller;
 
 
 import bike.service.app.model.Services;
-import bike.service.app.model.repository.ServicesRepository;
 import bike.service.app.service.ServicesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,12 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class OrderController {
     @Autowired
     private ServicesService servicesService;
-    @Autowired
-    private ServicesRepository servicesRepository;
 
-    //    z response zwraca napis z metody a bez tego nazwe
-    //    pliku ktory znajduje sie w templates
-    //    @ResponseBody
     @GetMapping("/")
     public String home() {
         System.out.println("application start");
@@ -32,11 +26,4 @@ public class OrderController {
         return "mainSite";
     }
 
-
-//    @PostMapping("/services/submit")
-//    public String updateService(Services services) {
-//        orderService.createUpdateNewService(services);
-//        System.out.println("service update");
-//        return "mainSite";
-//    }
 }

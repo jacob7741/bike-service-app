@@ -23,8 +23,6 @@ public class Order {
     private String service;
     @Column(name = "bikeModel")
     private String bikeModel;
-    @Column(name = "uniqId")
-    private int uniqId;
 
     @Override
     public String toString() {
@@ -32,7 +30,7 @@ public class Order {
                 "mechanic='" + mechanic + '\'' +
                 ", service='" + service + '\'' +
                 ", bikeModel='" + bikeModel + '\'' +
-                ", uniqId=" + uniqId +
+                ", id=" + id +
                 '}';
     }
 }
