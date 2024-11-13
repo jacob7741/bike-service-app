@@ -12,8 +12,8 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "Bike")
-public class Bike {
-    //!!!zmienić nazwę w bazie danychj na brand!!!
+public class  Bike {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

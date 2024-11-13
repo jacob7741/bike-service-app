@@ -14,7 +14,7 @@ import lombok.Setter;
 @Table(name = "Client")
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
     @Column(name = "first_name")
@@ -23,7 +23,6 @@ public class Client {
     private String last_name;
     @Column(name = "phoneNumber")
     private int phoneNumber;
-
     @Override
     public String toString() {
         return "Client{" +

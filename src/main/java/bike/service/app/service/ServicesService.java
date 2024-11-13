@@ -1,6 +1,8 @@
 package bike.service.app.service;
 
+import bike.service.app.model.Order;
 import bike.service.app.model.Services;
+import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.ServicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,13 +16,15 @@ public class ServicesService {
 
     @Autowired
     private ServicesRepository servicesRepository;
+    @Autowired
+    private OrderService orderService;
 
     public List<Services> getAllServices() {
         System.out.println("getAllServices");
         List<Services> servicesList = servicesRepository.findAll();
         if (!servicesList.isEmpty()) {
             return servicesList;
-        }else {
+        } else {
             return new ArrayList<Services>();
         }
     }
@@ -47,6 +51,10 @@ public class ServicesService {
         }
     }
 
+
+// Teraz zapisz `services` do bazy danych
+
+
     //pojedyncze serwisy wybrane z tabeli byly zapisywane do
     //tabeli orders wraz z danymi mechanika oraz klienta
     public Services createUpdateNewService(String serviceType, Services services) {
@@ -54,7 +62,7 @@ public class ServicesService {
         if (services.getServiceId() == 0) {
             switch (serviceType) {
                 case "smallService":
-                    services.setSmallService(50); // lub inna logika
+                    services.setSmallService(50);// lub inna logika
                     break;
                 case "fullService":
                     services.setFullService(200); // lub inna logika
@@ -64,12 +72,12 @@ public class ServicesService {
                     break;
             }
             servicesRepository.save(services);
+            orderService.saveServiceToOrder(services);
             return services;
         } else {
             return updateExistingService(services);
         }
     }
-
     //ta metoda jest jeszcze do poprawienia gdyż ona ma aktualizować w razie czego jedna kolumnę
     //kiedy byłyby zmiany a tutaj prawdopodbnie zmienia wszystkie
     private Services updateExistingService(Services services) {
