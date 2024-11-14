@@ -23,8 +23,6 @@ public class Order {
     private String service;
     @Column(name = "bikeModel")
     private String bikeModel;
-    @OneToOne
-    private Services services;
 
     @Override
     public String toString() {
