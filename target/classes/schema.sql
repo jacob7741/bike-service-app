@@ -22,7 +22,7 @@ CREATE TABLE Services (
 
 CREATE TABLE Bike (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    bike VARCHAR(255) NOT NULL,
+    brand VARCHAR(255) NOT NULL,
     modelType VARCHAR(255) NOT NULL,
     serialNumber INT NOT NULL
 );

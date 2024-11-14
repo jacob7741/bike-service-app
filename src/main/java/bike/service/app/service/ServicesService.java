@@ -70,7 +70,7 @@ public class ServicesService {
                     break;
             }
             servicesRepository.save(services);
-            orderService.saveServiceToOrder(services);
+            orderService.saveToOrder(services);
             return services;
         } else {
             return updateExistingService(services);

@@ -1,7 +1,9 @@
 package bike.service.app.service;
 
+import bike.service.app.model.Bike;
 import bike.service.app.model.Order;
 import bike.service.app.model.Services;
+import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.ServicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,10 @@ public class OrderService {
     private OrderRepository orderRepository;
     @Autowired
     private ServicesRepository servicesRepository;
+    @Autowired
+    private BikeRepository bikeRepository;
 
-    public Order saveServiceToOrder(Services services) {
+    public Order saveToOrder(Services services) {
         Order order = new Order();
         if (services.getSmallService() == 50) {
             order.setService("small service - id: " + services.getServiceId());
@@ -25,13 +29,10 @@ public class OrderService {
             order.setService("reprair - id: " + services.getServiceId());
         }
 
-
-
         orderRepository.save(order);
         services.setOrderId(order);
 
         servicesRepository.save(services);
         return order;
     }
-
 }
