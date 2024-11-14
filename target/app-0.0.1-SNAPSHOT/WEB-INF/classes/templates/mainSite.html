@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serwis Rowerowy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .login-form {
+            display: flex;
+            align-items: center;
+        }
+        .login-form input {
+            margin-right: 10px;
+            padding: 5px;
+            font-size: 14px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .form-group label {
+            margin-bottom: 5px;
+            text-align: center;
+            width: 100%;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-group button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .navigation {
+            text-align: right;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .navigation a {
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .accept-button {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        #otherServiceInput {
+            display: none;
+            width: 100%;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="login-form">
+        <input type="text" placeholder="Login" id="login" name="login">
+        <input type="password" placeholder="Password" id="password" name="password">
+        <button type="button">Zaloguj się</button>
+    </div>
+</div>
+<h1>Dodaj rower do serwisu:</h1>
+
+<form th:action="@{/services/submit}" method="POST" onsubmit="handleFormSubmit(event)">
+    <div class="form-group">
+        <label for="services">Usługa</label>
+        <select id="services" name="serviceType" onchange="handleOtherOption(this)">
+            <option th:value="'smallService'">Mały przegląd</option>
+            <option th:value="'fullService'">Pełny przegląd</option>
+            <option th:value="'repair'">Naprawa</option>
+<!--            <option th:value="'other'">Inne</option>-->
+        </select>
+<!--        <input type="text" id="otherServiceInput" name="serviceType" placeholder="Wpisz swoją usługę">-->
+    </div>
+    <div class="form-group">
+        <button type="submit">Dodaj Usługę</button>
+    </div>
+</form>
+<!--funkcja umozliwiajaca wpisywanie w liscie wyboru a nie w oddzielnym oknie-->
+<!--<script>-->
+<!--    function handleOtherOption(select) {-->
+<!--        var otherServiceInput = document.getElementById('otherServiceInput');-->
+
+<!--        if (select.value === 'other') {-->
+<!--            otherServiceInput.style.display = 'block';-->
+<!--            otherServiceInput.focus();-->
+
+<!--            // Ukryj pole select-->
+<!--            select.style.display = 'none';-->
+<!--        } else {-->
+<!--            otherServiceInput.style.display = 'none';-->
+<!--            select.style.display = 'block';-->
+<!--        }-->
+<!--    }-->
+
+<!--    function handleFormSubmit(event) {-->
+<!--        var select = document.getElementById('services');-->
+<!--        var otherServiceInput = document.getElementById('otherServiceInput');-->
+
+<!--        if (select.value === 'other') {-->
+<!--            // Kopiujemy wartość pola tekstowego do ukrytego pola select, aby wartość została przesłana-->
+<!--            select.innerHTML = '<option selected value="' + otherServiceInput.value + '">' + otherServiceInput.value + '</option>';-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+</body>
+</html>
