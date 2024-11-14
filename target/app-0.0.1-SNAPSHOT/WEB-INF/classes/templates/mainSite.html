@@ -97,6 +97,19 @@
             justify-content: center;
             margin-top: 20px;
         }
+        #otherServiceInput {
+            display: none;
+            width: 100%;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
     </style>
 </head>
 <body>
@@ -109,19 +122,47 @@
 </div>
 <h1>Dodaj rower do serwisu:</h1>
 
-<form th:action="@{/services/submit}" method="POST">
+<form th:action="@{/services/submit}" method="POST" onsubmit="handleFormSubmit(event)">
     <div class="form-group">
         <label for="services">Usługa</label>
-<!--        <input list="services" id="service" name="service" placeholder="Nazwa usługi">-->
-        <select id="services">
+        <select id="services" name="serviceType" onchange="handleOtherOption(this)">
             <option th:value="'smallService'">Mały przegląd</option>
             <option th:value="'fullService'">Pełny przegląd</option>
             <option th:value="'repair'">Naprawa</option>
+<!--            <option th:value="'other'">Inne</option>-->
         </select>
+<!--        <input type="text" id="otherServiceInput" name="serviceType" placeholder="Wpisz swoją usługę">-->
     </div>
     <div class="form-group">
         <button type="submit">Dodaj Usługę</button>
     </div>
 </form>
+<!--funkcja umozliwiajaca wpisywanie w liscie wyboru a nie w oddzielnym oknie-->
+<!--<script>-->
+<!--    function handleOtherOption(select) {-->
+<!--        var otherServiceInput = document.getElementById('otherServiceInput');-->
+
+<!--        if (select.value === 'other') {-->
+<!--            otherServiceInput.style.display = 'block';-->
+<!--            otherServiceInput.focus();-->
+
+<!--            // Ukryj pole select-->
+<!--            select.style.display = 'none';-->
+<!--        } else {-->
+<!--            otherServiceInput.style.display = 'none';-->
+<!--            select.style.display = 'block';-->
+<!--        }-->
+<!--    }-->
+
+<!--    function handleFormSubmit(event) {-->
+<!--        var select = document.getElementById('services');-->
+<!--        var otherServiceInput = document.getElementById('otherServiceInput');-->
+
+<!--        if (select.value === 'other') {-->
+<!--            // Kopiujemy wartość pola tekstowego do ukrytego pola select, aby wartość została przesłana-->
+<!--            select.innerHTML = '<option selected value="' + otherServiceInput.value + '">' + otherServiceInput.value + '</option>';-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
 </body>
 </html>

@@ -1,2 +1,4 @@
+bike/service/app/service/ServicesServiceTest.class
+bike/service/app/controller/OrderControllerTest.class
 bike/service/app/AppApplicationTests.class
-bike/service/app/service/OrderServiceTest.class
+bike/service/app/service/ClientServiceTest.class
