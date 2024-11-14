@@ -24,8 +24,12 @@ public class OrderService {
         } else {
             order.setService("reprair - id: " + services.getServiceId());
         }
-        order.setMechanic("w");
-        order.setBikeModel("q");
-        return orderRepository.save(order);
+
+        orderRepository.save(order);
+        services.setOrderId(order);
+
+        servicesRepository.save(services);
+        return order;
     }
+
 }
