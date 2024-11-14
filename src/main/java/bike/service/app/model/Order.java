@@ -14,18 +14,17 @@ import lombok.Setter;
 @Table(name = "RequestOrder")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+    @OneToOne(mappedBy = "orderId", cascade = CascadeType.ALL)
+    Services services;
     @Column(name = "mechanic")
     private String mechanic;
     @Column(name = "service")
     private String service;
     @Column(name = "bikeModel")
     private String bikeModel;
-    @OneToOne
-    @JoinColumn
-    private Services services;
 
     @Override
     public String toString() {

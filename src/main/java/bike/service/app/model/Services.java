@@ -18,7 +18,7 @@ public class Services {
      *  oraz pamiętać aby zaktualizować metody*/
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "serviceId")
     private int serviceId;
     @Column(name = "smallservice")
@@ -27,6 +27,10 @@ public class Services {
     private int fullService;
     @Column(name = "repair")
     private int repair;
+
+    @OneToOne
+    @JoinColumn(name = "orderId")
+    private Order orderId;
 
     @Override
     public String toString() {

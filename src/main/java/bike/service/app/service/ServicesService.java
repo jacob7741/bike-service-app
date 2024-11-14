@@ -1,8 +1,6 @@
 package bike.service.app.service;
 
-import bike.service.app.model.Order;
 import bike.service.app.model.Services;
-import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.ServicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -78,6 +76,7 @@ public class ServicesService {
             return updateExistingService(services);
         }
     }
+
     //ta metoda jest jeszcze do poprawienia gdyż ona ma aktualizować w razie czego jedna kolumnę
     //kiedy byłyby zmiany a tutaj prawdopodbnie zmienia wszystkie
     private Services updateExistingService(Services services) {
