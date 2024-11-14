@@ -64,8 +64,8 @@ class ServicesServiceTest {
     void getAllServicesIfServicesExist() {
         //Arrange
         List<Services> servicesList = new ArrayList<>();
-        servicesList.add(new Services(1, 50, 100, 200));
-        servicesList.add(new Services(2, 60, 110, 210));
+        servicesList.add(new Services());
+        servicesList.add(new Services());
         when(servicesRepository.findAll()).thenReturn(servicesList);
         //Act
         List<Services> result = servicesService.getAllServices();
