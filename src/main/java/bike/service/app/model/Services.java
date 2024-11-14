@@ -27,6 +27,9 @@ public class Services {
     private int fullService;
     @Column(name = "repair")
     private int repair;
+    @OneToOne()
+    @JoinColumn(name = "orderId")
+    private Order orderId;
 
     @Override
     public String toString() {

@@ -8,9 +8,9 @@ CREATE TABLE Client (
 
 CREATE TABLE RequestOrder (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    mechanic VARCHAR(255) NOT NULL,
-    service VARCHAR(255) NOT NULL,
-    bikeModel VARCHAR(255) NOT NULL
+    mechanic VARCHAR(255),
+    service VARCHAR(255),
+    bikeModel VARCHAR(255)
 );
 
 CREATE TABLE Services (

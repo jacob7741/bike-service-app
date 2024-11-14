@@ -78,6 +78,7 @@ public class ServicesService {
             return updateExistingService(services);
         }
     }
+
     //ta metoda jest jeszcze do poprawienia gdyż ona ma aktualizować w razie czego jedna kolumnę
     //kiedy byłyby zmiany a tutaj prawdopodbnie zmienia wszystkie
     private Services updateExistingService(Services services) {

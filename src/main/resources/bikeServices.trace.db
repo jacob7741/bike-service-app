@@ -11189,3 +11189,12 @@ select next value for RequestOrder_SEQ [90036-224]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1575)
+2024-11-14 13:06:26.605853+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]SERVICEID"; expected "SAVEPOINT, SCRIPT, SHUTDOWN"; SQL statement:
+SERVICEID [42001-224]
+2024-11-14 13:23:30.466646+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]REQUESTORDER"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REFRESH"; SQL statement:
+REQUESTORDER [42001-224]
+2024-11-14 13:23:42.829751+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]REQUESTORDER"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REFRESH"; SQL statement:
+REQUESTORDER [42001-224]

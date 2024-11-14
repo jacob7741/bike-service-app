@@ -17,8 +17,13 @@ public class OrderService {
 
     public Order saveServiceToOrder(Services services) {
         Order order = new Order();
-        order.setServices(services);
-        order.setService("e");
+        if (services.getSmallService() == 50) {
+            order.setService("small service - id: " + services.getServiceId());
+        } else if (services.getFullService() == 200) {
+            order.setService("full service - id: " + services.getServiceId());
+        } else {
+            order.setService("reprair - id: " + services.getServiceId());
+        }
         order.setMechanic("w");
         order.setBikeModel("q");
         return orderRepository.save(order);
