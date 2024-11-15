@@ -25,9 +25,9 @@ public class  Bike {
     @Column(name = "serialNumber")
     private int serialNumber;
 
-    @OneToOne
-    @JoinColumn(name = "orderId")
-    private Order orderId;
+//    @OneToOne
+//    @JoinColumn(name = "orderId")
+//    private Order orderId;
 
     @Override
     public String toString() {

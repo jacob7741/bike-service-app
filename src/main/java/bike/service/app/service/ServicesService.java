@@ -1,5 +1,6 @@
 package bike.service.app.service;
 
+import bike.service.app.model.Bike;
 import bike.service.app.model.Services;
 import bike.service.app.model.repository.ServicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ public class ServicesService {
     private ServicesRepository servicesRepository;
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private BikeService bikeService;
 
     public List<Services> getAllServices() {
         System.out.println("getAllServices");
@@ -69,8 +72,11 @@ public class ServicesService {
                     services.setRepair(100); // lub inna logika
                     break;
             }
+
+
             servicesRepository.save(services);
-            orderService.saveToOrder(services);
+            orderService.saveServiceToOrder(services);
+
             return services;
         } else {
             return updateExistingService(services);

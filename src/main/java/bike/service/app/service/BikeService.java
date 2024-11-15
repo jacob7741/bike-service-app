@@ -13,6 +13,8 @@ import java.util.Optional;
 public class BikeService {
     @Autowired
     private BikeRepository bikeRepository;
+    @Autowired
+    private OrderService orderService;
 
     public Bike getBikeById(int id) {
         System.out.println("getting all bike by Id");
@@ -31,10 +33,14 @@ public class BikeService {
     }
 
     public Bike addNewBike(Bike bike) {
+
         System.out.println("adding bike");
         if (bike.getId() == 0) {
             bikeRepository.save(bike);
         }
+
+        bikeRepository.save(bike);
+        orderService.saveBikeToOrder(bike);
         return bike;
     }
 
