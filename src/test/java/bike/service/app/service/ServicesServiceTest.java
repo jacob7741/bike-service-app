@@ -3,6 +3,7 @@ package bike.service.app.service;
 import bike.service.app.model.Services;
 import bike.service.app.model.repository.ServicesRepository;
 import org.junit.jupiter.api.Test;
+
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -29,7 +30,7 @@ class ServicesServiceTest {
     private ServicesService servicesService;
 
     @Test
-    void createUpdateNewService() {
+    void createNewService() {
         // Tworzenie nowego obiektu Services z ustawionymi wartościami
         Services services = new Services();
         services.setSmallService(50);
@@ -39,7 +40,7 @@ class ServicesServiceTest {
         when(servicesRepository.save(any(Services.class))).thenReturn(services);
 
         // Wywołanie metody i sprawdzenie wyników
-        Services savedService = servicesService.createUpdateNewService("serviceType", services);
+        Services savedService = servicesService.createNewService("serviceType", services);
 
         // Assercje
         assertNotNull(savedService);

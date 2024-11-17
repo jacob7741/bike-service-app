@@ -16,8 +16,8 @@ public class  Bike {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private int id;
+    @Column(name = "bikeId")
+    private int bikeId;
     @Column(name = "brand")
     private String brand;
     @Column(name = "modelType")
@@ -32,7 +32,8 @@ public class  Bike {
     @Override
     public String toString() {
         return "Bike{" +
-                "brand='" + brand + '\'' +
+                "bikeId=" + bikeId +
+                ", brand='" + brand + '\'' +
                 ", modelType='" + modelType + '\'' +
                 ", serialNumber=" + serialNumber +
                 '}';

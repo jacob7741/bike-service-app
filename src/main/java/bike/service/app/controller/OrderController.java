@@ -25,7 +25,7 @@ public class OrderController {
 
     @PostMapping("/services/submit")
     public String submitService(@RequestParam String serviceType, Services services) {
-        servicesService.createUpdateNewService(serviceType, services);
+        servicesService.createNewService(serviceType, services);
         return "mainSite";
     }
 

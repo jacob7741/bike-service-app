@@ -15,21 +15,25 @@ import lombok.Setter;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private int id;
+    @Column(name = "clientId")
+    private int clientId;
     @Column(name = "first_name")
     private String first_name;
     @Column(name = "last_name")
     private String last_name;
     @Column(name = "phoneNumber")
     private int phoneNumber;
+    @Column(name = "email")
+    private String email;
+
     @Override
     public String toString() {
         return "Client{" +
-                "first_name='" + first_name + '\'' +
+                "clientId=" + clientId +
+                ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
-                ", id=" + id +
                 ", phoneNumber=" + phoneNumber +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

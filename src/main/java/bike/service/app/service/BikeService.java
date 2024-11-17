@@ -35,7 +35,7 @@ public class BikeService {
     public Bike addNewBike(Bike bike) {
 
         System.out.println("adding bike");
-        if (bike.getId() == 0) {
+        if (bike.getBikeId() == 0) {
             bikeRepository.save(bike);
         }
 
