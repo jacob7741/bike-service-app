@@ -36,9 +36,9 @@ public class OrderService {
             order.setService("reprair - id: " + services.getServiceId());
         }
 
-
         orderRepository.save(order);
         services.setOrderId(order);
+//        błąd który miałem wcześniej z podwojnym tworzeniem obiektu może się znajdować tutaj
         servicesRepository.save(services);
         return order;
     }
@@ -52,6 +52,7 @@ public class OrderService {
         }
 
         orderRepository.save(order);
+//        i tutaj też może się tworzyć podwójny obiekt
         clientRepository.save(client);
         return order;
     }
@@ -63,7 +64,6 @@ public class OrderService {
         }
 
         orderRepository.save(order);
-
         bikeRepository.save(bike);
         return order;
     }

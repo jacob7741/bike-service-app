@@ -49,8 +49,6 @@ public class ServicesService {
             throw new RuntimeException("serviceNotDeleted");
         }
     }
-
-
     // Teraz zapisz `services` do bazy danych
     //pojedyncze serwisy wybrane z tabeli byly zapisywane do
     //tabeli orders wraz z danymi mechanika oraz klienta
@@ -71,7 +69,6 @@ public class ServicesService {
 
             servicesRepository.save(services);
             orderService.saveServiceToOrder(services);
-
         }
         return services;
     }

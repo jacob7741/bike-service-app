@@ -2,8 +2,9 @@ package bike.service.app.service;
 
 import bike.service.app.model.Services;
 import bike.service.app.model.repository.ServicesRepository;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -28,6 +29,8 @@ class ServicesServiceTest {
 
     @InjectMocks
     private ServicesService servicesService;
+    @InjectMocks
+    private ServicesService underTest;
 
     @Test
     void createNewService() {
@@ -64,19 +67,31 @@ class ServicesServiceTest {
         assertEquals(0, result.size());
     }
 
-//    @Test
-//    void getAllServicesIfServicesExist() {
-//        //Arrange
-//        List<Services> servicesList = new ArrayList<>();
-//        servicesList.add(new Services(1, 50, 100, 200));
-//        servicesList.add(new Services(2, 60, 110, 210));
-//        when(servicesRepository.findAll()).thenReturn(servicesList);
-//        //Act
-//        List<Services> result = servicesService.getAllServices();
-//        // Assert
-//        assertEquals(servicesList, result);
-//        assertEquals(2, result.size());
-//    }
+    @Test
+    void getAllServicesIfServicesExist() {
+        //Arrange
+        List<Services> servicesList = new ArrayList<>();
+        Services smallService = new Services();
+        smallService.setServiceId(1);
+        smallService.setSmallService(50);
+        smallService.setFullService(0);
+        smallService.setRepair(0);
+        smallService.setRepairType("N/A");
+        smallService.setOrderId(null);
+
+
+        servicesList.add(smallService);
+
+        servicesList.add(new Services(2, 33,
+                54,  12, "kkk", null));
+
+        when(servicesRepository.findAll()).thenReturn(servicesList);
+        //Act
+        List<Services> result = servicesService.getAllServices();
+        // Assert
+        assertEquals(servicesList, result);
+        assertEquals(2, result.size());
+    }
 
     @Test
     void getServicesById() {

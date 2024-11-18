@@ -28,5 +28,4 @@ public class OrderController {
         servicesService.createNewService(serviceType, services);
         return "mainSite";
     }
-
 }

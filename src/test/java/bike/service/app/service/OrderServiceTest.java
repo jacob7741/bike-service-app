@@ -1,7 +1,9 @@
 package bike.service.app.service;
 
+import bike.service.app.model.Client;
 import bike.service.app.model.Order;
 import bike.service.app.model.Services;
+import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.ServicesRepository;
 import org.junit.jupiter.api.Test;
@@ -19,17 +21,17 @@ import static org.mockito.Mockito.when;
 class OrderServiceTest {
 
     @Mock
+    ClientRepository clientRepository;
+    @Mock
     private ServicesRepository servicesRepository;
-
     @Mock
     private OrderRepository orderRepository;
-
     @InjectMocks
     private ServicesService servicesService;
-
     @InjectMocks
     private OrderService orderService;
-
+    @InjectMocks
+    private ClientService clientService;
 
     @Test
     void saveServiceToOrder() {
@@ -38,22 +40,31 @@ class OrderServiceTest {
         services.setSmallService(50);
         services.setServiceId(12);
 
+        Order order = new Order();
+
+        when(servicesRepository.save(any(Services.class))).thenReturn(services);
+        when(orderRepository.save(any(Order.class))).thenReturn(order);
 
 //        Act
-        when(servicesRepository.save(any(Services.class))).thenReturn(services);
+        Order savedOrder = orderService.saveServiceToOrder(services);
 
-        Services savedService = servicesService.createNewService("servicetype", services);
-        Order savedOrder = orderService.saveServiceToOrder(savedService);
-
-//        when(orderRepository.save(any(Order.class))).thenReturn(savedOrder);
 //        Assert
-
         assertNotNull(savedOrder);
-        assertEquals("small service - id: 50" , savedOrder.getService());
+        assertEquals("small service - id: 50", savedOrder.getService());
+        assertEquals(12, savedOrder.getOrderId());
     }
 
     @Test
     void saveClientToOrder() {
+        Client client = new Client();
+        client.setClientId(87230);
+        client.setLast_name("Kowalski");
+
+        Client clientSaved = clientService.addNewClient(client);
+
+        assertNotNull(clientSaved);
+        assertEquals(87230, clientSaved.getClientId());
+        assertEquals("Kowalski", clientSaved.getLast_name());
     }
 
     @Test

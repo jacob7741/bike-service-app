@@ -22,18 +22,19 @@ class ClientServiceTest {
     @InjectMocks
     private ClientService clientService;
 
-//    @Test
-//    void get_Client_By_Phone_Number() {
-//        // Arrange
-//        Client client = new Client();
-//        client.setPhoneNumber(708902423);
-//        List<Client> clientList = Arrays.asList(client);
-//        // Zamockowanie metody getAllClients
-//        when(clientRepository.findAll()).thenReturn(clientList);
-//        // Act
-//        Client result = clientService.getClientByPhoneNumber(client.getPhoneNumber());
-//        // Assert
-//        assertEquals(client.getPhoneNumber(), result.getPhoneNumber());
-//        assertEquals(client, result);
-//    }
+    @Test
+    void get_Client_By_Phone_Number() {
+        // Arrange
+        Client client = new Client();
+        client.setPhoneNumber(708902423);
+        List<Client> clientList = Arrays.asList(client);
+        // Zamockowanie metody getAllClients
+        when(clientRepository.findAll()).thenReturn(clientList);
+        // Act
+        Client result = clientService.getClientByPhoneNumber(client.getPhoneNumber());
+        // Assert
+        assertEquals(client.getPhoneNumber(), result.getPhoneNumber());
+        assertEquals(client, result);
+    }
+
 }
