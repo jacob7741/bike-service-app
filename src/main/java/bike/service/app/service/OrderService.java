@@ -27,9 +27,10 @@ public class OrderService {
 
     public Order saveServiceToOrder(Services services) {
         System.out.println("saveServiceToOrder");
-        order.setOrderId(services.getServiceId());
+
         if (services.getSmallService() == 50) {
-            order.setService("small service - id: " + services.getSmallService());
+            order.setService("small service - id: " + services.getServiceId());
+
         } else if (services.getFullService() == 200) {
             order.setService("full service - id: " + services.getServiceId());
         } else {
@@ -37,8 +38,9 @@ public class OrderService {
         }
 
         orderRepository.save(order);
-        services.setOrderId(order);
-//        błąd który miałem wcześniej z podwojnym tworzeniem obiektu może się znajdować tutaj
+//        kiedy ta metoda jest włączona to za pierwszym razem zapisuje mi orderId do service
+//        i vice versa lecz po pierwszym zapisie probuje nadpisac bez zmiany id.
+//        services.setOrderId(order);
         servicesRepository.save(services);
         return order;
     }
@@ -52,7 +54,6 @@ public class OrderService {
         }
 
         orderRepository.save(order);
-//        i tutaj też może się tworzyć podwójny obiekt
         clientRepository.save(client);
         return order;
     }

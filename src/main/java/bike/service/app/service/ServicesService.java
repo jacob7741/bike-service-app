@@ -68,7 +68,6 @@ public class ServicesService {
             }
 
             servicesRepository.save(services);
-            orderService.saveServiceToOrder(services);
         }
         return services;
     }

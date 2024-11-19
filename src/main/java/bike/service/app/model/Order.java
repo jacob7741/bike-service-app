@@ -17,7 +17,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "orderId")
     private int orderId;
-    @OneToOne(mappedBy = "orderId", cascade = CascadeType.MERGE)
+    @OneToOne(mappedBy = "orderId", cascade = CascadeType.ALL)
     private Services services;
     @Column(name = "mechanic")
     private String mechanic;

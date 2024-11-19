@@ -7,12 +7,16 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.stereotype.Repository;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class ClientServiceTest {
@@ -37,4 +41,21 @@ class ClientServiceTest {
         assertEquals(client, result);
     }
 
+
+    @Test
+    void addNewClient() {
+        Client client = new Client();
+        client.setFirst_name("Elora");
+        client.setLast_name("Kudla");
+        client.setPhoneNumber(48494);
+        client.setEmail("elora@kundla.com");
+
+        when(clientRepository.save(any(Client.class))).thenReturn(client);
+
+        Client savedClient = clientService.addNewClient(client);
+
+        assertNotNull(savedClient);
+        assertEquals("Elora", savedClient.getFirst_name());
+        verify(clientRepository, times(1)).save(any(Client.class));
+    }
 }

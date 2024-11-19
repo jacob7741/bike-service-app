@@ -33,14 +33,11 @@ public class BikeService {
     }
 
     public Bike addNewBike(Bike bike) {
-
         System.out.println("adding bike");
         if (bike.getBikeId() == 0) {
             bikeRepository.save(bike);
         }
-
         bikeRepository.save(bike);
-        orderService.saveBikeToOrder(bike);
         return bike;
     }
 
