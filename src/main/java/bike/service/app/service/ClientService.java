@@ -46,7 +46,7 @@ public class ClientService {
 
     public Client addNewClient(Client client) {
         System.out.println("new Client Added");
-        if (client.getId() == 0)
+        if (client.getClientId() == 0)
             clientRepository.save(client);
         return client;
     }

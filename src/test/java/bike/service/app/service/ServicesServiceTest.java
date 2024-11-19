@@ -2,6 +2,8 @@ package bike.service.app.service;
 
 import bike.service.app.model.Services;
 import bike.service.app.model.repository.ServicesRepository;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -27,9 +29,11 @@ class ServicesServiceTest {
 
     @InjectMocks
     private ServicesService servicesService;
+    @InjectMocks
+    private ServicesService underTest;
 
     @Test
-    void createUpdateNewService() {
+    void createNewService() {
         // Tworzenie nowego obiektu Services z ustawionymi wartościami
         Services services = new Services();
         services.setSmallService(50);
@@ -39,7 +43,7 @@ class ServicesServiceTest {
         when(servicesRepository.save(any(Services.class))).thenReturn(services);
 
         // Wywołanie metody i sprawdzenie wyników
-        Services savedService = servicesService.createUpdateNewService("serviceType", services);
+        Services savedService = servicesService.createNewService("serviceType", services);
 
         // Assercje
         assertNotNull(savedService);
@@ -67,8 +71,20 @@ class ServicesServiceTest {
     void getAllServicesIfServicesExist() {
         //Arrange
         List<Services> servicesList = new ArrayList<>();
-        servicesList.add(new Services());
-        servicesList.add(new Services());
+        Services smallService = new Services();
+        smallService.setServiceId(1);
+        smallService.setSmallService(50);
+        smallService.setFullService(0);
+        smallService.setRepair(0);
+        smallService.setRepairType("N/A");
+        smallService.setOrderId(null);
+
+
+        servicesList.add(smallService);
+
+        servicesList.add(new Services(2, 33,
+                54,  12, "kkk", null));
+
         when(servicesRepository.findAll()).thenReturn(servicesList);
         //Act
         List<Services> result = servicesService.getAllServices();

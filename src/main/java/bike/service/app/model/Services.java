@@ -14,9 +14,6 @@ import lombok.Setter;
 @Table(name = "Services")
 public class Services {
 
-    /*TODO: do bazy dodać kolumnę "other" gdzie bedzie się wpisywać nazwę innego
-     *  oraz pamiętać aby zaktualizować metody*/
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "serviceId")
@@ -27,6 +24,8 @@ public class Services {
     private int fullService;
     @Column(name = "repair")
     private int repair;
+    @Column(name = "repairType")
+    private String repairType;
 
     @OneToOne
     @JoinColumn(name = "orderId")
@@ -39,6 +38,8 @@ public class Services {
                 ", smallService=" + smallService +
                 ", fullService=" + fullService +
                 ", repair=" + repair +
+                ", repairType='" + repairType + '\'' +
+                ", orderId=" + orderId +
                 '}';
     }
 }

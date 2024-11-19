@@ -2,6 +2,7 @@ package bike.service.app.controller;
 
 
 import bike.service.app.model.Services;
+import bike.service.app.service.OrderService;
 import bike.service.app.service.ServicesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,9 @@ public class OrderController {
     @Autowired
     private ServicesService servicesService;
 
+    @Autowired
+    private OrderService orderService;
+
     @GetMapping("/")
     public String home() {
         System.out.println("application start");
@@ -22,8 +26,8 @@ public class OrderController {
 
     @PostMapping("/services/submit")
     public String submitService(@RequestParam String serviceType, Services services) {
-        servicesService.createUpdateNewService(serviceType, services);
+        servicesService.createNewService(serviceType, services);
+        orderService.saveServiceToOrder(services);
         return "mainSite";
     }
-
 }
