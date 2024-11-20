@@ -61,6 +61,8 @@ class OrderServiceTest {
 //
 //       when(orderRepository.save(any(Order.class))).thenReturn(order);
 //
+//       assertNotNull(order);
+//
 //    }
 
     @Test

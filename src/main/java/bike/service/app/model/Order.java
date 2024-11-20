@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -17,8 +19,6 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "orderId")
     private int orderId;
-    @OneToOne(mappedBy = "orderId", cascade = CascadeType.ALL)
-    private Services services;
     @Column(name = "mechanic")
     private String mechanic;
     @Column(name = "service")
@@ -28,15 +28,6 @@ public class Order {
     @Column(name = "client")
     private String client;
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderId=" + orderId +
-                ", services=" + services +
-                ", mechanic='" + mechanic + '\'' +
-                ", service='" + service + '\'' +
-                ", bikeModel='" + bikeModel + '\'' +
-                ", client='" + client + '\'' +
-                '}';
-    }
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<Services> services;
 }

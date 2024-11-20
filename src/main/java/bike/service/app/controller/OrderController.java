@@ -27,7 +27,6 @@ public class OrderController {
     @PostMapping("/services/submit")
     public String submitService(@RequestParam String serviceType, Services services) {
         servicesService.createNewService(serviceType, services);
-        orderService.saveServiceToOrder(services);
         return "mainSite";
     }
 }
