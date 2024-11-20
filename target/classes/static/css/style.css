@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.login-form {
+    display: flex;
+    align-items: center;
+}
+.login-form input {
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 14px;
+}
+h1 {
+    text-align: center;
+}
+form {
+    background-color: #dff4fb;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.form-group label {
+    margin-bottom: 5px;
+    text-align: center;
+    width: 100%;
+}
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #3b73ec;
+    border-radius: 4px;
+}
+.form-group textarea {
+    resize: vertical;
+}
+.form-group button {
+    background-color: #788e2d;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.navigation {
+    text-align: right;
+    margin-top: 20px;
+    width: 100%;
+}
+.navigation a {
+    background-color: #28a745;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+}
+.accept-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.write-group {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.write-group legend {
+    text-align:center;
+    font-size: 16px;
+}
+.write-group fieldset {
+    width: 300px;
+    max-width: 500px; 
+    padding: 15px;
+    display: flex;
+    border: 2px;
+    margin-bottom: 15px;
+    background-color: rgb(238, 244, 237);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(158, 55, 55, 0.1);
+}
+.write-group label {
+    font-size: 14px;
+    text-align:center;
+    display: -moz-grid-line;
+    
+}
+
+
