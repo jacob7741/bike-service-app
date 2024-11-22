@@ -1,7 +1,5 @@
 package bike.service.app.service;
 
-import bike.service.app.model.Bike;
-import bike.service.app.model.Order;
 import bike.service.app.model.Services;
 import bike.service.app.model.repository.ServicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,9 +65,9 @@ public class ServicesService {
                 case "repair":
                     services.setRepair(100); // lub inna logika
                     break;
-            };
+            }
+            ;
             servicesRepository.save(services);
-            orderService.saveServiceToOrder(services);
         }
         return services;
     }

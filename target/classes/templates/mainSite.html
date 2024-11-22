@@ -14,7 +14,7 @@
         <button type="button">Zaloguj się</button>
     </div>
 </div>
-<h1>Dodaj rower do serwisu:</h1>
+<h2>Dodaj rower do serwisu:</h2>
 
 <form th:action="@{/services/submit}" method="POST" onsubmit="handleFormSubmit(event)">
     <div class="form-group">
@@ -23,19 +23,19 @@
             <option th:value="'smallService'">Mały przegląd</option>
             <option th:value="'fullService'">Pełny przegląd</option>
             <option th:value="'repair'">Naprawa</option>
-<!--            <option th:value="'other'">Inne</option>-->
+            <!--            <option th:value="'other'">Inne</option>-->
         </select>
-<!--        <input type="text" id="otherServiceInput" name="serviceType" placeholder="Wpisz swoją usługę">-->
+        <!--        <input type="text" id="otherServiceInput" name="serviceType" placeholder="Wpisz swoją usługę">-->
     </div>
     <div class="write-group">
         <fieldset>
-        <legend>Szczegóły roweru</legend>
-        <label>Marka:<br />
-            <input type="text" name="brand" /></label><br />
-            <label>Rodzaj roweru<br />
-            <input type="text" name="bikeModel" /></label><br />
-            <label>Numer Seryjny<br />
-            <input type="text" name="serialNumber" /></label>
+            <legend>Szczegóły roweru</legend>
+            <label>Marka:<br/>
+                <input type="text" name="brand"/></label><br/>
+            <label>Rodzaj roweru<br/>
+                <input type="text" name="modelType"/></label><br/>
+            <label>Numer Seryjny<br/>
+                <input type="text" name="serialNumber"/></label>
         </fieldset>
     </div>
     <div class="form-group">

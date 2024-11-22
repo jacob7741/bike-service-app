@@ -38,7 +38,6 @@ public class BikeService {
             bikeRepository.save(bike);
         }
         bikeRepository.save(bike);
-        orderService.saveBikeToOrder(bike);
         return bike;
     }
 

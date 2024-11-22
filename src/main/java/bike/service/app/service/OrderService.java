@@ -24,8 +24,8 @@ public class OrderService {
     private ClientRepository clientRepository;
 
 
-    public Order saveServiceToOrder(Services services) {
-        Order order = new Order();
+    public Order saveServiceToOrder(Order order, Services services) {
+
         System.out.println("saveServiceToOrder");
 
         if (services.getSmallService() == 50) {
@@ -37,17 +37,12 @@ public class OrderService {
         }
 
         orderRepository.save(order);
-//        kiedy ta metoda jest włączona to za pierwszym razem zapisuje mi orderId do service
-//        i vice versa lecz po pierwszym zapisie probuje nadpisac bez zmiany id.
-//        TODO:błąd wynika z korzystania z jednej instancji Order wiec trzeba to opracowac inaczej
-//         a w kotrolerz później będę opracowywał metodę aby wszystko sie zapisywało w jednej bazie danych
         services.setOrder(order);
         servicesRepository.save(services);
         return order;
     }
 
-    public Order saveClientToOrder(Client client) {
-        Order order = new Order();
+    public Order saveClientToOrder(Order order, Client client) {
         System.out.println("saveClientToOrder");
         if (client.getClientId() == 0) {
             throw new RuntimeException("no client found");
@@ -59,8 +54,7 @@ public class OrderService {
         return order;
     }
 
-    public Order saveBikeToOrder(Bike bike) {
-        Order order = new Order();
+    public Order saveBikeToOrder(Order order, Bike bike) {
         System.out.println("saveBikeToOrder");
         if (!bike.getModelType().isEmpty()) {
             order.setBikeModel("model of bike is: " + bike.getModelType());

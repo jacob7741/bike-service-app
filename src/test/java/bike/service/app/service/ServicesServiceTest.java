@@ -77,7 +77,6 @@ class ServicesServiceTest {
         smallService.setFullService(0);
         smallService.setRepair(0);
         smallService.setRepairType("N/A");
-        smallService.setOrderId(null);
 
 
         servicesList.add(smallService);
