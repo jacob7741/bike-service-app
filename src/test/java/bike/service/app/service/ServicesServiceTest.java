@@ -22,13 +22,8 @@ class ServicesServiceTest {
     @Mock
     private ServicesRepository servicesRepository;
 
-    @Mock
-    private OrderService orderService;
-
     @InjectMocks
     private ServicesService servicesService;
-    @InjectMocks
-    private ServicesService underTest;
 
     @Test
     void createNewService() {
