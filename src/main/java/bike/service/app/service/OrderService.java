@@ -23,14 +23,13 @@ public class OrderService {
     @Autowired
     private ClientRepository clientRepository;
 
-    private Order order = new Order();
 
-    public Order saveServiceToOrder(Services services) {
+    public Order saveServiceToOrder(Order order, Services services) {
+
         System.out.println("saveServiceToOrder");
 
         if (services.getSmallService() == 50) {
             order.setService("small service - id: " + services.getServiceId());
-
         } else if (services.getFullService() == 200) {
             order.setService("full service - id: " + services.getServiceId());
         } else {
@@ -38,27 +37,24 @@ public class OrderService {
         }
 
         orderRepository.save(order);
-//        kiedy ta metoda jest włączona to za pierwszym razem zapisuje mi orderId do service
-//        i vice versa lecz po pierwszym zapisie probuje nadpisac bez zmiany id.
-//        services.setOrderId(order);
+        services.setOrder(order);
         servicesRepository.save(services);
         return order;
     }
 
-    public Order saveClientToOrder(Client client) {
+    public Order saveClientToOrder(Order order, Client client) {
         System.out.println("saveClientToOrder");
         if (client.getClientId() == 0) {
             throw new RuntimeException("no client found");
         } else {
             order.setClient(client.getLast_name() + " " + client.getClientId());
         }
-
         orderRepository.save(order);
         clientRepository.save(client);
         return order;
     }
 
-    public Order saveBikeToOrder(Bike bike) {
+    public Order saveBikeToOrder(Order order, Bike bike) {
         System.out.println("saveBikeToOrder");
         if (!bike.getModelType().isEmpty()) {
             order.setBikeModel("model of bike is: " + bike.getModelType());

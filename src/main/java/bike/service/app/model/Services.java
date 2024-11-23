@@ -13,7 +13,6 @@ import lombok.Setter;
 @Entity
 @Table(name = "Services")
 public class Services {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "serviceId")
@@ -27,19 +26,7 @@ public class Services {
     @Column(name = "repairType")
     private String repairType;
 
-    @OneToOne
-    @JoinColumn(name = "orderId")
-    private Order orderId;
-
-    @Override
-    public String toString() {
-        return "Services{" +
-                "serviceId=" + serviceId +
-                ", smallService=" + smallService +
-                ", fullService=" + fullService +
-                ", repair=" + repair +
-                ", repairType='" + repairType + '\'' +
-                ", orderId=" + orderId +
-                '}';
-    }
+    @ManyToOne
+    @JoinColumn(name = "linkedId")
+    private Order order;
 }

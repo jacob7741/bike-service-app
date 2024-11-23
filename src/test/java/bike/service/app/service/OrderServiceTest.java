@@ -61,6 +61,8 @@ class OrderServiceTest {
 //
 //       when(orderRepository.save(any(Order.class))).thenReturn(order);
 //
+//       assertNotNull(order);
+//
 //    }
 
     @Test
@@ -71,16 +73,17 @@ class OrderServiceTest {
         services.setServiceId(12);
 
         Order order = new Order();
+        order.setOrderId(services.getServiceId());
 
         when(servicesRepository.save(any(Services.class))).thenReturn(services);
         when(orderRepository.save(any(Order.class))).thenReturn(order);
 
 //        Act
-        Order savedOrder = orderService.saveServiceToOrder(services);
+        Order savedOrder = orderService.saveServiceToOrder(order, services);
 
 //        Assert
         assertNotNull(savedOrder);
-        assertEquals("small service - id: 50", savedOrder.getService());
+        assertEquals("small service - id: " + 12, savedOrder.getService());
         assertEquals(12, savedOrder.getOrderId());
     }
 
@@ -94,7 +97,7 @@ class OrderServiceTest {
         when(clientRepository.save(any(Client.class))).thenReturn(client);
         when(orderRepository.save(any(Order.class))).thenReturn(order);
 
-        Order clientSaved = orderService.saveClientToOrder(client);
+        Order clientSaved = orderService.saveClientToOrder(order, client);
 
         assertNotNull(clientSaved);
         assertEquals("Kowalski", clientSaved.getClient());
@@ -110,7 +113,7 @@ class OrderServiceTest {
         when(bikeRepository.save(any(Bike.class))).thenReturn(bike);
         when(orderRepository.save(any(Order.class))).thenReturn(order);
 
-        Order bikeSaved = orderService.saveBikeToOrder(bike);
+        Order bikeSaved = orderService.saveBikeToOrder(order, bike);
 
         assertNotNull(bikeSaved);
         assertEquals("model of bike is: Góral", bikeSaved.getBikeModel());
