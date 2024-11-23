@@ -26,6 +26,10 @@ public class Client {
     @Column(name = "email")
     private String email;
 
+    @ManyToOne
+    @JoinColumn(name = "orderId")
+    private Order order;
+
     @Override
     public String toString() {
         return "Client{" +

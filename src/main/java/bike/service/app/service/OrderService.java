@@ -50,6 +50,7 @@ public class OrderService {
             order.setClient(client.getLast_name() + " " + client.getClientId());
         }
         orderRepository.save(order);
+        client.setOrder(order);
         clientRepository.save(client);
         return order;
     }
@@ -61,6 +62,7 @@ public class OrderService {
         }
 
         orderRepository.save(order);
+        bike.setOrder(order);
         bikeRepository.save(bike);
         return order;
     }
