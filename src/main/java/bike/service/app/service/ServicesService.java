@@ -66,7 +66,6 @@ public class ServicesService {
                     services.setRepair(100); // lub inna logika
                     break;
             }
-            ;
             servicesRepository.save(services);
         }
         return services;

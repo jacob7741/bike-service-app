@@ -2,8 +2,6 @@ package bike.service.app.service;
 
 import bike.service.app.model.Services;
 import bike.service.app.model.repository.ServicesRepository;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -82,7 +80,7 @@ class ServicesServiceTest {
         servicesList.add(smallService);
 
         servicesList.add(new Services(2, 33,
-                54,  12, "kkk", null));
+                54, 12, "kkk", null));
 
         when(servicesRepository.findAll()).thenReturn(servicesList);
         //Act
