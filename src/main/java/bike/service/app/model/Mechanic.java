@@ -27,6 +27,10 @@ public class Mechanic {
     @Column
     private String password;
 
+    @ManyToOne
+    @JoinColumn(name = "orderId")
+    private Order order;
+
     @Override
     public String toString() {
         return "Mechanic{" +

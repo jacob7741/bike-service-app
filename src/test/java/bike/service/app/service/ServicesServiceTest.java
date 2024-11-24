@@ -104,10 +104,10 @@ class ServicesServiceTest {
         Services service = new Services();
         service.setServiceId(41);
 
-        when(servicesRepository.findById(service.getServiceId())).thenReturn(Optional.of(service));
+        when(servicesRepository.findById(41)).thenReturn(Optional.of(service));
 
-        servicesService.deletedServicesById(service.getServiceId());
+        servicesService.deletedServicesById(41);
 
-        verify(servicesRepository, times(1)).deleteById(service.getServiceId());
+        verify(servicesRepository, times(1)).deleteById(41);
     }
 }

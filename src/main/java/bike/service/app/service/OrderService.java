@@ -1,13 +1,7 @@
 package bike.service.app.service;
 
-import bike.service.app.model.Bike;
-import bike.service.app.model.Client;
-import bike.service.app.model.Order;
-import bike.service.app.model.Services;
-import bike.service.app.model.repository.BikeRepository;
-import bike.service.app.model.repository.ClientRepository;
-import bike.service.app.model.repository.OrderRepository;
-import bike.service.app.model.repository.ServicesRepository;
+import bike.service.app.model.*;
+import bike.service.app.model.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +16,24 @@ public class OrderService {
     private BikeRepository bikeRepository;
     @Autowired
     private ClientRepository clientRepository;
+    @Autowired
+    private MechanicRepository mechanicRepository;
 
+    public Order saveMechanicToOrder(Order order, Mechanic mechanic) {
+
+        System.out.println("saveMechanicToOrder");
+
+        if (mechanic.getMechanicId() == 0) {
+            throw new RuntimeException("noMechanicFound");
+        } else {
+            order.setMechanic(mechanic.getLast_name());
+        }
+
+        orderRepository.save(order);
+        mechanic.setOrder(order);
+        mechanicRepository.save(mechanic);
+        return order;
+    }
 
     public Order saveServiceToOrder(Order order, Services services) {
 
@@ -47,7 +58,7 @@ public class OrderService {
         if (client.getClientId() == 0) {
             throw new RuntimeException("no client found");
         } else {
-            order.setClient(client.getLast_name() + " " + client.getClientId());
+            order.setClient(client.getLast_name() + "id klienta: " + client.getClientId());
         }
         orderRepository.save(order);
         client.setOrder(order);
@@ -58,7 +69,7 @@ public class OrderService {
     public Order saveBikeToOrder(Order order, Bike bike) {
         System.out.println("saveBikeToOrder");
         if (!bike.getModelType().isEmpty()) {
-            order.setBikeModel("model of bike is: " + bike.getModelType());
+            order.setBikeModel("bike model : " + bike.getModelType());
         }
 
         orderRepository.save(order);

@@ -1,10 +1,7 @@
 package bike.service.app.controller;
 
 
-import bike.service.app.model.Bike;
-import bike.service.app.model.Client;
-import bike.service.app.model.Order;
-import bike.service.app.model.Services;
+import bike.service.app.model.*;
 import bike.service.app.service.BikeService;
 import bike.service.app.service.ClientService;
 import bike.service.app.service.OrderService;
@@ -38,14 +35,19 @@ public class OrderController {
                                 @ModelAttribute Services services,
                                 @ModelAttribute Order order,
                                 @ModelAttribute Bike bike,
-                                @ModelAttribute Client client) {
+                                @ModelAttribute Client client,
+                                @ModelAttribute Mechanic mechanic) {
 
         servicesService.createNewService(serviceType, services);
         bikeService.addNewBike(bike);
         clientService.addNewClient(client);
+//        orderService.saveMechanicToOrder(order, mechanic);
         orderService.saveClientToOrder(order, client);
         orderService.saveServiceToOrder(order, services);
         orderService.saveBikeToOrder(order, bike);
+
         return "mainSite";
     }
+
+
 }

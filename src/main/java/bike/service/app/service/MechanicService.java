@@ -39,4 +39,26 @@ public class MechanicService {
             throw new RuntimeException("no mechanic was found");
         }
     }
+
+    public Mechanic addNewMechanic(Mechanic mechanic) {
+        logger.info("add new mechanic");
+
+        if (mechanic.getMechanicId() == 0) {
+            mechanicRepository.save(mechanic);
+        } else {
+            throw new RuntimeException("wrong mechanic");
+        }
+        return mechanic;
+    }
+
+    public void deleteMechanicById(int id) {
+        logger.info("deleted mechanic by id");
+        Optional<Mechanic> mechanic = mechanicRepository.findById(id);
+
+        if (mechanic.isPresent()) {
+            mechanicRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("no mechanic was found");
+        }
+    }
 }

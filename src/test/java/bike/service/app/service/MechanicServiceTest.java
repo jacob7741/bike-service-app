@@ -6,14 +6,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class MechanicServiceTest {
@@ -38,5 +37,17 @@ class MechanicServiceTest {
         Mechanic result = mechanicService.getMechanicById(35);
 
         assertEquals(mechanic, result);
+    }
+
+    @Test
+    void deleteMechanicById() {
+        Mechanic mechanic = new Mechanic();
+        mechanic.setMechanicId(21);
+
+        when(mechanicRepository.findById(21)).thenReturn(Optional.of(mechanic));
+
+        mechanicService.deleteMechanicById(21);
+
+        verify(mechanicRepository, times(1)).deleteById(21);
     }
 }
