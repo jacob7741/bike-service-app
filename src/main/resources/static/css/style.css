@@ -7,16 +7,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     box-sizing: border-box;
-    overflow: hidden;
 }
 
 .header {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 103%;
+    width: 100%; /* Pełna szerokość */
     padding: 5px;
     background-color: #334e68;
     color: white;
@@ -27,20 +26,20 @@ body {
 
 .footer {
     display: flex;
-    justify-content: center;
+    justify-content:center;
     align-items: center;
-    width: 103%;
-    padding: 5px 5px;
+    width: 100%; /* Pełna szerokość */
+    padding: 5px;
     background-color: #3d5d7b;
     color: rgb(89, 162, 170);
     border-radius: 10px;
-    box-sizing: border-box;
-    position:static;
-    bottom: 0;
+    box-sizing:content-box;
+    position: relative;
+    bottom: 10;
 }
 
 .footer p {
-    margin: 0;
+    margin: 0px;
 }
 
 .header .login-form input {
@@ -48,7 +47,6 @@ body {
     padding: 5px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-
 }
 
 .header .login-form button {
@@ -69,27 +67,34 @@ h2 {
     margin-top: 5px;
     margin-bottom: 10px;
     color: #334e68;
-    font-size: 24px;
+    font-size: 22px;
 }
 
-form { background-color: #ffffff;
-    padding: 15px; border-radius: 8px;
+form {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    max-width: 1000px; width: 100%; display: flex;
-    flex-direction: column; align-items: center;
-    overflow-y: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    box-sizing: border-box; margin-bottom: 10px;
+    max-width: 1000px; /* Maksymalna szerokość */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto; /* Przewijanie w pionie */
+    -ms-overflow-style: none;  /* Ukrycie paska przewijania w IE i Edge */
+    scrollbar-width: none;  /* Ukrycie paska przewijania w Firefox */
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    flex: 1; /* Elastyczne dostosowanie wysokości */
 }
 
-form::-webkit-scrollbar {
-    display: none;
+form::-webkit-scrollbar { 
+    display: none;  /* Ukrycie paska przewijania w Chrome, Safari i Opera */
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Dynamiczne kolumny */
     gap: 20px;
     width: 100%;
     margin-bottom: 20px;
@@ -119,7 +124,7 @@ legend {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: -10px; /* Przesunięcie przycisku do góry */
+    margin-bottom: 10px; /* Przesunięcie przycisku do góry */
 }
 
 button[type="submit"] {
@@ -140,7 +145,7 @@ button[type="submit"]:hover {
 /* Stylizacje responsywne */
 @media (max-width: 768px) {
     .grid-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Dynamiczne kolumny */
     }
     fieldset {
         margin-bottom: 20px;
