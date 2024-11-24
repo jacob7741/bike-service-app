@@ -24,7 +24,8 @@
                 <label><input type="checkbox" name="serviceType" value="smallService"> Mały przegląd</label><br/>
                 <label><input type="checkbox" name="serviceType" value="fullService"> Pełny przegląd</label><br/>
                 <label>
-                    <input type="checkbox" name="serviceType" value="repair" id="repairCheckbox" onchange="toggleRepairDetails(this)"> Naprawa
+                    <input type="checkbox" name="serviceType" value="repair" id="repairCheckbox"
+                           onchange="toggleRepairDetails(this)"> Naprawa
                 </label><br/>
                 <div id="repairDetails" style="display: none;">
                     <label>Szczegóły naprawy:<br/>
@@ -65,7 +66,13 @@
         <div class="mechanic-group">
             <fieldset>
                 <legend>Mechanik:</legend>
-                <!-- Dodaj szczegóły mechanika tutaj -->
+                <form method="post" action="/processMechanicSelection">
+                    <ul>
+                        <li th:each="mechanic : ${mechanicList}">
+                            <input type="checkbox" th:id="${'checkbox_' + ${mechanic.id}}" th:name="selectedMechanics" th:value="${mechanic.id}"/>
+                            <label th:for="${'checkbox_' + ${mechanic.id}}" th:text="${mechanic.name}"></label></li>
+                    </ul>
+                    <!-- Dodaj szczegóły mechanika tutaj -->
             </fieldset>
         </div>
     </div>

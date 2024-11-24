@@ -2,16 +2,15 @@ package bike.service.app.controller;
 
 
 import bike.service.app.model.*;
-import bike.service.app.service.BikeService;
-import bike.service.app.service.ClientService;
-import bike.service.app.service.OrderService;
-import bike.service.app.service.ServicesService;
+import bike.service.app.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class OrderController {
@@ -23,6 +22,8 @@ public class OrderController {
     private OrderService orderService;
     @Autowired
     private ClientService clientService;
+    @Autowired
+    private MechanicService mechanicService;
 
     @GetMapping("/")
     public String home() {
@@ -48,6 +49,4 @@ public class OrderController {
 
         return "mainSite";
     }
-
-
 }
