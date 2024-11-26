@@ -19,8 +19,8 @@ public class MechanicService {
     @Autowired
     private MechanicRepository mechanicRepository;
 
-    public List<Mechanic> getAllMechanics(Mechanic mechanic) {
-        logger.info("getAllMechanicsToOrder");
+    public List<Mechanic> getAllMechanics() {
+        logger.info("getAllMechanics");
         List<Mechanic> mechanics = mechanicRepository.findAll();
         if (!mechanics.isEmpty()) {
            return mechanics;

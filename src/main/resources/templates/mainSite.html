@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serwis Rowerowy</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
 <div class="header">
@@ -65,8 +65,11 @@
         </div>
         <div class="mechanic-group">
             <fieldset>
-                <legend>Mechanik:</legend>
-                    <!-- Dodaj szczegóły mechanika tutaj -->
+                <legend>Wybierz mechanika:</legend>
+                <input type="checkbox" th:each="mechanic : ${mechanics}"
+                       th:text="${mechanic.first_name} + ' ' + ${mechanic.last_name}">
+
+                </input>
             </fieldset>
         </div>
     </div>
