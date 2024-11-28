@@ -13,23 +13,18 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "Mechanic")
 public class Mechanic {
-
     @Id
-    @Column
+    @Column(name = "mechanicId")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int mechanicId;
-    @Column
+    @Column(name = "first_name")
     private String first_name;
-    @Column
+    @Column(name = "last_name")
     private String last_name;
-    @Column
+    @Column(name = "user_name")
     private String user_name;
-    @Column
+    @Column(name = "password")
     private String password;
-
-    @ManyToOne
-    @JoinColumn(name = "orderId")
-    private Order order;
 
     @Override
     public String toString() {

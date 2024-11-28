@@ -2,14 +2,12 @@ package bike.service.app.controller;
 
 
 import bike.service.app.model.*;
+import bike.service.app.model.repository.MechanicRepository;
 import bike.service.app.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +23,8 @@ public class OrderController {
     private ClientService clientService;
     @Autowired
     private MechanicService mechanicService;
+    @Autowired
+    private MechanicRepository mechanicRepository;
 
     @GetMapping("/")
     public String home(Model model) {
@@ -34,22 +34,24 @@ public class OrderController {
         return "mainSite";
     }
 
-    @RequestMapping("/services/submit")
+    @RequestMapping(value = "/services/submit", method = RequestMethod.POST)
     public String submitService(@RequestParam String serviceType,
                                 @ModelAttribute Services services,
                                 @ModelAttribute Order order,
                                 @ModelAttribute Bike bike,
                                 @ModelAttribute Client client,
-                                @ModelAttribute Mechanic mechanic) {
-
+                                @RequestParam int mechanics) {
         servicesService.createNewService(serviceType, services);
         bikeService.addNewBike(bike);
         clientService.addNewClient(client);
-        orderService.saveMechanicToOrder(order, mechanic);
+
+        orderService.saveMechanicToOrder(order, mechanics);
         orderService.saveClientToOrder(order, client);
         orderService.saveServiceToOrder(order, services);
         orderService.saveBikeToOrder(order, bike);
 
-        return "mainSite";
+        return "redirect:/";
     }
+
+
 }

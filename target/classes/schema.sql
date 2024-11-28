@@ -32,7 +32,7 @@ CREATE TABLE Bike (
 CREATE TABLE Mechanic (
     mechanicId INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(255),
-    last_name VARCHAR(255),
+    last_name VARCHAR(255) UNIQUE,
     user_name VARCHAR(255),
     password VARCHAR(255)
-)
+);

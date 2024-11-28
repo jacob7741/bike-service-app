@@ -15,8 +15,8 @@
     </div>
 </div>
 <h2>Dodaj rower do serwisu:</h2>
-
 <form th:action="@{/services/submit}" method="POST" onsubmit="handleFormSubmit(event)">
+    <!--    <input type="hidden" th:field="*{mechanicId}">-->
     <div class="grid-container">
         <div class="services-group">
             <fieldset>
@@ -66,10 +66,11 @@
         <div class="mechanic-group">
             <fieldset>
                 <legend>Wybierz mechanika:</legend>
-                <input type="checkbox" th:each="mechanic : ${mechanics}"
-                       th:text="${mechanic.first_name} + ' ' + ${mechanic.last_name}">
-
-                </input>
+                <div th:each="mechanic : ${mechanics}">
+                    <label><input type="checkbox" name="mechanics" th:value="${mechanic.mechanicId}"
+                                  th:text="${mechanic.first_name} + ' ' + ${mechanic.last_name}"/>
+                    </label><br/>
+                </div>
             </fieldset>
         </div>
     </div>
@@ -77,7 +78,6 @@
         <button type="submit">Dodaj Usługę</button>
     </div>
 </form>
-
 <div class="footer">
     <p>Autor: .... | @bike service app@</p>
 </div>

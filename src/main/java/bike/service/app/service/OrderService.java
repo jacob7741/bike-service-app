@@ -18,20 +18,20 @@ public class OrderService {
     private ClientRepository clientRepository;
     @Autowired
     private MechanicRepository mechanicRepository;
+    @Autowired
+    private MechanicService mechanicService;
 
-    public Order saveMechanicToOrder(Order order, Mechanic mechanic) {
-
+    public Order saveMechanicToOrder(Order order, int id) {
         System.out.println("saveMechanicToOrder");
 
-        if (mechanic.getMechanicId() == 0) {
-            throw new RuntimeException("noMechanicFound");
-        } else {
-            order.setMechanic(mechanic.getLast_name());
-        }
+        Mechanic mechanic = mechanicService.getMechanicById(id);
+
+        order.setMechanic(mechanic);
+        System.out.println("Order before save: " + order);
 
         orderRepository.save(order);
-        mechanic.setOrder(order);
-        mechanicRepository.save(mechanic);
+        System.out.println("Order after save: " + order);
+//        mechanicRepository.save(mechanic);
         return order;
     }
 
@@ -58,7 +58,7 @@ public class OrderService {
         if (client.getClientId() == 0) {
             throw new RuntimeException("no client found");
         } else {
-            order.setClient(client.getLast_name() + "id klienta: " + client.getClientId());
+            order.setClient(client.getLast_name() + " id: " + client.getClientId());
         }
         orderRepository.save(order);
         client.setOrder(order);
@@ -69,7 +69,7 @@ public class OrderService {
     public Order saveBikeToOrder(Order order, Bike bike) {
         System.out.println("saveBikeToOrder");
         if (!bike.getModelType().isEmpty()) {
-            order.setBikeModel("bike model : " + bike.getModelType());
+            order.setBikeModel(bike.getModelType());
         }
 
         orderRepository.save(order);

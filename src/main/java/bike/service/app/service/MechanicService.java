@@ -18,12 +18,14 @@ public class MechanicService {
 
     @Autowired
     private MechanicRepository mechanicRepository;
+    @Autowired
+    private OrderService orderService;
 
     public List<Mechanic> getAllMechanics() {
         logger.info("getAllMechanics");
         List<Mechanic> mechanics = mechanicRepository.findAll();
         if (!mechanics.isEmpty()) {
-           return mechanics;
+            return mechanics;
         } else {
             return new ArrayList<Mechanic>();
         }
@@ -39,6 +41,11 @@ public class MechanicService {
             throw new RuntimeException("no mechanic was found");
         }
     }
+
+    public List<Mechanic> findByIds(List<Integer> mechanicIds) {
+        return mechanicRepository.findAllById(mechanicIds);
+    }
+
 
     public Mechanic addNewMechanic(Mechanic mechanic) {
         logger.info("add new mechanic");
@@ -61,4 +68,5 @@ public class MechanicService {
             throw new RuntimeException("no mechanic was found");
         }
     }
+
 }
