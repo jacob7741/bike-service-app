@@ -27,6 +27,6 @@ public class Services {
     private String repairType;
 
     @ManyToOne
-    @JoinColumn(name = "linkedId")
+    @JoinColumn(name = "orderId")
     private Order order;
 }

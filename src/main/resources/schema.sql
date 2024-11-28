@@ -1,9 +1,9 @@
 
 CREATE TABLE Client (
     clientid INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(255) ,
-    last_name VARCHAR(255) ,
-    email VARCHAR(255) ,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    email VARCHAR(255),
     phoneNumber INT
 );
 
@@ -31,8 +31,8 @@ CREATE TABLE Bike (
 
 CREATE TABLE Mechanic (
     mechanicId INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(255) ,
-    last_name VARCHAR(255) ,
-    user_name VARCHAR(255) ,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255) UNIQUE,
+    user_name VARCHAR(255),
     password VARCHAR(255)
-)
+);

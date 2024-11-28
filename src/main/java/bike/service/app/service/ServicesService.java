@@ -14,8 +14,6 @@ public class ServicesService {
 
     @Autowired
     private ServicesRepository servicesRepository;
-    @Autowired
-    private OrderService orderService;
 
     public List<Services> getAllServices() {
         System.out.println("getAllServices");

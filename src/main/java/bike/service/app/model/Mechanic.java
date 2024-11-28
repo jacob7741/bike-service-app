@@ -6,38 +6,34 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity
 @Getter
 @Setter
-@Entity
-@Table(name = "Client")
-public class Client {
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "Mechanic")
+public class Mechanic {
     @Id
+    @Column(name = "mechanicId")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "clientId")
-    private int clientId;
+    private int mechanicId;
     @Column(name = "first_name")
     private String first_name;
     @Column(name = "last_name")
     private String last_name;
-    @Column(name = "phoneNumber")
-    private int phoneNumber;
-    @Column(name = "email")
-    private String email;
-
-    @ManyToOne
-    @JoinColumn(name = "orderId")
-    private Order order;
+    @Column(name = "user_name")
+    private String user_name;
+    @Column(name = "password")
+    private String password;
 
     @Override
     public String toString() {
-        return "Client{" +
-                "clientId=" + clientId +
+        return "Mechanic{" +
+                "mechanicId=" + mechanicId +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                ", email='" + email + '\'' +
+                ", user_name='" + user_name + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

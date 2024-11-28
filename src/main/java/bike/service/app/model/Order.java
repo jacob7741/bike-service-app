@@ -19,14 +19,16 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "orderId")
     private int orderId;
-    @Column(name = "mechanic")
-    private String mechanic;
+    @OneToOne
+    @JoinColumn(name = "mechanic",referencedColumnName = "last_name")
+    private Mechanic mechanic;
     @Column(name = "service")
     private String service;
     @Column(name = "bikeModel")
     private String bikeModel;
     @Column(name = "client")
     private String client;
+
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<Services> services;
