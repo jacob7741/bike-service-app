@@ -4,8 +4,9 @@ bike/service/app/model/repository/ClientRepository.class
 bike/service/app/ServletInitializer.class
 bike/service/app/model/repository/OrderRepository.class
 bike/service/app/service/ServicesService.class
+bike/service/app/model/repository/MechanicRepository.class
 bike/service/app/service/OrderService.class
-bike/service/app/data/DataBaseReader.class
+bike/service/app/model/Mechanic.class
 bike/service/app/model/Services.class
 bike/service/app/model/Order.class
 bike/service/app/model/repository/BikeRepository.class
@@ -14,4 +15,5 @@ bike/service/app/model/Client.class
 bike/service/app/MainServiceApp.class
 bike/service/app/DBinit.class
 bike/service/app/service/BikeService.class
+bike/service/app/service/MechanicService.class
 bike/service/app/service/ClientService.class

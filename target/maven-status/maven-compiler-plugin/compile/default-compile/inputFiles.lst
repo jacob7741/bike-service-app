@@ -3,6 +3,7 @@
 /Users/jacobsunny/BServiceProject/src/main/java/bike/service/app/service/ServicesService.java
 /Users/jacobsunny/BServiceProject/src/main/java/bike/service/app/model/Bike.java
 /Users/jacobsunny/BServiceProject/src/main/java/bike/service/app/model/repository/OrderRepository.java
+/Users/jacobsunny/BServiceProject/src/main/java/bike/service/app/model/repository/MechanicRepository.java
 /Users/jacobsunny/BServiceProject/src/main/java/bike/service/app/model/Services.java
 /Users/jacobsunny/BServiceProject/src/main/java/bike/service/app/MainServiceApp.java
 /Users/jacobsunny/BServiceProject/src/main/java/bike/service/app/DBinit.java
@@ -14,4 +15,5 @@
 /Users/jacobsunny/BServiceProject/src/main/java/bike/service/app/service/ClientService.java
 /Users/jacobsunny/BServiceProject/src/main/java/bike/service/app/service/BikeService.java
 /Users/jacobsunny/BServiceProject/src/main/java/bike/service/app/model/repository/ClientRepository.java
-/Users/jacobsunny/BServiceProject/src/main/java/bike/service/app/data/DataBaseReader.java
+/Users/jacobsunny/BServiceProject/src/main/java/bike/service/app/model/Mechanic.java
+/Users/jacobsunny/BServiceProject/src/main/java/bike/service/app/service/MechanicService.java

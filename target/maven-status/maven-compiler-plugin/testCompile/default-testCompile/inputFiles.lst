@@ -2,3 +2,5 @@
 /Users/jacobsunny/BServiceProject/src/test/java/bike/service/app/service/ServicesServiceTest.java
 /Users/jacobsunny/BServiceProject/src/test/java/bike/service/app/service/ClientServiceTest.java
 /Users/jacobsunny/BServiceProject/src/test/java/bike/service/app/controller/OrderControllerTest.java
+/Users/jacobsunny/BServiceProject/src/test/java/bike/service/app/service/OrderServiceTest.java
+/Users/jacobsunny/BServiceProject/src/test/java/bike/service/app/service/MechanicServiceTest.java
