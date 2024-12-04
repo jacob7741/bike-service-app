@@ -1,6 +1,5 @@
 package bike.service.app.controller;
 
-
 import bike.service.app.model.*;
 import bike.service.app.model.repository.MechanicRepository;
 import bike.service.app.service.*;
@@ -34,13 +33,15 @@ public class OrderController {
         return "mainSite";
     }
 
-    @RequestMapping(value = "/services/submit", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/services/submit", method = RequestMethod.POST, params = "serviceType")
     public String submitService(@RequestParam String serviceType,
                                 @ModelAttribute Services services,
                                 @ModelAttribute Order order,
                                 @ModelAttribute Bike bike,
                                 @ModelAttribute Client client,
                                 @RequestParam int mechanics) {
+
         servicesService.createNewService(serviceType, services);
         bikeService.addNewBike(bike);
         clientService.addNewClient(client);
@@ -52,6 +53,5 @@ public class OrderController {
 
         return "redirect:/";
     }
-
 
 }
