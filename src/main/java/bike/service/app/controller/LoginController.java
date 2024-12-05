@@ -5,8 +5,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class LoginController {
-    @GetMapping("/login")
-    public String logi() {
+
+    @GetMapping("/mainSite")
+    public String mainSite() {
+        return "mainSite";
+    }
+
+    @GetMapping(value = "/login")
+    public String login() {
+        return "mechanicSite";
+    }
+
+    @GetMapping(value = "/mechanicSite")
+    public String mechanicSite() {
         return "mechanicSite";
     }
 }
