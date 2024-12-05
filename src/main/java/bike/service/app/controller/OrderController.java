@@ -25,6 +25,10 @@ public class OrderController {
     @Autowired
     private MechanicRepository mechanicRepository;
 
+//    mam dwie metody które mapują home druga jest w logincotrolerze
+//    dowiedzieć się więcej czy musi tak to być czy jest jakieś
+//    bardziej wydajne i poprawne rozwiazanie
+
     @GetMapping("/")
     public String home(Model model) {
         System.out.println("application start");
