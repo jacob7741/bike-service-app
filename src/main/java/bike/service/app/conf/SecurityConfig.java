@@ -4,6 +4,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,33 +19,33 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
         http
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/**", "static/css/style.css", "/js/**", "/images/**").permitAll()
+                        .requestMatchers( "/**", "static/css/style.css").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/home", true)
+                        .loginPage("/mainSite")
+                        .loginProcessingUrl("/login")
+                        .defaultSuccessUrl("/mechanicSite", true)
                         .permitAll()
                 )
-                .logout(logout -> logout
-                        .permitAll())
-                .csrf(csfr -> csfr.disable())
+                .logout(LogoutConfigurer::permitAll)
+                .csrf(AbstractHttpConfigurer::disable)
                 .headers(headers -> headers
-                        .frameOptions(frameOptions -> frameOptions.disable()));
+                        .frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
         return http.build();
     }
 
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails userDetails = User.withDefaultPasswordEncoder()
-                .username("ala")
-                .password("koala")
+                .username("user")
+                .password("password")
                 .roles("USER")
                 .build();
 
         return new InMemoryUserDetailsManager(userDetails);
     }
 }
-//

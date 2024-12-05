@@ -33,7 +33,6 @@ public class OrderController {
         return "mainSite";
     }
 
-
     @RequestMapping(value = "/services/submit", method = RequestMethod.POST, params = "serviceType")
     public String submitService(@RequestParam String serviceType,
                                 @ModelAttribute Services services,
@@ -53,5 +52,4 @@ public class OrderController {
 
         return "redirect:/";
     }
-
 }

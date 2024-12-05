@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serwis Rowerowy</title>
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
+
 <body>
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
 <form class="login-basic-form" th:action="@{/login}" method="post">
     <div class="header">
         <div class="login-form">
-            <input type="text" placeholder="Login" id="login" name="login">
+            <input type="text" placeholder="Login" id="login" name="username">
             <input type="password" placeholder="Password" id="password" name="password">
-            <button type="submit" name="login">Zaloguj się</button>
+            <button type="submit">Zaloguj się</button>
         </div>
     </div>
 </form>
