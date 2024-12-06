@@ -5,6 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Getter
@@ -12,7 +18,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "Mechanic")
-public class Mechanic {
+public class Mechanic{
     @Id
     @Column(name = "mechanicId")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,4 +42,5 @@ public class Mechanic {
                 ", password='" + password + '\'' +
                 '}';
     }
+
 }

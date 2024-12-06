@@ -46,7 +46,6 @@ public class MechanicService {
         return mechanicRepository.findAllById(mechanicIds);
     }
 
-
     public Mechanic addNewMechanic(Mechanic mechanic) {
         logger.info("add new mechanic");
 
