@@ -15191,3 +15191,18 @@ SELECT user_name AS username,  noop password, true AS enabled FROM Mechanic WHER
 	at java.base/java.lang.Thread.run(Thread.java:1575)
 2024-12-06 14:27:47.427254+01:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT user_name AS username, password, true AS enabled FROM Mechanic WHERE user_name = ?{noop}[*]" [42000-224]
+2024-12-06 17:39:31.656538+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table drop[*]"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+alter table drop [42001-224]
+2024-12-06 17:40:52.393816+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE Mechanic [*]CHANGE COLUMN first_name firstName VARCHAR(255)"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE Mechanic CHANGE COLUMN first_name firstName VARCHAR(255) [42001-224]
+2024-12-06 17:40:52.396934+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE Mechanic [*]CHANGE COLUMN last_name lastName VARCHAR(255)"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE Mechanic CHANGE COLUMN last_name lastName VARCHAR(255) [42001-224]
+2024-12-06 17:40:52.402448+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE Mechanic [*]CHANGE COLUMN user_name userName VARCHAR(255)"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE Mechanic CHANGE COLUMN user_name userName VARCHAR(255) [42001-224]
+2024-12-06 17:40:55.697226+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE Mechanic [*]CHANGE COLUMN first_name firstName VARCHAR(255)"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE Mechanic CHANGE COLUMN first_name firstName VARCHAR(255) [42001-224]

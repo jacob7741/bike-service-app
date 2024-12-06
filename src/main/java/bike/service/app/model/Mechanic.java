@@ -24,11 +24,11 @@ public class Mechanic{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int mechanicId;
     @Column(name = "first_name")
-    private String first_name;
+    private String firstName;
     @Column(name = "last_name")
-    private String last_name;
+    private String lastName;
     @Column(name = "user_name")
-    private String user_name;
+    private String userName;
     @Column(name = "password")
     private String password;
 
@@ -36,11 +36,10 @@ public class Mechanic{
     public String toString() {
         return "Mechanic{" +
                 "mechanicId=" + mechanicId +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", user_name='" + user_name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
-
 }

@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MechanicRepository extends JpaRepository <Mechanic, Integer> {
-//    public Mechanic findUserByName(String username);
+    //getting user name from repository tzw konwencja nazewnuictwa tak dziala w springBoot
+    public Mechanic findByUserName(String user_name);
 }
