@@ -11,6 +11,7 @@ import java.util.List;
 
 @Controller
 public class LoginController {
+
     @Autowired
     private MechanicService mechanicService;
 
@@ -31,4 +32,5 @@ public class LoginController {
     public String mechanicSite() {
         return "mechanicSite";
     }
+
 }
