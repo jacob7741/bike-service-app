@@ -27,7 +27,7 @@ public class MechanicService {
         if (!mechanics.isEmpty()) {
             return mechanics;
         } else {
-            return new ArrayList<Mechanic>();
+            return new ArrayList<>();
         }
     }
 

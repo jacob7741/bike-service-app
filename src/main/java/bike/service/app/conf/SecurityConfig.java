@@ -1,9 +1,7 @@
 package bike.service.app.conf;
 
-import bike.service.app.model.Mechanic;
 import bike.service.app.model.repository.MechanicRepository;
 import bike.service.app.service.MechanicService;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,12 +12,10 @@ import org.springframework.security.config.annotation.web.configurers.HeadersCon
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import javax.sql.DataSource;
-import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -28,13 +24,13 @@ public class SecurityConfig {
     @Autowired
     MechanicRepository mechanicRepository;
     @Autowired
+    PasswordEncoder passwordEncoder;
+    @Autowired
     private MechanicService mechanicService;
     @Autowired
     private UserDetailsService userDetailsService;
     @Autowired
     private DataSource dataSource;
-    @Autowired
-    PasswordEncoder passwordEncoder;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
