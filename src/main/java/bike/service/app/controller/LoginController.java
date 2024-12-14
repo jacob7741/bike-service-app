@@ -33,7 +33,6 @@ public class LoginController {
                fullName.set(mechanic.getFirstName() + " " + mechanic.getLastName());
             }
         }
-
         model.addAttribute("username", fullName.get());
         return "mechanicSite";
     }

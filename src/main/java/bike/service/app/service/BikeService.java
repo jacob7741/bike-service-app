@@ -40,7 +40,7 @@ public class BikeService {
         bikeRepository.save(bike);
         return bike;
     }
-
+    
     public void deletedBikeById(int id) {
         System.out.println("bike deleted...");
         Optional<Bike> optionalBike = bikeRepository.findById(id);
