@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 //class with methods to change password if is not encoded in DB
 @Service
 public class PasswordUpdateService {

@@ -5,6 +5,7 @@ import bike.service.app.service.MechanicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -22,9 +23,9 @@ import javax.sql.DataSource;
 public class SecurityConfig {
 
     @Autowired
-    MechanicRepository mechanicRepository;
+    private MechanicRepository mechanicRepository;
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
     @Autowired
     private MechanicService mechanicService;
     @Autowired

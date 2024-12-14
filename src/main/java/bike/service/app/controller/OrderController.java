@@ -38,7 +38,8 @@ public class OrderController {
                                 @ModelAttribute Client client,
                                 @RequestParam int mechanics,
                                 @RequestParam(required = false) String repairDetails,
-                                @RequestParam(required = false) int repairPrice) {
+                                @RequestParam(required = false) Integer repairPrice) {
+
 
         if ("repair".equals(serviceType)) {
             servicesService.createRepairService(services, repairDetails, repairPrice);
