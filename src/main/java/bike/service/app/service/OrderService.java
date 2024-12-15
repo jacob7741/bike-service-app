@@ -16,6 +16,7 @@ public class OrderService {
     private BikeRepository bikeRepository;
     @Autowired
     private ClientRepository clientRepository;
+    @SuppressWarnings("unused")
     @Autowired
     private MechanicRepository mechanicRepository;
     @Autowired

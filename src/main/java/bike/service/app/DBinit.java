@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 
 public class DBinit implements CommandLineRunner {
 
+    @SuppressWarnings("unused")
     @Autowired
     private final ServicesRepository servicesRepository;
 

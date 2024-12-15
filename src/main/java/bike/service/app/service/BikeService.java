@@ -1,18 +1,20 @@
 package bike.service.app.service;
 
-import bike.service.app.model.Bike;
-import bike.service.app.model.repository.BikeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import bike.service.app.model.Bike;
+import bike.service.app.model.repository.BikeRepository;
 
 @Service
 public class BikeService {
     @Autowired
     private BikeRepository bikeRepository;
+    @SuppressWarnings("unused")
     @Autowired
     private OrderService orderService;
 
@@ -21,9 +23,9 @@ public class BikeService {
         Optional<Bike> optionalBike = bikeRepository.findById(id);
         if (optionalBike.isPresent())
             return optionalBike.get();
-        throw new RuntimeException("no Id founded");
+        throw new RuntimeException("no id founded");
     }
-
+    
     public List<Bike> getAllBike() {
         System.out.println("getting all bike");
         List<Bike> bikeList = bikeRepository.findAll();

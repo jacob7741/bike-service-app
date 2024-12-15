@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serwis Rowerowy</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
+<form class="login-basic-form" th:action="@{/login}" method="post">
+    <div class="header">
+        <div class="login-form">
+            <input type="text" placeholder="Login" id="login" name="username" required>
+            <input type="password" placeholder="Password" id="password" name="password" required>
+            <button type="submit">Zaloguj się</button>
+        </div>
+    </div>
+</form>
+<h2>Dodaj rower do serwisu:</h2>
+<form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
+    <div class="grid-container">
+        <div class="services-group">
+            <fieldset>
+                <legend>Usługi</legend>
+                <label><input type="radio" name="serviceType" value="smallService" required> Mały przegląd</label><br/>
+                <label><input type="radio" name="serviceType" value="fullService" required> Pełny przegląd</label><br/>
+                <label>
+                    <input type="radio" name="serviceType" value="repair" id="repairCheckbox"
+                           onchange="toggleRepairDetails(this)" required> Naprawa
+                </label><br/>
+                <div id="repairDetails" style="display: none;">
+                    <label>Szczegóły naprawy:<br/>
+                        <textarea name="repairDetails" rows="3"></textarea>
+                    </label><br/>
+                    <label>Cena:<br/>
+                        <input type="number" name="repairPrice"/>
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+        <div class="details-group">
+            <fieldset>
+                <legend>Szczegóły roweru</legend>
+                <label>Marka:<br/>
+                    <input type="text" name="brand" required/></label><br/>
+                <label>Rodzaj roweru:<br/>
+                    <input type="text" name="modelType" required/></label><br/>
+                <label>Numer Seryjny:<br/>
+                    <input type="text" name="serialNumber" required/></label>
+            </fieldset>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="client-group">
+            <fieldset>
+                <legend>Dane Klienta:</legend>
+                <label>Imię<br/>
+                    <input type="text" name="first_name" required/></label><br/>
+                <label>Nazwisko<br/>
+                    <input type="text" name="last_name" required/></label><br/>
+                <label>Numer telefonu<br/>
+                    <input type="text" name="phoneNumber" required/></label><br/>
+                <label>e-mail<br/>
+                    <input type="email" name="email" required/></label><br/>
+            </fieldset>
+        </div>
+        <div class="mechanic-group">
+            <fieldset>
+                <legend>Wybierz mechanika:</legend>
+                <div th:each="mechanic : ${mechanics}">
+                    <label><input type="radio" name="mechanics" th:value="${mechanic.mechanicId}"
+                                  th:text="${mechanic.firstName} + ' ' + ${mechanic.lastName}"/>
+                    </label><br/>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div class="form-group centered-button">
+        <button type="submit" name="services">Dodaj Usługę</button>
+    </div>
+</form>
+<div class="footer">
+    <p>Autor: .... | @bike service app@</p>
+</div>
+
+<script>
+    function toggleRepairDetails(radio) {
+        var repairDetails = document.getElementById('repairDetails');
+        repairDetails.style.display = radio.checked ? 'block' : 'none';
+    }
+
+    function validateForm() {
+        var radios = document.querySelectorAll("input[type='radio'][name='serviceType']");
+        var isChecked = Array.prototype.slice.call(radios).some(x => x.checked);
+
+        return true;
+    }
+</script>
+</body>
+</html>

@@ -22,6 +22,7 @@ public class MechanicService implements UserDetailsService {
 
     @Autowired
     private MechanicRepository mechanicRepository;
+    @SuppressWarnings("unused")
     @Autowired
     private OrderService orderService;
 

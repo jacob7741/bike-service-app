@@ -2,5 +2,14 @@
     "java.compile.nullAnalysis.mode": "automatic",
     "editor.fontSize": 14,
     "terminal.integrated.fontSize": 14,
-    "liveServer.settings.port": 5500
+    "liveServer.settings.port": 5500,
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "workbench.colorCustomizations": {
+
+
+    },
+    "editor.fontWeight": "normal",
+    "editor.fontLigatures": false,
+    "workbench.preferredDarkColorTheme": "Default Dark Modern",
+    "window.autoDetectColorScheme": true
 }
