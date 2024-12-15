@@ -1,7 +1,8 @@
 package bike.service.app.controller;
 
-import bike.service.app.model.Mechanic;
-import bike.service.app.service.MechanicService;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -9,8 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
+import bike.service.app.model.Mechanic;
+import bike.service.app.service.MechanicService;
 
 
 @Controller
@@ -21,6 +22,7 @@ public class LoginController {
 
     @GetMapping("/mechanicSite")
     public String mechanicSite(Model model) {
+        
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String mechanicName = authentication.getName();
 

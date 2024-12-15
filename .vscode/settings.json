@@ -1,15 +1,46 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
     "editor.fontSize": 14,
-    "terminal.integrated.fontSize": 14,
-    "liveServer.settings.port": 5500,
-    "java.configuration.updateBuildConfiguration": "automatic",
-    "workbench.colorCustomizations": {
-
-
-    },
-    "editor.fontWeight": "normal",
     "editor.fontLigatures": false,
-    "workbench.preferredDarkColorTheme": "Default Dark Modern",
-    "window.autoDetectColorScheme": true
+    "editor.fontWeight": "normal",
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "entity.name.function",
+                    "entity.name.type"
+                ],
+                "settings": {
+                    "fontStyle": "italic"
+                }
+            }
+        ]
+    },
+    "terminal.integrated.accessibleViewFocusOnCommandExecution": false,
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontWeight": "normal",
+    "terminal.integrated.fontFamily": " monospace",
+    "terminal.integrated.lineHeight": 1,
+    "workbench.colorCustomizations": {
+        "terminal.background": "#1E1E1E",
+        "terminal.foreground": "#CCCCCC",
+        "terminalCursor.background": "#528BFF",
+        "terminalCursor.foreground": "#528BFF",
+        "terminal.ansiBlack": "#000000",
+        "terminal.ansiBlue": "#2472C8",
+        "terminal.ansiBrightBlack": "#666666",
+        "terminal.ansiBrightBlue": "#3B8EEA",
+        "terminal.ansiBrightCyan": "#29B8DB",
+        "terminal.ansiBrightGreen": "#23D18B",
+        "terminal.ansiBrightMagenta": "#D670D6",
+        "terminal.ansiBrightRed": "#F14C4C",
+        "terminal.ansiBrightWhite": "#E5E5E5",
+        "terminal.ansiBrightYellow": "#F5F543",
+        "terminal.ansiCyan": "#11A8CD",
+        "terminal.ansiGreen": "#13A10E",
+        "terminal.ansiMagenta": "#C239B3",
+        "terminal.ansiRed": "#C50F1F",
+        "terminal.ansiWhite": "#CCCCCC",
+        "terminal.ansiYellow": "#C19C00"
+    }
 }
