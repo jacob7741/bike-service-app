@@ -4,9 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Mechanika</title>
-    <link rel="stylesheet" href="../static/css/stylemechanic.css">
+    <link rel="stylesheet" href="/static/css/stylemechanic.css">
 </head>
 <body>
-<h2>Witaj, <span th:text="${username}"></span></h2>
+    <h1>Witaj <span th:text="${username}"></span></h1>
+    <table>
+        <thead>
+            <tr>
+                <th class="orderId">Order ID</th>
+                <th>Service</th>
+                <th>Bike Model</th>
+                <th class="clientId">Client ID</th>
+                <th class="buttonContainer"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Service A</td>
+                <td>Model X</td>
+                <td>123</td>
+                <td class="button-container">
+                    <button class="edit-btn">Edytuj</button>
+                    <button class="delete-btn">Usuń</button>
+                </td>
+            </tr>
+            <!-- Dodaj więcej wierszy tutaj -->
+        </tbody>
+    </table>
 </body>
 </html>
