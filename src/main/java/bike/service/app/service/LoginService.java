@@ -1,22 +1,22 @@
 package bike.service.app.service;
 
-import bike.service.app.model.Mechanic;
-import bike.service.app.model.repository.MechanicRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import bike.service.app.model.Mechanic;
+import bike.service.app.model.repository.MechanicRepository;
 
-//class with methods to change password if is not encoded in DB
 @Service
-public class PasswordUpdateService {
-
+public class LoginService {
     @Autowired
     private MechanicRepository mechanicRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
 
     public void updatePasswords() {
         List<Mechanic> mechanics = mechanicRepository.findAll();

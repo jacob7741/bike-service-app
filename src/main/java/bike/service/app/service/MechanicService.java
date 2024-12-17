@@ -1,7 +1,9 @@
 package bike.service.app.service;
 
-import bike.service.app.model.Mechanic;
-import bike.service.app.model.repository.MechanicRepository;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import bike.service.app.model.Mechanic;
+import bike.service.app.model.repository.MechanicRepository;
 
 @Service
 public class MechanicService implements UserDetailsService {

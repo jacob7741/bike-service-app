@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Mechanika</title>
     <link rel="stylesheet" href="/static/css/stylemechanic.css">
 </head>
+
 <body>
     <h1>Witaj <span th:text="${username}"></span></h1>
+    <p>Number of orders: <span th:text="${#lists.size(orderList)}"></span></p>
     <table>
         <thead>
             <tr>
@@ -19,14 +22,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Service A</td>
-                <td>Model X</td>
-                <td>123</td>
+            <tr th:each="order : ${orderList}">
+                <td class="orderId" name="orderList" th:text="${order.orderId}" </td>
+                <td th:text="${order.service}"></td>
+                <td th:text="${order.bikeModel}"></td>
+                <td class="clientId" th:text="${order.client}"></td>
                 <td class="button-container">
-                    <button class="edit-btn">Edytuj</button>
-                    <button class="delete-btn">Usuń</button>
+                    <button class="edit-btn">edit</button>
+                    <button class="delete-btn">done</button>
                 </td>
             </tr>
             <!-- Dodaj więcej wierszy tutaj -->

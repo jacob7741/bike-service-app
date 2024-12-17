@@ -13,32 +13,20 @@ body {
 
 table {
     width: 100%;
-    /* Szerokość tabeli */
     border-collapse: collapse;
     border-radius: 10px;
     overflow: hidden;
     background-color: #ffffff;
 }
 
-th,
-td {
+th, td {
     padding: 10px;
-    /* Poprawny padding */
     border: 1px solid #ddd;
     vertical-align: middle;
-    /* Wyśrodkowanie w pionie */
     text-align: center;
-    /* Wyśrodkowanie w poziomie */
     word-wrap: break-word;
-    /* Zawijanie tekstu */
 }
 
-.orderId {
-    width: 10%;
-}
-.clientId {
-    width: 10%;
-}
 th {
     background-color: #334e68;
     color: white;
@@ -47,8 +35,10 @@ th {
     font-size: 90%;
 }
 
-.buttonContainer {
-    width:8%;
+.orderId, .clientId {
+    width: 10%;
+    max-width: 50px;
+    word-break: break-word;
 }
 
 .button-container {

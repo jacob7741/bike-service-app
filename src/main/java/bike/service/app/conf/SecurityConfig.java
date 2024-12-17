@@ -1,7 +1,7 @@
 package bike.service.app.conf;
 
-import bike.service.app.model.repository.MechanicRepository;
-import bike.service.app.service.MechanicService;
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,15 +14,15 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import javax.sql.DataSource;
 
+import bike.service.app.model.repository.MechanicRepository;
+import bike.service.app.service.MechanicService;
 
 @SuppressWarnings("unused")
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-    
     @Autowired
     private MechanicRepository mechanicRepository;
     @Autowired
@@ -40,15 +40,13 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers("/**", "static/css/style.css").permitAll()
-                        .anyRequest().authenticated()
-                )
-//                .userDetailsService(mechanicDetailService)
+                        .anyRequest().authenticated())
+                // .userDetailsService(mechanicDetailService)
                 .formLogin((form) -> form
                         .loginPage("/mainSite")
                         .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/mechanicSite", true)
-                        .permitAll()
-                )
+                        .permitAll())
                 .logout(LogoutConfigurer::permitAll)
                 .csrf(AbstractHttpConfigurer::disable)
                 .headers(headers -> headers
