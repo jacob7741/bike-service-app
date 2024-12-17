@@ -44,6 +44,14 @@ public class OrderService {
         }
     }
 
+    public void deleteOrderById(int id) {
+        Order order = orderRepository.getReferenceById(id);
+        if (!(order.getOrderId() == 0)) {
+            orderRepository.deleteById(id);
+            System.out.println("oreder deleted");
+        }
+    }
+
     public Order saveMechanicToOrder(Order order, int id) {
         System.out.println("saveMechanicToOrder");
 
