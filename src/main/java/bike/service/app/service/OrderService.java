@@ -1,9 +1,21 @@
 package bike.service.app.service;
 
-import bike.service.app.model.*;
-import bike.service.app.model.repository.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import bike.service.app.model.Bike;
+import bike.service.app.model.Client;
+import bike.service.app.model.Mechanic;
+import bike.service.app.model.Order;
+import bike.service.app.model.Services;
+import bike.service.app.model.repository.BikeRepository;
+import bike.service.app.model.repository.ClientRepository;
+import bike.service.app.model.repository.MechanicRepository;
+import bike.service.app.model.repository.OrderRepository;
+import bike.service.app.model.repository.ServicesRepository;
 
 @Service
 public class OrderService {
@@ -16,10 +28,21 @@ public class OrderService {
     private BikeRepository bikeRepository;
     @Autowired
     private ClientRepository clientRepository;
+    @SuppressWarnings("unused")
     @Autowired
     private MechanicRepository mechanicRepository;
     @Autowired
     private MechanicService mechanicService;
+
+    public List<Order> getAllOrders() {
+        System.out.println("get all orders");
+        List<Order> ordersList = orderRepository.findAll();
+        if(ordersList.isEmpty()) {
+            return new ArrayList<>();
+        } else {
+            return ordersList;
+        }
+    }
 
     public Order saveMechanicToOrder(Order order, int id) {
         System.out.println("saveMechanicToOrder");

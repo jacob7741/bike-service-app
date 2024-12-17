@@ -1,0 +1,15 @@
+{
+    "configurations": [
+    
+        {
+            "type": "java",
+            "name": "Spring Boot-MainServiceApp<app>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "bike.service.app.MainServiceApp",
+            "projectName": "app",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

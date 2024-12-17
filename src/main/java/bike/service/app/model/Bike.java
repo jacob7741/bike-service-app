@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -18,10 +20,13 @@ public class  Bike {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "bikeId")
     private int bikeId;
+    @NotNull
     @Column(name = "brand")
     private String brand;
+    @NotNull
     @Column(name = "modelType")
     private String modelType;
+    @NotNull
     @Column(name = "serialNumber")
     private int serialNumber;
 

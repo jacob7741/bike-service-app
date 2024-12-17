@@ -1,7 +1,6 @@
 package bike.service.app.controller;
 
 import bike.service.app.model.*;
-import bike.service.app.model.repository.MechanicRepository;
 import bike.service.app.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,8 +21,6 @@ public class OrderController {
     private ClientService clientService;
     @Autowired
     private MechanicService mechanicService;
-    @Autowired
-    private MechanicRepository mechanicRepository;
 
 //    mam dwie metody które mapują home druga jest w logincotrolerze
 //    dowiedzieć się więcej czy musi tak to być czy jest jakieś
@@ -43,7 +40,16 @@ public class OrderController {
                                 @ModelAttribute Order order,
                                 @ModelAttribute Bike bike,
                                 @ModelAttribute Client client,
-                                @RequestParam int mechanics) {
+                                @RequestParam int mechanics,
+                                @RequestParam(required = false) String repairDetails,
+                                @RequestParam(required = false) Integer repairPrice) {
+
+
+        if ("repair".equals(serviceType)) {
+            servicesService.createRepairService(services, repairDetails, repairPrice);
+        } else {
+            servicesService.createNewService(serviceType, services);
+        }
 
         servicesService.createNewService(serviceType, services);
         bikeService.addNewBike(bike);

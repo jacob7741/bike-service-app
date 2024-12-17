@@ -1,36 +1,58 @@
 package bike.service.app.controller;
 
-import bike.service.app.model.Mechanic;
-import bike.service.app.service.MechanicService;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.List;
+import bike.service.app.model.Mechanic;
+import bike.service.app.model.Order;
+import bike.service.app.model.repository.MechanicRepository;
+import bike.service.app.service.MechanicService;
+import bike.service.app.service.OrderService;
 
 @Controller
 public class LoginController {
 
     @Autowired
+    private OrderService orderService;
+
+    @Autowired
     private MechanicService mechanicService;
 
-    @GetMapping("/mainSite")
-    public String mainSite(Model model) {
-        System.out.println("application start");
-        List<Mechanic> mechanics = mechanicService.getAllMechanics();
-        model.addAttribute("mechanics", mechanics);
-        return "mainSite";
-    }
+    @Autowired
+    private MechanicRepository mechanicRepository;
 
-    @GetMapping(value = "/login")
-    public String login() {
+    @GetMapping("/mechanicSite")
+    public String mechanicSite(Model model) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String mechanicName = authentication.getName();
+
+        List<Mechanic> mechanicList = mechanicService.getAllMechanics();
+        List<Order> orderList = orderService.getAllOrders();
+        AtomicReference<String> fullName = new AtomicReference<>(new String());
+
+        List<Order> personalList = new ArrayList<>();
+
+        for (Mechanic mechanic : mechanicList) {
+            if (mechanic.getUserName().equals(mechanicName)) {
+                fullName.set(mechanic.getFirstName() + " " + mechanic.getLastName());
+                for (Order order : orderList) {
+                    if(order.getMechanic().getLastName().equals(mechanic.getLastName())) {
+                        personalList.add(order);
+                    }
+                }
+            }
+        }
+        model.addAttribute("username", fullName.get());
+        model.addAttribute("orderList", personalList);
         return "mechanicSite";
     }
-
-    @GetMapping(value = "/mechanicSite")
-    public String mechanicSite() {
-        return "mechanicSite";
-    }
-
 }
