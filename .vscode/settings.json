@@ -18,11 +18,6 @@
     },
     "terminal.integrated.accessibleViewFocusOnCommandExecution": false,
     "terminal.integrated.fontSize": 14,
-<<<<<<< HEAD
-    "liveServer.settings.port": 5500,
-    "java.configuration.updateBuildConfiguration": "automatic"
-}
-=======
     "terminal.integrated.fontWeight": "normal",
     "terminal.integrated.fontFamily": " monospace",
     "terminal.integrated.lineHeight": 1,
@@ -49,4 +44,3 @@
         "terminal.ansiYellow": "#C19C00"
     }
 }
->>>>>>> dbmechanic

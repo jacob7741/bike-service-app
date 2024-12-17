@@ -27,10 +27,10 @@ public class LoginController {
     private MechanicService mechanicService;
 
     @Autowired
-    private MechanicRepository mechanicRepository;
+    private MechanicRepository mechanicRepository;  
 
     @GetMapping("/mechanicSite")
-    public String mechanicSite(Model model) {
+    public String mechanicSite(Model model) {                   
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String mechanicName = authentication.getName();
