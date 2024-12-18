@@ -26,12 +26,6 @@ public class LoginController {
     @Autowired
     private MechanicService mechanicService;
 
-<<<<<<< HEAD
-    @Autowired
-    private MechanicRepository mechanicRepository;  
-
-=======
->>>>>>> dbmechanic
     @GetMapping("/mechanicSite")
     public String mechanicSite(Model model) {                   
 
