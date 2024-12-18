@@ -39,7 +39,7 @@ public class  Bike {
     private int serialNumber;
 
     @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name = "orderId", nullable=false)
+    @JoinColumn(name = "orderId")
     private Order order;
 
     @Override
