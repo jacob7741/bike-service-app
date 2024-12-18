@@ -1,13 +1,14 @@
 package bike.service.app.service;
 
-import bike.service.app.model.Client;
-import bike.service.app.model.repository.ClientRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import bike.service.app.model.Client;
+import bike.service.app.model.repository.ClientRepository;
 
 @Service
 public class ClientService {

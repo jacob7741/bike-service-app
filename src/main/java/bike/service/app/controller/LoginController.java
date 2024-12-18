@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import bike.service.app.model.Mechanic;
@@ -53,13 +54,13 @@ public class LoginController {
         return "mechanicSite";
     }
 
-    @GetMapping("/done/{id}")
+    @GetMapping("/mechanicSite/done/{id}")
     public String doneButton(
-            @RequestParam int id) {
+            @PathVariable("id") int id) {
         orderService.deleteOrderById(id);
         return "redirect:/mechanicSite";
     }
-    @GetMapping("/edit/{id}")
+    @GetMapping("/mechanicSite/edit/{id}")
     public String editButton(
             @RequestParam int id) {
         orderService.deleteOrderById(id);
