@@ -49,5 +49,14 @@ public class BikeService {
         if (optionalBike.isPresent())
             bikeRepository.deleteById(id);
         throw new RuntimeException("no Bike id founded");
+    // }
+
+    // public void deletedBikeByOrderId(int orderId) {
+    //     List<Bike> bikes = bikeRepository.findAll();
+    //     for (Bike bike : bikes) {
+    //         if(bike.getOrder() == orderId) {
+    //             deletedBikeById(bike.getBikeId());
+    //         }
+    //     }
     }
 }

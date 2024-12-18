@@ -37,10 +37,36 @@ public class OrderService {
     public List<Order> getAllOrders() {
         System.out.println("get all orders");
         List<Order> ordersList = orderRepository.findAll();
-        if(ordersList.isEmpty()) {
+        if (ordersList.isEmpty()) {
             return new ArrayList<>();
         } else {
             return ordersList;
+        }
+    }
+    // TODO:thinking about more make it more efficient
+    public void deleteOrderById(int id) {
+        Order order = orderRepository.getReferenceById(id);
+        List<Client> clients = clientRepository.findAll();
+        List<Bike> bikes = bikeRepository.findAll();
+        List<Services> services = servicesRepository.findAll();
+        for (Client client : clients) {
+            client.getOrder();
+            clientRepository.deleteById(client.getClientId());
+        }
+
+        for (Bike bike : bikes) {
+            bike.getOrder();
+            bikeRepository.deleteById(bike.getBikeId());
+        }
+
+        for (Services service : services) {
+            service.getOrder();
+            clientRepository.deleteById(service.getServiceId());
+
+            if (!(order.getOrderId() == 0)) {
+                orderRepository.deleteById(id);
+                System.out.println("order deleted");
+            }
         }
     }
 
@@ -54,7 +80,7 @@ public class OrderService {
 
         orderRepository.save(order);
         System.out.println("Order after save: " + order);
-//        mechanicRepository.save(mechanic);
+        // mechanicRepository.save(mechanic);
         return order;
     }
 

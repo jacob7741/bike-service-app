@@ -23,17 +23,21 @@
         </thead>
         <tbody>
             <tr th:each="order : ${orderList}">
-                <td class="orderId" name="orderList" th:text="${order.orderId}" </td>
+                <td class="orderId" name="orderList" th:value="${order.orderId}" th:text="${order.orderId}"></td>
                 <td th:text="${order.service}"></td>
                 <td th:text="${order.bikeModel}"></td>
                 <td class="clientId" th:text="${order.client}"></td>
                 <td class="button-container">
-                    <button class="edit-btn">edit</button>
-                    <button class="delete-btn">done</button>
+                    <form method="post" action="/mechanicSite/submit">
+                        <input type="hidden" name="orderId" th:value="${order.orderId}" />
+                    </form>
+                    <a th:href="@{/mechanicSite/edit/{id}(id=${order.orderId})}" class="edit-btn">edit</a>
+                    <a th:href="@{/mechanicSite/done/{id}(id=${order.orderId})}" class="done-btn">done</a>
                 </td>
             </tr>
             <!-- Dodaj więcej wierszy tutaj -->
         </tbody>
     </table>
 </body>
+
 </html>

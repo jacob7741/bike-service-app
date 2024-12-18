@@ -39,7 +39,7 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/**", "static/css/style.css").permitAll()
+                        .requestMatchers("/**", "/static/css/style.css").permitAll()
                         .anyRequest().authenticated())
                 // .userDetailsService(mechanicDetailService)
                 .formLogin((form) -> form
