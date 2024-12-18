@@ -43,12 +43,14 @@ public class OrderService {
             return ordersList;
         }
     }
-    // TODO:thinking about more make it more efficient
+
+    // TODO:thinking about make it more efficient
     public void deleteOrderById(int id) {
         Order order = orderRepository.getReferenceById(id);
         List<Client> clients = clientRepository.findAll();
         List<Bike> bikes = bikeRepository.findAll();
         List<Services> services = servicesRepository.findAll();
+
         for (Client client : clients) {
             client.getOrder();
             clientRepository.deleteById(client.getClientId());
@@ -63,10 +65,11 @@ public class OrderService {
             service.getOrder();
             clientRepository.deleteById(service.getServiceId());
 
-            if (!(order.getOrderId() == 0)) {
-                orderRepository.deleteById(id);
-                System.out.println("order deleted");
-            }
+        }
+
+        if (!(order.getOrderId() == 0)) {
+            orderRepository.deleteById(id);
+            System.out.println("order deleted");
         }
     }
 
