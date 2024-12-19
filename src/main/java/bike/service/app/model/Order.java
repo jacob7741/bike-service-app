@@ -30,7 +30,7 @@ public class Order {
     @Column(name = "orderId")
     private int orderId;
     @OneToOne
-    @JoinColumn(name = "mechanic",referencedColumnName = "last_name")
+    @JoinColumn(name = "mechanic", referencedColumnName = "last_name")
     private Mechanic mechanic;
     @Column(name = "service")
     private String service;
@@ -39,7 +39,6 @@ public class Order {
     @Column(name = "client")
     private String client;
 
-
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Services> services;
 }

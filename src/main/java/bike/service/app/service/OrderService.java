@@ -44,7 +44,7 @@ public class OrderService {
         }
     }
 
-    // TODO:thinking about make it more efficient
+    // TODO:think about make it more efficient
     public void deleteOrderById(int id) {
         Order order = orderRepository.getReferenceById(id);
         List<Client> clients = clientRepository.findAll();
