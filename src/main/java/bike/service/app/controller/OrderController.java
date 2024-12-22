@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
-import bike.service.app.model.Mechanic;
 import bike.service.app.model.Order;
 import bike.service.app.model.Services;
+import bike.service.app.model.Users;
 import bike.service.app.service.BikeService;
 import bike.service.app.service.ClientService;
-import bike.service.app.service.MechanicService;
 import bike.service.app.service.OrderService;
 import bike.service.app.service.ServicesService;
+import bike.service.app.service.UsersService;
 
 @Controller
 public class OrderController {
@@ -32,7 +32,7 @@ public class OrderController {
     @Autowired
     private ClientService clientService;
     @Autowired
-    private MechanicService mechanicService;
+    private UsersService userService;
 
 //    mam dwie metody które mapują home druga jest w logincotrolerze
 //    dowiedzieć się więcej czy musi tak to być czy jest jakieś
@@ -41,8 +41,8 @@ public class OrderController {
     @GetMapping("/")
     public String home(Model model) {
         System.out.println("application start");
-        List<Mechanic> mechanics = mechanicService.getAllMechanics();
-        model.addAttribute("mechanics", mechanics);
+        List<Users> users = userService.getAllUsers();
+        model.addAttribute("users", users);
         return "mainSite";
     }
 
@@ -52,7 +52,7 @@ public class OrderController {
                                 @ModelAttribute Order order,
                                 @ModelAttribute Bike bike,
                                 @ModelAttribute Client client,
-                                @RequestParam int mechanics,
+                                @RequestParam int users,
                                 @RequestParam(required = false) String repairDetails,
                                 @RequestParam(required = false) Integer repairPrice) {
 
@@ -67,7 +67,7 @@ public class OrderController {
         bikeService.addNewBike(bike);
         clientService.addNewClient(client);
 
-        orderService.saveMechanicToOrder(order, mechanics);
+        orderService.saveMechanicToOrder(order, users);
         orderService.saveClientToOrder(order, client);
         orderService.saveServiceToOrder(order, services);
         orderService.saveBikeToOrder(order, bike);

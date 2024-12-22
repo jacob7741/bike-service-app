@@ -72,9 +72,9 @@
         <div class="mechanic-group">
             <fieldset>
                 <legend>Wybierz mechanika:</legend>
-                <div th:each="mechanic : ${mechanics}">
-                    <label><input type="radio" name="mechanics" th:value="${mechanic.mechanicId}"
-                                  th:text="${mechanic.firstName} + ' ' + ${mechanic.lastName}"/>
+                <div th:each="user : ${users}">
+                    <label><input type="radio" name="users" th:value="${user.userId}"
+                                  th:text="${user.firstName} + ' ' + ${user.lastName}"/>
                     </label><br/>
                 </div>
             </fieldset>

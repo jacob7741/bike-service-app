@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import bike.service.app.model.Mechanic;
 import bike.service.app.model.Order;
-import bike.service.app.service.MechanicService;
+import bike.service.app.model.Users;
 import bike.service.app.service.OrderService;
+import bike.service.app.service.UsersService;
 
 @Controller
 public class LoginController {
@@ -24,7 +24,7 @@ public class LoginController {
     @Autowired
     private OrderService orderService;
     @Autowired
-    private MechanicService mechanicService;
+    private UsersService userService;
 
     @GetMapping("/mechanicSite")
     public String mechanicSite(Model model) {                   
@@ -32,18 +32,18 @@ public class LoginController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String mechanicName = authentication.getName();
 
-        List<Mechanic> mechanicList = mechanicService.getAllMechanics();
+        List<Users> usersList = userService.getAllUsers();
         List<Order> orderList = orderService.getAllOrders();
         AtomicReference<String> fullName = new AtomicReference<>(new String());
 
         List<Order> personalList = new ArrayList<>();
 
         // TODO: this method move to loginService think how to make more efficient
-        for (Mechanic mechanic : mechanicList) {
-            if (mechanic.getUserName().equals(mechanicName)) {
-                fullName.set(mechanic.getFirstName() + " " + mechanic.getLastName());
+        for (Users user : usersList) {
+            if (user.getUserName().equals(mechanicName)) {
+                fullName.set(user.getFirstName() + " " + user.getLastName());
                 for (Order order : orderList) {
-                    if (order.getMechanic().getLastName().equals(mechanic.getLastName())) {
+                    if (order.getMechanic().getLastName().equals(user.getLastName())) {
                         personalList.add(order);
                     }
                 }
