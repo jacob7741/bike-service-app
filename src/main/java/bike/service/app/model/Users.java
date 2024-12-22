@@ -11,12 +11,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Mechanic")
-public class Mechanic {
+@Table(name = "Users")
+public class Users {
     @Id
-    @Column(name = "mechanicId")
+    @Column(name = "userId")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int mechanicId;
+    private int userId;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -25,15 +25,9 @@ public class Mechanic {
     private String userName;
     @Column(name = "password")
     private String password;
-
     @Override
     public String toString() {
-        return "Mechanic{" +
-                "mechanicId=" + mechanicId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return "Users [usersId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
+                + userName + ", password=" + password + "]";
     }
 }

@@ -31,7 +31,7 @@ public class Order {
     private int orderId;
     @OneToOne
     @JoinColumn(name = "mechanic",referencedColumnName = "last_name")
-    private Mechanic mechanic;
+    private Users mechanic;
     @Column(name = "service")
     private String service;
     @Column(name = "bikeModel")

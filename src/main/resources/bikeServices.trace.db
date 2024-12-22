@@ -18284,3 +18284,12 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: /Users/jacobsunn
 	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
 	... 54 more
+2024-12-23 00:03:02.028442+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table mechanic rename to [*]USER"; expected "identifier"; SQL statement:
+alter table mechanic rename to USER [42001-232]
+2024-12-23 00:03:29.254166+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table mechanic rename to [*]User varchar(255)"; expected "identifier"; SQL statement:
+alter table mechanic rename to User varchar(255) [42001-232]
+2024-12-23 00:04:09.281287+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table mechanic rename to [*]User"; expected "identifier"; SQL statement:
+alter table mechanic rename to User [42001-232]

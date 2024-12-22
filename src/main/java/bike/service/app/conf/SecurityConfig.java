@@ -15,8 +15,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import bike.service.app.model.repository.MechanicRepository;
-import bike.service.app.service.MechanicService;
+import bike.service.app.model.repository.UsersRepository;
+import bike.service.app.service.UsersService;
 
 @SuppressWarnings("unused")
 @Configuration
@@ -24,11 +24,11 @@ import bike.service.app.service.MechanicService;
 public class SecurityConfig {
 
     @Autowired
-    private MechanicRepository mechanicRepository;
+    private UsersRepository mechanicRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
-    private MechanicService mechanicService;
+    private UsersService mechanicService;
     @Autowired
     private UserDetailsService userDetailsService;
     @Autowired

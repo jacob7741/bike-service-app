@@ -6,26 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import bike.service.app.model.Mechanic;
-import bike.service.app.model.repository.MechanicRepository;
+import bike.service.app.model.Users;
+import bike.service.app.model.repository.UsersRepository;
 
 @Service
 public class LoginService {
     @Autowired
-    private MechanicRepository mechanicRepository;
+    private UsersRepository usersRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
 
     public void updatePasswords() {
-        List<Mechanic> mechanics = mechanicRepository.findAll();
-        for (Mechanic mechanic : mechanics) {
-            String rawPassword = mechanic.getPassword();
+        List<Users> users = usersRepository.findAll();
+        for (Users user : users) {
+            String rawPassword = user.getPassword();
             if (!rawPassword.startsWith("$2a$")) {
                 String encodedPassword = passwordEncoder.encode(rawPassword);
-                mechanic.setPassword(encodedPassword);
-                mechanicRepository.save(mechanic);
+                user.setPassword(encodedPassword);
+                usersRepository.save(user);
             }
         }
     }
