@@ -5,6 +5,7 @@
     "editor.minimap.enabled": false,
     "java.compile.nullAnalysis.mode": "automatic",
     "editor.fontSize": 14,
+<<<<<<< HEAD
     "editor.fontLigatures": false,
     "editor.fontWeight": "normal",
     "editor.tokenColorCustomizations": {
@@ -48,3 +49,9 @@
         "terminal.ansiYellow": "#C19C00"
     }
 }
+=======
+    "terminal.integrated.fontSize": 14,
+    "liveServer.settings.port": 5500,
+    "java.configuration.updateBuildConfiguration": "automatic"
+}
+>>>>>>> 6e96a7c (updateLoginWork)
