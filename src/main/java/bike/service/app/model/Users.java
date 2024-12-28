@@ -1,6 +1,11 @@
 package bike.service.app.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +30,8 @@ public class Users {
     private String userName;
     @Column(name = "password")
     private String password;
+
+
     @Override
     public String toString() {
         return "Users [usersId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
