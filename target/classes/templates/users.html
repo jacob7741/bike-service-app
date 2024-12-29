@@ -28,14 +28,16 @@
                 <td th:text="${order.bikeModel}"></td>
                 <td class="clientId" th:text="${order.client}"></td>
                 <td class="button-container">
-                    <form method="post" th:action="@{/users/done/{id}(id=${order.orderId})}">
+                    <form method="get" th:action="@{/users/edit/{id}(id=${order.orderId})}">
                         <button type="submit" class="edit-btn">edit</button>
+                    </form>
+                    <form method="post" th:action="@{/users/done/{id}(id=${order.orderId})}">
                         <button type="submit" class="done-btn">done</button>
                     </form>
                 </td>
             </tr>
         </tbody>
-        
+
     </table>
 </body>
 

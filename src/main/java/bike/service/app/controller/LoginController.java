@@ -11,12 +11,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import bike.service.app.model.Order;
 import bike.service.app.model.Users;
 import bike.service.app.service.OrderService;
 import bike.service.app.service.UsersService;
+import bike.service.app.service.userroles.MechanicService;
+
 
 @Controller
 public class LoginController {
@@ -26,8 +29,11 @@ public class LoginController {
     @Autowired
     private UsersService userService;
 
+    @Autowired
+    private MechanicService mechanicService;
+
     @GetMapping("/users")
-    public String mechanicSite(Model model) {                   
+    public String mechanicSite(Model model) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String mechanicName = authentication.getName();
@@ -60,10 +66,18 @@ public class LoginController {
         orderService.deleteOrderById(id);
         return "redirect:/users";
     }
+
     @GetMapping("/users/edit/{id}")
-    public String editButton(
-            @RequestParam int id) {
-        orderService.deleteOrderById(id);
+    public String getEditForm(@PathVariable("id") int id, Model model) {
+        Order order = mechanicService.getOrderById(id);
+        model.addAttribute("order", order);
+        return "update";
+    }
+
+    @PostMapping("/orders/updateService")
+    public String updateService(@RequestParam("service") String service,
+    @RequestParam("orderId") int orderId) {
+        mechanicService.editOrderById(service, orderId);
         return "redirect:/users";
     }
 }

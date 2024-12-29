@@ -9,10 +9,11 @@
 </head>
 
 <body>
-    <h1>Aktualizacja Usługi</h1>
+    <h2>Aktualizacja Usługi</h2>
     <form method="post" th:action="@{/orders/updateService}">
         <div>
             <label for="orderId">Order ID:</label>
+            <span th:text="${order.orderId}"></span>
             <input type="hidden" id="orderId" name="orderId" th:value="${order.orderId}" readonly>
         </div>
         <div>
