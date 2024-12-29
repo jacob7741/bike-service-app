@@ -43,7 +43,7 @@ public class OrderController {
         System.out.println("application start");
         List<Users> users = userService.getAllUsers();
         model.addAttribute("users", users);
-        return "mainSite";
+        return "main";
     }
 
     @PostMapping(value = "/services/submit", params = "serviceType")

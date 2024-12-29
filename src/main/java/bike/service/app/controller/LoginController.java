@@ -26,7 +26,7 @@ public class LoginController {
     @Autowired
     private UsersService userService;
 
-    @GetMapping("/mechanicSite")
+    @GetMapping("/users")
     public String mechanicSite(Model model) {                   
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -51,19 +51,19 @@ public class LoginController {
         }
         model.addAttribute("username", fullName.get());
         model.addAttribute("orderList", personalList);
-        return "mechanicSite";
+        return "users";
     }
 
-    @GetMapping("/mechanicSite/done/{id}")
+    @GetMapping("/users/done/{id}")
     public String doneButton(
             @PathVariable("id") int id) {
         orderService.deleteOrderById(id);
-        return "redirect:/mechanicSite";
+        return "redirect:/users";
     }
-    @GetMapping("/mechanicSite/edit/{id}")
+    @GetMapping("/users/edit/{id}")
     public String editButton(
             @RequestParam int id) {
         orderService.deleteOrderById(id);
-        return "redirect:/mechanicSite";
+        return "redirect:/users";
     }
 }
