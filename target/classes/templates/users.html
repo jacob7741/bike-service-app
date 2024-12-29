@@ -28,8 +28,8 @@
                 <td th:text="${order.bikeModel}"></td>
                 <td class="clientId" th:text="${order.client}"></td>
                 <td class="button-container">
-                    <a th:href="@{/update/{id}(id=${order.orderId})}" class="edit-btn">edit</a>
                     <form method="post" th:action="@{/users/done/{id}(id=${order.orderId})}">
+                        <button type="submit" class="edit-btn">edit</button>
                         <button type="submit" class="done-btn">done</button>
                     </form>
                 </td>

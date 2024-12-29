@@ -43,9 +43,9 @@ public class SecurityConfig {
                         .anyRequest().authenticated())
                 // .userDetailsService(mechanicDetailService)
                 .formLogin((form) -> form
-                        .loginPage("/mainSite")
+                        .loginPage("/main")
                         .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/mechanicSite", true)
+                        .defaultSuccessUrl("/users", true)
                         .permitAll())
                 .logout(LogoutConfigurer::permitAll)
                 .csrf(AbstractHttpConfigurer::disable)
