@@ -1,15 +1,11 @@
 package bike.service.app.service.userroles;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import bike.service.app.model.Bike;
-import bike.service.app.model.Client;
 import bike.service.app.model.Order;
-import bike.service.app.model.Services;
 import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
@@ -30,6 +26,16 @@ public class MechanicService {
     @Autowired
     private UsersService userService;
 
+    public void doneStatusById(int id) {
+        Optional<Order> optional = orderRepository.findById(id);
+        if(optional.isPresent()) {
+            Order newOrder = optional.get();
+            newOrder.setStatus(Order.Status.DONE);
+
+            orderRepository.save(newOrder);
+        }
+    }
+
     public void editOrderById(String edit, int id) {
         Optional<Order> orderOptional = orderRepository.findById(id);
         if (orderOptional.isPresent()) {
@@ -37,52 +43,9 @@ public class MechanicService {
             newOrder.setService(edit);
 
             orderRepository.save(newOrder);
-
         }
     }
 
-    public void deleteOrderById(int id) {
-        Order order = orderRepository.getReferenceById(id);
-        List<Client> clients = clientRepository.findAll();
-        List<Bike> bikes = bikeRepository.findAll();
-        List<Services> services = servicesRepository.findAll();
-
-        if (order.getStatus().equals(Order.Status.DONE)) {
-            for (Client client : clients) {
-                clientRepository.deleteById(client.getClientId());
-                client.getOrder();
-            }
-
-            for (Bike bike : bikes) {
-                bike.getOrder();
-                bikeRepository.deleteById(bike.getBikeId());
-            }
-
-            for (Services service : services) {
-                service.getOrder();
-                clientRepository.deleteById(service.getServiceId());
-
-            }
-
-            if (!(order.getOrderId() == 0)) {
-                orderRepository.deleteById(id);
-                System.out.println("order deleted");
-            }
-        } else {
-            throw new RuntimeException("Order status ACTIVE");
-        }
-    }
-
-    // public Order saveMechanicToOrder(Order order, int id) {
-    //     System.out.println("saveMechanicToOrder");
-    //     Users mechanic = userService.getUserById(id);
-    //     order.setMechanic(mechanic);
-    //     System.out.println("Order before save: " + order);
-    //     orderRepository.save(order);
-    //     System.out.println("Order after save: " + order);
-    //     // mechanicRepository.save(mechanic);
-    //     return order;
-    // }
     public Order getOrderById(int id) {
         Optional<Order> order = orderRepository.findById(id);
         return order.get();
