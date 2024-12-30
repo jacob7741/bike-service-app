@@ -2,6 +2,8 @@ package bike.service.app.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,6 +20,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "Users")
 public class Users {
+
+    public enum Role {
+        MANAGER, MECHANIC
+    }
+
     @Id
     @Column(name = "userId")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,6 +37,10 @@ public class Users {
     private String userName;
     @Column(name = "password")
     private String password;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(name="role")
+    private Role role;
 
 
     @Override

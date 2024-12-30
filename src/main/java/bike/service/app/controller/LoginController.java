@@ -60,10 +60,10 @@ public class LoginController {
         return "users";
     }
 
-    @GetMapping("/users/done/{id}")
+    @PostMapping("/users/done/{id}")
     public String doneButton(
             @PathVariable("id") int id) {
-        orderService.deleteOrderById(id);
+        mechanicService.deleteOrderById(id);
         return "redirect:/users";
     }
 
