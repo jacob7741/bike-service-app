@@ -1,5 +1,15 @@
 package bike.service.app.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import static org.mockito.ArgumentMatchers.any;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import static org.mockito.Mockito.when;
+import org.mockito.junit.jupiter.MockitoExtension;
+
 import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
@@ -8,16 +18,6 @@ import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.ServicesRepository;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class OrderServiceTest {
@@ -38,32 +38,6 @@ class OrderServiceTest {
     private OrderService orderService;
     @InjectMocks
     private ClientService clientService;
-
-//    @Test
-//    void createOrderTest() {
-//        Bike bike = new Bike();
-//        bike.setModelType("Góral");
-//
-//        Client client = new Client();
-//        client.setLast_name("Kowalski");
-//
-//
-//        Services services = new Services();
-//        services.setSmallService(50);
-//        services.setServiceId(12);
-//
-//        Order order = new Order();
-//        order.setMechanic("Mechanik Bob");
-//        order.setOrderId(1853);
-//        order.setServices(services);
-//        order.setClient(client.getLast_name());
-//        order.setBikeModel(bike.getModelType());
-//
-//       when(orderRepository.save(any(Order.class))).thenReturn(order);
-//
-//       assertNotNull(order);
-//
-//    }
 
     @Test
     void saveServiceToOrder() {
@@ -90,6 +64,7 @@ class OrderServiceTest {
     @Test
     void saveClientToOrder() {
         Client client = new Client();
+        client.setClientId(12);
         client.setLast_name("Kowalski");
 
         Order order = new Order();
@@ -100,7 +75,7 @@ class OrderServiceTest {
         Order clientSaved = orderService.saveClientToOrder(order, client);
 
         assertNotNull(clientSaved);
-        assertEquals("Kowalski", clientSaved.getClient());
+        assertEquals("Kowalski id: 12", clientSaved.getClient());
     }
 
     @Test
@@ -116,6 +91,6 @@ class OrderServiceTest {
         Order bikeSaved = orderService.saveBikeToOrder(order, bike);
 
         assertNotNull(bikeSaved);
-        assertEquals("model of bike is: Góral", bikeSaved.getBikeModel());
+        assertEquals("Góral", bikeSaved.getBikeModel());
     }
 }

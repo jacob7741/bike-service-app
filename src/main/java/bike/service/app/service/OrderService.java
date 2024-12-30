@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
+import bike.service.app.model.Order.Status;
 import bike.service.app.model.Services;
 import bike.service.app.model.Users;
 import bike.service.app.model.repository.BikeRepository;
@@ -44,35 +45,6 @@ public class OrderService {
         }
     }
 
-    // TODO:thinking about make it more efficient
-    public void deleteOrderById(int id) {
-        Order order = orderRepository.getReferenceById(id);
-        List<Client> clients = clientRepository.findAll();
-        List<Bike> bikes = bikeRepository.findAll();
-        List<Services> services = servicesRepository.findAll();
-
-        for (Client client : clients) {
-            client.getOrder();
-            clientRepository.deleteById(client.getClientId());
-        }
-
-        for (Bike bike : bikes) {
-            bike.getOrder();
-            bikeRepository.deleteById(bike.getBikeId());
-        }
-
-        for (Services service : services) {
-            service.getOrder();
-            clientRepository.deleteById(service.getServiceId());
-
-        }
-
-        if (!(order.getOrderId() == 0)) {
-            orderRepository.deleteById(id);
-            System.out.println("order deleted");
-        }
-    }
-
     public Order saveMechanicToOrder(Order order, int id) {
         System.out.println("saveMechanicToOrder");
 
@@ -99,6 +71,7 @@ public class OrderService {
             order.setService("reprair - id: " + services.getServiceId());
         }
 
+        order.setStatus(Status.ACTIVE);
         orderRepository.save(order);
         services.setOrder(order);
         servicesRepository.save(services);

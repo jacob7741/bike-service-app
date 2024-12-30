@@ -5,6 +5,8 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,6 +27,11 @@ import lombok.Setter;
 @Entity
 @Table(name = "RequestOrder")
 public class Order {
+
+    public enum Status {
+        ACTIVE, DONE;
+    } 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "orderId")
@@ -38,6 +45,10 @@ public class Order {
     private String bikeModel;
     @Column(name = "client")
     private String client;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="staus")
+    private Status status;
 
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
