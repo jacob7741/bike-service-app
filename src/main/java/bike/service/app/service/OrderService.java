@@ -1,7 +1,9 @@
+
 package bike.service.app.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.ServicesRepository;
 import bike.service.app.model.repository.UsersRepository;
+
 
 @Service
 public class OrderService {
@@ -43,6 +46,30 @@ public class OrderService {
         } else {
             return ordersList;
         }
+    }
+
+    @SuppressWarnings("static-access")
+    public List<Order> getAllActiveOrders() {
+
+        // List<Order> ordersList = orderRepository.findAll();
+        // List<Order> activeOrders = new ArrayList<>();
+        // for (Order order : ordersList) {
+        //     if(order.getStatus() != null && order.getStatus().equals(Order.Status.ACTIVE)) {
+        //         activeOrders.add(order);
+        //     }
+        // }
+        // return activeOrders;
+
+        return orderRepository.findAll().stream()
+                .filter(order -> Order.Status.ACTIVE.equals(order.getStatus()))
+                .collect(Collectors.toList());
+    }
+
+    public List<Order> getAllDonOrders() {
+        
+        return orderRepository.findAll().stream()
+                .filter(order -> Order.Status.DONE.equals(order.getStatus()))
+                .collect(Collectors.toList());
     }
 
     public Order saveMechanicToOrder(Order order, int id) {

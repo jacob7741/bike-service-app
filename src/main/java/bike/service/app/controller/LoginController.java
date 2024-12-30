@@ -18,8 +18,8 @@ import bike.service.app.model.Order;
 import bike.service.app.model.Users;
 import bike.service.app.service.OrderService;
 import bike.service.app.service.UsersService;
+import bike.service.app.service.userroles.ManagerService;
 import bike.service.app.service.userroles.MechanicService;
-
 
 @Controller
 public class LoginController {
@@ -28,9 +28,10 @@ public class LoginController {
     private OrderService orderService;
     @Autowired
     private UsersService userService;
-
     @Autowired
     private MechanicService mechanicService;
+    @Autowired
+    private ManagerService managerService;
 
     @GetMapping("/users")
     public String mechanicSite(Model model) {
@@ -39,7 +40,7 @@ public class LoginController {
         String mechanicName = authentication.getName();
 
         List<Users> usersList = userService.getAllUsers();
-        List<Order> orderList = orderService.getAllOrders();
+        List<Order> orderList = orderService.getAllActiveOrders();
         AtomicReference<String> fullName = new AtomicReference<>(new String());
 
         List<Order> personalList = new ArrayList<>();
@@ -63,7 +64,7 @@ public class LoginController {
     @PostMapping("/users/done/{id}")
     public String doneButton(
             @PathVariable("id") int id) {
-        mechanicService.deleteOrderById(id);
+        mechanicService.doneStatusById(id);
         return "redirect:/users";
     }
 
@@ -76,7 +77,7 @@ public class LoginController {
 
     @PostMapping("/orders/updateService")
     public String updateService(@RequestParam("service") String service,
-    @RequestParam("orderId") int orderId) {
+            @RequestParam("orderId") int orderId) {
         mechanicService.editOrderById(service, orderId);
         return "redirect:/users";
     }
