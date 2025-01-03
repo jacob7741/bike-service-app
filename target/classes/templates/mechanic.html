@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Mechanika</title>
-    <link rel="stylesheet" href="/static/css/userstyle.css">
+    <link rel="stylesheet" href="/static/css/mechanicstyle.css">
 </head>
 
 <body>
@@ -28,10 +28,10 @@
                 <td th:text="${order.bikeModel}"></td>
                 <td class="clientId" th:text="${order.client}"></td>
                 <td class="button-container">
-                    <form method="get" th:action="@{/users/edit/{id}(id=${order.orderId})}">
+                    <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
                         <button type="submit" class="edit-btn">edit</button>
                     </form>
-                    <form method="post" th:action="@{/users/done/{id}(id=${order.orderId})}">
+                    <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
                         <button type="submit" class="done-btn">done</button>
                     </form>
                 </td>

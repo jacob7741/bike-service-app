@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -18,11 +19,10 @@ import bike.service.app.model.Order;
 import bike.service.app.model.Users;
 import bike.service.app.service.OrderService;
 import bike.service.app.service.UsersService;
-import bike.service.app.service.userroles.ManagerService;
 import bike.service.app.service.userroles.MechanicService;
 
 @Controller
-public class LoginController {
+public class MechanicController {
 
     @Autowired
     private OrderService orderService;
@@ -30,10 +30,9 @@ public class LoginController {
     private UsersService userService;
     @Autowired
     private MechanicService mechanicService;
-    @Autowired
-    private ManagerService managerService;
 
-    @GetMapping("/users")
+    @GetMapping("/mechanic")
+    @PreAuthorize("hasRole('MECHANIC')")
     public String mechanicSite(Model model) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -58,17 +57,17 @@ public class LoginController {
         }
         model.addAttribute("username", fullName.get());
         model.addAttribute("orderList", personalList);
-        return "users";
+        return "mechanic";
     }
 
-    @PostMapping("/users/done/{id}")
+    @PostMapping("/mechanic/done/{id}")
     public String doneButton(
             @PathVariable("id") int id) {
         mechanicService.doneStatusById(id);
-        return "redirect:/users";
+        return "redirect:/mechanic";
     }
 
-    @GetMapping("/users/edit/{id}")
+    @GetMapping("/mechanic/edit/{id}")
     public String getEditForm(@PathVariable("id") int id, Model model) {
         Order order = mechanicService.getOrderById(id);
         model.addAttribute("order", order);
@@ -79,6 +78,6 @@ public class LoginController {
     public String updateService(@RequestParam("service") String service,
             @RequestParam("orderId") int orderId) {
         mechanicService.editOrderById(service, orderId);
-        return "redirect:/users";
+        return "redirect:/mechanic";
     }
 }
