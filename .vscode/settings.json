@@ -46,5 +46,6 @@
         "terminal.ansiRed": "#C50F1F",
         "terminal.ansiWhite": "#CCCCCC",
         "terminal.ansiYellow": "#C19C00"
-    }
+    },
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
