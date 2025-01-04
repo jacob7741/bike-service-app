@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 /Users/jacobsunny/BServiceProject/src/test/java/bike/service/app/AppApplicationTests.java
 /Users/jacobsunny/BServiceProject/src/test/java/bike/service/app/service/ServicesServiceTest.java
+=======
+/Users/jacobsunny/BServiceProject/src/test/java/bike/service/app/service/userroles/ManagerServiceTest.java
+/Users/jacobsunny/BServiceProject/src/test/java/bike/service/app/AppApplicationTests.java
+/Users/jacobsunny/BServiceProject/src/test/java/bike/service/app/service/ServicesServiceTest.java
+/Users/jacobsunny/BServiceProject/src/test/java/bike/service/app/service/ClientServiceTest.java
+>>>>>>> refactor
 /Users/jacobsunny/BServiceProject/src/test/java/bike/service/app/controller/OrderControllerTest.java
 /Users/jacobsunny/BServiceProject/src/test/java/bike/service/app/service/OrderServiceTest.java

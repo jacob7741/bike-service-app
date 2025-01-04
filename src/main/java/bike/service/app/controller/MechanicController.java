@@ -32,7 +32,11 @@ public class MechanicController {
     private MechanicService mechanicService;
 
     @GetMapping("/mechanic")
+<<<<<<< HEAD
     @PreAuthorize("hasRole('MECHANIC')")
+=======
+    // @PreAuthorize("hasRole('MECHANIC')")
+>>>>>>> refactor
     public String mechanicSite(Model model) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

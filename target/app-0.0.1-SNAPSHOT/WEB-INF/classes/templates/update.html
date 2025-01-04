@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aktualizacja Usługi</title>
+    <link rel="stylesheet" href="/static/css/userstyle.css">
+</head>
+
+<body>
+    <h2>Aktualizacja Usługi</h2>
+    <form method="post" th:action="@{/orders/updateService}">
+        <div>
+            <label for="orderId">Order ID:</label>
+            <span th:text="${order.orderId}"></span>
+            <input type="hidden" id="orderId" name="orderId" th:value="${order.orderId}" readonly>
+        </div>
+        <div>
+            <label for="service">Service:</label>
+            <input type="text" id="service" name="service" th:value="${order.service}">
+        </div>
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

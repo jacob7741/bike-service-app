@@ -1,4 +1,12 @@
+<<<<<<< HEAD
+=======
+bike/service/app/service/userroles/ManagerServiceTest.class
+>>>>>>> refactor
 bike/service/app/service/ServicesServiceTest.class
 bike/service/app/controller/OrderControllerTest.class
 bike/service/app/AppApplicationTests.class
 bike/service/app/service/OrderServiceTest.class
+<<<<<<< HEAD
+=======
+bike/service/app/service/ClientServiceTest.class
+>>>>>>> refactor

@@ -1,8 +1,16 @@
 bike/service/app/model/repository/ServicesRepository.class
+<<<<<<< HEAD
+=======
+bike/service/app/service/userroles/MechanicService.class
+>>>>>>> refactor
 bike/service/app/service/LoginService.class
 bike/service/app/controller/OrderController.class
 bike/service/app/model/repository/ClientRepository.class
 bike/service/app/ServletInitializer.class
+<<<<<<< HEAD
+=======
+bike/service/app/service/userroles/ManagerService.class
+>>>>>>> refactor
 bike/service/app/model/repository/OrderRepository.class
 bike/service/app/service/ServicesService.class
 bike/service/app/service/OrderService.class
@@ -16,9 +24,22 @@ bike/service/app/model/Client.class
 bike/service/app/service/Transictional.class
 bike/service/app/conf/SecurityConfig.class
 bike/service/app/MainServiceApp.class
+<<<<<<< HEAD
 bike/service/app/DBinit.class
 bike/service/app/controller/LoginController.class
 bike/service/app/service/UsersService.class
 bike/service/app/service/BikeService.class
 bike/service/app/service/ClientService.class
 bike/service/app/conf/PasswordConfig.class
+=======
+bike/service/app/controller/ManagerController.class
+bike/service/app/DBinit.class
+bike/service/app/model/Order$Status.class
+bike/service/app/service/UsersService.class
+bike/service/app/model/Users$Role.class
+bike/service/app/service/BikeService.class
+bike/service/app/controller/MechanicController.class
+bike/service/app/service/ClientService.class
+bike/service/app/conf/PasswordConfig.class
+bike/service/app/conf/SecurityConfig$CustomAuthenticationSuccessHandler.class
+>>>>>>> refactor
