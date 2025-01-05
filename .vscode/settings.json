@@ -48,6 +48,7 @@
         "terminal.ansiWhite": "#CCCCCC",
         "terminal.ansiYellow": "#C19C00"
     }
+<<<<<<< HEAD
 }
 =======
     "terminal.integrated.fontSize": 14,
@@ -55,3 +56,6 @@
     "java.configuration.updateBuildConfiguration": "automatic"
 }
 >>>>>>> 6e96a7c (updateLoginWork)
+=======
+}
+>>>>>>> refactor

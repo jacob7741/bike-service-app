@@ -2,7 +2,11 @@
 Test set: bike.service.app.service.ClientServiceTest
 -------------------------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in bike.service.app.service.ClientServiceTest
 =======
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in bike.service.app.service.ClientServiceTest
+>>>>>>> refactor
+=======
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in bike.service.app.service.ClientServiceTest
 >>>>>>> refactor
