@@ -55,8 +55,7 @@ public class LoginService {
             if (!rawPassword.startsWith("$2a$")) {
                 String encodedPassword = passwordEncoder.encode(rawPassword);
                 user.setPassword(encodedPassword);
-                // there it will be better to make method in userService
-                // which update actuall user data
+              
                 usersRepository.save(user);
             }
         }
