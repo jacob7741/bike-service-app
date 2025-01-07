@@ -1,6 +1,5 @@
 package bike.service.app.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -16,45 +15,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import bike.service.app.model.Order;
-import bike.service.app.model.Users;
-import bike.service.app.service.OrderService;
-import bike.service.app.service.UsersService;
+import bike.service.app.service.LoginService;
 import bike.service.app.service.userroles.MechanicService;
 
 @Controller
 public class MechanicController {
 
     @Autowired
-    private OrderService orderService;
-    @Autowired
-    private UsersService userService;
-    @Autowired
     private MechanicService mechanicService;
+    @Autowired
+    private LoginService loginService;
 
     @GetMapping("/mechanic")
-    // @PreAuthorize("hasRole('MECHANIC')")
     public String mechanicSite(Model model) {
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String mechanicName = authentication.getName();
-
-        List<Users> usersList = userService.getAllUsers();
-        List<Order> orderList = orderService.getAllActiveOrders();
         AtomicReference<String> fullName = new AtomicReference<>(new String());
 
-        List<Order> personalList = new ArrayList<>();
+        List<Order> personalList = loginService.personalList(fullName);
 
-        // TODO: this method move to loginService think how to make more efficient
-        for (Users user : usersList) {
-            if (user.getUserName().equals(mechanicName)) {
-                fullName.set(user.getFirstName() + " " + user.getLastName());
-                for (Order order : orderList) {
-                    if (order.getMechanic().getLastName().equals(user.getLastName())) {
-                        personalList.add(order);
-                    }
-                }
-            }
-        }
         model.addAttribute("username", fullName.get());
         model.addAttribute("orderList", personalList);
         return "mechanic";
