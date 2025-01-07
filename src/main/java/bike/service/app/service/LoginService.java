@@ -48,14 +48,15 @@ public class LoginService {
     }
 
     public void updatePasswords() {
-        
+
         List<Users> usersList = usersService.getAllUsers();
         for (Users user : usersList) {
             String rawPassword = user.getPassword();
             if (!rawPassword.startsWith("$2a$")) {
                 String encodedPassword = passwordEncoder.encode(rawPassword);
                 user.setPassword(encodedPassword);
-              
+                // there it will be better to make method in userService
+                // which update actuall user data
                 usersRepository.save(user);
             }
         }
