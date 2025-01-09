@@ -11,4 +11,5 @@ You can download it from the master branch, which is always kept up-to-date, and
 
 There is some login and password users, so you can login and chack how it's works:
 ueser: johndoe, password: password12
+
 user: janesmith, password: password34
