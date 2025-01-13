@@ -34,12 +34,12 @@ public class OrderController {
     @Autowired
     private UsersService userService;
 
-    @GetMapping("/")
+    @GetMapping("/order")
     public String home(Model model) {
         System.out.println("application start");
         List<Users> users = userService.getAllUsers();
         model.addAttribute("users", users);
-        return "main";
+        return "order";
     }
 
     @PostMapping(value = "/services/submit", params = "serviceType")
@@ -67,6 +67,6 @@ public class OrderController {
         orderService.saveServiceToOrder(order, services);
         orderService.saveBikeToOrder(order, bike);
 
-        return "redirect:/";
+        return "redirect:/mechanic";
     }
 }

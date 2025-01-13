@@ -34,14 +34,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authorize) -> authorize
-                .requestMatchers( "/**" ,"/static/css/**").permitAll()
-                .requestMatchers("/manager").hasRole("MANAGER")
-                .requestMatchers("/mechanic").hasRole("MECHANIC")
+                .requestMatchers("/","/h2-console/**" ,"/static/css/**").permitAll()
+                .requestMatchers("/**", "/order/**").hasAnyRole("MANAGER", "MECHANIC")
+                .requestMatchers("/services/submit/**").authenticated()
                 )
                 .formLogin(
                         (form) -> form
-                                .loginPage("/")
-                                .loginProcessingUrl("/login")
+                                // .loginPage("/")
+                                // .loginProcessingUrl("/")
                                 .successHandler(custom)
                                 .permitAll()
                 )
@@ -51,7 +51,6 @@ public class SecurityConfig {
                         headers -> headers
                                 .frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)
                 );
-
         return http.build();
     }
 

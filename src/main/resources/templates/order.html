@@ -9,17 +9,6 @@
 </head>
 
 <body>
-<div th:if="${param.error}">
-    Invalid username and password.
-</div>
-<form class="login-basic-form" th:action="@{/login}" method="post">
-    <div class="header">
-        <div class="login-form">
-            <input type="text" placeholder="Login" id="login" name="username" required>
-            <input type="password" placeholder="Password" id="password" name="password" required>
-            <button type="submit">Zaloguj się</button>
-        </div>
-    </div>
 </form>
 <h2>Dodaj rower do serwisu:</h2>
 <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
@@ -84,9 +73,7 @@
         <button type="submit" name="services">Dodaj Usługę</button>
     </div>
 </form>
-<div class="footer">
-    <p>Autor: .... | @bike service app@</p>
-</div>
+
 
 <script>
     function toggleRepairDetails(radio) {
