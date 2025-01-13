@@ -34,10 +34,6 @@ public class OrderController {
     @Autowired
     private UsersService userService;
 
-//    mam dwie metody które mapują home druga jest w logincotrolerze
-//    dowiedzieć się więcej czy musi tak to być czy jest jakieś
-//    bardziej wydajne i poprawne rozwiazanie
-
     @GetMapping("/")
     public String home(Model model) {
         System.out.println("application start");
@@ -55,7 +51,6 @@ public class OrderController {
                                 @RequestParam int users,
                                 @RequestParam(required = false) String repairDetails,
                                 @RequestParam(required = false) Integer repairPrice) {
-
 
         if ("repair".equals(serviceType)) {
             servicesService.createRepairService(services, repairDetails, repairPrice);
