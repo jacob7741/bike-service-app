@@ -38,7 +38,7 @@ public class MechanicController {
     @PostMapping("/mechanic/done/{id}")
     public String doneButton(
             @PathVariable("id") int id) {
-        mechanicService.donetatusById(id);
+        mechanicService.doneStatusById(id);
         return "redirect:/mechanic";
     }
 
