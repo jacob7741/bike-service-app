@@ -29,10 +29,10 @@
                 <td class="clientId" th:text="${order.client}"></td>
                 <td class="button-container">
                     <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
-                        <button type="submit" class="edit-btn">edit</button>
+                        <button type="submit" id="editButton" class="edit-btn">edit</button>
                     </form>
                     <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
-                        <button type="submit" class="done-btn">done</button>
+                        <button type="submit" id="doneButton" class="done-btn">done</button>
                     </form>
                 </td>
             </tr>

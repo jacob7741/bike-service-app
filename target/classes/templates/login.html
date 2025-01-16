@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>login_page</title>
+        <title>login</title>
         <link href="../static/css/loginstyle.css" type="text/css" rel="stylesheet" />
     </head>
 
@@ -19,7 +19,7 @@
                 <div class="login_group">
                     <p th:if="${loginError}" class="errror"></p>
                     <form th:action="@{/login}" method="post">
-                    <label for="username">Username:</label>
+                    <label for="username">Username:</label> 
                     <input type="text" id="username" name="username" required>
                     <br>
                     <label for="password">Password:</label>
@@ -27,7 +27,7 @@
                     <br>
                     <a th:href="@{/register}">Register</a> 
                     <a th:href="@{/forgotpassword}">Forgot password ?</a>
-                    <button type="submit">Login</button>
+                    <button type="submit" id="loginButton">Login</button>
                 </div>
                 </form>
             </div>
