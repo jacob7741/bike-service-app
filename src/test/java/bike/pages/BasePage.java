@@ -20,6 +20,7 @@ public class BasePage {
         find(locator).clear();
         find(locator).sendKeys(text);
     }
+    
     protected void click(By locator) {
         find(locator).click();
     }

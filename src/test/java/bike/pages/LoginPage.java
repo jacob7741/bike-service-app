@@ -24,4 +24,18 @@ public class LoginPage extends BasePage {
         setPasswordField(password);
         return clickLoginButton();
     }
+    
+    public boolean isLoginSuccessfull() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String currentUrl = dWebDriver.getCurrentUrl();
+        
+        System.out.println("Current URL: " + currentUrl);
+    
+        return currentUrl.equals("http://localhost:8080/");
+    }
+    
 }
