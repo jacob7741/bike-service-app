@@ -42,7 +42,7 @@ public class MechanicControllerTest {
                                    assertThat(result.getResponse().getContentAsString(), containsString("Whitelabel Error Page"));
                             }
                         });
-    }
+     }
 
     @Test
     void testUpdateService() {
