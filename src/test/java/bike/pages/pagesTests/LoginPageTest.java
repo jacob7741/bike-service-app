@@ -11,7 +11,6 @@ public class LoginPageTest extends BasePageTest{
         loginPage.setUserNameField("janesmith");
         loginPage.setPasswordField("password34");
         loginPage.clickLoginButton();
-
         
         assertTrue(loginPage.isLoginSuccessfull(), "Login should be succesfull.");
     }
