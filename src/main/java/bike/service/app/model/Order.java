@@ -47,7 +47,7 @@ public class Order {
     private String client;
 
     @Enumerated(EnumType.STRING)
-    @Column(name="staus")
+    @Column(name="status")
     private Status status;
 
 
