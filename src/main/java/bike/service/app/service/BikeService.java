@@ -12,8 +12,10 @@ import bike.service.app.model.repository.BikeRepository;
 
 @Service
 public class BikeService {
+
     @Autowired
     private BikeRepository bikeRepository;
+    
     @SuppressWarnings("unused")
     @Autowired
     private OrderService orderService;

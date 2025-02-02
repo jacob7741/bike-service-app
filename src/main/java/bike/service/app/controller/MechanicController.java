@@ -28,18 +28,17 @@ public class MechanicController {
 
         AtomicReference<String> fullName = new AtomicReference<>(new String());
 
-        List<Order> personalList = loginService.personalList(fullName);
+        List<Order> personalList = loginService.getPersonalList(fullName);
 
         model.addAttribute("username", fullName.get());
         model.addAttribute("orderList", personalList);
         return "mechanic";
     }
 
-    @PostMapping("/mechanic/done/{id}")
-    public String doneButton(
-            @PathVariable("id") int id) {
+    @PostMapping("mechanic/done/{id}")
+    public String doneButton(@PathVariable("id") int id) {
         mechanicService.doneStatusById(id);
-        return "redirect:/mechanic";
+            return "redirect:/mechanic";
     }
 
     @GetMapping("/mechanic/edit/{id}")

@@ -25,7 +25,7 @@ public class LoginService {
     @Autowired
     private OrderService orderService;
 
-    public List<Order> personalList(AtomicReference<String> fullName) {
+    public List<Order> getPersonalList(AtomicReference<String> fullName) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String mechanicName = authentication.getName();
