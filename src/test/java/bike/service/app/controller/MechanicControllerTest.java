@@ -113,8 +113,8 @@ public class MechanicControllerTest {
         doNothing().when(mService).editOrderById(service, id);
 
         mockMvc.perform(post("/orders/updateService")
-                        .param("service", service)
-                        .param("orderId", String.valueOf(id)))
+                .param("service", service)
+                .param("orderId", String.valueOf(id)))
                 .andExpect(status().isOk())
                 .andExpect(view().name("redirect:/mechanic"));
     }
