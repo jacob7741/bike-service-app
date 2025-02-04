@@ -44,7 +44,7 @@ public class UsersService implements UserDetailsService {
         if (user.isPresent()) {
             return user.get();
         } else {
-            throw new RuntimeException("no user was found");
+            throw new RuntimeException("User ID not found.");
         }
     }
 

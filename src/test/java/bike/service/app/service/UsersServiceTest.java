@@ -2,6 +2,7 @@ package bike.service.app.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -74,7 +75,7 @@ public class UsersServiceTest {
 
     @Test
     void testFindByIds() {
-        Users user  = user();
+        Users user = user();
 
         when(uRepository.findById(user.getUserId())).thenReturn(Optional.of(user));
 
@@ -83,7 +84,7 @@ public class UsersServiceTest {
         assertNotNull(result);
         assertEquals(user.getUserId(), result.getUserId());
     }
-    
+
     @Test
     void testGetAllUsers() {
         List<Users> usersList = listUsers;
@@ -109,8 +110,23 @@ public class UsersServiceTest {
     }
 
     @Test
+    void testGetUserByIdException() {
+
+        int nonExsist = 999;
+
+        when(uRepository.findById(nonExsist)).thenReturn(Optional.empty());
+
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            uService.getUserById(nonExsist);
+        });
+
+        assertEquals("User ID not found.", exception.getMessage());
+
+    }
+
+    @Test
     void testLoadUserByUsername() {
-        
+
         Users user = user();
 
         when(uRepository.findByUserName(user.getUserName())).thenReturn(user);
@@ -121,6 +137,6 @@ public class UsersServiceTest {
         assertEquals(user.getUserName(), uDetails.getUsername());
         assertEquals(user.getPassword(), uDetails.getPassword());
         assertEquals("ROLE_" + user.getRole(), uDetails.getAuthorities()
-                                                        .iterator().next().getAuthority()); 
+                .iterator().next().getAuthority());
     }
 }
