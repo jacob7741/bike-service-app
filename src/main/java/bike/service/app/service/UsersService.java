@@ -52,6 +52,7 @@ public class UsersService implements UserDetailsService {
         return userRepository.findAllById(userIds);
     }
 
+    // ToDO: zmienic nazwe metody na add new user
     public Users addNewMechanic(Users user) {
         logger.info("add new user");
 

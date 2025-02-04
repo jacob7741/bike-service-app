@@ -11,8 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -27,19 +25,10 @@ class ClientServiceTest {
 
     @Mock
     private ClientRepository clientRepository;
+    
     @InjectMocks
     private ClientService clientService;
 
-    @BeforeEach
-    private void setup() {
-    }
-
-    @AfterEach
-    public void cleanUp() {
-        clientRepository.deleteAll();
-    }
-
-    // Arange
     private static Client client() {
         Client client = new Client();
         client.setClientId(543);
