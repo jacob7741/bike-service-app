@@ -47,8 +47,11 @@ public class ClientService {
 
     public Client addNewClient(Client client) {
         System.out.println("new Client Added");
-        if (client.getClientId() == 0)
+        if (client.getClientId() == 0) {
             clientRepository.save(client);
+        } else {
+            throw new RuntimeException("client already exsist");
+        }
         return client;
     }
 

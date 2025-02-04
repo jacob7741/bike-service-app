@@ -23,15 +23,18 @@ public class BikeService {
     public Bike getBikeById(int id) {
         System.out.println("getting all bike by Id");
         Optional<Bike> optionalBike = bikeRepository.findById(id);
-        if (optionalBike.isPresent())
+        if (optionalBike.isPresent()) {
             return optionalBike.get();
-        throw new RuntimeException("no id founded");
+        } else {
+            throw new RuntimeException("no id founded");
+        }
+        
     }
 
     public List<Bike> getAllBike() {
         System.out.println("getting all bike");
         List<Bike> bikeList = bikeRepository.findAll();
-        if (!bikeList.isEmpty())
+        if (bikeList.isEmpty())
             return new ArrayList<>();
         return bikeList;
     }
@@ -53,6 +56,7 @@ public class BikeService {
             throw new RuntimeException("no Bike id founded");
         }
     }
+    
     // }
 
     // public void deletedBikeByOrderId(int orderId) {

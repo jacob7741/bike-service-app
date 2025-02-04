@@ -6,6 +6,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -19,7 +20,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.View;
@@ -29,6 +32,7 @@ import bike.service.app.service.LoginService;
 import bike.service.app.service.userroles.MechanicService;
 
 @AutoConfigureMockMvc
+@SpringBootTest
 public class MechanicControllerTest {
 
     @InjectMocks
@@ -53,19 +57,15 @@ public class MechanicControllerTest {
     private void setup() {
         MockitoAnnotations.openMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(mController)
-                .setSingleView(mockView)
                 .build();
     }
 
     @Test
     void testDoneButton() throws Exception {
-        int id = 9365;
 
-        doNothing().when(mService).doneStatusById(id);
-
-        mockMvc.perform(post("/mechanic/done/{id}", id))
-                .andExpect(status().isOk())
-                .andExpect(view().name("redirect:/mechanic"))
+        mockMvc.perform(post("/mechanic/done/{id}", 22))
+                .andExpect(status().isFound())
+                .andExpect(redirectedUrl("/mechanic"))
                 .andReturn();
 
     }
@@ -87,6 +87,11 @@ public class MechanicControllerTest {
 
     @Test
     void testMechanicSite() throws Exception {
+
+        MockitoAnnotations.openMocks(this);
+        mockMvc = MockMvcBuilders.standaloneSetup(mController)
+                .setSingleView(mockView)
+                .build();
 
         AtomicReference<String> fullName = new AtomicReference<>("Test User");
         List<Order> pList = Collections.emptyList();
@@ -115,7 +120,8 @@ public class MechanicControllerTest {
         mockMvc.perform(post("/orders/updateService")
                 .param("service", service)
                 .param("orderId", String.valueOf(id)))
-                .andExpect(status().isOk())
-                .andExpect(view().name("redirect:/mechanic"));
+                .andExpect(status().isFound())
+                .andExpect(redirectedUrl("/mechanic"));
     }
+    
 }
