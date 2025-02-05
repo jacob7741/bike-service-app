@@ -66,7 +66,7 @@ public class UsersServiceTest {
 
     @Test
     void testAddNewMechanicException() {
-        
+
         Exception exception = assertThrows(RuntimeException.class, () -> {
             uService.addNewMechanic(user);
         });
@@ -85,18 +85,7 @@ public class UsersServiceTest {
         assertNotNull(result);
         assertEquals(user.getUserId(), result.getUserId());
     }
-
-    @Test
-    void testFindByIds() {
-
-        when(uRepository.findById(user.getUserId())).thenReturn(Optional.of(user));
-
-        Users result = uService.getUserById(2929);
-
-        assertNotNull(result);
-        assertEquals(user.getUserId(), result.getUserId());
-    }
-
+    
     @Test
     void testGetAllUsers() {
         List<Users> usersList = listUsers;

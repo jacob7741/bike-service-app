@@ -47,10 +47,10 @@ public class UsersService implements UserDetailsService {
             throw new RuntimeException("User ID not found.");
         }
     }
-
-    public List<Users> findByIds(List<Integer> userIds) {
-        return userRepository.findAllById(userIds);
-    }
+    // zakomentowana 5 lutego
+    // public List<Users> findByIds(List<Integer> userIds) {
+    //     return userRepository.findAllById(userIds);
+    // }
 
     // ToDO: zmienic nazwe metody na add new user
     public Users addNewMechanic(Users user) {
