@@ -59,7 +59,7 @@ public class UsersService implements UserDetailsService {
         if (user.getUserId() == 0) {
             userRepository.save(user);
         } else {
-            throw new RuntimeException("wrong user");
+            throw new RuntimeException("User already exsist");
         }
         return user;
     }

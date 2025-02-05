@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -33,23 +34,26 @@ public class UsersServiceTest {
     @Mock
     private OrderService oService;
 
-    private static Users user() {
-        Users user = new Users();
+    private Users user;
+
+    private List<Users> listUsers;
+
+    @BeforeEach
+    void setUp() {
+        user = new Users();
         user.setFirstName("Alfonso");
         user.setLastName("Opieniek");
         user.setPassword("password");
         user.setRole(Role.MECHANIC);
         user.setUserId(2929);
         user.setUserName("Dude");
-        return user;
-    }
 
-    private List<Users> listUsers = Arrays.asList(user());
+        listUsers = Arrays.asList(user);
+    }
 
     @Test
     void testAddNewMechanic() {
 
-        Users user = user();
         user.setUserId(0);
 
         when(uRepository.save(any(Users.class))).thenReturn(user);
@@ -61,21 +65,29 @@ public class UsersServiceTest {
     }
 
     @Test
+    void testAddNewMechanicException() {
+        
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            uService.addNewMechanic(user);
+        });
+
+        assertEquals("User already exsist", exception.getMessage());
+    }
+
+    @Test
     void testDeleteUserById() {
-        Users users = user();
 
-        when(uRepository.findById(users.getUserId())).thenReturn(Optional.of(users));
+        when(uRepository.findById(user.getUserId())).thenReturn(Optional.of(user));
 
-        Users result = uService.getUserById(users.getUserId());
+        Users result = uService.getUserById(user.getUserId());
         uService.deleteUserById(2929);
 
         assertNotNull(result);
-        assertEquals(users.getUserId(), result.getUserId());
+        assertEquals(user.getUserId(), result.getUserId());
     }
 
     @Test
     void testFindByIds() {
-        Users user = user();
 
         when(uRepository.findById(user.getUserId())).thenReturn(Optional.of(user));
 
@@ -99,14 +111,13 @@ public class UsersServiceTest {
 
     @Test
     void testGetUserById() {
-        Users users = user();
 
-        when(uRepository.findById(users.getUserId())).thenReturn(Optional.of(users));
+        when(uRepository.findById(user.getUserId())).thenReturn(Optional.of(user));
 
-        Users result = uService.getUserById(users.getUserId());
+        Users result = uService.getUserById(user.getUserId());
 
         assertNotNull(result);
-        assertEquals(users.getUserId(), result.getUserId());
+        assertEquals(user.getUserId(), result.getUserId());
     }
 
     @Test
@@ -116,18 +127,16 @@ public class UsersServiceTest {
 
         when(uRepository.findById(nonExsist)).thenReturn(Optional.empty());
 
+        int test = user.getUserId();
         Exception exception = assertThrows(RuntimeException.class, () -> {
             uService.getUserById(nonExsist);
         });
 
         assertEquals("User ID not found.", exception.getMessage());
-
     }
 
     @Test
     void testLoadUserByUsername() {
-
-        Users user = user();
 
         when(uRepository.findByUserName(user.getUserName())).thenReturn(user);
 
