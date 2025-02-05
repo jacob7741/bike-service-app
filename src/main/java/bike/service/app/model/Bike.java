@@ -42,13 +42,4 @@ public class  Bike {
     @JoinColumn(name = "orderId")
     private Order order;
 
-    @Override
-    public String toString() {
-        return "Bike{" +
-                "bikeId=" + bikeId +
-                ", brand='" + brand + '\'' +
-                ", modelType='" + modelType + '\'' +
-                ", serialNumber=" + serialNumber +
-                '}';
-    }
 }

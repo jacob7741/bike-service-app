@@ -38,14 +38,4 @@ public class Client {
     @JoinColumn(name = "orderId")
     private Order order;
 
-    @Override
-    public String toString() {
-        return "Client{" +
-                "clientId=" + clientId +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }
