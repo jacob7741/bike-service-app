@@ -3,6 +3,7 @@ package bike.service.app.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import bike.service.app.model.Order;
 import bike.service.app.model.Users;
 import bike.service.app.model.repository.UsersRepository;
 
@@ -47,9 +49,10 @@ public class UsersService implements UserDetailsService {
             throw new RuntimeException("User ID not found.");
         }
     }
+
     // zakomentowana 5 lutego
     // public List<Users> findByIds(List<Integer> userIds) {
-    //     return userRepository.findAllById(userIds);
+    // return userRepository.findAllById(userIds);
     // }
 
     // ToDO: zmienic nazwe metody na add new user
@@ -73,6 +76,29 @@ public class UsersService implements UserDetailsService {
         } else {
             throw new RuntimeException("no user was found");
         }
+    }
+
+    List<Order> filterListByUserDetails(List<Order> oList, String lastName) {
+        List<Order> lOrders = new ArrayList<>();
+
+        for (Order eOrders : oList) {
+            if (eOrders.getMechanic().getLastName().equals(lastName)) {
+                lOrders.add(eOrders);
+            }
+        }
+        return lOrders;
+    }
+
+    Users getMechanicDetails(String mechanicName, AtomicReference<String> fullName) {
+        List<Users> list = getAllUsers();
+
+        for (Users eUsers : list) {
+            if (eUsers.equals(mechanicName)) {
+                fullName.set(eUsers.getFirstName() + " " + eUsers.getLastName());
+                return eUsers;
+            }
+        }
+        throw new RuntimeException("Mechanic not found");
     }
 
     @Override

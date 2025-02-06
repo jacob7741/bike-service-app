@@ -1,6 +1,5 @@
 package bike.service.app.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -25,27 +24,40 @@ public class LoginService {
     @Autowired
     private OrderService orderService;
 
-    public List<Order> getPersonalList(AtomicReference<String> fullName) {
-
+    public String getAuthenticatedUserName() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String mechanicName = authentication.getName();
-
-        List<Users> usersList = usersService.getAllUsers();
-        List<Order> ordersList = orderService.getAllActiveOrders();
-
-        List<Order> orderList = new ArrayList<>();
-        for (Users user : usersList) {
-            if (user.getUserName().equals(mechanicName)) {
-                fullName.set(user.getFirstName() + " " + user.getLastName());
-                for (Order order : ordersList) {
-                    if (order.getMechanic().getLastName().equals(user.getLastName())) {
-                        orderList.add(order);
-                    }
-                }
-            }
-        }
-        return orderList;
+        return authentication.getName();
     }
+
+    public List<Order> getPersonalList(AtomicReference<String> fullName) {
+        String mechanicName = getAuthenticatedUserName();
+        Users user = usersService.getMechanicDetails(mechanicName, fullName);
+        List<Order> oList = orderService.getAllActiveOrders();
+        return usersService.filterListByUserDetails(oList, user.getLastName());
+    }
+
+
+    // public List<Order> getPersonalList(AtomicReference<String> fullName) {
+
+    //     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    //     String mechanicName = authentication.getName();
+
+    //     List<Users> usersList = usersService.getAllUsers();
+    //     List<Order> ordersList = orderService.getAllActiveOrders();
+
+    //     List<Order> orderList = new ArrayList<>();
+    //     for (Users user : usersList) {
+    //         if (user.getUserName().equals(mechanicName)) {
+    //             fullName.set(user.getFirstName() + " " + user.getLastName());
+    //             for (Order order : ordersList) {
+    //                 if (order.getMechanic().getLastName().equals(user.getLastName())) {
+    //                     orderList.add(order);
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return orderList;
+    // }
 
     public void updatePasswords() {
 
@@ -55,8 +67,6 @@ public class LoginService {
             if (!rawPassword.startsWith("$2a$")) {
                 String encodedPassword = passwordEncoder.encode(rawPassword);
                 user.setPassword(encodedPassword);
-                // there it will be better to make method in userService
-                // which update actuall user data
                 usersRepository.save(user);
             }
         }
