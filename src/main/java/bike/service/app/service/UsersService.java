@@ -21,6 +21,8 @@ import bike.service.app.model.repository.UsersRepository;
 @Service
 public class UsersService implements UserDetailsService {
 
+    public static final int AtomicReference = 0;
+
     private final Logger logger = LoggerFactory.getLogger(UsersService.class);
 
     @Autowired
@@ -77,30 +79,7 @@ public class UsersService implements UserDetailsService {
             throw new RuntimeException("no user was found");
         }
     }
-
-    List<Order> filterListByUserDetails(List<Order> oList, String lastName) {
-        List<Order> lOrders = new ArrayList<>();
-
-        for (Order eOrders : oList) {
-            if (eOrders.getMechanic().getLastName().equals(lastName)) {
-                lOrders.add(eOrders);
-            }
-        }
-        return lOrders;
-    }
-
-    Users getMechanicDetails(String mechanicName, AtomicReference<String> fullName) {
-        List<Users> list = getAllUsers();
-
-        for (Users eUsers : list) {
-            if (eUsers.equals(mechanicName)) {
-                fullName.set(eUsers.getFirstName() + " " + eUsers.getLastName());
-                return eUsers;
-            }
-        }
-        throw new RuntimeException("Mechanic not found");
-    }
-
+    
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.info("load users list");
