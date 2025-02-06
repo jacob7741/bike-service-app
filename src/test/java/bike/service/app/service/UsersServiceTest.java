@@ -4,8 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -15,10 +19,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import bike.service.app.model.Order;
 import bike.service.app.model.Users;
+import bike.service.app.model.Order.Status;
 import bike.service.app.model.Users.Role;
 import bike.service.app.model.repository.UsersRepository;
 
@@ -38,6 +45,8 @@ public class UsersServiceTest {
 
     private List<Users> listUsers;
 
+    private List<Order> lOrders;
+
     @BeforeEach
     void setUp() {
         user = new Users();
@@ -49,6 +58,9 @@ public class UsersServiceTest {
         user.setUserName("Dude");
 
         listUsers = Arrays.asList(user);
+        lOrders = new ArrayList<>();
+
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
@@ -136,5 +148,28 @@ public class UsersServiceTest {
         assertEquals(user.getPassword(), uDetails.getPassword());
         assertEquals("ROLE_" + user.getRole(), uDetails.getAuthorities()
                 .iterator().next().getAuthority());
+    }
+
+    @Test
+    void testFilterListByUserDetails() {
+       
+       List<Order> testList = new ArrayList<>();
+       Order testOrder = new Order(123, user, "small", "szosa", "temp", Status.ACTIVE, null);
+       testList.add(testOrder);
+       String uString = user.getLastName();
+
+       
+       List<Order> result = uService.filterListByUserDetails(testList, uString);
+
+       
+       assertNotNull(result);
+       assertEquals(1, result.size());
+       assertEquals(testOrder, result.get(0));
+       assertEquals(testOrder.getOrderId(), result.getFirst().getOrderId());
+    }
+
+    @Test
+    void testGetMechanicDetails() {
+        
     }
 }
