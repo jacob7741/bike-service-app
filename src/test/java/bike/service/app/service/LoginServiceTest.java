@@ -2,6 +2,8 @@ package bike.service.app.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import bike.service.app.model.Order;
 import bike.service.app.model.Order.Status;
@@ -46,6 +49,9 @@ public class LoginServiceTest {
     @Mock
     private SecurityContext securityContext;
 
+    @Mock
+    private PasswordEncoder passwordEncoder;
+
     private Users user;
     private List<Order> lOrders;
     private Order order;
@@ -59,6 +65,11 @@ public class LoginServiceTest {
         user.setRole(Role.MECHANIC);
         user.setUserId(2929);
         user.setUserName("Dude");
+
+    }
+
+    @Test
+    void testGetPersonalList() {
 
         order = new Order();
         order.setBikeModel("Trek");
@@ -74,10 +85,7 @@ public class LoginServiceTest {
         when(securityContext.getAuthentication()).thenReturn(authentication);
         when(authentication.getName()).thenReturn(user.getUserName());
         SecurityContextHolder.setContext(securityContext);
-    }
 
-    @Test
-    void testGetPersonalList() {
         AtomicReference<String> uAtomicReference = new AtomicReference<>(user.getLastName());
 
         List<Order> personalOrders = lService.getPersonalList(uAtomicReference);
@@ -91,5 +99,22 @@ public class LoginServiceTest {
     @Test
     void testUpdatePasswords() {
         
+        Users user1 = new Users();
+        user1.setPassword("plainPassword1");
+        Users user2 = new Users();
+        user2.setPassword("$2a$encodedPassword2");
+
+        List<Users> usersList = Arrays.asList(user1, user2);
+
+        when(uService.getAllUsers()).thenReturn(usersList);
+        when(passwordEncoder.encode("plainPassword1")).thenReturn("encodedPassword1");
+
+        lService.updatePasswords();
+
+        verify(uRepository).save(user1);
+        verify(uRepository, never()).save(user2);
+
+        assertEquals("encodedPassword1", user1.getPassword());
+        assertEquals("$2a$encodedPassword2", user2.getPassword());
     }
 }
