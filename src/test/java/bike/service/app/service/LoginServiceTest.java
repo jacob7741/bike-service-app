@@ -55,7 +55,7 @@ public class LoginServiceTest {
     private Users user;
     private List<Order> lOrders;
     private Order order;
-
+    
     @BeforeEach
     public void setUp() {
         user = new Users();
@@ -65,37 +65,17 @@ public class LoginServiceTest {
         user.setRole(Role.MECHANIC);
         user.setUserId(2929);
         user.setUserName("Dude");
-
-    }
-
-    @Test
-    void testGetPersonalList() {
-
+        
         order = new Order();
         order.setBikeModel("Trek");
         order.setClient("Kowalski");
         order.setMechanic(user);
         order.setStatus(Status.ACTIVE);
-
+        
         lOrders = new ArrayList<>();
         lOrders.add(order);
-
-        when(oService.getAllActiveOrders()).thenReturn(lOrders);
-        when(uService.getAllUsers()).thenReturn(Arrays.asList(user));
-        when(securityContext.getAuthentication()).thenReturn(authentication);
-        when(authentication.getName()).thenReturn(user.getUserName());
-        SecurityContextHolder.setContext(securityContext);
-
-        AtomicReference<String> uAtomicReference = new AtomicReference<>(user.getLastName());
-
-        List<Order> personalOrders = lService.getPersonalList(uAtomicReference);
-        String mechanicString = personalOrders.get(0).getMechanic().getLastName();
-
-        assertNotNull(personalOrders);
-        assertEquals(user.getFirstName() + " " + user.getLastName(), uAtomicReference.get());
-        assertEquals(user.getLastName(), mechanicString);
     }
-
+    
     @Test
     void testUpdatePasswords() {
         
@@ -116,5 +96,24 @@ public class LoginServiceTest {
 
         assertEquals("encodedPassword1", user1.getPassword());
         assertEquals("$2a$encodedPassword2", user2.getPassword());
+    }
+
+    @Test
+    void testGetPersonalList() {
+
+        when(oService.getAllActiveOrders()).thenReturn(lOrders);
+        when(uService.getAllUsers()).thenReturn(Arrays.asList(user));
+        when(securityContext.getAuthentication()).thenReturn(authentication);
+        when(authentication.getName()).thenReturn(user.getUserName());
+        SecurityContextHolder.setContext(securityContext);
+
+        AtomicReference<String> uAtomicReference = new AtomicReference<>(user.getLastName());
+
+        List<Order> personalOrders = lService.getPersonalList(uAtomicReference);
+        String mechanicString = personalOrders.get(0).getMechanic().getLastName();
+
+        assertNotNull(personalOrders);
+        assertEquals(user.getFirstName() + " " + user.getLastName(), uAtomicReference.get());
+        assertEquals(user.getLastName(), mechanicString);
     }
 }

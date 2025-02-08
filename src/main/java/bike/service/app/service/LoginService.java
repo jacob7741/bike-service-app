@@ -59,32 +59,9 @@ public class LoginService {
         Users user = setFullName(mechanicName, fullName);
         return getMechanicList(user);
     }
-
-    // old from 08.02.2025 before refactoring
-
-    // public List<Order> getPersonalList(AtomicReference<String> fullName) {
-
-    //     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    //     String mechanicName = authentication.getName();
-    //     List<Users> usersList = usersService.getAllUsers();
-    //     List<Order> ordersList = orderService.getAllActiveOrders();
-
-    //     List<Order> orderList = new ArrayList<>();
-    //     for (Users user : usersList) {
-    //         if (user.getUserName().equals(mechanicName)) {
-    //             fullName.set(user.getFirstName() + " " + user.getLastName());
-    //             for (Order order : ordersList) {
-    //                 if (order.getMechanic().getLastName().equals(user.getLastName())) {
-    //                     orderList.add(order);
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     return orderList;
-    // }
-
+    
     public void updatePasswords() {
-
+        
         List<Users> usersList = usersService.getAllUsers();
         for (Users user : usersList) {
             String rawPassword = user.getPassword();
@@ -95,4 +72,27 @@ public class LoginService {
             }
         }
     }
+    
+        // old from 08.02.2025 before refactoring
+    
+        // public List<Order> getPersonalList(AtomicReference<String> fullName) {
+    
+        //     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        //     String mechanicName = authentication.getName();
+        //     List<Users> usersList = usersService.getAllUsers();
+        //     List<Order> ordersList = orderService.getAllActiveOrders();
+    
+        //     List<Order> orderList = new ArrayList<>();
+        //     for (Users user : usersList) {
+        //         if (user.getUserName().equals(mechanicName)) {
+        //             fullName.set(user.getFirstName() + " " + user.getLastName());
+        //             for (Order order : ordersList) {
+        //                 if (order.getMechanic().getLastName().equals(user.getLastName())) {
+        //                     orderList.add(order);
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     return orderList;
+        // }
 }
