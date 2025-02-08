@@ -1,9 +1,12 @@
 package bike.service.app.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -28,51 +31,47 @@ public class LoginService {
     //     return userAutheString;
     // }
 
-    private String setFullName (AtomicReference<String> userName) {
-        List<Users> userList = usersService.getAllUsers();
-        for(Users user : userList) {
-            if (user.getUserName().equals(userName)) {
-                userName.set(user.getFirstName() + " " + user.getLastName());
-            }
-        }
-        return userName.get();
-    }
-
-    public List<Order> getPersonalList(AtomicReference<String> fullName) {
-        List<Order> oList = orderService.getAllActiveOrders();
-        // String mechanicName = sContextHolder();
-        
-        setFullName(fullName);
-
-        for(Order order : oList) {
-            if (order.getMechanic().getLastName().equals(fullName.get())) {
-                oList.add(order);
-            }
-        }
-
-        return oList;
-    }
-// old from 08.02.2025
-    // public List<Order> getPersonalList(AtomicReference<String> fullName) {
-
-    //     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    //     String mechanicName = authentication.getName();
-    //     List<Users> usersList = usersService.getAllUsers();
-    //     List<Order> ordersList = orderService.getAllActiveOrders();
-
-    //     List<Order> orderList = new ArrayList<>();
-    //     for (Users user : usersList) {
-    //         if (user.getUserName().equals(mechanicName)) {
-    //             fullName.set(user.getFirstName() + " " + user.getLastName());
-    //             for (Order order : ordersList) {
-    //                 if (order.getMechanic().getLastName().equals(user.getLastName())) {
-    //                     orderList.add(order);
-    //                 }
-    //             }
+    // public String setFullName (AtomicReference<String> userName) {
+    //     List<Users> userList = usersService.getAllUsers();
+    //     for(Users user : userList) {
+    //         if (user.getUserName().equals(userName)) {
+    //             userName.set(user.getFirstName() + " " + user.getLastName());
     //         }
     //     }
-    //     return orderList;
+    //     return userName.get();
     // }
+
+    // public List<Order> getPersonalList(AtomicReference<String> fullName) {
+    //     List<Order> oList = orderService.getAllActiveOrders();
+    //     for(Order order : oList) {
+    //         if (order.getMechanic().getLastName().equals(fullName.get())) {
+    //             oList.add(order);
+    //         }
+    //     }
+
+    //     return oList;
+    // }
+// old from 08.02.2025
+    public List<Order> getPersonalList(AtomicReference<String> fullName) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String mechanicName = authentication.getName();
+        List<Users> usersList = usersService.getAllUsers();
+        List<Order> ordersList = orderService.getAllActiveOrders();
+
+        List<Order> orderList = new ArrayList<>();
+        for (Users user : usersList) {
+            if (user.getUserName().equals(mechanicName)) {
+                fullName.set(user.getFirstName() + " " + user.getLastName());
+                for (Order order : ordersList) {
+                    if (order.getMechanic().getLastName().equals(user.getLastName())) {
+                        orderList.add(order);
+                    }
+                }
+            }
+        }
+        return orderList;
+    }
 
     public void updatePasswords() {
 
