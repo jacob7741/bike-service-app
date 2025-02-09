@@ -63,10 +63,10 @@ public class ServicesService {
         return services;
     }
 
-    public Services createRepairService(Services reprairType, String repairName, int price) {
+    public Services createRepairService(Services reprairType, String repairType, int price) {
         System.out.println("createRepairService");
         if (reprairType.getServiceId() == 0) {
-            reprairType.setRepairType(repairName);
+            reprairType.setRepairType(repairType);
             reprairType.setRepair(price);
             servicesRepository.save(reprairType);
         }

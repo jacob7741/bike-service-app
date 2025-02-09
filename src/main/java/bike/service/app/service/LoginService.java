@@ -61,8 +61,8 @@ public class LoginService {
     }
     
     public void updatePasswords() {
-        
         List<Users> usersList = usersService.getAllUsers();
+
         for (Users user : usersList) {
             String rawPassword = user.getPassword();
             if (!rawPassword.startsWith("$2a$")) {
