@@ -122,6 +122,8 @@ public class OrderService {
         System.out.println("saveBikeToOrder");
         if (!bike.getModelType().isEmpty()) {
             order.setBikeModel(bike.getModelType());
+        } else {
+            throw new RuntimeException("no bike found");
         }
 
         orderRepository.save(order);
