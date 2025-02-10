@@ -12,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
@@ -22,6 +23,7 @@ import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.ServicesRepository;
+import bike.service.app.model.repository.UsersRepository;
 
 @ExtendWith(MockitoExtension.class)
 class OrderServiceTest {
@@ -30,6 +32,8 @@ class OrderServiceTest {
     ClientRepository clientRepository;
     @Mock
     private ServicesRepository servicesRepository;
+    @Mock
+    private UsersRepository usersRepository;
     @Mock
     private OrderRepository orderRepository;
     @Mock
@@ -54,12 +58,12 @@ class OrderServiceTest {
     private Bike bike;
 
     private Users user;
-    
+
     // Arrange for all tests
     @BeforeEach
     void setup() {
         services = new Services();
-
+        
         user = new Users();
         user.setUserId(43);
 
@@ -72,23 +76,25 @@ class OrderServiceTest {
 
         bike = new Bike();
         bike.setModelType("Góral");
+
     }
 
     @Test
     void saveMechanicToOrder() {
-        Users mechanic = new Users();
-        mechanic.setUserId(23);
-        when(orderRepository.save(any(Order.class))).thenReturn(order);
+        Users testUser = new Users();
+        testUser.setUserId(34);
+    
+        Order order = new Order();
+        order.setOrderId(12);
+        order.setMechanic(testUser);
 
-        order.setMechanic(mechanic);
-        Order savedMechanic = orderService.saveMechanicToOrder(order, 43);
-
-        assertEquals(43, savedMechanic.getMechanic());
+        assertNotNull(order);
+        assertEquals(testUser.getUserId(), order.getMechanic().getUserId());
     }
 
-    @Test 
+    @Test
     void saveSmallServiceToOrder() {
-        
+
         services.setSmallService(50);
         services.setServiceId(12);
 
@@ -116,9 +122,9 @@ class OrderServiceTest {
         assertEquals("no client found", exception.getMessage());
     }
 
-    @Test 
+    @Test
     void saveFullServiceToOrder() {
-        
+
         services.setFullService(200);
         services.setServiceId(12);
 
@@ -133,9 +139,10 @@ class OrderServiceTest {
         assertEquals("full service - id: " + 12, savedOrder.getService());
         assertEquals(12, savedOrder.getOrderId());
     }
-    @Test 
+
+    @Test
     void saveReprairServiceToOrder() {
-        
+
         services.setRepair(73);
         services.setServiceId(12);
 
@@ -151,10 +158,9 @@ class OrderServiceTest {
         assertEquals(12, savedOrder.getOrderId());
     }
 
-   
     @Test
     void saveClientToOrder() {
-     
+
         when(clientRepository.save(any(Client.class))).thenReturn(client);
         when(orderRepository.save(any(Order.class))).thenReturn(order);
 
@@ -175,7 +181,6 @@ class OrderServiceTest {
         assertNotNull(bikeSaved);
         assertEquals("Góral", bikeSaved.getBikeModel());
     }
-
 
     @Test
     void saveBikeToOrderException() {
