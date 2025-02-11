@@ -30,35 +30,40 @@ public class LoginService {
     //     return authentication.getName();
     // }
 
-    // public Users setFullName(String mechanicName, AtomicReference<String> fullName) {
-    //     List<Users> userList = usersService.getAllUsers();
-    //     mechanicName = getContextHolder();
-    //     for (Users user : userList) {
-    //         if (user.getUserName().equals(mechanicName)) {
-    //             fullName.set(user.getFirstName() + " " + user.getLastName());
-    //             return user;
-    //         }
-    //     }
-    //     throw new RuntimeException("Wrong mechanic name.");
-    // }
+    public Users setFullName(String mechanicName, AtomicReference<String> fullName) {
+        List<Users> userList = usersService.getAllUsers();
+        // mechanicName = getContextHolder();
+        for (Users user : userList) {
+            if (user.getUserName().equals(mechanicName)) {
+                fullName.set(user.getFirstName() + " " + user.getLastName());
+                return user;
+            }
+        }
+        throw new RuntimeException("Wrong mechanic name." + mechanicName);
+    }
 
-    // public List<Order> getMechanicList(Users user) {
-    //     List<Order> ordersList = orderService.getAllActiveOrders();
-    //     List<Order> pList = new ArrayList<>();
+    public List<Order> getMechanicList(Users user) {
+        List<Order> ordersList = orderService.getAllActiveOrders();
+        List<Order> pList = new ArrayList<>();
 
-    //     for (Order order : ordersList) {
-    //         if (order.getMechanic().getLastName().equals(user.getLastName())) {
-    //             pList.add(order);
-    //         }
-    //     }
-    //     return pList;
-    // }
-
-    // public List<Order> getPersonalList(AtomicReference<String> fullName) {
-    //     String mechanicName = getContextHolder();
-    //     Users user = setFullName(mechanicName, fullName);
-    //     return getMechanicList(user);
-    // }
+        for (Order order : ordersList) {
+            if (order.getMechanic().getLastName().equals(user.getLastName())) {
+                pList.add(order);
+            }
+        }
+        return pList;
+    }
+    // ustawia mi 'annymouseUser' zamiast pobierac nazwe wybranego z listy 
+    // dzieje sie tak tylko w przypadku kiedy uzytkownik sie nie zaloguje
+    // lecz w metodzie przed refactoringiem ponizej tej z 8 lutego 
+    // mozna dodawac serwis do uytkownika nawet kiedy nie jest zalogowany
+    public List<Order> getPersonalList(AtomicReference<String> fullName) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String mechanicName = authentication.getName();
+        Users user = setFullName(mechanicName, fullName);
+        List<Order> personalList = getMechanicList(user);
+        return personalList;
+    }
     
     public void updatePasswords() {
         List<Users> usersList = usersService.getAllUsers();
@@ -75,24 +80,24 @@ public class LoginService {
     
         // old from 08.02.2025 before refactoring
     
-        public List<Order> getPersonalList(AtomicReference<String> fullName) {
+        // public List<Order> getPersonalList(AtomicReference<String> fullName) {
     
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            String mechanicName = authentication.getName();
-            List<Users> usersList = usersService.getAllUsers();
-            List<Order> ordersList = orderService.getAllActiveOrders();
+        //     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        //     String mechanicName = authentication.getName();
+        //     List<Users> usersList = usersService.getAllUsers();
+        //     List<Order> ordersList = orderService.getAllActiveOrders();
     
-            List<Order> orderList = new ArrayList<>();
-            for (Users user : usersList) {
-                if (user.getUserName().equals(mechanicName)) {
-                    fullName.set(user.getFirstName() + " " + user.getLastName());
-                    for (Order order : ordersList) {
-                        if (order.getMechanic().getLastName().equals(user.getLastName())) {
-                            orderList.add(order);
-                        }
-                    }
-                }
-            }
-            return orderList;
-        }
+        //     List<Order> orderList = new ArrayList<>();
+        //     for (Users user : usersList) {
+        //         if (user.getUserName().equals(mechanicName)) {
+        //             fullName.set(user.getFirstName() + " " + user.getLastName());
+        //             for (Order order : ordersList) {
+        //                 if (order.getMechanic().getLastName().equals(user.getLastName())) {
+        //                     orderList.add(order);
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     return orderList;
+        // }
 }

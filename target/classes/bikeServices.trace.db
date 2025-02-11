@@ -24432,3 +24432,15 @@ Caused by: java.lang.AssertionError
 	at org.h2.mvstore.FileStore.executeFileStoreOperation(FileStore.java:1893)
 	at org.h2.mvstore.MVStore.executeFilestoreOperation(MVStore.java:922)
 	... 13 more
+2025-02-11 14:36:42.619897+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CLIENT" already exists; SQL statement:
+create global temporary table HTE_Client(clientId integer, orderId integer, phoneNumber integer, rn_ integer not null, email varchar(255), first_name varchar(255), last_name varchar(255), primary key (rn_)) TRANSACTIONAL [42101-232]
+2025-02-11 14:36:42.622067+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_BIKE" already exists; SQL statement:
+create global temporary table HTE_Bike(bikeId integer, orderId integer, rn_ integer not null, serialNumber integer, brand varchar(255), modelType varchar(255), primary key (rn_)) TRANSACTIONAL [42101-232]
+2025-02-11 14:36:42.622750+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_SERVICES" already exists; SQL statement:
+create global temporary table HTE_Services(fullservice integer, orderId integer, repair integer, rn_ integer not null, serviceId integer, smallservice integer, repairType varchar(255), primary key (rn_)) TRANSACTIONAL [42101-232]
+2025-02-11 14:36:42.623243+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_USERS" already exists; SQL statement:
+create global temporary table HTE_Users(rn_ integer not null, userId integer, first_name varchar(255), last_name varchar(255), password varchar(255), user_name varchar(255), role enum ('MANAGER','MECHANIC'), primary key (rn_)) TRANSACTIONAL [42101-232]

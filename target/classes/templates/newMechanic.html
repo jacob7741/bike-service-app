@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"></html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="panel for mechanics">
+    <link rel="stylesheet" href="../static/css/960_12_col.css">
+    <link rel="stylesheet" href="../static/css/newMechanicStyle.css">
+    <title>Mechanic panel</title>
+</head>
+<body>
+    <div class="container_12 clearfix">
+        <div id="header" class="grid_12">
+            <h2>Welcome: <span th:text="${username}"></span></h2>
+        </div>
+        <div id = "menu" class="grid_2">
+            <ul>
+                <li><a href="">Add service</a></li>
+                <li><a href="">Services</a></li>
+                <li><a href="">Calender</a></li>
+                <li><a href="">Messages</a></li>
+                <li><a href="">Group</a></li>
+            </ul> 
+        </div>
+        <div id="table" class="grid_10">
+            <p>table</p>
+        </div>
+    </div>
+    </body>
