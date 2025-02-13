@@ -15,7 +15,7 @@
     margin-left: auto;
     margin-right: auto;
     width: 1080px;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
   .grid_1,
   .grid_2,
@@ -37,17 +37,9 @@
   .grid_18
   {
     float:inline-start;
-    /* margin-left: 5px;
-    margin-right: 5px;
-    position: fixed;
-    margin: 15px; */
-    /* align-items: center; */
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    /* gap: 20px; */
-    /* max-width: 1080px; */
-    background-color: rgba(239, 239, 239, 0.7);
-    /* padding: 20px; */
+    background-color: rgba(128, 71, 71, 0.7);
     border-radius: 10px;
     text-align: center;
   }
@@ -342,18 +334,18 @@
   
   /* http://sonspring.com/journal/clearing-floats */
   
-  .clear {
+  /* .clear {
     clear: both;
     display: block;
     overflow: hidden;
     visibility: hidden;
     width: 0;
     height: 0;
-  }
+  } */
   
   /* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
   
-  .clearfix:before,
+  /* .clearfix:before,
   .clearfix:after {
     content: '\0020';
     display: block;
@@ -366,13 +358,13 @@
   .clearfix:after {
     clear: both;
   }
-  
+   */
   /*
     The following zoom:1 rule is specifically for IE6 + IE7.
     Move to separate stylesheet if invalid CSS is a problem.
   */
   
-  .clearfix {
+  /* .clearfix {
     zoom: 1;
   }
-    
+     */
