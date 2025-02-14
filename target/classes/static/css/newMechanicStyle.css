@@ -13,7 +13,7 @@
     background-color: rgba(239, 239, 239, 0.7);
     border-radius: 10px;
     margin-top: 0.2%;
-    align-items:normal;
+    align-items: normal;
 }
 
 .orderId,
@@ -64,11 +64,17 @@
 }
 
 .edit-btn {
-    background-color: green;
-    color: white;
+    border-color: black;
+    border: 3px;
+    width: 80%;
+    font-size: 14px;
+    padding: 3px;
+    border-radius: 8px;
+    margin: 2px;
+    background-color: #5ad162;
+    color: azure;
 }
 
 .done-btn {
-    background-color: red;
-    color: white;
+    background-color: #e53935;
 }
