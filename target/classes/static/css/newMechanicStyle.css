@@ -63,23 +63,12 @@
     cursor: pointer;
 }
 
-.button-get-done button {
-    color: white;
-    border: none;
-    width: 90%;
-    border-radius: 5px;
-    padding: 2px;
-    font-size: 12px;
-    /* margin: 2px; */
-}
-
 .edit-btn {
-    background-color: #36a071;
-    transition: background-color 0.3s ease;
+    background-color: green;
+    color: white;
 }
-
 
 .done-btn {
-    background-color: #e53935;
-    transition: background-color 0.3s ease;
+    background-color: red;
+    color: white;
 }
