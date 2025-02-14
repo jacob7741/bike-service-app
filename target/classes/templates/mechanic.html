@@ -38,16 +38,16 @@
                 </thead>
                 <tbody>
                     <tr th:each="order : ${orderList}">
-                        <td class="orderId" name="orderList" th:value="${order.orderId}" th:text="${order.orderId}"></td>
+                        <td name="orderList" th:value="${order.orderId}" th:text="${order.orderId}"></td>
                         <td th:text="${order.service}"></td>
                         <td th:text="${order.bikeModel}"></td>
-                        <td class="clientId" th:text="${order.client}"></td>
-                        <td id="button-get-done">
+                        <td th:text="${order.client}"></td>
+                        <td class="button-get-done">
                             <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
-                                <button type="submit" id="editButton" class="edit-btn">edit</button>
+                                <button class="edit-btn" type="submit">edit</button>
                             </form>
                             <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
-                                <button type="submit" id="doneButton" class="done-btn">done</button>
+                                <button class="done-btn" type="submit">done</button>
                             </form>
                         </td>
                     </tr>

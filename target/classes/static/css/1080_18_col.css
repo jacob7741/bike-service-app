@@ -39,7 +39,6 @@
     float:inline-start;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    background-color: rgba(128, 71, 71, 0.7);
     border-radius: 10px;
     text-align: center;
   }
