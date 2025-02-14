@@ -36,13 +36,12 @@
                         <th class="btn">button</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr th:each="order : ${orderList}">
+                <tbody >
                         <td name="orderList" th:value="${order.orderId}" th:text="${order.orderId}"></td>
                         <td th:text="${order.service}"></td>
                         <td th:text="${order.bikeModel}"></td>
                         <td th:text="${order.client}"></td>
-                        <td class="button-get-done">
+                        <td>
                             <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
                                 <button class="edit-btn" type="submit">edit</button>
                             </form>
