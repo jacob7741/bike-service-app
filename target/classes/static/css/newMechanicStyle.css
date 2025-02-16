@@ -13,7 +13,7 @@
 }
 
 #order_table {
-    padding: auto;
+    /* display: flex; */
     width: 80%;
     background-color: rgba(255, 255, 255, 0.913);
 }
@@ -43,25 +43,26 @@
 }
 
 .orderId {
-    width: 19%;
+
+    width: 20%;
     text-align: left;
     /* background-color: rgba(235, 158, 158, 0.7); */
 }
 
 .service {
-    width: 38%;
+    width: 40%;
     text-align: left;
     /* background-color: rgba(202, 235, 158, 0.7); */
 }
 
 .bikeM {
-    width: 19%;
+    width: 20%;
     text-align: left;
     /* background-color: rgba(235, 158, 158, 0.7); */
 }
 
 .clientId {
-    width: 19%;
+    width: 20%;
     text-align: left;
     /* background-color: rgba(202, 235, 158, 0.7); */
 }
