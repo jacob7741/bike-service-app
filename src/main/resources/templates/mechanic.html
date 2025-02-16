@@ -12,49 +12,59 @@
 <body>
     <div class="container_16 clearfix">
         <div id="header" class="grid_16">
-            <p id="data" style="text-align:right; color: rgba(114, 114, 114, 0.883); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"></p>
+            <p id="data"
+                style="text-align:right; color: rgba(114, 114, 114, 0.883); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+            </p>
             <h2>Welcome: <span th:text="${username}"></span></h2>
         </div>
-        <div id="side_bar_menu" class="grid_4">
+        <aside id="side_bar_menu" class="grid_4">
             <button class="button" href="">Add Service</button>
             <button class="button" href="">Services</button>
             <button class="button" href="">Calender</button>
             <button class="button" href="">Group</button>
-        </div>
+        </aside>
         <div id="order_table" class="grid_12">
             <p>Number of orders: <span th:text="${#lists.size(orderList)}"></span></p>
-            <table>
-                <thead>
-                    <tr>
-                        <th class="orderId">Order ID:</th>
-                        <th class="service">Service:</th>
-                        <th class="bikeM">Bike model:</th>
-                        <th class="clientId">Client Id:</th>
-                        <th class="btn"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="order : ${orderList}">
-                        <td>#236823</td>
-                        <td>Full service: 280zł</td>
-                        <td>Trek: szosa</td>
-                        <td>8563049</td>
-                        <td th:text="${order.orderId}"></td>
-                        <td th:text="${order.service}"></td>
-                        <td th:text="${order.bikeModel}"></td>
-                        <td th:text="${order.client}"></td>
-                        <td>
-                            <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
-                                <button class="edit-btn" type="submit">edit</button>
-                            </form>
-                            <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
-                                <button class="done-btn" type="submit">done</button>
-                            </form>
-                        </td>
-                    </tr>
-                </tbody>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="orderId">Order ID:</th>
+                            <th class="service">Service:</th>
+                            <th class="bikeM">Bike model:</th>
+                            <th class="clientId">Client Id:</th>
+                            <th class="btn"></th>
+                        </tr>
+                    </thead>
+            <tbody>
+                <tr th:each="order : ${orderList}">
+                    <td>#236823</td>
+                    <td>Full service: 280zł</td>
+                    <td>Trek: szosa</td>
+                    <td>8563049</td>
+                    <td th:text="${order.orderId}"></td>
+                    <td th:text="${order.service}"></td>
+                    <td th:text="${order.bikeModel}"></td>
+                    <td th:text="${order.client}"></td>
+                    <td>
+                        <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
+                            <button class="edit-btn" type="submit">edit</button>
+                        </form>
+                        <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                            <button class="done-btn" type="submit">done</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
             </table>
         </div>
+        <footer id="footer" class="grid_16" style="text-align: center;">
+            Copyright© 
+            <!-- <script>
+                var year = new Date;
+                var thisYear = document.getElementById('footer')
+                thisYear.innerHTML = year.getFullYear(); 
+            </script> -->
+        </footer>
     </div>
     <script src="../templates/main.js"></script>
 </body>
