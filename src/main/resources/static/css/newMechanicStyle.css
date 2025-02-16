@@ -39,7 +39,7 @@
 }
 
 .button:hover {
-    background-color: rgba(240, 240, 240, 0.889); /* Kolor po najechaniu kursorem */
+    background-color: rgba(216, 216, 216, 0.889); /* Kolor po najechaniu kursorem */
 }
 
 .orderId {
