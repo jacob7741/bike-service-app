@@ -33,7 +33,7 @@
 }
 
 #orders_to_accept, #done_orders {
-    /* display:-ms-inline-flexbox; */
+    display:-ms-inline-flexbox;
     text-align: left;
     font-size: 14px;
     width: 40%;
