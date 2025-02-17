@@ -34,7 +34,7 @@ public class MechanicController {
         model.addAttribute("orderList", personalList);
         return "mechanic";
     }
-
+    
     @PostMapping("mechanic/done/{id}")
     public String doneButton(@PathVariable("id") int id) {
         mechanicService.doneStatusById(id);

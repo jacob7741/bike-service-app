@@ -5,17 +5,17 @@
     margin: 0;
 }
 
+#footer {
+    text-align: center;
+    padding: 2px;
+    width: 100%;
+}
+
 #header {
     background-color: rgba(255, 255, 255, 0.763);
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.16);
     width: 100%;
     margin-bottom: 0.4%;
-}
-
-#order_table {
-    /* display: flex; */
-    width: 80%;
-    background-color: rgba(255, 255, 255, 0.913);
 }
 
 #side_bar_menu {
@@ -25,6 +25,19 @@
     align-items: center;
     flex-direction: column;
     /* margin-left: 2px; */
+}
+
+#order_table {
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.913);
+}
+
+#orders_to_accept, #done_orders {
+    /* display:-ms-inline-flexbox; */
+    text-align: left;
+    font-size: 14px;
+    width: 40%;
+    background-color: rgba(255, 255, 255, 0.743);
 }
 
 .button {
@@ -39,7 +52,8 @@
 }
 
 .button:hover {
-    background-color: rgba(216, 216, 216, 0.889); /* Kolor po najechaniu kursorem */
+    background-color: rgba(216, 216, 216, 0.889);
+    /* Kolor po najechaniu kursorem */
 }
 
 .orderId {

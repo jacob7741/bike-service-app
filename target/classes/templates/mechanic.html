@@ -25,45 +25,66 @@
         </aside>
         <div id="order_table" class="grid_12">
             <p>Number of orders: <span th:text="${#lists.size(orderList)}"></span></p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="orderId">Order ID:</th>
-                            <th class="service">Service:</th>
-                            <th class="bikeM">Bike model:</th>
-                            <th class="clientId">Client Id:</th>
-                            <th class="btn"></th>
-                        </tr>
-                    </thead>
-            <tbody>
-                <tr th:each="order : ${orderList}">
-                    <td>#236823</td>
-                    <td>Full service: 280zł</td>
-                    <td>Trek: szosa</td>
-                    <td>8563049</td>
-                    <td th:text="${order.orderId}"></td>
-                    <td th:text="${order.service}"></td>
-                    <td th:text="${order.bikeModel}"></td>
-                    <td th:text="${order.client}"></td>
-                    <td>
-                        <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
-                            <button class="edit-btn" type="submit">edit</button>
-                        </form>
-                        <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
-                            <button class="done-btn" type="submit">done</button>
-                        </form>
-                    </td>
-                </tr>
-            </tbody>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="orderId">Order ID:</th>
+                        <th class="service">Service:</th>
+                        <th class="bikeM">Bike model:</th>
+                        <th class="clientId">Client ID:</th>
+                        <th class="btn"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="order : ${orderList}">
+                        <td>#236823</td>
+                        <td>Full service: 280zł</td>
+                        <td>Trek: szosa</td>
+                        <td>8563049</td>
+                        <td th:text="${order.orderId}"></td>
+                        <td th:text="${order.service}"></td>
+                        <td th:text="${order.bikeModel}"></td>
+                        <td th:text="${order.client}"></td>
+                        <td>
+                            <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
+                                <button class="edit-btn" type="submit">edit</button>
+                            </form>
+                            <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                                <button class="done-btn" type="submit">done</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
-        <footer id="footer" class="grid_16" style="text-align: center;">
-            Copyright© 
-            <!-- <script>
+        <h5>Orders to accept:</h5>
+        <div>
+            <table id="orders_to_accept" class="grid_8">
+                <thead>
+                    <tr>
+                        <th>From:</th>
+                        <th>Service:</th>
+                        <th>Bike model:</th>
+                    </tr>
+                </thead>
+            </table>
+            <h5>Done Orders:</h5>
+            <table id="done_orders" class="grid_16">
+                <thead>
+                    <tr>
+                        <th>Order ID:</th>
+                        <th>Clinet ID:</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <footer id="footer" class="grid_16">
+            <script>
                 var year = new Date;
                 var thisYear = document.getElementById('footer')
                 thisYear.innerHTML = year.getFullYear(); 
-            </script> -->
+            </script>
+            Copyright©
         </footer>
     </div>
     <script src="../templates/main.js"></script>
