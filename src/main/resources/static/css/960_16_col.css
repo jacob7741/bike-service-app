@@ -10,15 +10,12 @@
  */
  body {
   /* height: 100%; */
-  overflow:hidden;
+  /* overflow:hidden; */
   margin: 0;
   /* display: flex; */
   flex-direction: column;
 }
 .container_16 {
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* height: 100%; */
   background-color: rgb(237, 237, 237);
 }
 .grid_1,
