@@ -18,8 +18,10 @@
             <h2>Welcome: <span th:text="${username}"></span></h2>
         </div>
         <aside id="side_bar_menu" class="grid_4">
-            <button class="button" href="">Add Service</button>
-            <button class="button" href="">Services</button>
+            <button class="button" href="">Add service</button>
+            <button class="button" href="">My services</button>
+            <button class="button" href="">New services</button>
+            <button class="button" href="">Done services</button>
             <button class="button" href="">Calender</button>
             <button class="button" href="">Group</button>
         </aside>
@@ -37,10 +39,7 @@
                 </thead>
                 <tbody>
                     <tr th:each="order : ${orderList}">
-                        <td>#236823</td>
-                        <td>Full service: 280zł</td>
-                        <td>Trek: szosa</td>
-                        <td>8563049</td>
+    
                         <td th:text="${order.orderId}"></td>
                         <td th:text="${order.service}"></td>
                         <td th:text="${order.bikeModel}"></td>
@@ -57,37 +56,20 @@
                 </tbody>
             </table>
         </div>
-        <div>
-            <h5>Orders to accept:</h5>
-            <table id="orders_to_accept" class="grid_8">
-                <thead>
-                    <tr>
-                        <th>From:</th>
-                        <th>Service:</th>
-                        <th>Bike model:</th>
-                    </tr>
-                </thead>
-            </table>
-            <h5>Done Orders:</h5>
-            <table id="done_orders" class="grid_16">
-                <thead>
-                    <tr>
-                        <th>Order ID:</th>
-                        <th>Clinet ID:</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-        <footer id="footer" class="grid_16">
+
+    <!-- TODO: dodając stopkę rozwiązać problem aby
+     tabele otwierały się w oknie z przewijaniem -->
+
+        <!-- <footer id="footer" class="grid_16">
             <script>
                 var year = new Date;
                 var thisYear = document.getElementById('footer')
                 thisYear.innerHTML = year.getFullYear(); 
             </script>
             Copyright©
-        </footer>
+        </footer> -->
+
     </div>
     <script src="../templates/main.js"></script>
 </body>
-
 </html>

@@ -9,14 +9,17 @@
  * Full width: 960px
  */
  body {
-  min-width: 760px;
+  /* height: 100%; */
+  overflow:hidden;
+  margin: 0;
+  /* display: flex; */
+  flex-direction: column;
 }
 .container_16 {
-  margin-left: 0;
-  margin-right: 0;
-  /* width: auto; */
-  /* overflow: auto; */
-  background-color: rgb(250, 250, 250);
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* height: 100%; */
+  background-color: rgb(237, 237, 237);
 }
 .grid_1,
 .grid_2,
@@ -36,9 +39,7 @@
 .grid_16
 {
   float:inline-start;
-  position: relative;
-  margin-left: 0;
-  margin-right: 0;
+  /* position: relative; */
 }
 .push_1,.pull_1,
 .push_2,.pull_2,

@@ -19,25 +19,44 @@
 }
 
 #side_bar_menu {
+    /* position: fixed; */
+    top: 0;
     width: 20%;
-    display: flex;
+    /* height: 100%; */
+    /* display: flex; */
+    border-radius: 2px;
     background-color: rgba(255, 255, 255, 0.763);
     align-items: center;
     flex-direction: column;
-    /* margin-left: 2px; */
+    flex-shrink: 0;
+    list-style-type: none;
+    position: relative;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 #order_table {
+    /* position: -webkit-sticky; */
+    display: inline-block;
+    overflow-y: auto;
+    height: 10%;
     width: 80%;
+    border-radius: 2px;
     background-color: rgba(255, 255, 255, 0.913);
 }
 
-#orders_to_accept, #done_orders {
-    display:-ms-inline-flexbox;
+
+
+#footer {
+    width: 100%;
+}
+
+#header {
+    /* margin-left: 20%; */
     text-align: left;
-    font-size: 14px;
-    width: 40%;
-    background-color: rgba(255, 255, 255, 0.743);
+    padding: 2px;
+    width: 100%;
+    flex-shrink: 0;
 }
 
 .button {
