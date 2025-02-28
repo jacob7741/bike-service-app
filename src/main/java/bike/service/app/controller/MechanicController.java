@@ -35,6 +35,11 @@ public class MechanicController {
         return "mechanic";
     }
     
+    @GetMapping("templates/main.js")
+    public String jsmain () {
+        return "main.js";
+    }
+    
     @PostMapping("mechanic/done/{id}")
     public String doneButton(@PathVariable("id") int id) {
         mechanicService.doneStatusById(id);
