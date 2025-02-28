@@ -12,19 +12,19 @@
 }
 
 #header {
-    background-color: rgba(224, 248, 179, 0.763);
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.16);
     width: 100%;
     margin-bottom: 0.4%;
+    /* background-color: rgba(224, 248, 179, 0.763); */
     position: fixed;
 }
 
 #side_bar_menu {
     position:fixed;
-    padding: 2px;
+    padding: 0.3%;
     height: 100%;
     width: 20%;
-    margin-top: 5%;
+    margin-top: 60px;
     border-radius: 2px;
     background-color: rgba(230, 166, 166, 0.763);
     align-items: center;
@@ -37,15 +37,15 @@
 #order_table {
     /* display: inline-block; */
     position: fixed;
-    padding: 2px;
+    padding: 0.3%;
     padding-bottom: 5px;
     height:calc(100vh - 60px);
     width: 80%;
     overflow-y: auto; /* Enable vertical scrolling */
-    margin-top: 5%;
+    margin-top: 60px;
     margin-left: 20%;
     border-radius: 2px;
-    background-color: rgba(218, 238, 246, 0.913);
+    /* background-color: rgba(218, 238, 246, 0.913); */
 }
 
 
@@ -55,7 +55,7 @@
     position: fixed;
     font-size: 10px;
     width: 100%;
-    background-color: rgb(248, 244, 167);
+    /* background-color: rgb(248, 244, 167); */
 }
 
 #header {
@@ -69,7 +69,8 @@
 .button {
     font-size: 18px;
     background-color: rgba(255, 255, 255, 0.913);
-    padding: 4%;
+    padding: 5%;
+    margin-bottom: 2px;
     border-radius: 8px;
     width: 100%;
     cursor: pointer;
