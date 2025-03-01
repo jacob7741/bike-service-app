@@ -57,75 +57,92 @@
                 </tbody>
             </table>
         </div>
-        <div id="add_order" class="grid_12">
-            <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
-                <div class="grid-container">
-                    <div class="grid_8">
-                        <fieldset>
-                            <legend>Usługi</legend>
-                            <label><input type="radio" name="serviceType" value="smallService" required> Mały przegląd</label><br/>
-                            <label><input type="radio" name="serviceType" value="fullService" required> Pełny przegląd</label><br/>
-                            <label>
-                            <input type="radio" name="serviceType" value="repair" id="repairCheckbox"
-                                       onchange="toggleRepairDetails(this)" required> Naprawa
-                            </label><br/>
-                            <div id="repairDetails" style="display: none;">
-                                <label>Szczegóły naprawy:<br/>
-                                    <textarea name="repairDetails" rows="3"></textarea>
-                                </label><br/>
-                                <label>Cena:<br/>
-                                    <input type="number" name="repairPrice"/>
-                                </label>
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div class="grid_8">
-                        <fieldset>
-                            <legend>Szczegóły roweru</legend>
-                            <label>Marka:<br/>
-                                <input type="text" name="brand" required/></label><br/>
-                            <label>Rodzaj roweru:<br/>
-                                <input type="text" name="modelType" required/></label><br/>
-                            <label>Numer Seryjny:<br/>
-                                <input type="text" name="serialNumber" required/></label>
-                        </fieldset>
-                    </div>
-                </div>
-                <div class="grid-container">
-                    <div class="client-group">
-                        <fieldset>
-                            <legend>Dane Klienta:</legend>
-                            <label>Imię<br/>
-                                <input type="text" name="first_name" required/></label><br/>
-                            <label>Nazwisko<br/>
-                                <input type="text" name="last_name" required/></label><br/>
-                            <label>Numer telefonu<br/>
-                                <input type="text" name="phoneNumber" required/></label><br/>
-                            <label>e-mail<br/>
-                                <input type="email" name="email" required/></label><br/>
-                        </fieldset>
-                    </div>
-                    <div class="mechanic-group">
-                        <fieldset>
-                            <legend>Wybierz mechanika:</legend>
-                            <div th:each="user : ${users}">
-                                <label><input type="radio" name="users" th:value="${user.userId}"
-                                              th:text="${user.firstName} + ' ' + ${user.lastName}"/>
-                                </label><br/>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-                <div class="form-group centered-button">
-                    <button type="submit" name="services">Dodaj Usługę</button>
-                </div>
-            </form>            
-        </div>
         <footer id="footer" class="grid_16">
         </footer>
 
     </div>
     <script src="../templates/main.js"></script>
+</body>
+
+</html><!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="panel for mechanics">
+    <link rel="stylesheet" href="../static/css/960_16_col.css">
+    <link rel="stylesheet" href="../static/css/newMechanicStyle.css">
+    <title>Mechanic panel</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container_16 clearfix">
+        <div id="header" class="grid_16">
+            <p id="data" style="text-align:right; color: rgba(114, 114, 114, 0.883); font-family: 'Trebuchet MS',
+                'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+            </p>
+            <h2>Welcome: <span th:text="${username}"></span></h2>
+        </div>
+        <aside id="side_bar_menu" class="grid_4">
+            <button onclick="changeContent()">Zmień zawartość</button>
+            <button class="button" href="">News</button>
+            <button class="button" href="">Add service</button>
+            <button class="button" href="">My services</button>
+            <button class="button" href="">New services</button>
+            <button class="button" href="">Done services</button>
+            <button class="button" href="">Calender</button>
+            <button class="button" href="">Group</button>
+        </aside>
+        <div id="order_table" class="grid_12">
+            <p>Number of orders: <span th:text="${#lists.size(orderList)}"></span></p>
+            <table id="order_content">
+                <thead>
+                    <tr>
+                        <th class="orderId">Order ID:</th>
+                        <th class="service">Service:</th>
+                        <th class="bikeM">Bike model:</th>
+                        <th class="clientId">Client ID:</th>
+                        <th class="btn"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="order : ${orderList}">
+                        <td th:text="${order.orderId}"></td>
+                        <td th:text="${order.service}"></td>
+                        <td th:text="${order.bikeModel}"></td>
+                        <td th:text="${order.client}"></td>
+                        <td>
+                            <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
+                                <button class="edit-btn" type="submit">edit</button>
+                            </form>
+                            <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                                <button class="done-btn" type="submit">done</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="new_content" class="hidden">
+                <p>Nowa zawartość po naciśnięciu przycisku!</p>
+            </div>
+        </div>
+        <footer id="footer" class="grid_16">
+        </footer>
+    </div>
+
+    <button onclick="changeContent()">Zmień zawartość</button>
+
+    <script>
+        function changeContent() {
+            document.getElementById("order_content").classList.add("hidden");
+            document.getElementById("new_content").classList.remove("hidden");
+        }
+    </script>
 </body>
 
 </html>

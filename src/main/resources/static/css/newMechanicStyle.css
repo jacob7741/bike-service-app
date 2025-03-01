@@ -29,8 +29,8 @@
     background-color: rgb(249, 226, 226);
     align-items: center;
     flex-direction: column;
-    flex-shrink: 0;
     list-style-type: none;
+    flex-shrink: 0;
 }
 
 
@@ -42,18 +42,6 @@
     height:calc(100vh - 60px);
     width: 80%;
     overflow-y: auto; /* Enable vertical scrolling */
-    margin-top: 60px;
-    margin-left: 20%;
-    border-radius: 5px;
-    background-color: rgb(242, 247, 249);
-}
-
-#add_order {
-    position: fixed;
-    padding: 0.3%;
-    padding-bottom: 5px;
-    height:calc(100vh - 60px);
-    width: 80%;
     margin-top: 60px;
     margin-left: 20%;
     border-radius: 5px;

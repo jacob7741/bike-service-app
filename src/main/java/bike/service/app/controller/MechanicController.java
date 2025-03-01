@@ -33,7 +33,7 @@ public class MechanicController {
         model.addAttribute("username", fullName.get());
         model.addAttribute("orderList", personalList);
         return "mechanic";
-    }
+    } 
     
     @GetMapping("templates/main.js")
     public String jsmain () {
