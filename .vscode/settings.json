@@ -5,7 +5,6 @@
     "editor.minimap.enabled": false,
     "java.compile.nullAnalysis.mode": "automatic",
     "editor.fontSize": 14,
-<<<<<<< HEAD
     "editor.fontLigatures": false,
     "editor.fontWeight": "normal",
     "editor.tokenColorCustomizations": {
@@ -47,15 +46,7 @@
         "terminal.ansiRed": "#C50F1F",
         "terminal.ansiWhite": "#CCCCCC",
         "terminal.ansiYellow": "#C19C00"
-    }
-<<<<<<< HEAD
-}
-=======
-    "terminal.integrated.fontSize": 14,
+    },
     "liveServer.settings.port": 5500,
-    "java.configuration.updateBuildConfiguration": "automatic"
+    "liveServer.settings.CustomBrowser": "safari"
 }
->>>>>>> 6e96a7c (updateLoginWork)
-=======
-}
->>>>>>> refactor
