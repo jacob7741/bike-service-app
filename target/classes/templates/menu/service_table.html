@@ -4,68 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="panel for mechanics">
-    <link rel="stylesheet" href="../static/css/960_16_col.css">
-    <link rel="stylesheet" href="../static/css/newMechanicStyle.css">
     <title>Order table</title>
+    <style>
+        #order_table {
+            /* display: inline-block; */
+            position: fixed;
+            padding: 0.3%;
+            padding-bottom: 5px;
+            height: calc(100vh - 60px);
+            width: 80%;
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+            margin-top: 60px;
+            margin-left: 20%;
+            border-radius: 5px;
+            background-color: rgb(242, 247, 249);
+        }
+
+
+        .orderId {
+
+            width: 7%;
+            text-align: left;
+            /* background-color: rgba(235, 158, 158, 0.7); */
+        }
+
+        .service {
+            width: 15%;
+            text-align: left;
+            /* background-color: rgba(202, 235, 158, 0.7); */
+        }
+
+        .bikeM {
+            width: 15%;
+            text-align: left;
+            /* background-color: rgba(235, 158, 158, 0.7); */
+        }
+
+        .clientId {
+            width: 7%;
+            text-align: left;
+            /* background-color: rgba(202, 235, 158, 0.7); */
+        }
+
+        .btn {
+            width: 5%;
+            text-align: left;
+            /* background-color: rgba(158, 193, 235, 0.7); */
+        }
+
+        .edit-btn,
+        .done-btn {
+            align-items: center;
+            justify-content: center;
+            border-color: black;
+            border: 3px;
+            width: 80%;
+            font-size: 14px;
+            padding: 3%;
+            border-radius: 5px;
+            margin: 0.5%;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+        }
+
+        .edit-btn {
+            background-color: #67b66df8;
+        }
+
+        .done-btn {
+            background-color: #e3403df8;
+        }
+    </style>
 </head>
 
 <body>
-    <style>
-        
-.orderId {
-
-width: 20%;
-text-align: left;
-/* background-color: rgba(235, 158, 158, 0.7); */
-}
-
-.service {
-width: 40%;
-text-align: left;
-/* background-color: rgba(202, 235, 158, 0.7); */
-}
-
-.bikeM {
-width: 20%;
-text-align: left;
-/* background-color: rgba(235, 158, 158, 0.7); */
-}
-
-.clientId {
-width: 20%;
-text-align: left;
-/* background-color: rgba(202, 235, 158, 0.7); */
-}
-
-.btn {
-width: 5%;
-text-align: left;
-/* background-color: rgba(158, 193, 235, 0.7); */
-}
-
-.edit-btn,
-.done-btn {
-align-items: center;
-justify-content: center;
-border-color: black;
-border: 3px;
-width: 100%;
-font-size: 14px;
-padding: 2%;
-border-radius: 5px;
-margin: 1%;
-color: rgb(255, 255, 255);
-cursor: pointer;
-}
-
-.edit-btn {
-background-color: #67b66df8;
-}
-
-.done-btn {
-background-color: #e3403df8;
-}
-    </style>
     <div id="order_table" class="grid_12">
         <p>Number of orders: <span th:text="${#lists.size(orderList)}"></span></p>
         <table>
