@@ -1,40 +1,30 @@
 <!DOCTYPE html>
-<htmllang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
     xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>login</title>
-        <link href="../static/css/loginstyle.css" type="text/css" rel="stylesheet" />
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link href="../static/css/loginstyle.css" type="text/css" rel="stylesheet" />
+</head>
 
-    <body>
-        <div class="container">
-            <div class="left">
-                <img src="../static/images/front_page_01.png" alt="">
-            </div>
-            <div class="center">
-                <img src="../static/images/front_page_02.png" alt="">
-                <div class="login_group">
-                    <p th:if="${loginError}" class="errror"></p>
-                    <form th:action="@{/login}" method="post">
-                    <label for="username">Username:</label> 
-                    <input type="text" id="username" name="username" required>
-                    <br>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                    <br>
-                    <a th:href="@{/register}">Register</a> 
-                    <a th:href="@{/forgotpassword}">Forgot password ?</a>
-                    <button type="submit" id="loginButton">Login</button>
-                </div>
-                </form>
-            </div>
-            <div class="right">
-                <img src="../static/images/front_page_03.png" alt="">
-            </div>
-        </div>
-    </body>
-
-    </html>
+<body>
+    <div id="login">
+        <p th:if="${loginError}" class="errror"></p>
+        <form th:action="@{/login}" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            </br>
+            <a th:href="@{/register}" style="font-size: 14px;">
+                Register</a>
+            <a th:href="@{/forgotpassword}" style="font-size: 14px;">
+                Forgot password ?</a>
+            <button type="submit" id="loginButton">Login</button>
+        </form>
+    </div>
+</body>
+</html>
