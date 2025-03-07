@@ -48,5 +48,6 @@
         "terminal.ansiYellow": "#C19C00"
     },
     "liveServer.settings.port": 5500,
-    "liveServer.settings.CustomBrowser": "safari"
+    "liveServer.settings.CustomBrowser": "safari",
+    "java.configuration.updateBuildConfiguration": "automatic"
 }
