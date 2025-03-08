@@ -29,7 +29,7 @@ import lombok.Setter;
 public class Order {
 
     public enum Status {
-        ACTIVE, DONE;
+       NEW, ACTIVE, DONE;
     } 
 
     @Id

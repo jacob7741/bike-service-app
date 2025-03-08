@@ -3,16 +3,20 @@ package bike.service.app.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
+
+import java.io.ObjectInputFilter.Status;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import static org.mockito.ArgumentMatchers.any;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
@@ -64,11 +68,12 @@ class OrderServiceTest {
     void setup() {
         services = new Services();
         
-        user = new Users();
+        user = new Users(); 
         user.setUserId(43);
 
         order = new Order();
         order.setOrderId(12);
+        order.setStatus(Order.Status.NEW);
 
         client = new Client();
         client.setClientId(12);
@@ -76,7 +81,6 @@ class OrderServiceTest {
 
         bike = new Bike();
         bike.setModelType("Góral");
-
     }
 
     @Test
@@ -192,5 +196,20 @@ class OrderServiceTest {
         });
 
         assertEquals("no bike found", exception.getMessage());
+    }
+
+    @Test
+    void testGetAllNewOrders() {
+        Order order1 = new Order();
+        order1.setStatus(Order.Status.NEW);
+        Order order2 = new Order();
+        order2.setStatus(Order.Status.NEW);
+
+        List<Order> orders = Arrays.asList(order1, order2);
+        when(orderRepository.findAll()).thenReturn(orders);
+
+        List<Order> newOrders = orderService.getAllNewOrders();
+
+        assertThat(newOrders).containsExactly(order1, order2);
     }
 }

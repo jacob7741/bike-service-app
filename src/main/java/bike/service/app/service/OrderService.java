@@ -65,10 +65,17 @@ public class OrderService {
                 .collect(Collectors.toList());
     }
 
-    public List<Order> getAllDonOrders() {
+    public List<Order> getAllDoneOrders() {
         
         return orderRepository.findAll().stream()
                 .filter(order -> Order.Status.DONE.equals(order.getStatus()))
+                .collect(Collectors.toList());
+    }
+
+    public List<Order> getAllNewOrders() {
+
+        return orderRepository.findAll().stream()
+                .filter(order -> Order.Status.NEW.equals(order.getStatus()))
                 .collect(Collectors.toList());
     }
 
@@ -98,7 +105,7 @@ public class OrderService {
             order.setService("reprair - id: " + services.getServiceId());
         }
 
-        order.setStatus(Status.ACTIVE);
+        order.setStatus(Status.NEW);
         orderRepository.save(order);
         services.setOrder(order);
         servicesRepository.save(services);
