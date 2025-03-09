@@ -20,46 +20,82 @@
         <aside id="side_bar_menu" class="grid_4">
             <button class="button" onclick="showContent('news')">News</button>
             <button class="button" onclick="showContent('order_table')">My services</button>
-            <button class="button" href="">Add service</button>
-            <button class="button" href="">New services</button>
-            <button class="button" href="">Done services</button>
-            <button class="button" href="">Calender</button>
-            <button class="button" href="">Group</button>
+            <button class="button" onclick="showContent('add_service')">Add service</button>
+            <button class="button" onclick="showContent('new_service')">New services</button>
+            <button class="button" onclick="showContent('done_service')">Done services</button>
+            <button class="button" onclick="showContent('calender')">Calender</button>
+            <button class="button" onclick="showContent('group')">Group</button>
         </aside>
-        <div id="order_table" class="content">
-            <p>Number of orders: <span th:text="${#lists.size(orderList)}"></span></p>
-            <table>
-                <thead>
-                    <tr>
-                        <th class="orderId">Order ID:</th>
-                        <th class="service">Service:</th>
-                        <th class="bikeM">Bike model:</th>
-                        <th class="clientId">Client ID:</th>
-                        <th class="btn"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="order : ${orderList}">
-                        <td th:text="${order.orderId}"></td>
-                        <td th:text="${order.service}"></td>
-                        <td th:text="${order.bikeModel}"></td>
-                        <td th:text="${order.client}"></td>
-                        <td>
-                            <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
-                                <button class="edit-btn" type="submit">edit</button>
-                            </form>
-                            <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
-                                <button class="done-btn" type="submit">done</button>
-                            </form>
-                        </td>
-                    </tr>
-                </tbody>
-            </div>
-            </table>
     </div>
-    <div id="news">
-        <p>News panel in maintance...</p>
+    <div id="order_table" class="content">
+        <p>Number of orders: <span th:text="${#lists.size(orderList)}"></span></p>
+        <table>
+            <thead>
+                <tr>
+                    <th class="orderId">Order ID:</th>
+                    <th class="service">Service:</th>
+                    <th class="bikeM">Bike model:</th>
+                    <th class="clientId">Client ID:</th>
+                    <th class="btn"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="order : ${orderList}">
+                    <td th:text="${order.orderId}"></td>
+                    <td th:text="${order.service}"></td>
+                    <td th:text="${order.bikeModel}"></td>
+                    <td th:text="${order.client}"></td>
+                    <td>
+                        <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
+                            <button class="edit-btn" type="submit">edit</button>
+                        </form>
+                        <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                            <button class="done-btn" type="submit">done</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+    <div id="news" class="content">
+        <div class="article grid_5">
+            <p>
+                <script
+                    src="//rss.bloople.net/?url=https%3A%2F%2Ffeeds.feedburner.com%2FBikeRumor&detail=100&showtitle=false&type=js">
+                    </script>
+            </p>
+        </div>
+        <div class="article grid_5">
+            <p>
+                <script
+                    src="//rss.bloople.net/?url=https%3A%2F%2Ffeeds.feedburner.com%2FBikeRumor&detail=100&showtitle=false&type=js">
+                    </script>
+            </p>
+        </div>
+        <div class="bottom_article grid_12">
+            <p>
+                <script
+                    src="//rss.bloople.net/?url=https%3A%2F%2Ffeeds.feedburner.com%2FBikeRumor&detail=100&showtitle=false&type=js">
+                    </script>
+            </p>
+        </div>
+
+    </div>
+    <!-- <div id="add_service" class="content">
+            <p>add panel in maintance...</p>
+        </div>
+        <div id="new_service" class="content">
+            <p>new service panel in maintance...</p>
+        </div>
+        <div id="done_service" class="content">
+            <p>done panel in maintance...</p>
+        </div>
+        <div id="calender" class="content">
+            <p>calender panel in maintance...</p>
+        </div>
+        <div id="group" class="content">
+            <p>group panel in maintance...</p>
+        </div> -->
     <footer id="footer" class="grid_16">
     </footer>
     <script src="../templates/main.js"></script>
