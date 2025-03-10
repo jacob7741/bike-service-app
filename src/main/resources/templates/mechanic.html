@@ -12,7 +12,7 @@
 <body>
     <div class="container_16 clearfix">
         <div id="header" class="grid_16">
-            <p id="data" style="text-align:right; color: rgba(114, 114, 114, 0.883); font-family: 'Trebuchet MS',
+            <p id="data" style="text-align:right; color: rgb(78, 104, 96); font-family: 'Trebuchet MS',
                 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
             </p>
             <h2>Welcome: <span th:text="${username}"></span></h2>
@@ -78,12 +78,54 @@
                     </script>
             </p>
         </div>
-
     </div>
-    <!-- <div id="add_service" class="content">
-            <p>add panel in maintance...</p>
-        </div>
-        <div id="new_service" class="content">
+
+    <div id="add_service" class="content">
+        <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
+            <div style="display: inline; width: 50%; height: 50%; padding: 5px; margin: 3px;">
+                <div class="group">
+                    <label><input type="radio" name="serviceType" value="smallService" required> Mały
+                        przegląd</label><br />
+                    <label><input type="radio" name="serviceType" value="fullService" required> Pełny
+                        przegląd</label><br />
+                    <label>
+                        <input type="radio" name="serviceType" value="repair" id="repairCheckbox"
+                            onchange="toggleRepairDetails(this)" required> Naprawa
+                    </label><br />
+                    <label>Szczegóły naprawy:<br />
+                        <textarea name="repairDetails" rows="3"></textarea>
+                    </label><br />
+                    <label>Cena:<br />
+                        <input type="number" name="repairPrice" />
+                    </label>
+                </div>
+
+                <div class="group">
+                    <label>Marka:<br />
+                        <input type="text" name="brand" required /></label><br />
+                    <label>Rodzaj roweru:<br />
+                        <input type="text" name="modelType" required /></label><br />
+                    <label>Numer Seryjny:<br />
+                        <input type="text" name="serialNumber" required /></label>
+                </div>
+
+                <div class="group">
+                    <label>Imię<br />
+                        <input type="text" name="first_name" required /></label><br />
+                    <label>Nazwisko<br />
+                        <input type="text" name="last_name" required /></label><br />
+                    <label>Numer telefonu<br />
+                        <input type="text" name="phoneNumber" required /></label><br />
+                    <label>e-mail<br />
+                        <input type="email" name="email" required /></label><br />
+                </div>
+            </div>
+            <!-- <div class="form-group centered-button">
+                <button type="submit" name="services">Dodaj Usługę</button>
+            </div> -->
+        </form>
+    </div>
+    <!--    <div id="new_service" class="content">
             <p>new service panel in maintance...</p>
         </div>
         <div id="done_service" class="content">
@@ -95,6 +137,7 @@
         <div id="group" class="content">
             <p>group panel in maintance...</p>
         </div> -->
+    <!-- TODO: Stopka nie jest całkowicie na samym dole -->
     <footer id="footer" class="grid_16">
     </footer>
     <script src="../templates/main.js"></script>

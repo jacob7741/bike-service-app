@@ -8,15 +8,7 @@
  * Content width: 950px
  * Full width: 960px
  */
- body {
-  /* height: 100%; */
-  /* overflow:hidden; */
-  margin: 0;
-  /* display: flex; */
-  flex-direction: column;
-}
 .container_16 {
-  background-color: rgb(237, 237, 237);
 }
 .grid_1,
 .grid_2,

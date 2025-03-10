@@ -14,3 +14,15 @@ function showContent(id) {
     }
     document.getElementById(id).style.display = 'block';
 };
+
+function toggleRepairDetails(radio) {
+    var repairDetails = document.getElementById('repairDetails');
+    repairDetails.style.display = radio.checked ? 'block' : 'none';
+}
+
+function validateForm() {
+    var radios = document.querySelectorAll("input[type='radio'][name='serviceType']");
+    var isChecked = Array.prototype.slice.call(radios).some(x => x.checked);
+
+    return true;
+}

@@ -1,21 +1,21 @@
 * {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: rgb(50, 50, 50);
+    color: rgb(34, 34, 34);
     box-sizing: border-box;
     margin: 0;
 }
 
 #footer {
     text-align: center;
-    padding: 2px;
     width: 100%;
+    position: absolute;
 }
 
 #header {
-    box-shadow: 4px 5px 7px rgba(133, 132, 132, 0.626);
+    box-shadow: 4px 5px 7px rgba(133, 132, 132, 0.413);
     width: 100%;
-    margin-bottom: 0.4%;
-    background-color: rgba(249, 240, 215, 0.853);
+    margin-bottom: 1px;
+    background-color: rgb(207, 232, 228);
     position: fixed;
 }
 
@@ -26,22 +26,34 @@
     width: 20%;
     margin-top: 60px;
     border-radius: 5px;
-    background-color: rgb(249, 226, 226);
+    background-color: rgb(221, 228, 214);
     align-items: center;
     flex-direction: column;
     list-style-type: none;
     flex-shrink: 0;
 }
 
+#order_table {
+    margin-bottom: 1%;
+    overflow-y: scroll;
+}
+.group {
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(207, 232, 217, 0.569);
+}
+
 .bottom_article {
     display: flex;
-    max-height: 50%;
+    max-height: 46.5%;
+    max-width: 200%;
     margin: 2px 4px;
     align-content: center;
-    border: 1px solid;
     border-radius: 1%;
-    overflow-y: hidden;
+    border: 1px solid rgba(59, 97, 88, 0.67);
+    background-color: rgba(255, 255, 255, 0.405);
     overflow-y: scroll;
+    margin-bottom: 0.5%;
 }
 
 .article {
@@ -50,25 +62,20 @@
     max-height: 50%;
     margin: 2px 4px;
     align-content: center;
-    border: 1px solid;
+    border: 1px solid rgba(59, 97, 88, 0.67);
+    background-color: rgba(255, 255, 255, 0.405);
     border-radius: 1%;
-    overflow-y: hidden;
     overflow-y: scroll;
 }
 
 .content {
-    /* display: inline-block; */
     position: fixed;
-    padding: 0.3%;
-    padding-bottom: 5px;
     height: calc(100vh - 60px);
     width: 80%;
-    /* overflow-y: hidden;
-    overflow-y: scroll; */
     margin-top: 60px;
     margin-left: 20%;
     border-radius: 5px;
-    background-color: rgb(242, 247, 249);
+    background-color: rgb(231, 244, 228);
 }
 
 #footer {
@@ -77,7 +84,7 @@
     position: relative;
     font-size: 10px;
     width: 100%;
-    background-color: rgb(247, 247, 247);
+    background-color: rgb(207, 232, 228);
 }
 
 #header {
@@ -90,7 +97,7 @@
 
 .button {
     font-size: 18px;
-    background-color: rgba(255, 255, 255, 0.913);
+    background-color: rgba(255, 255, 255, 0.944);
     padding: 5%;
     margin-bottom: 2px;
     border-radius: 8px;
