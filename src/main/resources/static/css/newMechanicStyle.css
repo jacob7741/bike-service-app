@@ -35,17 +35,19 @@
 
 .bottom_article {
     display: flex;
+    max-height: 50%;
+    margin: 2px 4px;
     align-content: center;
     border: 1px solid;
+    border-radius: 1%;
     overflow-y: hidden;
     overflow-y: scroll;
-    border-radius: 1%;
 }
 
 .article {
     display: flex;
     max-width: 49%;
-    max-height: 40%;
+    max-height: 50%;
     margin: 2px 4px;
     align-content: center;
     border: 1px solid;
