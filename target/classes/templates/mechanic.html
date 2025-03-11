@@ -27,7 +27,7 @@
             <button class="button" onclick="showContent('group')">Group</button>
         </aside>
     </div>
-    <div id="order_table" class="content">
+    <div id="order_table" class="content grid_16">
         <p>Number of orders: <span th:text="${#lists.size(orderList)}"></span></p>
         <table>
             <thead>
@@ -81,49 +81,66 @@
     </div>
 
     <div id="add_service" class="content">
-        <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
-            <div style="display: inline; width: 50%; height: 50%; padding: 5px; margin: 3px;">
-                <div class="group">
-                    <label><input type="radio" name="serviceType" value="smallService" required> Mały
-                        przegląd</label><br />
-                    <label><input type="radio" name="serviceType" value="fullService" required> Pełny
-                        przegląd</label><br />
-                    <label>
-                        <input type="radio" name="serviceType" value="repair" id="repairCheckbox"
-                            onchange="toggleRepairDetails(this)" required> Naprawa
-                    </label><br />
-                    <label>Szczegóły naprawy:<br />
-                        <textarea name="repairDetails" rows="3"></textarea>
-                    </label><br />
-                    <label>Cena:<br />
-                        <input type="number" name="repairPrice" />
-                    </label>
-                </div>
+        <div class="container_add_service" style="position: fixed; background-color: rgba(249, 230, 249, 0.645);
+        padding: 2%; width: 60%; height: 70%; margin-left: 10%;
+        margin-top: 5%; margin-right: 10%; border-radius: 5%;">
+            <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
+                <div>
+                    <div class="group_1">
+                        <div class="service_add">
+                            <label>
+                                <input type="radio" name="serviceType" value="smallService" required> Mały
+                                przegląd</label>
+                            </label>
+                        </div>
+                        <div class="service_add" style="padding-left: 10%;">
+                            <label><input type="radio" name="serviceType" value="fullService" required> Pełny
+                                przegląd</label>
+                        </div>
+                        <div class="service_add" style="padding-left: 10%;">
+                            <label>
+                                <input type="radio" name="serviceType" value="repair" id="repairCheckbox"
+                                    onchange="toggleRepairDetails(this)" required> Naprawa
+                            </label>
+                            <div class="service_add">
+                                <label>
+                                    <textarea name="repairDetails" rows="5"
+                                        style="width: 200px; font-size: 14px; "></textarea>
+                                </label>
+                            </div>
+                            <div>
+                            <label>Cena:
+                                <input type="number" name="repairPrice" />
+                            </label>
+                            </div>
+                        </div>
 
-                <div class="group">
-                    <label>Marka:<br />
-                        <input type="text" name="brand" required /></label><br />
-                    <label>Rodzaj roweru:<br />
-                        <input type="text" name="modelType" required /></label><br />
-                    <label>Numer Seryjny:<br />
-                        <input type="text" name="serialNumber" required /></label>
-                </div>
+                        <div class="group_2">
+                            <label>Marka:<br />
+                                <input type="text" name="brand" required /></label><br />
+                            <label>Rodzaj roweru:<br />
+                                <input type="text" name="modelType" required /></label><br />
+                            <label>Numer Seryjny:<br />
+                                <input type="text" name="serialNumber" required /></label>
+                        </div>
 
-                <div class="group">
-                    <label>Imię<br />
-                        <input type="text" name="first_name" required /></label><br />
-                    <label>Nazwisko<br />
-                        <input type="text" name="last_name" required /></label><br />
-                    <label>Numer telefonu<br />
-                        <input type="text" name="phoneNumber" required /></label><br />
-                    <label>e-mail<br />
-                        <input type="email" name="email" required /></label><br />
-                </div>
-            </div>
-            <!-- <div class="form-group centered-button">
+                        <div class="group">
+                            <label>Imię<br />
+                                <input type="text" name="first_name" required /></label><br />
+                            <label>Nazwisko<br />
+                                <input type="text" name="last_name" required /></label><br />
+                            <label>Numer telefonu<br />
+                                <input type="text" name="phoneNumber" required /></label><br />
+                            <label>e-mail<br />
+                                <input type="email" name="email" required /></label><br />
+                        </div>
+                    </div>
+
+                    <div class="form-group centered-button">
                 <button type="submit" name="services">Dodaj Usługę</button>
-            </div> -->
-        </form>
+            </div>
+            </form>
+        </div>
     </div>
     <!--    <div id="new_service" class="content">
             <p>new service panel in maintance...</p>

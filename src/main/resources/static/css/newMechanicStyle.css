@@ -3,6 +3,7 @@
     color: rgb(34, 34, 34);
     box-sizing: border-box;
     margin: 0;
+    /* overflow-y: scroll; */
 }
 
 #footer {
@@ -35,14 +36,11 @@
 
 #order_table {
     margin-bottom: 1%;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 }
-.group {
-    padding: 10px;
-    text-align: center;
-    background-color: rgba(207, 232, 217, 0.569);
+.service_add {
+    display:inline;
 }
-
 .bottom_article {
     display: flex;
     max-height: 46.5%;
