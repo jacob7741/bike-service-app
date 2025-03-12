@@ -57,21 +57,19 @@ input {
     font-style: italic;
     font-size: 18px;
 }
+
 .group_1 {
-    margin-top: 1%;
     flex-direction: column;
-    padding: 2%;
+    padding: 1%;
     display: flex;
-    input {
-        margin: 0,5%;
-    }
 }
 
 .group_2,
 .group_3 {
     text-align: left;
     display: flex;
-    padding: 2%;
+    padding: 1%;
+
     input {
         width: 95%;
         height: 80%;
@@ -90,12 +88,6 @@ textarea {
     border: none;
 }
 
-.centered-button {
-    margin-right: 15%;
-    margin-bottom: 5%;
-   text-align: right;
-   height: 30px;
-}
 
 .service_add {
     margin: 1%;
@@ -164,6 +156,22 @@ textarea {
     cursor: pointer;
     border: none;
     text-align: left;
+}
+
+.centered-button {
+    margin-right: 5%;
+    text-align: right;
+}
+
+.add_service_btn {
+    color: rgb(80, 89, 97);
+    font-size: 18px;
+    margin-bottom: 20%;
+    width: 140px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgba(128, 230, 109, 0.741);
 }
 
 .button:hover {

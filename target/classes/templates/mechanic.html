@@ -83,7 +83,7 @@
         <div class="container_add_service">
             <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
                 
-                <h6 style="padding-left:2%; font-size: 15px; color: rgba(172, 117, 45, 0.997);">Client details:</h6>
+                <h6 style="padding-left:1%; font-size: 15px; color: rgba(172, 117, 45, 0.997);">Client details:</h6>
                 <div class="group_3">
                     <label>Name: <input type="text" name="first_name" required></label>
                     <label>Surname: <input type="text" name="last_name" required></label>
@@ -96,7 +96,7 @@
                     <label>Bike type: <input type="text" name="modelType" required></label>
                     <label>Serial number: <input type="text" name="serialNumber" required></label>
                 </div>
-                
+                <h6 style="padding-left:1%; margin-top: 2%; font-size: 15px; color: rgba(172, 117, 45, 0.997);">Service details:</h6>
                 <div class="group_1">
                     <label><input type="radio" name="serviceType" value="smallService" required> Small service</label>
                     <label><input type="radio" name="serviceType" value="fullService" required> Full service</label>
@@ -106,9 +106,9 @@
                     </label>
                     <textarea name="repairDetails" rows="5" placeholder="details other repairs..."></textarea>
                     <label>Price: <input type="number" name="repairPrice" style="border-radius:8px; border: none; height: 25px; margin-top: 1%;"></label>
-                </div>
-                <div class="centered-button">
-                    <button type="submit" name="services">Add service</button>
+                    <div class="centered-button">
+                        <button class="add_service_btn" type="submit" name="services">Add service</button>
+                    </div>
                 </div>
             </form>
         </div>
