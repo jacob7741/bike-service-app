@@ -3,7 +3,6 @@
     color: rgb(34, 34, 34);
     box-sizing: border-box;
     margin: 0;
-    /* overflow-y: scroll; */
 }
 
 #footer {
@@ -36,11 +35,73 @@
 
 #order_table {
     margin-bottom: 1%;
-    /* overflow-y: scroll; */
+    overflow-y: auto;
 }
+
+.container_add_service {
+    position: fixed;
+    background-color: rgba(249, 230, 249, 0.645);
+    padding: 2%;
+    width: 60%;
+    height: 70%;
+    margin: 5% auto;
+    margin-left: 10%;
+    border-radius: 5%;
+}
+
+label {
+    font-size: 18px;
+}
+
+input {
+    font-style: italic;
+    font-size: 18px;
+}
+.group_1 {
+    margin-top: 1%;
+    flex-direction: column;
+    padding: 2%;
+    display: flex;
+    input {
+        margin: 0,5%;
+    }
+}
+
+.group_2,
+.group_3 {
+    text-align: left;
+    display: flex;
+    padding: 2%;
+    input {
+        width: 95%;
+        height: 80%;
+        border-radius: 7px;
+        border: none;
+    }
+}
+
+textarea {
+    font-style: italic;
+    resize: none;
+    width: 80%;
+    font-size: 18px;
+    margin-top: 1%;
+    border-radius: 8px;
+    border: none;
+}
+
+.centered-button {
+    margin-right: 15%;
+    margin-bottom: 5%;
+   text-align: right;
+   height: 30px;
+}
+
 .service_add {
-    display:inline;
+    margin: 1%;
+    display: inline;
 }
+
 .bottom_article {
     display: flex;
     max-height: 46.5%;
@@ -50,7 +111,7 @@
     border-radius: 1%;
     border: 1px solid rgba(59, 97, 88, 0.67);
     background-color: rgba(255, 255, 255, 0.405);
-    overflow-y: scroll;
+    overflow-y: auto;
     margin-bottom: 0.5%;
 }
 
@@ -63,7 +124,7 @@
     border: 1px solid rgba(59, 97, 88, 0.67);
     background-color: rgba(255, 255, 255, 0.405);
     border-radius: 1%;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .content {
@@ -73,7 +134,7 @@
     margin-top: 60px;
     margin-left: 20%;
     border-radius: 5px;
-    background-color: rgb(231, 244, 228);
+    background-color: rgb(235, 241, 238);
 }
 
 #footer {
@@ -111,7 +172,6 @@
 }
 
 .orderId {
-
     width: 20%;
     text-align: left;
     /* background-color: rgba(235, 158, 158, 0.7); */
