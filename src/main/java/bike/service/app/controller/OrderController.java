@@ -1,11 +1,7 @@
 package bike.service.app.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +10,6 @@ import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
 import bike.service.app.model.Services;
-import bike.service.app.model.Users;
 import bike.service.app.service.BikeService;
 import bike.service.app.service.ClientService;
 import bike.service.app.service.OrderService;
@@ -34,13 +29,13 @@ public class OrderController {
     @Autowired
     private UsersService userService;
 
-    @GetMapping("/order")
-    public String home(Model model) {
-        System.out.println("application start");
-        List<Users> users = userService.getAllUsers();
-        model.addAttribute("users", users);
-        return "order";
-    }
+    // @GetMapping("/order")
+    // public String home(Model model) {
+    //     System.out.println("application start");
+    //     List<Users> users = userService.getAllUsers();
+    //     model.addAttribute("users", users);
+    //     return "order";
+    // }
 
     @PostMapping(value = "/services/submit", params = "serviceType")
     public String submitService(@RequestParam String serviceType,
@@ -48,7 +43,6 @@ public class OrderController {
                                 @ModelAttribute Order order,
                                 @ModelAttribute Bike bike,
                                 @ModelAttribute Client client,
-                                @RequestParam int users,
                                 @RequestParam(required = false) String repairDetails,
                                 @RequestParam(required = false) Integer repairPrice) {
 
@@ -62,7 +56,6 @@ public class OrderController {
         bikeService.addNewBike(bike);
         clientService.addNewClient(client);
 
-        orderService.saveMechanicToOrder(order, users);
         orderService.saveClientToOrder(order, client);
         orderService.saveServiceToOrder(order, services);
         orderService.saveBikeToOrder(order, bike);

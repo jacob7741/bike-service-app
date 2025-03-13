@@ -88,12 +88,6 @@ textarea {
     border: none;
 }
 
-
-.service_add {
-    margin: 1%;
-    display: inline;
-}
-
 .bottom_article {
     display: flex;
     max-height: 46.5%;
@@ -163,6 +157,10 @@ textarea {
     text-align: right;
 }
 
+.add_service_btn:hover {
+    background-color: rgb(45, 213, 82);
+}
+
 .add_service_btn {
     color: rgb(80, 89, 97);
     font-size: 18px;
@@ -171,6 +169,7 @@ textarea {
     height: 40px;
     border-radius: 5px;
     border: none;
+    cursor: pointer;
     background-color: rgba(128, 230, 109, 0.741);
 }
 
@@ -203,6 +202,10 @@ textarea {
     /* background-color: rgba(202, 235, 158, 0.7); */
 }
 
+.new_services {
+    text-align: left;
+    width: 20%;
+}
 .btn {
     width: 5%;
     text-align: left;
@@ -210,7 +213,8 @@ textarea {
 }
 
 .edit-btn,
-.done-btn {
+.done-btn,
+.take-btn {
     align-items: center;
     justify-content: center;
     border-color: black;
@@ -226,6 +230,13 @@ textarea {
 
 .edit-btn {
     background-color: #67b66df8;
+}
+
+.take-btn {
+    background-color:rgb(86, 119, 230);
+    height: 25px;
+    width: 40px;
+    margin-right: 5px;
 }
 
 .done-btn {

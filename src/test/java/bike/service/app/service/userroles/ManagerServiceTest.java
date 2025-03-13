@@ -13,6 +13,7 @@ import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.ServicesRepository;
+import bike.service.app.service.userroles.ManagerService;
 
 @ExtendWith(MockitoExtension.class)
 public class ManagerServiceTest {

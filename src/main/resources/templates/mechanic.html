@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="panel for mechanics">
     <link rel="stylesheet" href="../static/css/960_16_col.css">
     <link rel="stylesheet" href="../static/css/newMechanicStyle.css">
@@ -113,21 +114,50 @@
             </form>
         </div>
     </div>
-    
-    <!--    <div id="new_service" class="content">
-            <p>new service panel in maintance...</p>
-        </div>
-        <div id="done_service" class="content">
-            <p>done panel in maintance...</p>
-        </div>
-        <div id="calender" class="content">
-            <p>calender panel in maintance...</p>
-        </div>
-        <div id="group" class="content">
-            <p>group panel in maintance...</p>
-        </div> -->
+       <div id="new_service" class="content">
+        <p>Number of new services: <span th:text="${#lists.size(newServiceList)}"></span></p>
+        <table>
+            <thead>
+                <tr>
+                    <th class="new_services">Add by:</th>
+                    <th class="new_services">Service:</th>
+                    <th class="new_services">Bike model:</th>
+                    <th class="new_services" style="width: 15%;">Client ID:</th>
+                    <th class="new_service">Date:</th>
+                    <th class="btn"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="order : ${newServiceList}">
+                    <td th:text="${order.orderId}"></td>
+                    <td th:text="${order.service}"></td>
+                    <td th:text="${order.bikeModel}"></td>
+                    <td th:text="${order.client}"></td>
+                    <!-- TODO: dodac date przyjecia -->
+                    <td th:text="date"></td> 
+                    <td>
+                        <form method="post" th:action="@{/mechanic/take/{id}(id=${order.orderId})}">
+                            <button class="take-btn" type="submit">take</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<!-- 
+    <div id="done_service" class="content">
+        <p>done panel in maintance...</p>
+    </div> -->
+<!-- 
+    <div id="calender" class="content">
+        <p>calender panel in maintance...</p>
+    </div> -->
+<!-- 
+    <div id="group" class="content">
+        <p>group panel in maintance...</p>
+    </div> -->
     <!-- TODO: Stopka nie jest całkowicie na samym dole -->
-    <script src="../templates/main.js"></script>
     <footer id="footer" class="grid_16"></footer>
+    <script src="../templates/main.js"></script>
 </body>
 </html>

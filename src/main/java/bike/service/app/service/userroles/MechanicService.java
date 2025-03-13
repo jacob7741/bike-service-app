@@ -15,6 +15,16 @@ public class MechanicService {
     @Autowired
     private OrderRepository orderRepository;
 
+    public void newStatusById(int id) {
+        Optional<Order> optional = orderRepository.findById(id);
+        if (optional.isPresent()) {
+            Order newOrder = optional.get();
+            newOrder.setStatus(Order.Status.ACTIVE);
+
+            orderRepository.save(newOrder);
+        }
+    }
+
     public void doneStatusById(int id) {
         Optional<Order> optional = orderRepository.findById(id);
         if (optional.isPresent()) {
