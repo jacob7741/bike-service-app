@@ -87,7 +87,7 @@
                 <h6 style="padding-left:1%; font-size: 15px; color: rgba(172, 117, 45, 0.997);">Client details:</h6>
                 <div class="group_3">
                     <label>Name: <input type="text" name="first_name" required></label>
-                    <label>Surname: <input type="text" name="last_name" required></label>
+                    <label>Lastname: <input type="text" name="last_name" required></label>
                     <label>Phone number: <input type="text" name="phoneNumber" required></label>
                     <label>e-mail: <input type="email" name="email" required></label>
                 </div>
@@ -137,7 +137,7 @@
                     <td th:text="date"></td> 
                     <td>
                         <form method="post" th:action="@{/mechanic/take/{id}(id=${order.orderId})}">
-                            <button class="take-btn" type="submit">take</button>
+                            <button class="take-btn" type="submit">Accept</button>
                         </form>
                     </td>
                 </tr>

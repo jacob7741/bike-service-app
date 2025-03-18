@@ -26095,3 +26095,12 @@ WHERE TABLE_NAME = 'REQUESTORDER' [42122-232]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-03-14 14:26:17.260569+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table requestorder add column[*]"; expected "identifier"; SQL statement:
+alter table requestorder add column [42001-232]
+2025-03-14 14:27:15.336016+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table requestorder add column varchar[*](20)"; expected "data type"; SQL statement:
+alter table requestorder add column varchar(20) [42001-232]
+2025-03-14 14:27:25.101887+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table requestorder add column varchar[*](20) addby"; expected "data type"; SQL statement:
+alter table requestorder add column varchar(20) addby [42001-232]

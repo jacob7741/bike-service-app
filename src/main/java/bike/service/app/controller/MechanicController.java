@@ -3,17 +3,28 @@ package bike.service.app.controller;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
+import org.checkerframework.checker.units.qual.t;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import bike.service.app.model.Bike;
+import bike.service.app.model.Client;
 import bike.service.app.model.Order;
+import bike.service.app.model.Services;
+import bike.service.app.model.Users;
+import bike.service.app.model.repository.OrderRepository;
+import bike.service.app.service.BikeService;
+import bike.service.app.service.ClientService;
 import bike.service.app.service.LoginService;
 import bike.service.app.service.OrderService;
+import bike.service.app.service.ServicesService;
+import bike.service.app.service.UsersService;
 import bike.service.app.service.userroles.MechanicService;
 
 @Controller
@@ -25,11 +36,21 @@ public class MechanicController {
     private LoginService loginService;
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private ServicesService servicesService;
+    @Autowired
+    private BikeService bikeService;
+    @Autowired
+    private ClientService clientService;
+    @Autowired
+    private UsersService userService;
+    @Autowired
+    private OrderRepository orderRepository;
+
+    AtomicReference<String> fullName = new AtomicReference<>(new String());
 
     @GetMapping("/mechanic")
     public String mechanicSite(Model model) {
-
-        AtomicReference<String> fullName = new AtomicReference<>(new String());
 
         List<Order> personalList = loginService.getPersonalList(fullName);
         List<Order> newServiceList = orderService.getAllNewOrders();
@@ -38,24 +59,52 @@ public class MechanicController {
         model.addAttribute("orderList", personalList);
         model.addAttribute("newServiceList", newServiceList);
         return "mechanic";
-    } 
-    
+    }
+
+    @PostMapping(value = "/services/submit", params = "serviceType")
+    public String submitService(@RequestParam String serviceType,
+            @ModelAttribute Services services,
+            @ModelAttribute Order order,
+            @ModelAttribute Bike bike,
+            @ModelAttribute Client client,
+            @RequestParam(required = false) String repairDetails,
+            @RequestParam(required = false) Integer repairPrice) {
+
+        if ("repair".equals(serviceType)) {
+            servicesService.createRepairService(services, repairDetails, repairPrice);
+        } else {
+            servicesService.createNewService(serviceType, services);
+        }
+
+        servicesService.createNewService(serviceType, services);
+        bikeService.addNewBike(bike);
+        clientService.addNewClient(client);
+
+        orderService.saveClientToOrder(order, client);
+
+        orderService.saveInfoAddByUser(order, fullName);
+        orderService.saveServiceToOrder(order, services);
+        orderService.saveBikeToOrder(order, bike);
+
+        return "redirect:/mechanic";
+    }
+
     @GetMapping("templates/main.js")
-    public String jsmain () {
+    public String jsmain() {
         return "main.js";
     }
-    
+
     @PostMapping("mechanic/done/{id}")
     public String doneButton(@PathVariable("id") int id) {
         mechanicService.doneStatusById(id);
-            return "redirect:/mechanic";
+        return "redirect:/mechanic";
     }
 
     @PostMapping("mechanic/take/{id}")
     public String takeButton(@PathVariable("id") int id) {
         mechanicService.newStatusById(id);
         return "redirect:/mechanic";
-    } 
+    }
 
     @GetMapping("/mechanic/edit/{id}")
     public String getEditForm(@PathVariable("id") int id, Model model) {

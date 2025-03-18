@@ -3,6 +3,7 @@ package bike.service.app.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,6 @@ import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.ServicesRepository;
 import bike.service.app.model.repository.UsersRepository;
-
 
 @Service
 public class OrderService {
@@ -54,9 +54,10 @@ public class OrderService {
         // List<Order> ordersList = orderRepository.findAll();
         // List<Order> activeOrders = new ArrayList<>();
         // for (Order order : ordersList) {
-        //     if(order.getStatus() != null && order.getStatus().equals(Order.Status.ACTIVE)) {
-        //         activeOrders.add(order);
-        //     }
+        // if(order.getStatus() != null &&
+        // order.getStatus().equals(Order.Status.ACTIVE)) {
+        // activeOrders.add(order);
+        // }
         // }
         // return activeOrders;
 
@@ -66,7 +67,7 @@ public class OrderService {
     }
 
     public List<Order> getAllDoneOrders() {
-        
+
         return orderRepository.findAll().stream()
                 .filter(order -> Order.Status.DONE.equals(order.getStatus()))
                 .collect(Collectors.toList());
@@ -77,6 +78,35 @@ public class OrderService {
         return orderRepository.findAll().stream()
                 .filter(order -> Order.Status.NEW.equals(order.getStatus()))
                 .collect(Collectors.toList());
+    }
+
+    // public Order saveMechanicToOrder(Order order, int id) {
+    // System.out.println("saveMechanicToOrder");
+
+    // Users mechanic = userService.getUserById(id);
+
+    // order.setMechanic(mechanic);
+    // System.out.println("Order before save: " + order);
+
+    // orderRepository.save(order);
+    // System.out.println("Order after save: " + order);
+    // // mechanicRepository.save(mechanic);
+    // return order;
+    // }
+
+    public Order saveInfoAddByUser(Order order, AtomicReference<String> fullName) {
+        List<Users> test = userService.getAllUsers();
+        if (fullName.get() != null) {
+            for (Users users : test) {
+                String userName = users.getFirstName() + " " + users.getLastName();
+               if (userName.equals(fullName.get())) {
+                order.setAddByUser(users.getLastName());
+                orderRepository.save(order);
+                break;
+               }
+            }
+        }
+        return order;
     }
 
     public Order saveMechanicToOrder(Order order, int id) {

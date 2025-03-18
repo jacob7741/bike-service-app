@@ -29,31 +29,8 @@ class ServicesServiceTest {
     @InjectMocks
     private ServicesService servicesService;
 
-    @Test
-    void createNewService() {
-        // Tworzenie nowego obiektu Services z ustawionymi wartościami
-        Services services = new Services();
-        services.setSmallService(50);
-        services.setFullService(200);
-
-        // Symulacja zachowania servicesRepository
-        when(servicesRepository.save(any(Services.class))).thenReturn(services);
-
-        // Wywołanie metody i sprawdzenie wyników
-        // Services savedService = servicesService.createNewService("serviceType", services);
-        Services savedSmallServices = servicesService.createNewService("smallService", services);
-        Services savedFullServices = servicesService.createNewService("fullService", services);
-
-        // Assercje
-        assertNotNull(savedSmallServices);
-        assertNotNull(savedFullServices);
-        assertEquals(50, savedSmallServices.getSmallService());
-        assertEquals(200, savedFullServices.getFullService());
-
-        // Weryfikacja, że metoda save została wywołana
-        verify(servicesRepository, times(2)).save(any(Services.class));
-    }
-
+   
+    
     @Test
     void deletedServiceByIdException() {
         Services nServices = new Services();

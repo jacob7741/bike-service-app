@@ -38,7 +38,7 @@ public class UsersService implements UserDetailsService {
             return new ArrayList<>();
         }
     }
-
+    
     public Users getUserById(int id) {
         logger.info("get user by Id");
         Optional<Users> user = userRepository.findById(id);
@@ -78,6 +78,7 @@ public class UsersService implements UserDetailsService {
             throw new RuntimeException("no user was found");
         }
     }
+
     
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -92,4 +93,5 @@ public class UsersService implements UserDetailsService {
                 .roles(user.getRole().toString().toUpperCase())
                 .build();
     }
+
 }

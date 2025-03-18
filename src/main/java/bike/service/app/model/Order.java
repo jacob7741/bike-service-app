@@ -45,6 +45,8 @@ public class Order {
     private String bikeModel;
     @Column(name = "client")
     private String client;
+    @Column(name = "addby")
+    private String addByUser;
 
     @Enumerated(EnumType.STRING)
     @Column(name="status")

@@ -1,19 +1,21 @@
 package bike.service.app.service;
 
-import bike.service.app.model.Services;
-import bike.service.app.model.repository.ServicesRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import bike.service.app.model.Services;
+import bike.service.app.model.repository.ServicesRepository;
+
 @Service
 public class ServicesService {
-
+    
     @Autowired
     private ServicesRepository servicesRepository;
+    
 
     public List<Services> getAllServices() {
         System.out.println("getAllServices");
@@ -46,8 +48,8 @@ public class ServicesService {
             throw new RuntimeException("serviceNotDeleted");
         }
     }
-
-    public Services createNewService(String serviceType, Services services) {
+    
+    public Services createNewService(String serviceType, Services services ) {
         System.out.println("createUpdateService");
         if (services.getServiceId() == 0) {
             switch (serviceType) {
