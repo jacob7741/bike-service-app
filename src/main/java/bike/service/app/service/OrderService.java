@@ -48,6 +48,8 @@ public class OrderService {
         }
     }
 
+    
+
     @SuppressWarnings("static-access")
     public List<Order> getAllActiveOrders() {
 
@@ -109,6 +111,7 @@ public class OrderService {
         return order;
     }
 
+    
     public Order saveMechanicToOrder(Order order, int id) {
         System.out.println("saveMechanicToOrder");
 
@@ -122,6 +125,19 @@ public class OrderService {
         // mechanicRepository.save(mechanic);
         return order;
     }
+
+    public Order saveMechanicToOrder(Order order, AtomicReference<String> fullName) {
+        System.out.println("saveMechanicToOrder");
+
+        List<Users> lmechanics = userService.getAllUsers();
+
+        for(Users user : lmechanics) {
+                if ((user.getFirstName()+ " " + user.getLastName()).equals(fullName.get())) {
+                    order.setMechanic(user);                    
+                }
+            }
+            return order;
+        }
 
     public Order saveServiceToOrder(Order order, Services services) {
 

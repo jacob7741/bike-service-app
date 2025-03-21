@@ -13,7 +13,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import bike.service.app.model.Order;
+import bike.service.app.model.Services;
 import bike.service.app.model.Users;
+import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.UsersRepository;
 
 @Service
@@ -28,7 +31,12 @@ public class UsersService implements UserDetailsService {
     @SuppressWarnings("unused")
     @Autowired
     private OrderService orderService;
-
+    @Autowired
+    private OrderRepository oRepository;
+    @Autowired
+    private ServicesService servicesService;
+    @Autowired
+    private UsersService usersService;
     public List<Users> getAllUsers() {
         logger.info("getAllUsers");
         List<Users> users = userRepository.findAll();
@@ -39,6 +47,24 @@ public class UsersService implements UserDetailsService {
         }
     }
     
+    // public int getMechanicIdByOrderId(int orderId) {
+    //     Optional<Order> order = oRepository.findById(orderId);
+
+    //     if (order.isPresent()) {
+    //         Order tempOrder = order.get();
+    //         List<Users> luser = usersService.getAllUsers();
+            
+    //         for(Users user : luser) {
+    //             if (tempOrder.equals(orderId)) {
+    //                 if (tempOrder.getMechanic().equals(user.getLastName())) {
+    //                     return user.getUserId();
+    //                 }
+    //             }
+    //         } 
+    //     }
+    //     return 0;
+    // }
+
     public Users getUserById(int id) {
         logger.info("get user by Id");
         Optional<Users> user = userRepository.findById(id);

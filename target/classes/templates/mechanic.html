@@ -129,7 +129,7 @@
             </thead>
             <tbody>
                 <tr th:each="order : ${newServiceList}">
-                    <td th:text="${order.orderId}"></td>
+                    <td th:text="${order.addByUser}"></td>
                     <td th:text="${order.service}"></td>
                     <td th:text="${order.bikeModel}"></td>
                     <td th:text="${order.client}"></td>
@@ -144,10 +144,30 @@
             </tbody>
         </table>
     </div>
-<!-- 
+
     <div id="done_service" class="content">
-        <p>done panel in maintance...</p>
-    </div> -->
+        <table>
+            <thead>
+                <tr>
+                    <th class="done_services">Done by:</th>
+                    <th class="done_services">Service:</th>
+                    <th class="done_services">Bike model:</th>
+                    <th class="done_services">Client ID:</th>
+                    <th class="done_service">Date:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="order : ${newServiceList}">
+                    <td th:text="${order.doneByUser}"></td>
+                    <td th:text="${order.service}"></td>
+                    <td th:text="${order.bikeModel}"></td>
+                    <td th:text="${order.client}"></td>
+                    <td th:text="date">date</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
 <!-- 
     <div id="calender" class="content">
         <p>calender panel in maintance...</p>

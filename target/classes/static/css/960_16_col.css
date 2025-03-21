@@ -9,7 +9,8 @@
  * Full width: 960px
  */
 .container_16 {
-
+  max-width: 960px;
+  padding: 0;
 }
 .grid_1,
 .grid_2,

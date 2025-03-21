@@ -212,6 +212,11 @@ textarea {
     /* background-color: rgba(158, 193, 235, 0.7); */
 }
 
+.done_services {
+    text-align: left;
+    width: 25%;
+}
+
 .edit-btn,
 .done-btn,
 .take-btn {

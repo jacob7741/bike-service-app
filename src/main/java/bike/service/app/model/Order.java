@@ -47,11 +47,11 @@ public class Order {
     private String client;
     @Column(name = "addby")
     private String addByUser;
-
+    @Column(name = "donebyuser ")
+    private String doneByUser;
     @Enumerated(EnumType.STRING)
     @Column(name="status")
     private Status status;
-
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     private List<Services> services;

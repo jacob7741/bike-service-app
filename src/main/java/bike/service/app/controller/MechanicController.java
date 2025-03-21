@@ -3,7 +3,6 @@ package bike.service.app.controller;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.checkerframework.checker.units.qual.t;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,14 +16,11 @@ import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
 import bike.service.app.model.Services;
-import bike.service.app.model.Users;
-import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.service.BikeService;
 import bike.service.app.service.ClientService;
 import bike.service.app.service.LoginService;
 import bike.service.app.service.OrderService;
 import bike.service.app.service.ServicesService;
-import bike.service.app.service.UsersService;
 import bike.service.app.service.userroles.MechanicService;
 
 @Controller
@@ -42,10 +38,6 @@ public class MechanicController {
     private BikeService bikeService;
     @Autowired
     private ClientService clientService;
-    @Autowired
-    private UsersService userService;
-    @Autowired
-    private OrderRepository orderRepository;
 
     AtomicReference<String> fullName = new AtomicReference<>(new String());
 
@@ -102,7 +94,7 @@ public class MechanicController {
 
     @PostMapping("mechanic/take/{id}")
     public String takeButton(@PathVariable("id") int id) {
-        mechanicService.newStatusById(id);
+        mechanicService.newStatusById(id, fullName);
         return "redirect:/mechanic";
     }
 
