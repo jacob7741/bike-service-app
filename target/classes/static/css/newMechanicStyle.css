@@ -139,6 +139,19 @@ textarea {
     flex-shrink: 0;
 }
 
+#calendar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.calendar {
+    background-color: rgba(243, 254, 254, 0.755);
+    border-radius: 10px;
+}
+
+
 .button {
     font-size: 18px;
     background-color: rgba(255, 255, 255, 0.944);

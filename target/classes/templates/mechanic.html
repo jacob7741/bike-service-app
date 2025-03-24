@@ -83,7 +83,7 @@
     <div id="add_service" class="content">
         <div class="container_add_service">
             <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
-                
+
                 <h6 style="padding-left:1%; font-size: 15px; color: rgba(172, 117, 45, 0.997);">Client details:</h6>
                 <div class="group_3">
                     <label>Name: <input type="text" name="first_name" required></label>
@@ -97,16 +97,18 @@
                     <label>Bike type: <input type="text" name="modelType" required></label>
                     <label>Serial number: <input type="text" name="serialNumber" required></label>
                 </div>
-                <h6 style="padding-left:1%; margin-top: 2%; font-size: 15px; color: rgba(172, 117, 45, 0.997);">Service details:</h6>
+                <h6 style="padding-left:1%; margin-top: 2%; font-size: 15px; color: rgba(172, 117, 45, 0.997);">Service
+                    details:</h6>
                 <div class="group_1">
                     <label><input type="radio" name="serviceType" value="smallService" required> Small service</label>
                     <label><input type="radio" name="serviceType" value="fullService" required> Full service</label>
                     <label>
                         <input type="radio" name="serviceType" value="repair" id="repairCheckbox"
-                               onchange="toggleRepairDetails(this)" required> Other repairs
+                            onchange="toggleRepairDetails(this)" required> Other repairs
                     </label>
                     <textarea name="repairDetails" rows="5" placeholder="details other repairs..."></textarea>
-                    <label>Price: <input type="number" name="repairPrice" style="border-radius:8px; border: none; height: 25px; margin-top: 1%;"></label>
+                    <label>Price: <input type="number" name="repairPrice"
+                            style="border-radius:8px; border: none; height: 25px; margin-top: 1%;"></label>
                     <div class="centered-button">
                         <button class="add_service_btn" type="submit" name="services">Add service</button>
                     </div>
@@ -114,7 +116,7 @@
             </form>
         </div>
     </div>
-       <div id="new_service" class="content">
+    <div id="new_service" class="content">
         <p>Number of new services: <span th:text="${#lists.size(newServiceList)}"></span></p>
         <table>
             <thead>
@@ -134,7 +136,7 @@
                     <td th:text="${order.bikeModel}"></td>
                     <td th:text="${order.client}"></td>
                     <!-- TODO: dodac date przyjecia -->
-                    <td th:text="date"></td> 
+                    <td th:text="date"></td>
                     <td>
                         <form method="post" th:action="@{/mechanic/take/{id}(id=${order.orderId})}">
                             <button class="take-btn" type="submit">Accept</button>
@@ -167,12 +169,56 @@
             </tbody>
         </table>
     </div>
-    
-<!-- 
-    <div id="calender" class="content">
-        <p>calender panel in maintance...</p>
-    </div> -->
-<!-- 
+    <div id="calendar" class="content">
+        <div class="calendar">
+            <header>
+                <p class="current-date">Marz 2025</p>
+            </header>
+            <ul class="weeks">
+                <li>Mon</li>
+                <li>Tue</li>
+                <li>Wen</li>
+                <li>Thr</li>
+                <li>Fri</li>
+                <li>Sat</li>
+                <li>Sun</li>
+            </ul>
+            <ul class="days">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li>
+                <li>13</li>
+                <li>14</li>
+                <li>15</li>
+                <li>16</li>
+                <li>17</li>
+                <li>18</li>
+                <li>19</li>
+                <li>20</li>
+                <li>21</li>
+                <li>22</li>
+                <li>23</li>
+                <li>24</li>
+                <li>25</li>
+                <li>26</li>
+                <li>27</li>
+                <li>29</li>
+                <li>28</li>
+                <li>30</li>
+                <li>31</li>
+            </ul>
+        </div>
+    </div>
+    <!-- 
     <div id="group" class="content">
         <p>group panel in maintance...</p>
     </div> -->
@@ -180,4 +226,5 @@
     <footer id="footer" class="grid_16"></footer>
     <script src="../templates/main.js"></script>
 </body>
+
 </html>
