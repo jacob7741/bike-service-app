@@ -1,5 +1,6 @@
 package bike.service.app.service.userroles;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -35,15 +36,20 @@ public class MechanicService {
         }
     }
 
-
-
-    public void doneStatusById(int id) {
+    public void doneStatusById(int id, AtomicReference<String> fullName) {
         Optional<Order> optional = orderRepository.findById(id);
         if (optional.isPresent()) {
             Order newOrder = optional.get();
             newOrder.setStatus(Order.Status.DONE);
 
-            orderRepository.save(newOrder);
+            List<Users> lmechanics = userService.getAllUsers();
+
+            for (Users user : lmechanics) {
+                if ((user.getFirstName() + " " + user.getLastName()).equals(fullName.get())) {
+                    newOrder.setDoneByUser(user.getLastName());;
+                }
+                orderRepository.save(newOrder);
+            }
         }
     }
 

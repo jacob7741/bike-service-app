@@ -46,9 +46,11 @@ public class MechanicController {
 
         List<Order> personalList = loginService.getPersonalList(fullName);
         List<Order> newServiceList = orderService.getAllNewOrders();
+        List<Order> doneList = orderService.getAllDoneOrders();
 
         model.addAttribute("username", fullName.get());
         model.addAttribute("orderList", personalList);
+        model.addAttribute("doneList",doneList);
         model.addAttribute("newServiceList", newServiceList);
         return "mechanic";
     }
@@ -88,7 +90,7 @@ public class MechanicController {
 
     @PostMapping("mechanic/done/{id}")
     public String doneButton(@PathVariable("id") int id) {
-        mechanicService.doneStatusById(id);
+        mechanicService.doneStatusById(id, fullName);
         return "redirect:/mechanic";
     }
 

@@ -153,11 +153,11 @@
                     <th class="done_services">Service:</th>
                     <th class="done_services">Bike model:</th>
                     <th class="done_services">Client ID:</th>
-                    <th class="done_service">Date:</th>
+                    <th class="done_services">Date:</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="order : ${newServiceList}">
+                <tr th:each="order : ${doneList}">
                     <td th:text="${order.doneByUser}"></td>
                     <td th:text="${order.service}"></td>
                     <td th:text="${order.bikeModel}"></td>
