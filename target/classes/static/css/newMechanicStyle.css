@@ -210,7 +210,7 @@ header .bx {
 }
 .calendar .weeks li {
     text-align: center;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 20px;
 }
 
@@ -218,7 +218,7 @@ header .bx {
     cursor: pointer;
     margin-top: 20px;
     text-align: center;
-    font-weight: 300;
+    font-weight: 500;
     margin-bottom: 20px;
 }
 
