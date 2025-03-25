@@ -146,9 +146,40 @@ textarea {
     min-height: 100vh;
 }
 
-.calendar {
+.wrapper{
     background-color: rgba(243, 254, 254, 0.755);
     border-radius: 10px;
+}
+
+.wrapper header {
+    display: flex;
+    align-items: center;
+    padding:25px 30px 10px ;
+    justify-content: space-between;
+}
+
+ header .current-date {
+    font-size: 1.45rem;
+    font-weight: 500;
+}
+
+header .bx {
+    margin: 0 1;
+    line-height: 38px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.218);
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+.bx:hover {
+    background-color: rgba(67, 170, 127, 0.343);
+}
+
+.calendar ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap ;
 }
 
 
