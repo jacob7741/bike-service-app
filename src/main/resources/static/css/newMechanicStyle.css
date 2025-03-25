@@ -94,7 +94,7 @@ textarea {
     max-width: 200%;
     margin: 2px 4px;
     align-content: center;
-    border-radius: 1%;
+    border-radius: 10px;
     border: 1px solid rgba(59, 97, 88, 0.67);
     background-color: rgba(255, 255, 255, 0.405);
     overflow-y: auto;
@@ -108,7 +108,7 @@ textarea {
     align-content: center;
     border: 1px solid rgba(59, 97, 88, 0.67);
     background-color: rgba(255, 255, 255, 0.405);
-    border-radius: 1%;
+    border-radius: 10px;
     overflow-y: auto;
 }
 
@@ -140,13 +140,13 @@ textarea {
 }
 
 #calendar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    position: fixed;
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* padding: auto; */
 }
 
-.wrapper{
+.wrapper {
     background-color: rgba(243, 254, 254, 0.755);
     border-radius: 10px;
 }
@@ -154,11 +154,11 @@ textarea {
 .wrapper header {
     display: flex;
     align-items: center;
-    padding:25px 30px 10px ;
+    padding: 25px 30px 10px;
     justify-content: space-between;
 }
 
- header .current-date {
+header .current-date {
     font-size: 1.45rem;
     font-weight: 500;
 }
@@ -169,19 +169,58 @@ header .bx {
     text-align: center;
     background: rgba(255, 255, 255, 0.218);
     border-radius: 10px;
-    font-size: 30px;
+    font-size: 33px;
 }
 
 .bx:hover {
     background-color: rgba(67, 170, 127, 0.343);
+    cursor: pointer;
 }
 
 .calendar ul {
     display: flex;
     list-style: none;
-    flex-wrap: wrap ;
+    flex-wrap: wrap;
 }
 
+.calendar ul li {
+    position: relative;
+    font-size: 24px;
+    width: calc(100% / 7);
+}
+
+.days li::before {
+    position: absolute;
+    content: "";
+    height: 50px;
+    width: 50px;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+}
+
+.days li:hover::before {
+    background-color: rgba(74, 150, 125, 0.731);
+}
+
+.inactive {
+    color: rgb(151, 151, 151);
+}
+.calendar .weeks li {
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.calendar .days li {
+    cursor: pointer;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
 
 .button {
     font-size: 18px;
@@ -249,6 +288,7 @@ header .bx {
     text-align: left;
     width: 20%;
 }
+
 .btn {
     width: 5%;
     text-align: left;
@@ -281,7 +321,7 @@ header .bx {
 }
 
 .take-btn {
-    background-color:rgb(86, 119, 230);
+    background-color: rgb(86, 119, 230);
     height: 25px;
     width: 40px;
     margin-right: 5px;
