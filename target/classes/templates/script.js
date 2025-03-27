@@ -1,4 +1,4 @@
-const date = new Date();
+let date = new Date();
 
 var el = document.getElementById('data');
 el.innerHTML = date.toDateString();
@@ -38,22 +38,22 @@ const monthName = ["January", "February", "March", "April", "May", "June", "July
     "August", "October", "November", "December"];
 
 const renderCalendar = () => {
-    let firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDate(),
-    lastDateOfMonth = new Date(currentYear, currentMonth + 1, 0).getDate(),
-    lastDayOfMonth = new Date(currentYear, currentMonth, lastDateOfMonth).getDate(),
+    let firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+    lastDateOfMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+    lastDayOfMonth = new Date(currentYear, currentMonth, lastDateOfMonth).getDay();
     lastDateOfLastMonth = new Date(currentYear, currentMonth, 0).getDate();
     let liTag = "";
 
     for (let i = firstDayOfMonth; i > 0; i--) {
-        liTag += `<li class="inactive">${lastDateOfMonth - i + 1}</li>`;
+        liTag += `<li class="inactive">${lastDateOfLastMonth - i + 1}</li>`;
     }
 
     for (let index = 1; index <= lastDateOfMonth; index++) {
         liTag += `<li>${index}</li>`;
     }
 
-    for (let k = lastDayOfMonth; k < 6; k++) {
-        liTag += `<li class="inactive">${k - lastDateOfLastMonth + 1}</li>`;
+    for (let i = lastDayOfMonth; i < 6; i++) {
+        liTag += `<li class="inactive">${i - lastDayOfMonth + 1}</li>`
     }
 
     currentDate.innerHTML = `${monthName[currentMonth]} ${currentYear}`;
@@ -63,7 +63,7 @@ renderCalendar();
 
 prevNextIcon.forEach(icon => {
     icon.addEventListener("click", () => {
-        currentMonth = icon.id === "prev" ? currentMonth - 1 : currentMonth + 1;
+        currentMonth = icon.id === "prev" ?  currentMonth - 1 : currentMonth + 1;
         renderCalendar();
-    })
+    }) 
 });
