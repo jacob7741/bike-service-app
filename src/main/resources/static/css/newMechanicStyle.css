@@ -159,7 +159,8 @@ textarea {
 }
 
 header .current-date {
-    font-size: 1.45rem;
+    color: rgba(76, 76, 76, 0.518);
+    font-size: 1.55rem;
     font-weight: 500;
 }
 
@@ -167,12 +168,12 @@ header .bx {
     margin: 0 1;
     line-height: 38px;
     text-align: center;
-    background: rgba(255, 255, 255, 0.218);
     border-radius: 10px;
     font-size: 33px;
+    color: rgba(76, 76, 76, 0.518);
 }
 
-.bx:hover {
+ .bx:hover {
     background-color: rgba(67, 170, 127, 0.343);
     cursor: pointer;
 }
