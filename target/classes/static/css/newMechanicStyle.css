@@ -206,8 +206,16 @@ header .bx {
 }
 
 .inactive {
-    color: rgb(151, 151, 151);
+    color: rgba(151, 151, 151, 0.821);
 }
+
+.days li.active::before {
+    background-color: rgb(58, 97, 129);
+}
+.days li.active:hover:before {
+    background-color: rgb(4, 129, 33);
+}
+
 .calendar .weeks li {
     text-align: center;
     font-weight: 600;

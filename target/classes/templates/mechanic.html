@@ -2,30 +2,43 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="panel for mechanics">
-    <link rel="stylesheet" href="../static/css/960_16_col.css">
-    <link rel="stylesheet" href="../static/css/newMechanicStyle.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="panel for mechanics" />
+    <link rel="stylesheet" href="../static/css/960_16_col.css" />
+    <link rel="stylesheet" href="../static/css/newMechanicStyle.css" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <title>Mechanic panel</title>
 </head>
 
 <body>
     <div class="container_16 clearfix">
         <div id="header" class="grid_16">
-            <p id="data" style="text-align:right; color: rgb(119, 140, 134); font-family: 'Trebuchet MS',
-                'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
-            </p>
+            <p id="data" style="
+            text-align: right;
+            color: rgb(119, 140, 134);
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+              'Lucida Sans', Arial, sans-serif;
+          "></p>
             <h2>Welcome: <span th:text="${username}"></span></h2>
         </div>
         <aside id="side_bar_menu" class="grid_4">
             <button class="button" onclick="showContent('news')">News</button>
-            <button class="button" onclick="showContent('order_table')">My services</button>
-            <button class="button" onclick="showContent('add_service')">Add service</button>
-            <button class="button" onclick="showContent('new_service')">New services</button>
-            <button class="button" onclick="showContent('done_service')">Done services</button>
-            <button class="button" onclick="showContent('calendar')">Calendar</button>
+            <button class="button" onclick="showContent('order_table')">
+                My services
+            </button>
+            <button class="button" onclick="showContent('add_service')">
+                Add service
+            </button>
+            <button class="button" onclick="showContent('new_service')">
+                New services
+            </button>
+            <button class="button" onclick="showContent('done_service')">
+                Done services
+            </button>
+            <button class="button" onclick="showContent('calendar')">
+                Calendar
+            </button>
             <button class="button" onclick="showContent('group')">Group</button>
         </aside>
     </div>
@@ -63,68 +76,91 @@
         <div class="article grid_5">
             <p>
                 <script
-                    src="//rss.bloople.net/?url=https%3A%2F%2Fportal.bikeworld.pl%2Frss%2Farchiwum%2F32%2Fnowosci_sprzetowe&detail=&limit=5&showtitle=false&type=js">
-                    </script>
+                    src="//rss.bloople.net/?url=https%3A%2F%2Fportal.bikeworld.pl%2Frss%2Farchiwum%2F32%2Fnowosci_sprzetowe&detail=&limit=5&showtitle=false&type=js"></script>
             </p>
         </div>
         <div class="article grid_5">
             <p>
-                <script src="//rss.bloople.net/?url=https%3A%2F%2Fcms.bike-eu.com%2Frss_feed%2Flaws-and-regulations&limit=5&showtitle=false&type=js"></script>
+                <script
+                    src="//rss.bloople.net/?url=https%3A%2F%2Fcms.bike-eu.com%2Frss_feed%2Flaws-and-regulations&limit=5&showtitle=false&type=js"></script>
             </p>
         </div>
         <div class="bottom_article grid_12">
             <p>
                 <script
-                    src="//rss.bloople.net/?url=https%3A%2F%2Ffeeds.feedburner.com%2FBikeRumor&detail=100&showtitle=false&type=js">
-                    </script>
+                    src="//rss.bloople.net/?url=https%3A%2F%2Ffeeds.feedburner.com%2FBikeRumor&detail=100&showtitle=false&type=js"></script>
             </p>
         </div>
     </div>
     <div id="add_service" class="content">
         <div class="container_add_service">
             <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
-
-                <h6 style="padding-left:1%; font-size: 15px; color: rgba(172, 117, 45, 0.997);">Client details:</h6>
+                <h6 style="
+              padding-left: 1%;
+              font-size: 15px;
+              color: rgba(172, 117, 45, 0.997);
+            ">
+                    Client details:
+                </h6>
                 <div class="group_3">
-                    <label>Name: <input type="text" name="first_name" required></label>
-                    <label>Lastname: <input type="text" name="last_name" required></label>
-                    <label>Phone number: <input type="text" name="phoneNumber" required></label>
-                    <label>e-mail: <input type="email" name="email" required></label>
+                    <label>Name: <input type="text" name="first_name" required /></label>
+                    <label>Lastname: <input type="text" name="last_name" required /></label>
+                    <label>Phone number: <input type="text" name="phoneNumber" required /></label>
+                    <label>e-mail: <input type="email" name="email" required /></label>
                 </div>
 
                 <div class="group_2">
-                    <label>Bike brand: <input type="text" name="brand" required></label>
-                    <label>Bike type: <input type="text" name="modelType" required></label>
-                    <label>Serial number: <input type="text" name="serialNumber" required></label>
+                    <label>Bike brand: <input type="text" name="brand" required /></label>
+                    <label>Bike type: <input type="text" name="modelType" required /></label>
+                    <label>Serial number: <input type="text" name="serialNumber" required /></label>
                 </div>
-                <h6 style="padding-left:1%; margin-top: 2%; font-size: 15px; color: rgba(172, 117, 45, 0.997);">Service
-                    details:</h6>
+                <h6 style="
+              padding-left: 1%;
+              margin-top: 2%;
+              font-size: 15px;
+              color: rgba(172, 117, 45, 0.997);
+            ">
+                    Service details:
+                </h6>
                 <div class="group_1">
-                    <label><input type="radio" name="serviceType" value="smallService" required> Small service</label>
-                    <label><input type="radio" name="serviceType" value="fullService" required> Full service</label>
+                    <label><input type="radio" name="serviceType" value="smallService" required />
+                        Small service</label>
+                    <label><input type="radio" name="serviceType" value="fullService" required />
+                        Full service</label>
                     <label>
                         <input type="radio" name="serviceType" value="repair" id="repairCheckbox"
-                            onchange="toggleRepairDetails(this)" required> Other repairs
+                            onchange="toggleRepairDetails(this)" required />
+                        Other repairs
                     </label>
                     <textarea name="repairDetails" rows="5" placeholder="details other repairs..."></textarea>
-                    <label>Price: <input type="number" name="repairPrice"
-                            style="border-radius:8px; border: none; height: 25px; margin-top: 1%;"></label>
+                    <label>Price:
+                        <input type="number" name="repairPrice" style="
+                  border-radius: 8px;
+                  border: none;
+                  height: 25px;
+                  margin-top: 1%;
+                " /></label>
                     <div class="centered-button">
-                        <button class="add_service_btn" type="submit" name="services">Add service</button>
+                        <button class="add_service_btn" type="submit" name="services">
+                            Add service
+                        </button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
     <div id="new_service" class="content">
-        <p>Number of new services: <span th:text="${#lists.size(newServiceList)}"></span></p>
+        <p>
+            Number of new services:
+            <span th:text="${#lists.size(newServiceList)}"></span>
+        </p>
         <table>
             <thead>
                 <tr>
                     <th class="new_services">Add by:</th>
                     <th class="new_services">Service:</th>
                     <th class="new_services">Bike model:</th>
-                    <th class="new_services" style="width: 15%;">Client ID:</th>
+                    <th class="new_services" style="width: 15%">Client ID:</th>
                     <th class="new_service">Date:</th>
                     <th class="btn"></th>
                 </tr>
@@ -173,9 +209,11 @@
         <div class="wrapper">
             <div class="calendar">
                 <header>
-                    <span class='bx bx-chevron-left'></span>
-                    <p class="current-date">March 2025</p>
-                    <span class='bx bx-chevron-right'></span>
+                    <p class="current-date"></p>
+                    <div class="icons">
+                        <span id="prev" class="bx bx-chevron-left"></span>
+                        <span id="next" class="bx bx-chevron-right"></span>
+                    </div>
                 </header>
                 <div class="calendar">
                     <ul class="weeks">
@@ -188,48 +226,7 @@
                         <li>Sun</li>
                     </ul>
                     <ul class="days">
-                        <li class="inactive">25</li>
-                        <li class="inactive">26</li>
-                        <li class="inactive">27</li>
-                        <li class="inactive">29</li>
-                        <li class="inactive">28</li>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                        <li>6</li>
-                        <li>7</li>
-                        <li>8</li>
-                        <li>9</li>
-                        <li>10</li>
-                        <li>11</li>
-                        <li>12</li>
-                        <li>13</li>
-                        <li>14</li>
-                        <li>15</li>
-                        <li>16</li>
-                        <li>17</li>
-                        <li>18</li>
-                        <li>19</li>
-                        <li>20</li>
-                        <li>21</li>
-                        <li>22</li>
-                        <li>23</li>
-                        <li>24</li>
-                        <li>25</li>
-                        <li>26</li>
-                        <li>27</li>
-                        <li>29</li>
-                        <li>28</li>
-                        <li>30</li>
-                        <li>31</li>
-                        <li class="inactive">1</li>
-                        <li class="inactive">2</li>
-                        <li class="inactive">3</li>
-                        <li class="inactive">4</li>
-                        <li class="inactive">5</li>
-                        <li class="inactive">6</li>
+                        <li></li>
                     </ul>
                 </div>
             </div>
@@ -241,7 +238,7 @@
     </div> -->
     <!-- TODO: Stopka nie jest całkowicie na samym dole -->
     <footer id="footer" class="grid_16"></footer>
-    <script src="../templates/main.js"></script>
+    <script src="../templates/script.js"></script>
 </body>
 
 </html>
