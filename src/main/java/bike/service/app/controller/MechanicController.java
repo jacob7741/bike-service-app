@@ -83,9 +83,9 @@ public class MechanicController {
         return "redirect:/mechanic";
     }
 
-    @GetMapping("templates/main.js")
+    @GetMapping("templates/script.js")
     public String jsmain() {
-        return "main.js";
+        return "script.js";
     }
 
     @PostMapping("mechanic/done/{id}")

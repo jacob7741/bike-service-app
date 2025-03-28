@@ -123,9 +123,9 @@ textarea {
 }
 
 #footer {
-    margin-top: calc(100vh - 13px);
+    margin-top: calc(100vh - 11.85px);
     display: block;
-    position: relative;
+    position: absolute;
     font-size: 10px;
     width: 100%;
     background-color: rgb(207, 232, 228);
@@ -145,6 +145,8 @@ textarea {
     /* justify-content: center; */
     /* padding: auto; */
 }
+
+
 
 .wrapper {
     background-color: rgba(243, 254, 254, 0.755);
