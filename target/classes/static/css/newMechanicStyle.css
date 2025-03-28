@@ -175,9 +175,32 @@ header .bx {
     color: rgba(76, 76, 76, 0.518);
 }
 
- .bx:hover {
+.bx:hover {
     background-color: rgba(67, 170, 127, 0.343);
     cursor: pointer;
+}
+
+.panel-post, .post-btn, .post-text {
+    display: inline;
+}
+
+.post-btn {
+    height: 50px;
+    width: 50px;
+    border-radius: 30px;
+    border: none;
+    font-size: 18px;
+    background-color: rgba(67, 170, 127, 0.343);
+}
+
+.post-btn:hover {
+    background-color: rgb(60, 207, 155)
+}
+
+.post-text {
+    width: 60%;
+    margin-left: 15%;
+    margin-bottom: 0.2%;
 }
 
 .calendar ul {
@@ -215,6 +238,7 @@ header .bx {
 .days li.active::before {
     background-color: rgb(58, 97, 129);
 }
+
 .days li.active:hover:before {
     background-color: rgb(4, 129, 33);
 }
