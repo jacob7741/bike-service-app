@@ -32,5 +32,4 @@ public class Posts {
     private int userId;
     @Column(name = "date")
     private String date;
-    
 }
