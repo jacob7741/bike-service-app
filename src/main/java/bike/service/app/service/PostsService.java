@@ -27,6 +27,7 @@ class PostsService {
         }
     }
 
+    // nowa metoda sprawdzić poprawność działania!!!
     public Posts createPost(Posts posts, String content, AtomicReference<String> fullName) {
         List<Users> uList = userService.getAllUsers();
         String userName = fullName.get();
@@ -43,7 +44,7 @@ class PostsService {
             posts.setUserId(userT.getUserId());
             pRepository.save(posts);
         }
-        
+
         return posts;
     }
 }
