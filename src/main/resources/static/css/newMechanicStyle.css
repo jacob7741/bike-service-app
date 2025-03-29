@@ -208,7 +208,6 @@ header .bx {
 }
 
 .banner-post {
-    /* display: inline-flex; */
     padding: 2px 5px 0px 5px;
     margin-left:15%;
     width: 60%;
@@ -236,6 +235,7 @@ header .bx {
     max-height: 200px;
     overflow-y:auto;
     margin-left: 15%;
+    margin-right: 15%;
     padding: 0px 5px 2px 5px;
 }
 .content-area::-webkit-scrollbar {
@@ -248,7 +248,7 @@ header .bx {
     font-size: 18px;
     text-align: left;
     margin-left: 15%;
-    margin-right: 15%;
+    /* margin-right: 15%; */
     margin-bottom: 0.2%;
 }
 
