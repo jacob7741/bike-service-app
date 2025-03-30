@@ -120,6 +120,4 @@ public class MechanicController {
         mechanicService.editOrderById(service, orderId);
         return "redirect:/mechanic";
     }
-
-
 }

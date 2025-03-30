@@ -233,14 +233,12 @@
         </div>
     </div>
 
-    <div id="group" class="content">    
+    <div id="group" class="content">
         <div>
             <div class="panel-post">
                 <div>
                     <textarea class="post-text">Make post here...</textarea>
-                    <button class="post-btn">
-                        Post
-                    </button>
+                    <button class="post-btn">Post</button>
                 </div>
             </div>
             <div th:each="post : ${postsList}" class="post-area">
@@ -249,33 +247,15 @@
                         <th></th>
                     </div>
                     <div th:text="${post.userId}" class="user-post">
-                    <th></th>
+                        <th></th>
                     </div>
                 </div>
                 <div class="content-area">
-                    <span th:text="${post.content}" class="post">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate elementum
-                        erat, a
-                        ultrices nisi efficitur a. Phasellus sollicitudin mi non ligula auctor, sed ultrices
-                        lectus
-                        convallis. Sed volutpat, nulla quis cursus convallis, est erat dapibus libero, non
-                        auctor.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate
-                        elementum erat, a ultrices nisi efficitur a. Phasellus sollicitudin mi non ligula
-                        auctor, sed ultrices lectus convallis. Sed volutpat, nulla quis cursus convallis, est
-                        erat dapibus libero, non auctor justo arcu euismod sapien. Vivamus feugiat bibendum
-                        risus, non sollicitudin mi molestie ut. Proin sit amet eros faucibus, laoreet arcu eu,
-                        ullamcorper ligula. Nunc interdum eu turpis et condimentum. Integer pharetraLorem ipsum
-                        dolor sit amet, consectetur adipiscing elit. Nullam vulputate elementum erat, a ultrices
-                        nisi efficitur a. Phasellus sollicitudin mi non ligula auctor, sed ultrices lectus
-                        convallis. Sed volutpat, nulla quis cursus convallis, est erat dapibus libero, non
-                        auctor justo arcu euismod sapien. Vivamus feugiat bibendum risus, non sollicitudin mi
-                        molestie ut. Proin sit amet eros faucibus, laoreet arcu eu, ullamcorper ligula. Nunc
-                        interdum eu turpis et condimentum. Integer pharetraLorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Nullam vulputate elementum erat, a ultrices nisi efficitur
-                        a. Phasellus sollicitudin mi non ligula auctor, sed ultrices lectus convallis. Sed
-                        volutpat, nulla quis cursus convallis, est erat dapibus libero, non auctor justo arcu
-                        euismod sapien. Vivamus feugiat bibendum risus, non sollicitudin mi molestie ut. Proin
-                        sit amet eros faucibus, laoreet arcu eu, ullamcorper ligula. Nunc interdum eu turpis et
-                        condimentum. Integer pharetra
+                    <span th:text="${post.content}" class="post">Lorem ipsum dolor
+                        sit amet, consectetur adipiscingelit.
+                        Nullam vulputate elementumerat, a
+                        ultrices nisi efficitur a. Phasellus sollicitudin mi non
+                        ligula auctor, sed ultrices lectus.
                     </span>
                 </div>
             </div>
@@ -285,5 +265,4 @@
     <footer id="footer" class="grid_16"></footer>
     <script src="../templates/script.js"></script>
 </body>
-
 </html>
