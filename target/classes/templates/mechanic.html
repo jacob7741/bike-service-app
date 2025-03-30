@@ -243,21 +243,17 @@
                     </button>
                 </div>
             </div>
-            <div class="post-area">
+            <div th:each="post : ${postsList}" class="post-area">
                 <div class="banner-post">
-                    <div class="post-date">
-                        <th>
-                            19.12.2091
-                        </th>
+                    <div th:text="${post.date}" class="post-date">
+                        <th></th>
                     </div>
-                    <div class="user-post">
-                    <th>
-                        From user
-                    </th>
+                    <div th:text="${post.userId}" class="user-post">
+                    <th></th>
                     </div>
                 </div>
                 <div class="content-area">
-                    <span class="post">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate elementum
+                    <span th:text="${post.content}" class="post">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate elementum
                         erat, a
                         ultrices nisi efficitur a. Phasellus sollicitudin mi non ligula auctor, sed ultrices
                         lectus

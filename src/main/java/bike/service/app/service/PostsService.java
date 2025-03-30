@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 
 import bike.service.app.model.Posts;
 import bike.service.app.model.repository.PostsRepository;
-import bike.service.app.model.Users;;
+import bike.service.app.model.Users;
+
 @Service
-class PostsService {
+public class PostsService {
 
     @Autowired
     private PostsRepository pRepository;
@@ -21,10 +22,9 @@ class PostsService {
         List<Posts> pList = pRepository.findAll();
 
         if (pList.isEmpty()) {
-            throw new RuntimeException("List is empty");
-        } else { 
             return pList;
-        }
+        } 
+        return pList;
     }
 
     // nowa metoda sprawdzić poprawność działania!!!

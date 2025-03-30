@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
+import bike.service.app.model.Posts;
 import bike.service.app.model.Services;
 import bike.service.app.service.BikeService;
 import bike.service.app.service.ClientService;
@@ -22,6 +23,7 @@ import bike.service.app.service.LoginService;
 import bike.service.app.service.OrderService;
 import bike.service.app.service.ServicesService;
 import bike.service.app.service.userroles.MechanicService;
+import bike.service.app.service.PostsService;
 
 @Controller
 public class MechanicController {
@@ -38,6 +40,8 @@ public class MechanicController {
     private BikeService bikeService;
     @Autowired
     private ClientService clientService;
+    @Autowired
+    private PostsService postsService;
 
     AtomicReference<String> fullName = new AtomicReference<>(new String());
 
@@ -47,11 +51,14 @@ public class MechanicController {
         List<Order> personalList = loginService.getPersonalList(fullName);
         List<Order> newServiceList = orderService.getAllNewOrders();
         List<Order> doneList = orderService.getAllDoneOrders();
+        List<Posts> postsList = postsService.getAllPosts();
 
         model.addAttribute("username", fullName.get());
         model.addAttribute("orderList", personalList);
         model.addAttribute("doneList",doneList);
         model.addAttribute("newServiceList", newServiceList);
+        model.addAttribute("postsList", postsList);
+        
         return "mechanic";
     }
 
@@ -114,5 +121,5 @@ public class MechanicController {
         return "redirect:/mechanic";
     }
 
-    
+
 }
