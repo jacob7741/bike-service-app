@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="panel for mechanics" />
+    <link rel="stylesheet" href="../static/css/960_16_col.css" />
+    <link rel="stylesheet" href="../static/css/newMechanicStyle.css" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <title>Mechanic panel</title>
+</head>
+
+<body>
+    <div class="container_16 clearfix">
+        <div id="header" class="grid_16">
+            <p id="data" style="
+            text-align: right;
+            color: rgb(119, 140, 134);
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+              'Lucida Sans', Arial, sans-serif;
+          "></p>
+            <h2>Welcome: <span th:text="${username}"></span></h2>
+        </div>
+        <aside id="side_bar_menu" class="grid_4">
+            <button class="button" onclick="showContent('news')">News</button>
+            <button class="button" onclick="showContent('order_table')">
+                My services
+            </button>
+            <button class="button" onclick="showContent('add_service')">
+                Add service
+            </button>
+            <button class="button" onclick="showContent('new_service')">
+                New services
+            </button>
+            <button class="button" onclick="showContent('done_service')">
+                Done services
+            </button>
+            <button class="button" onclick="showContent('calendar')">
+                Calendar
+            </button>
+            <button class="button" onclick="showContent('group')">Group</button>
+        </aside>
+    </div>
+    <div id="order_table" class="content grid_16">
+        <p>Number of orders: <span th:text="${#lists.size(orderList)}"></span></p>
+        <table>
+            <thead>
+                <tr>
+                    <th class="orderId">Order ID:</th>
+                    <th class="service">Service:</th>
+                    <th class="bikeM">Bike model:</th>
+                    <th class="clientId">Client ID:</th>
+                    <th class="btn"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="order : ${orderList}">
+                    <td th:text="${order.orderId}"></td>
+                    <td th:text="${order.service}"></td>
+                    <td th:text="${order.bikeModel}"></td>
+                    <td th:text="${order.client}"></td>
+                    <td>
+                        <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
+                            <button class="edit-btn" type="submit">edit</button>
+                        </form>
+                        <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                            <button class="done-btn" type="submit">done</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="news" class="content">
+        <div class="article grid_5">
+            <p>
+                <script
+                    src="//rss.bloople.net/?url=https%3A%2F%2Fportal.bikeworld.pl%2Frss%2Farchiwum%2F32%2Fnowosci_sprzetowe&detail=&limit=5&showtitle=false&type=js"></script>
+            </p>
+        </div>
+        <div class="article grid_5">
+            <p>
+                <script
+                    src="//rss.bloople.net/?url=https%3A%2F%2Fcms.bike-eu.com%2Frss_feed%2Flaws-and-regulations&limit=5&showtitle=false&type=js"></script>
+            </p>
+        </div>
+        <div class="bottom_article grid_12">
+            <p>
+                <script
+                    src="//rss.bloople.net/?url=https%3A%2F%2Fcms.bike-eu.com%2Frss_feed%2Flaws-and-regulations&limit=5&showtitle=false&type=js"></script>
+             </p>
+        </div>
+    </div>
+    <div id="add_service" class="content">
+        <div class="container_add_service">
+            <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
+                <h6 style="
+              padding-left: 1%;
+              font-size: 15px;
+              color: rgba(172, 117, 45, 0.997);
+            ">
+                    Client details:
+                </h6>
+                <div class="group_3">
+                    <label>Name: <input type="text" name="first_name" required /></label>
+                    <label>Lastname: <input type="text" name="last_name" required /></label>
+                    <label>Phone number: <input type="text" name="phoneNumber" required /></label>
+                    <label>e-mail: <input type="email" name="email" required /></label>
+                </div>
+
+                <div class="group_2">
+                    <label>Bike brand: <input type="text" name="brand" required /></label>
+                    <label>Bike type: <input type="text" name="modelType" required /></label>
+                    <label>Serial number: <input type="text" name="serialNumber" required /></label>
+                </div>
+                <h6 style="
+              padding-left: 1%;
+              margin-top: 2%;
+              font-size: 15px;
+              color: rgba(172, 117, 45, 0.997);
+            ">
+                    Service details:
+                </h6>
+                <div class="group_1">
+                    <label><input type="radio" name="serviceType" value="smallService" required />
+                        Small service</label>
+                    <label><input type="radio" name="serviceType" value="fullService" required />
+                        Full service</label>
+                    <label>
+                        <input type="radio" name="serviceType" value="repair" id="repairCheckbox"
+                            onchange="toggleRepairDetails(this)" required />
+                        Other repairs
+                    </label>
+                    <textarea name="repairDetails" rows="5" placeholder="details other repairs..."></textarea>
+                    <label>Price:
+                        <input type="number" name="repairPrice" style="
+                  border-radius: 8px;
+                  border: none;
+                  height: 25px;
+                  margin-top: 1%;
+                " /></label>
+                    <div class="centered-button">
+                        <button class="add_service_btn" type="submit" name="services">
+                            Add service
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="new_service" class="content">
+        <p>
+            Number of new services:
+            <span th:text="${#lists.size(newServiceList)}"></span>
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th class="new_services">Add by:</th>
+                    <th class="new_services">Service:</th>
+                    <th class="new_services">Bike model:</th>
+                    <th class="new_services" style="width: 15%">Client ID:</th>
+                    <th class="new_service">Date:</th>
+                    <th class="btn"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="order : ${newServiceList}">
+                    <td th:text="${order.addByUser}"></td>
+                    <td th:text="${order.service}"></td>
+                    <td th:text="${order.bikeModel}"></td>
+                    <td th:text="${order.client}"></td>
+                    <!-- TODO: dodac date przyjecia -->
+                    <td th:text="date"></td>
+                    <td>
+                        <form method="post" th:action="@{/mechanic/take/{id}(id=${order.orderId})}">
+                            <button class="take-btn" type="submit">Accept</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="done_service" class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th class="done_services">Done by:</th>
+                    <th class="done_services">Service:</th>
+                    <th class="done_services">Bike model:</th>
+                    <th class="done_services">Client ID:</th>
+                    <th class="done_services">Date:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="order : ${doneList}">
+                    <td th:text="${order.doneByUser}"></td>
+                    <td th:text="${order.service}"></td>
+                    <td th:text="${order.bikeModel}"></td>
+                    <td th:text="${order.client}"></td>
+                    <td th:text="date">date</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="calendar" class="content">
+        <div class="wrapper">
+            <div class="calendar">
+                <header>
+                    <p class="current-date"></p>
+                    <div class="icons">
+                        <span id="prev" class="bx bx-chevron-left"></span>
+                        <span id="next" class="bx bx-chevron-right"></span>
+                    </div>
+                </header>
+                <div class="calendar">
+                    <ul class="weeks">
+                        <li>Mon</li>
+                        <li>Tue</li>
+                        <li>Wen</li>
+                        <li>Thr</li>
+                        <li>Fri</li>
+                        <li>Sat</li>
+                        <li>Sun</li>
+                    </ul>
+                    <ul class="days">
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="group" class="content">
+        <div>
+            <div class="panel-post">
+                <div>
+                    <textarea class="post-text">Make post here...</textarea>
+                    <button class="post-btn">Post</button>
+                </div>
+            </div>
+            <div th:each="post : ${postsList}" class="post-area">
+                <div class="banner-post">
+                    <div th:text="${post.date}" class="post-date">
+                        <th></th>
+                    </div>
+                    <div th:text="${post.userId}" class="user-post">
+                        <th></th>
+                    </div>
+                </div>
+                <div class="content-area">
+                    <span th:text="${post.content}" class="post">Lorem ipsum dolor
+                        sit amet, consectetur adipiscingelit.
+                        Nullam vulputate elementumerat, a
+                        ultrices nisi efficitur a. Phasellus sollicitudin mi non
+                        ligula auctor, sed ultrices lectus.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- TODO: Stopka nie jest całkowicie na samym dole -->
+    <footer id="footer" class="grid_16"></footer>
+    <script src="../templates/script.js"></script>
+</body>
+</html>

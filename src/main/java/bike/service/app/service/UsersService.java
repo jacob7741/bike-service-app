@@ -13,8 +13,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import bike.service.app.model.Order;
-import bike.service.app.model.Services;
 import bike.service.app.model.Users;
 import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.UsersRepository;

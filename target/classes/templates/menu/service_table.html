@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="panel for mechanics">
+    <title>Order table</title>
+    <style>
+        #order_table {
+            /* display: inline-block; */
+            position: fixed;
+            padding: 0.3%;
+            padding-bottom: 5px;
+            height: calc(100vh - 60px);
+            width: 80%;
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+            margin-top: 60px;
+            margin-left: 20%;
+            border-radius: 5px;
+            background-color: rgb(242, 247, 249);
+        }
+
+
+        .orderId {
+
+            width: 7%;
+            text-align: left;
+            /* background-color: rgba(235, 158, 158, 0.7); */
+        }
+
+        .service {
+            width: 15%;
+            text-align: left;
+            /* background-color: rgba(202, 235, 158, 0.7); */
+        }
+
+        .bikeM {
+            width: 15%;
+            text-align: left;
+            /* background-color: rgba(235, 158, 158, 0.7); */
+        }
+
+        .clientId {
+            width: 7%;
+            text-align: left;
+            /* background-color: rgba(202, 235, 158, 0.7); */
+        }
+
+        .btn {
+            width: 5%;
+            text-align: left;
+            /* background-color: rgba(158, 193, 235, 0.7); */
+        }
+
+        .edit-btn,
+        .done-btn {
+            align-items: center;
+            justify-content: center;
+            border-color: black;
+            border: 3px;
+            width: 80%;
+            font-size: 14px;
+            padding: 3%;
+            border-radius: 5px;
+            margin: 0.5%;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+        }
+
+        .edit-btn {
+            background-color: #67b66df8;
+        }
+
+        .done-btn {
+            background-color: #e3403df8;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="order_table" class="grid_12">
+        <p>Number of orders: <span th:text="${#lists.size(orderList)}"></span></p>
+        <table>
+            <thead>
+                <tr>
+                    <th class="orderId">Order ID:</th>
+                    <th class="service">Service:</th>
+                    <th class="bikeM">Bike model:</th>
+                    <th class="clientId">Client ID:</th>
+                    <th class="btn"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="order : ${orderList}">
+                    <td th:text="${order.orderId}"></td>
+                    <td th:text="${order.service}"></td>
+                    <td th:text="${order.bikeModel}"></td>
+                    <td th:text="${order.client}"></td>
+                    <td>
+                        <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
+                            <button class="edit-btn" type="submit">edit</button>
+                        </form>
+                        <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                            <button class="done-btn" type="submit">done</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
