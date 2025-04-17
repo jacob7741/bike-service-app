@@ -35,7 +35,9 @@ public class PostsService {
 
         for(Users user : uList) {
             if ((user.getFirstName() + " " + user.getLastName()).equals(userName)) {
-                userT.getUserId();
+                userT.setFirstName(user.getFirstName());
+                userT.setLastName(user.getLastName());
+                userT.setUserId(user.getUserId());
             }
         }
 
@@ -44,6 +46,7 @@ public class PostsService {
             posts.setUserId(userT.getUserId());
             pRepository.save(posts);
         }
+        
 
         return posts;
     }
