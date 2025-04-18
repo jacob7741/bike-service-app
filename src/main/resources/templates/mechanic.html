@@ -234,13 +234,20 @@
     </div>
 
     <div id="group" class="content">
-        <div>
-            <div class="panel-post">
-                <div>
-                    <textarea class="post-text">Make post here...</textarea>
-                    <button class="post-btn">Post</button>
-                </div>
+
+        <form class="panel-post" th:action="@{/mechanic/post}" method="post" th:object="${post}">
+            <div class="post-text">
+                <input class="post-text" type="text" th:field="*{content}" name="content" placeholder="Add some post..."/>
             </div>
+            <button class="post-btn" type="submit" name="post">Post</button>
+        </form>
+
+        <div>
+            <!-- <div class="panel-post">
+                <div>
+                    <textarea class="post-text" type="text" >Make post here...</textarea>
+                </div>
+            </div> -->
             <div th:each="post : ${postsList}" class="post-area">
                 <div class="banner-post">
                     <div th:text="${post.date}" class="post-date">

@@ -46,7 +46,6 @@ public class PostsService {
             posts.setUserId(userT.getUserId());
             pRepository.save(posts);
         }
-        
 
         return posts;
     }

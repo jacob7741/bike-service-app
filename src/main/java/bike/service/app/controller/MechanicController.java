@@ -58,6 +58,7 @@ public class MechanicController {
         model.addAttribute("doneList",doneList);
         model.addAttribute("newServiceList", newServiceList);
         model.addAttribute("postsList", postsList);
+        model.addAttribute("post", new Posts());
         
         return "mechanic";
     }
@@ -121,5 +122,11 @@ public class MechanicController {
         return "redirect:/mechanic";
     }
 
-    
+    @PostMapping("/mechanic/post")
+    public String createPost(@RequestParam("content") String content) {
+            Posts post = new Posts();
+            post.setContent(content);
+            postsService.createPost(post, content, fullName);
+            return "redirect:/mechanic";
+        }
 }
