@@ -128,7 +128,7 @@ textarea {
     margin-top: 60px;
     margin-left: 20%;
     border-radius: 5px;
-    background-color: rgb(235, 241, 238);
+    background-color: rgb(225, 232, 229);
 }
 
 #footer {
@@ -190,6 +190,7 @@ header .bx {
 }
 
 .post-btn, .post-text {
+    margin-right: 30px;
     display:inline;
 }
 
@@ -207,20 +208,20 @@ header .bx {
     background-color: rgb(60, 207, 155)
 }
 
-/* .banner-post {
+.banner-post {
     padding: 2px 5px 0px 5px;
     margin-left:15%;
     width: 60%;
     background-color: rgb(255, 255, 255);
     border-radius: 10px 10px 0px 0px;
-} */
+}
 
-/* .post-date {
+.post-date {
     font-size: 12px;
     font-style: italic;
-    color: rgb(130, 130, 130);
+    color: rgb(116, 109, 109);
     text-align: end;
-} */
+}
 
 .user-post {
     font-size: 18px;
@@ -228,7 +229,7 @@ header .bx {
     color: rgba(80, 101, 95, 0.848);
 }
 
-.content-area, .post {
+.content-area{
     width: 60%;
     background-color: rgb(255, 255, 255);
     border-radius: 0px 0px 10px 10px;
@@ -249,7 +250,7 @@ header .bx {
     font-size: 18px;
     text-align: left;
     margin-left: 15%;
-    margin-right: 15%;
+    margin-right: 1%;
     margin-bottom: 0.2%;
 }
 

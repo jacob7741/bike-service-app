@@ -89,7 +89,7 @@
             <p>
                 <script
                     src="//rss.bloople.net/?url=https%3A%2F%2Fcms.bike-eu.com%2Frss_feed%2Flaws-and-regulations&limit=5&showtitle=false&type=js"></script>
-             </p>
+            </p>
         </div>
     </div>
     <div id="add_service" class="content">
@@ -235,31 +235,32 @@
 
     <div id="group" class="content">
 
-        <form class="panel-post" th:action="@{/mechanic/post}" method="post" th:object="${post}">
-            <div class="post-text">
-                <!-- <input class="post-text" type="text" th:field="*{content}" name="content" placeholder="Add some post..."></input> -->
-                <textarea type="text" th:field="*{content}" name="content" placeholder="Add some post..."></textarea>
+        <!-- <form class="panel-post" th:action="@{/mechanic/post}" method="post" th:object="${post}">
+            <div>
+                <textarea class="post-text" type="text" th:field="*{content}" name="content"
+                placeholder="Add some post..."></textarea>
+                <button class="post-btn" type="submit" name="post">Post</button>
             </div>
-            <button class="post-btn" type="submit" name="post">Post</button>
-        </form>
-
+        </form> -->
+        
         <div>
-            <!-- <div class="panel-post">
+            <div class="panel-post">
                 <div>
                     <textarea class="post-text" type="text" >Make post here...</textarea>
+                    <button class="post-btn" type="submit" name="post">Post</button>
                 </div>
-            </div> -->
+            </div>
             <div th:each="post : ${postsList}" class="post-area">
                 <div class="banner-post">
                     <div th:text="${post.date}" class="post-date">
-                        <th></th>
+                        <th>12.01.2025</th>
                     </div>
                     <div th:text="${post.userId}" class="user-post">
-                        <th></th>
+                        <th>Id: 3</th>
                     </div>
                 </div>
                 <div class="content-area">
-                    <span th:text="${post.content}" class="post">Lorem ipsum dolor
+                    <span th:text="${post.content}">Lorem ipsum dolor
                         sit amet, consectetur adipiscingelit.
                         Nullam vulputate elementumerat, a
                         ultrices nisi efficitur a. Phasellus sollicitudin mi non
@@ -273,4 +274,5 @@
     <footer id="footer" class="grid_16"></footer>
     <script src="../templates/script.js"></script>
 </body>
+
 </html>
