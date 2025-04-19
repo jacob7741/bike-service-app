@@ -127,6 +127,6 @@ public class MechanicController {
             Posts post = new Posts();
             post.setContent(content);
             postsService.createPost(post, content, fullName);
-            return "redirect:/mechanic";
+            return "redirect:/mechanic"; 
         }
 }

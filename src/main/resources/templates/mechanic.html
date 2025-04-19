@@ -237,7 +237,8 @@
 
         <form class="panel-post" th:action="@{/mechanic/post}" method="post" th:object="${post}">
             <div class="post-text">
-                <input class="post-text" type="text" th:field="*{content}" name="content" placeholder="Add some post..."/>
+                <!-- <input class="post-text" type="text" th:field="*{content}" name="content" placeholder="Add some post..."></input> -->
+                <textarea type="text" th:field="*{content}" name="content" placeholder="Add some post..."></textarea>
             </div>
             <button class="post-btn" type="submit" name="post">Post</button>
         </form>

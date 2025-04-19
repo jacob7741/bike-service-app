@@ -189,8 +189,8 @@ header .bx {
     cursor: pointer;
 }
 
-.panel-post, .post-btn, .post-text {
-    display: inline;
+.post-btn, .post-text {
+    display:inline;
 }
 
 .post-btn {
@@ -207,20 +207,20 @@ header .bx {
     background-color: rgb(60, 207, 155)
 }
 
-.banner-post {
+/* .banner-post {
     padding: 2px 5px 0px 5px;
     margin-left:15%;
     width: 60%;
     background-color: rgb(255, 255, 255);
     border-radius: 10px 10px 0px 0px;
-}
+} */
 
-.post-date {
+/* .post-date {
     font-size: 12px;
     font-style: italic;
     color: rgb(130, 130, 130);
     text-align: end;
-}
+} */
 
 .user-post {
     font-size: 18px;
@@ -241,6 +241,7 @@ header .bx {
 .content-area::-webkit-scrollbar {
     display: none;
 }
+ 
  .post-text {
     height: 100px;
     padding: 5px;
@@ -248,7 +249,7 @@ header .bx {
     font-size: 18px;
     text-align: left;
     margin-left: 15%;
-    /* margin-right: 15%; */
+    margin-right: 15%;
     margin-bottom: 0.2%;
 }
 
