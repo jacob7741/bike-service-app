@@ -242,15 +242,11 @@
                 <button class="post-btn" type="submit" name="post">Post</button>
             </div>
         </form> -->
-        
-        <div>
-            <div class="panel-post">
-                <div>
-                    <textarea class="post-text" type="text" >Make post here...</textarea>
-                    <button class="post-btn" type="submit" name="post">Post</button>
-                </div>
-            </div>
-            <div th:each="post : ${postsList}" class="post-area">
+
+        <form th:action="@{/mechanic/post}" method="post" class="panel-post">
+            <textarea name="content" class="post-text" type="text">Make post here...</textarea>
+            <button class="post-btn" type="submit" name="post">Post</button>
+            <div th:each="post : ${postsList}" class="content-area">
                 <div class="banner-post">
                     <div th:text="${post.date}" class="post-date">
                         <th>12.01.2025</th>
@@ -258,17 +254,18 @@
                     <div th:text="${post.userId}" class="user-post">
                         <th>Id: 3</th>
                     </div>
-                </div>
-                <div class="content-area">
-                    <span th:text="${post.content}">Lorem ipsum dolor
-                        sit amet, consectetur adipiscingelit.
-                        Nullam vulputate elementumerat, a
-                        ultrices nisi efficitur a. Phasellus sollicitudin mi non
-                        ligula auctor, sed ultrices lectus.
+                    <div>
+                        <span th:text="${post.content}">Lorem ipsum dolor
+                            sit amet, consectetur adipiscingelit.
+                            Nullam vulputate elementumerat, a
+                            ultrices nisi efficitur a. Phasellus sollicitudin mi non
+                            ligula auctor, sed ultrices lectus.
+                    </div>
                     </span>
                 </div>
             </div>
-        </div>
+    </div>
+    </form>
     </div>
     <!-- TODO: Stopka nie jest całkowicie na samym dole -->
     <footer id="footer" class="grid_16"></footer>

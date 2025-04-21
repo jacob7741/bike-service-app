@@ -230,26 +230,30 @@ header .bx {
 }
 
 .content-area{
-    width: 60%;
+    width: 70%;
     background-color: rgb(255, 255, 255);
     border-radius: 0px 0px 10px 10px;
     max-height: 200px;
-    overflow-y:auto;
-    margin-left: 15%;
+    margin-left: 12%;
     margin-right: 15%;
     padding: 0px 5px 2px 5px;
 }
-.content-area::-webkit-scrollbar {
+
+.panel-post::-webkit-scrollbar {
     display: none;
+}
+
+.panel-post{
+    overflow-y: scroll;
 }
  
  .post-text {
     height: 100px;
     padding: 5px;
-    width: 60%;
+    width: 70%;
     font-size: 18px;
     text-align: left;
-    margin-left: 15%;
+    margin-left: 12%;
     margin-right: 1%;
     margin-bottom: 0.2%;
 }
