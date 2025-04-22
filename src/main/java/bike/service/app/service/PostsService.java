@@ -2,6 +2,7 @@ package bike.service.app.service;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class PostsService {
 
         if (pList.isEmpty()) {
             return pList;
-        } 
+        }
         return pList;
     }
 
@@ -33,8 +34,9 @@ public class PostsService {
         List<Users> uList = userService.getAllUsers();
         String userName = fullName.get();
         Users userT = new Users();
+        LocalDate date = LocalDate.now();
 
-        for(Users user : uList) {
+        for (Users user : uList) {
             if ((user.getFirstName() + " " + user.getLastName()).equals(userName)) {
                 userT.setFirstName(user.getFirstName());
                 userT.setLastName(user.getLastName());
@@ -45,6 +47,7 @@ public class PostsService {
         if (fullName.get() != null) {
             posts.setContent(content);
             posts.setUserId(userT.getUserId());
+            posts.setDate(date.toString());
             pRepository.save(posts);
         }
 
