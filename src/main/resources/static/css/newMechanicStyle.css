@@ -201,14 +201,14 @@ header .bx {
     background-color: rgb(60, 207, 155)
 }
 
-.banner-post {
+/* .banner-post {
     display: inline;
     padding: 2px 5px 0px 5px;
     text-align: justify;
     width: 60%;
     background-color: rgb(255, 255, 255);
     border-radius: 10px 10px 0px 0px;
-}
+} */
 
 .post-date {
     font-size: 12px;
@@ -237,26 +237,20 @@ header .bx {
 .content-area::-webkit-scrollbar {
     display: none;
 }
-
-.panel-post::-webkit-scrollbar {
+/* .panel-post::-webkit-scrollbar {
     display: none;
 }
 
 .panel-post {
     overflow-y: scroll;
-}
+} */
 
 .post-text {
     display:flex;
-    /* height: 80px; */
-    /* padding: 5px; */
-    /* border: 1px dashed gray; */
     width: 100%;
     font-size: 18px;
     margin-bottom: 2%;
-    /* text-align: left; */
-    /* margin-left: 20px; */
-    /* margin-right: 20px; */
+    margin: 1%;
     align-items: center;
     }
 
@@ -264,6 +258,8 @@ header .bx {
     height: 50px;
     width: 50px;
     border-radius: 30px;
+    margin-left: 30px;
+    margin-right: 10px;
     border: none;
     font-size: 18px;
     background-color: rgba(67, 170, 127, 0.343);

@@ -243,12 +243,12 @@
             </div>
         </form> -->
 
-        <form th:action="@{/mechanic/post}" method="post" class="panel-post">
+        <form th:action="@{/mechanic/post}" method="post">
+            <div class="post-text">
+                <textarea name="content" type="text">Make post here...</textarea>
+                <button class="post-btn" type="submit" name="post">Post</button>
+            </div>
             <div class="content-area">
-                <div class="post-text">
-                    <textarea name="content" type="text">Make post here...</textarea>
-                    <button class="post-btn" type="submit" style="margin-left: 10px;" name="post">Post</button>
-                </div>
                 <div th:each="post : ${postsList}">
                     <div class="banner-post">
                         <div th:text="${post.date}" class="post-date">
@@ -268,9 +268,10 @@
                     </div>
                 </div>
             </div>
-    </div>
+        </div>>
     </form>
     </div>
+    <script src="../templates/script.js"></script>
 </body>
 
 </html>
