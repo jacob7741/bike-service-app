@@ -103,8 +103,8 @@ textarea {
 }
 
 .article {
-    max-width: 49%;
     max-height: 49%;
+    max-width: 49%;
     margin: 2px 4px;
     align-content: center;
     border: 1px solid rgba(59, 97, 88, 0.67);
