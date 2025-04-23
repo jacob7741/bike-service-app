@@ -244,11 +244,11 @@
         </form> -->
 
         <form th:action="@{/mechanic/post}" method="post">
-            <div class="post-text">
-                <textarea name="content" type="text">Make post here...</textarea>
-                <button class="post-btn" type="submit" name="post">Post</button>
-            </div>
             <div class="content-area">
+                <div class="post-text">
+                    <textarea name="content" type="text">Make post here...</textarea>
+                    <button class="post-btn" type="submit" name="post">Post</button>
+                </div>
                 <div th:each="post : ${postsList}">
                     <div class="banner-post">
                         <div th:text="${post.date}" class="post-date">

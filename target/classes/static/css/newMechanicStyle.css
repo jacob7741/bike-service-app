@@ -190,25 +190,25 @@ header .bx {
     cursor: pointer;
 }
 
-.post-btn,
+/* .post-btn,
 .post-text {
     margin-right: 30px;
     display: inline;
-}
+} */
 
 
 .post-btn:hover {
     background-color: rgb(60, 207, 155)
 }
 
-/* .banner-post {
+.banner-post {
     display: inline;
     padding: 2px 5px 0px 5px;
     text-align: justify;
     width: 60%;
     background-color: rgb(255, 255, 255);
     border-radius: 10px 10px 0px 0px;
-} */
+}
 
 .post-date {
     font-size: 12px;
@@ -237,13 +237,13 @@ header .bx {
 .content-area::-webkit-scrollbar {
     display: none;
 }
-/* .panel-post::-webkit-scrollbar {
+.panel-text::-webkit-scrollbar {
     display: none;
 }
 
-.panel-post {
+.panel-text {
     overflow-y: scroll;
-} */
+}
 
 .post-text {
     display:flex;
