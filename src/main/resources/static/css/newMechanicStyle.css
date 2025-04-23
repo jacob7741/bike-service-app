@@ -117,6 +117,7 @@ textarea {
 .article::-webkit-scrollbar {
     display: none;
 }
+
 .bottom_article::-webkit-scrollbar {
     display: none;
 }
@@ -189,20 +190,12 @@ header .bx {
     cursor: pointer;
 }
 
-.post-btn, .post-text {
+.post-btn,
+.post-text {
     margin-right: 30px;
-    display:inline;
+    display: inline;
 }
 
-.post-btn {
-    height: 50px;
-    width: 50px;
-    border-radius: 30px;
-    border: none;
-    font-size: 18px;
-    background-color: rgba(67, 170, 127, 0.343);
-    cursor: pointer;
-}
 
 .post-btn:hover {
     background-color: rgb(60, 207, 155)
@@ -211,7 +204,7 @@ header .bx {
 .banner-post {
     display: inline;
     padding: 2px 5px 0px 5px;
-    text-align:justify;
+    text-align: justify;
     width: 60%;
     background-color: rgb(255, 255, 255);
     border-radius: 10px 10px 0px 0px;
@@ -230,34 +223,51 @@ header .bx {
     color: rgba(80, 101, 95, 0.848);
 }
 
-.content-area{
-    width: 70%;
+.content-area {
+    /* width: 70%; */
+    max-height: 800px;
     background-color: rgb(255, 255, 255);
-    /* border-radius: 0px 0px 10px 10px; */
-    max-height: 200px;
+    border-radius: 10px;
+    overflow-y: scroll;
     margin-left: 12%;
     margin-right: 15%;
     padding: 0px 5px 2px 5px;
+}
+
+.content-area::-webkit-scrollbar {
+    display: none;
 }
 
 .panel-post::-webkit-scrollbar {
     display: none;
 }
 
-.panel-post{
+.panel-post {
     overflow-y: scroll;
 }
- 
- .post-text {
-    height: 100px;
-    padding: 5px;
-    border: 1px dashed gray;
-    width: 70%;
+
+.post-text {
+    display:flex;
+    /* height: 80px; */
+    /* padding: 5px; */
+    /* border: 1px dashed gray; */
+    width: 100%;
     font-size: 18px;
-    text-align: left;
-    margin-left: 12%;
-    margin-right: 1%;
-    margin-bottom: 0.2%;
+    margin-bottom: 2%;
+    /* text-align: left; */
+    /* margin-left: 20px; */
+    /* margin-right: 20px; */
+    align-items: center;
+    }
+
+.post-btn {
+    height: 50px;
+    width: 50px;
+    border-radius: 30px;
+    border: none;
+    font-size: 18px;
+    background-color: rgba(67, 170, 127, 0.343);
+    cursor: pointer;
 }
 
 .calendar ul {
@@ -336,7 +346,7 @@ header .bx {
 }
 
 .add_service_btn {
-    display:inline-flex;
+    display: inline-flex;
     color: rgb(80, 89, 97);
     font-size: 18px;
     margin-bottom: 20%;

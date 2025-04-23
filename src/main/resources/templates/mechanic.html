@@ -244,32 +244,33 @@
         </form> -->
 
         <form th:action="@{/mechanic/post}" method="post" class="panel-post">
-            <textarea name="content" class="post-text" type="text">Make post here...</textarea>
-            <button class="post-btn" type="submit" name="post">Post</button>
-            <div th:each="post : ${postsList}" class="content-area">
-                <div class="banner-post">
-                    <div th:text="${post.date}" class="post-date">
-                        <th>12.01.2025</th>
+            <div class="content-area">
+                <div class="post-text">
+                    <textarea name="content" type="text">Make post here...</textarea>
+                    <button class="post-btn" type="submit" style="margin-left: 10px;" name="post">Post</button>
+                </div>
+                <div th:each="post : ${postsList}">
+                    <div class="banner-post">
+                        <div th:text="${post.date}" class="post-date">
+                            12.01.2025
+                        </div>
+                        <div th:text="${post.userId}" class="user-post">
+                            Id: 3
+                        </div>
+                        <div>
+                            <span th:text="${post.content}">Lorem ipsum dolor
+                                sit amet, consectetur adipiscingelit.
+                                Nullam vulputate elementumerat, a
+                                ultrices nisi efficitur a. Phasellus sollicitudin mi non
+                                ligula auctor, sed ultrices lectus.
+                            </span>
+                        </div>
                     </div>
-                    <div th:text="${post.userId}" class="user-post">
-                        <th>Id: 3</th>
-                    </div>
-                    <div>
-                        <span th:text="${post.content}">Lorem ipsum dolor
-                            sit amet, consectetur adipiscingelit.
-                            Nullam vulputate elementumerat, a
-                            ultrices nisi efficitur a. Phasellus sollicitudin mi non
-                            ligula auctor, sed ultrices lectus.
-                    </div>
-                    </span>
                 </div>
             </div>
     </div>
     </form>
     </div>
-    <!-- TODO: Stopka nie jest całkowicie na samym dole -->
-    <footer id="footer" class="grid_16"></footer>
-    <script src="../templates/script.js"></script>
 </body>
 
 </html>
