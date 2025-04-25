@@ -1,4 +1,11 @@
 let date = new Date();
+var todayDate = date.toDateString();
+
+var headerDate = document.getElementById('data');
+
+headerDate.innerHTML = todayDate;
+
+
 
 function showContent(id) {
     var contents = document.getElementsByClassName('content');
