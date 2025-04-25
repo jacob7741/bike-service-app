@@ -35,6 +35,7 @@ public class UsersService implements UserDetailsService {
     private ServicesService servicesService;
     @Autowired
     private UsersService usersService;
+
     public List<Users> getAllUsers() {
         logger.info("getAllUsers");
         List<Users> users = userRepository.findAll();
@@ -44,23 +45,23 @@ public class UsersService implements UserDetailsService {
             return new ArrayList<>();
         }
     }
-    
-    // public int getMechanicIdByOrderId(int orderId) {
-    //     Optional<Order> order = oRepository.findById(orderId);
 
-    //     if (order.isPresent()) {
-    //         Order tempOrder = order.get();
-    //         List<Users> luser = usersService.getAllUsers();
-            
-    //         for(Users user : luser) {
-    //             if (tempOrder.equals(orderId)) {
-    //                 if (tempOrder.getMechanic().equals(user.getLastName())) {
-    //                     return user.getUserId();
-    //                 }
-    //             }
-    //         } 
-    //     }
-    //     return 0;
+    // public int getMechanicIdByOrderId(int orderId) {
+    // Optional<Order> order = oRepository.findById(orderId);
+
+    // if (order.isPresent()) {
+    // Order tempOrder = order.get();
+    // List<Users> luser = usersService.getAllUsers();
+
+    // for(Users user : luser) {
+    // if (tempOrder.equals(orderId)) {
+    // if (tempOrder.getMechanic().equals(user.getLastName())) {
+    // return user.getUserId();
+    // }
+    // }
+    // }
+    // }
+    // return 0;
     // }
 
     public Users getUserById(int id) {
@@ -69,8 +70,7 @@ public class UsersService implements UserDetailsService {
 
         if (user.isPresent()) {
             return user.get();
-        }
-         else {
+        } else {
             throw new RuntimeException("User ID not found.");
         }
     }
@@ -103,7 +103,6 @@ public class UsersService implements UserDetailsService {
         }
     }
 
-    
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.info("load users list");

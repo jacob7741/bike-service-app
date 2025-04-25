@@ -25,8 +25,8 @@ public class Posts {
     private int postId;
     @Column(name = "content")
     private String content;
-    @Column(name = "userId")
-    private int userId;
+    @Column(name = "username")
+    private String userName;
     @Column(name = "date")
     private String date;
 }

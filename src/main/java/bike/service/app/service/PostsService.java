@@ -40,14 +40,14 @@ public class PostsService {
             if ((user.getFirstName() + " " + user.getLastName()).equals(userName)) {
                 userT.setFirstName(user.getFirstName());
                 userT.setLastName(user.getLastName());
-                userT.setUserId(user.getUserId());
+                userT.setUserName(user.getUserName());
             }
         }
 
         if (fullName.get() != null) {
             posts.setContent(content);
-            posts.setUserId(userT.getUserId());
             posts.setDate(date.toString());
+            posts.setUserName(userT.getUserName());
             pRepository.save(posts);
         }
 

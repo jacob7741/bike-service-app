@@ -37,7 +37,7 @@ public class PostsServiceTest {
         Posts posts = new Posts();
         posts.setContent("content of someone post");
         posts.setDate("12/04/2025");
-        posts.setUserId(2);
+        posts.setUserName("Kowlaski");
         posts.setPostId(11);
 
         return posts;
@@ -54,7 +54,7 @@ public class PostsServiceTest {
         Users testUser = new Users();
         testUser.setFirstName("Julius");
         testUser.setLastName("Cesar");
-        testUser.setUserId(10);
+        testUser.setUserName("Kowalski");
 
         List<Users> usersList = new ArrayList<>();
         usersList.add(testUser);
@@ -67,7 +67,7 @@ public class PostsServiceTest {
 
         assertNotNull(result);
         assertEquals(content, result.getContent());
-        assertEquals(10, result.getUserId());
+        assertEquals("Kowalski", result.getUserName());
     }
 
     @Test
