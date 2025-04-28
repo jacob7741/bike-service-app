@@ -225,7 +225,7 @@ header .bx {
 
 .content-area {
     /* width: 70%; */
-    max-height: 800px;
+    max-height: calc(100vh - 50px);
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     overflow-y: scroll;
