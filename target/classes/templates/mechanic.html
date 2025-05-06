@@ -47,6 +47,7 @@
         <table>
             <thead>
                 <tr>
+                    <th class="date">Date:</th>
                     <th class="orderId">Order ID:</th>
                     <th class="service">Service:</th>
                     <th class="bikeM">Bike model:</th>
@@ -56,6 +57,7 @@
             </thead>
             <tbody>
                 <tr th:each="order : ${orderList}">
+                    <td th:text="${order.data}"></td>
                     <td th:text="${order.orderId}"></td>
                     <td th:text="${order.service}"></td>
                     <td th:text="${order.bikeModel}"></td>
