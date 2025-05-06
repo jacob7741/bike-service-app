@@ -1,5 +1,6 @@
 package bike.service.app.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +16,8 @@ public class ServicesService {
     
     @Autowired
     private ServicesRepository servicesRepository;
-    
+
+    private LocalDate date = LocalDate.now();
 
     public List<Services> getAllServices() {
         System.out.println("getAllServices");
@@ -55,9 +57,11 @@ public class ServicesService {
             switch (serviceType) {
                 case "smallService":
                     services.setSmallService(50);// lub inna logika
+                    services.setDate(date.toString());
                     break;
                 case "fullService":
                     services.setFullService(200); // lub inna logika
+                    services.setDate(date.toString());
                     break;
             }
             servicesRepository.save(services);
@@ -70,6 +74,7 @@ public class ServicesService {
         if (reprairType.getServiceId() == 0) {
             reprairType.setRepairType(repairType);
             reprairType.setRepair(price);
+            reprairType.setDate(date.toString());
             servicesRepository.save(reprairType);
         }
         return reprairType;

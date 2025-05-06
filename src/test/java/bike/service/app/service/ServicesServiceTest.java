@@ -84,8 +84,8 @@ class ServicesServiceTest {
 
         servicesList.add(smallService);
 
-        servicesList.add(new Services(2, 33,
-                54, 12, "kkk", null));
+        // servicesList.add(new Services(2, 33,
+        //         54, 12, "kkk", null));
 
         when(servicesRepository.findAll()).thenReturn(servicesList);
         // Act

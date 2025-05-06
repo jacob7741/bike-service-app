@@ -49,6 +49,8 @@ public class Order {
     private String addByUser;
     @Column(name = "donebyuser ")
     private String doneByUser;
+    @Column(name = "data")
+    private String data;
     @Enumerated(EnumType.STRING)
     @Column(name="status")
     private Status status;

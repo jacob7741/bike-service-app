@@ -44,7 +44,7 @@ const renderCalendar = () => {
     lastDateOfLastMonth = new Date(currentYear, currentMonth, 0).getDate();
     let liTag = "";
 
-    for (let i = firstDayOfMonth; i > 0; i--) {
+    for (let i = firstDayOfMonth; i > 0; i--) {  
         liTag += `<li class="inactive">${lastDateOfLastMonth - i + 1}</li>`;
     }
 

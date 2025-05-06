@@ -33,6 +33,8 @@ public class Services {
     private int repair;
     @Column(name = "repairType")
     private String repairType;
+    @Column(name = "data")
+    private String date;
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "orderId")

@@ -171,8 +171,7 @@
                     <td th:text="${order.service}"></td>
                     <td th:text="${order.bikeModel}"></td>
                     <td th:text="${order.client}"></td>
-                    <!-- TODO: dodac date przyjecia -->
-                    <td th:text="date"></td>
+                    <td th:text="${order.data}" style="text-align: center;">date</td>
                     <td>
                         <form method="post" th:action="@{/mechanic/take/{id}(id=${order.orderId})}">
                             <button class="take-btn" type="submit">Accept</button>
@@ -200,7 +199,7 @@
                     <td th:text="${order.service}"></td>
                     <td th:text="${order.bikeModel}"></td>
                     <td th:text="${order.client}"></td>
-                    <td th:text="date">date</td>
+                    <td th:text="${order.data}" style="text-align: center;">date</td>
                 </tr>
             </tbody>
         </table>
@@ -234,14 +233,6 @@
     </div>
 
     <div id="group" class="content">
-
-        <!-- <form class="panel-post" th:action="@{/mechanic/post}" method="post" th:object="${post}">
-            <div>
-                <textarea class="post-text" type="text" th:field="*{content}" name="content"
-                placeholder="Add some post..."></textarea>
-                <button class="post-btn" type="submit" name="post">Post</button>
-            </div>
-        </form> -->
 
         <form th:action="@{/mechanic/post}" method="post">
             <div class="content-area">
