@@ -1,6 +1,7 @@
 
 package bike.service.app.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
@@ -98,11 +99,13 @@ public class OrderService {
 
     public Order saveInfoAddByUser(Order order, AtomicReference<String> fullName) {
         List<Users> test = userService.getAllUsers();
+        LocalDate nowDate = LocalDate.now();
         if (fullName.get() != null) {
             for (Users users : test) {
                 String userName = users.getFirstName() + " " + users.getLastName();
                if (userName.equals(fullName.get())) {
                 order.setAddByUser(users.getLastName());
+                order.setData(nowDate.toString());
                 orderRepository.save(order);
                 break;
                }

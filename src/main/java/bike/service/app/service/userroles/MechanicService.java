@@ -1,5 +1,6 @@
 package bike.service.app.service.userroles;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
@@ -24,12 +25,14 @@ public class MechanicService {
     @Autowired
     private UsersService userService;
 
+    private LocalDate nowDate = LocalDate.now();
     public void newStatusById(int id, AtomicReference<String> name) {
         Optional<Order> optional = orderRepository.findById(id);
         if (optional.isPresent()) {
             Order newOrder = optional.get();
             if (newOrder.getStatus().equals(Status.NEW)) {
                 newOrder.setStatus(Order.Status.ACTIVE);
+                newOrder.setData(nowDate.toString());
                 oService.saveMechanicToOrder(newOrder, name);
             }
             orderRepository.save(newOrder);
@@ -41,7 +44,7 @@ public class MechanicService {
         if (optional.isPresent()) {
             Order newOrder = optional.get();
             newOrder.setStatus(Order.Status.DONE);
-
+            newOrder.setData(nowDate.toString());
             List<Users> lmechanics = userService.getAllUsers();
 
             for (Users user : lmechanics) {
