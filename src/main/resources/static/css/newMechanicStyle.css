@@ -237,6 +237,7 @@ header .bx {
 .content-area::-webkit-scrollbar {
     display: none;
 }
+
 .panel-text::-webkit-scrollbar {
     display: none;
 }
@@ -246,13 +247,13 @@ header .bx {
 }
 
 .post-text {
-    display:flex;
+    display: flex;
     width: 100%;
     font-size: 18px;
     margin-bottom: 2%;
     margin: 1%;
     align-items: center;
-    }
+}
 
 .post-btn {
     height: 50px;
@@ -363,6 +364,7 @@ header .bx {
     width: 10%;
     text-align: left;
 }
+
 .orderId {
     width: 15%;
     text-align: left;

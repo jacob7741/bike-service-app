@@ -11,25 +11,23 @@
 }
 
 #header-bar {
+    text-align: center;
+    display: inline-flex;
+    justify-content: space-between;
     position: fixed;
     margin-left: 15%;
     height: 5%;
-    width: 100%;
+    width: 85%;
     flex-shrink: 0;
 }
 
-button, li {
-    list-style:none;
-    font-size: 18px;
-    background-color: rgba(235, 235, 235, 0.418);
-    padding: 2%;
-    margin-bottom: 1px;
-    width: 100%;
+.header-button {
+    margin-right: 5px;
+    width: 40px;
     height: 40px;
-    cursor: pointer;
-    border: none;
-    text-align: left;
+    padding: 2px;
 }
+
 
 #calendar {
     position: fixed;
@@ -54,8 +52,21 @@ button, li {
     flex-direction: column;
     list-style-type: none;
     flex-shrink: 0;
+    justify-content: space-between;
 }
 
+.menu-button, li {
+    list-style:none;
+    font-size: 18px;
+    background-color: rgba(235, 235, 235, 0.418);
+    padding: 2%;
+    margin-bottom: 1px;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    text-align: left;
+}
 .logo-type {
     background-color: rgba(250, 235, 215, 0.185);
     height: 20%;
