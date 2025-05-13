@@ -11,14 +11,15 @@
 }
 
 #header-bar {
-    position:fixed;
+    position: fixed;
     margin-left: 15%;
     height: 5%;
     width: 100%;
     flex-shrink: 0;
 }
 
-button {
+button, li {
+    list-style:none;
     font-size: 18px;
     background-color: rgba(235, 235, 235, 0.418);
     padding: 2%;
@@ -42,6 +43,7 @@ button {
     list-style-type: none;
     flex-shrink: 0;
 }
+
 .navigation-bar {
     position: fixed;
     height: 100%;
