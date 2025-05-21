@@ -34,15 +34,84 @@
 
 #calendar {
     position: fixed;
-    margin-top: 3%;
+    margin-top: 1%;
     height: 100%;
     width: 15%;
-    padding: 1%;
+    padding: 1px;
     background-color: rgb(206, 189, 82);
     right: 0;
     flex-direction: column;
     list-style-type: none;
     flex-shrink: 0;
+}
+
+.wrapper {
+    background-color: rgba(255, 255, 255, 0.283);
+}
+
+.wrapper header {
+    display: flex;
+    align-items: center;
+    padding: 25px 30px 10px;
+    justify-content: space-between;
+}
+
+.calendar ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.calendar ul li {
+    position: relative;
+    font-size: 14px;
+    width: calc(100% / 7);
+}
+
+.days li::before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+}
+
+.days li:hover::before {
+    background-color: rgba(74, 150, 125, 0.731);
+    border-radius: 5px;
+}
+
+.inactive {
+    color: rgba(151, 151, 151, 0.821);
+    border-radius: 5px;
+}
+
+.days li.active::before {
+    background-color: rgb(58, 97, 129);
+    border-radius: 5px;
+}
+
+.days li.active:hover:before {
+    background-color: rgba(4, 129, 33, 0.42);
+    border-radius: 5px;
+}
+
+.calendar .weeks li {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.calendar .days li {
+    cursor: pointer;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 10px;
 }
 
 .navigation-bar {
@@ -82,7 +151,9 @@
 
 .active {
     background-color: green;
+    height: 15px;
     color: white;
+    border-radius: 5px;
 }
 
 .drop-button {
