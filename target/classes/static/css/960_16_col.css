@@ -29,8 +29,8 @@
 .grid_15,
 .grid_16
 {
-  float:inline-start;
-  /* position: relative; */
+  /* float:inline-start; */
+  position: relative;
 }
 .push_1,.pull_1,
 .push_2,.pull_2,
