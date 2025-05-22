@@ -5,13 +5,11 @@
     margin: 0;
 }
 
-#main {
-
-}
+#main {}
 
 #header-bar {
     text-align: center;
-    display:flex;
+    display: flex;
     justify-content: space-between;
     position: fixed;
     margin-left: 15%;
@@ -20,9 +18,7 @@
     flex-shrink: 0;
 }
 
-#dropMenu {
-
-}
+#dropMenu {}
 
 .header-button {
     margin-right: 5px;
@@ -67,7 +63,7 @@
     display: flex;
     list-style: none;
     flex-wrap: wrap;
-    padding: 0; /* Dodaj tę linię */
+    padding: 0;
 }
 
 .days li::before {
@@ -82,6 +78,7 @@
     border-radius: 5px;
 }
 
+/* 
 .days li:hover::before {
     background-color: rgba(74, 150, 125, 0.731);
     border-radius: 5px;
@@ -90,16 +87,22 @@
 .inactive {
     color: rgba(151, 151, 151, 0.821);
     border-radius: 5px;
-}
+} */
 
-.days li.active::before {
-    background-color: rgb(58, 97, 129);
+/* .days li.active::before {
+    background-color: rgba(88, 58, 129, 0.636);
     border-radius: 5px;
 }
 
 .days li.active:hover:before {
-    background-color: rgba(4, 129, 33, 0.42);
+    background-color: rgba(122, 8, 151, 0.752);
     border-radius: 5px;
+    } */
+     
+.activeDays {
+    background-color: rgba(57, 181, 19, 0.766);
+    color: white;
+    border-radius: 2px;
 }
 
 .calendar .weeks li {
@@ -130,7 +133,8 @@
     justify-content: space-between;
 }
 
-.menu-button, .dropdown-btn {
+.menu-button,
+.dropdown-btn {
     font-size: 18px;
     background-color: rgba(235, 235, 235, 0.418);
     padding: 2%;
@@ -153,10 +157,8 @@
 }
 
 .active {
-    background-color: green;
-    height: 15px;
+    background-color: rgba(171, 153, 77, 0.766);
     color: white;
-    border-radius: 5px;
 }
 
 .drop-button {
