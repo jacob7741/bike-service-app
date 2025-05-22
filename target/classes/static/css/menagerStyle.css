@@ -11,11 +11,11 @@
 
 #header-bar {
     text-align: center;
-    display: inline-flex;
+    display:flex;
     justify-content: space-between;
     position: fixed;
     margin-left: 15%;
-    height: 5%;
+    height: 40px;
     width: 85%;
     flex-shrink: 0;
 }
@@ -34,15 +34,15 @@
 
 #calendar {
     position: fixed;
-    margin-top: 1%;
+    margin-top: 40px;
     height: 100%;
-    width: 15%;
+    width: 20%;
     padding: 1px;
     background-color: rgb(206, 189, 82);
     right: 0;
-    flex-direction: column;
-    list-style-type: none;
-    flex-shrink: 0;
+    /* flex-direction: column; */
+    /* list-style-type: none; */
+    /* flex-shrink: 0; */
 }
 
 .wrapper {
@@ -52,12 +52,12 @@
 .wrapper header {
     display: flex;
     align-items: center;
-    padding: 25px 30px 10px;
+    padding-bottom: 5px;
     justify-content: space-between;
 }
 
 .calendar ul {
-    display: flex;
+    display:flex;
     list-style: none;
     flex-wrap: wrap;
 }
@@ -103,12 +103,12 @@
 .calendar .weeks li {
     text-align: center;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 2dvh;
 }
 
 .calendar .days li {
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 1px;
     text-align: center;
     font-weight: 500;
     margin-bottom: 10px;
