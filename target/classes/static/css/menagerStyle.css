@@ -1,6 +1,6 @@
 * {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: rgb(34, 34, 34);
+    color: rgb(20, 20, 20);
     box-sizing: border-box;
     margin: 0;
 }
@@ -37,6 +37,7 @@
     margin-top: 40px;
     height: 100%;
     width: 20%;
+    max-width: 200px;
     padding: 1px;
     background-color: rgb(206, 189, 82);
     right: 0;
@@ -56,16 +57,17 @@
     justify-content: space-between;
 }
 
-.calendar ul {
-    display:flex;
-    list-style: none;
-    flex-wrap: wrap;
-}
-
 .calendar ul li {
     position: relative;
     font-size: 14px;
     width: calc(100% / 7);
+}
+
+.calendar ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    padding: 0; /* Dodaj tę linię */
 }
 
 .days li::before {
@@ -108,7 +110,7 @@
 
 .calendar .days li {
     cursor: pointer;
-    margin-top: 1px;
+    margin-top: 5px;
     text-align: center;
     font-weight: 500;
     margin-bottom: 10px;
@@ -118,6 +120,7 @@
     position: fixed;
     height: 100%;
     width: 15%;
+    max-width: 150px;
     padding: 2px;
     background-color: rgb(206, 189, 82);
     align-items: center;
