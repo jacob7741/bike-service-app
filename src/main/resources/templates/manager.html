@@ -5,25 +5,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="panel for menager" />
-    <link rel="stylesheet" href="../static/css/960_16_col.css" />
-    <link rel="stylesheet" href="../static/css/menagerStyle.css" />
+    <link rel="stylesheet" href="../static/css/managerStyle.css" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <title>Menager panel</title>
 </head>
 
 <body>
     <div id="main">
-        <div id="header-bar" class="grid_12">
+        <div id="header-bar">
             <h4
                 style="font-family: 'Courier New', Courier, monospace; font-weight: 500; margin-top: 5px; margin-left: 5px;">
                 Welcome: User name...
             </h4>
             <div id="header-menu">
                 <data id="data" style="font-family: 'Courier New', Courier, 
-                monospace; font-weight: 500; margin-right: 15px;"></data>
-                <button class="header-button"></button>
-                <button class="header-button"></button>
-                <button class="header-button"><i class="bx bx-user"></i> </button>
+                monospace; font-weight: 500; margin-right: 15px; display: none;"></data>
+                <button class="header-button"><i class="bx bx-bell"></i> </button>
+                <button class="header-button"><i class="bx bx-world"></i> </button>
+                <button class="header-button"><i class="bx bx-user"></i></button>
             </div>
         </div>
 
@@ -54,32 +53,23 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="navigation-bar">
             <div class="logo-type">
-
+                <img class="logo" src="../static/bicycle-service-high-resolution-logo.png"</img>
             </div>
-            <aside id="menu" class="grid_6">
-                <button class="menu-button">
-
-                </button>
-                <button class="dropdown-btn">Service
-                </button>
-                <div class="dropdown-container">
+            <aside id="menu">
+                <button class="menu-button">News<i class="bx bx-news"></i></button>
+                <button class="dropdown-btn">Service<i class="bx bxs-cog"></i></button>
+                <div>
                     <a class="drop-button">Add</a>
                     <a class="drop-button">New</a>
                     <a class="drop-button">Done</a>
                     <a class="drop-button">Rejected</a>
                 </div>
-                <button class="menu-button">
-
-                </button>
-                <button class="menu-button">
-
-                </button>
-                <button class="menu-button">
-
-                </button>
+                <button class="menu-button">Message<i class="bx bx-message"></i></button>
+                <button class="menu-button">Statistic<i class="bx bx-chart"></i></button>
+                <button class="menu-button">Group<i class="bx bx-group"></i></button>
             </aside>
         </div>
     </div>
