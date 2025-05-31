@@ -92,7 +92,7 @@
 
 
 .days li:hover::before {
-    background-color: rgba(232, 232, 219, 0.488);
+    background-color: rgb(255, 255, 255);
     border-radius: 5px;
 }
 
