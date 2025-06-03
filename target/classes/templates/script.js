@@ -24,7 +24,6 @@ for (i = 0; i < dropdown.length; i++) {
 function showContent(id) {
     var contents = document.getElementsByClassName('content');
     for (var i = 0; i < contents.length; i++) {
-        this.classList.toggle("active");
         contents[i].style.display = 'none';
     }
     document.getElementById(id).style.display = 'block';
