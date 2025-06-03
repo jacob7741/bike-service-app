@@ -53,13 +53,13 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="navigation-bar">
             <div class="logo-type">
-                <img class="logo" src="../static/bicycle-service-high-resolution-logo.png"</img>
+                <img class="logo" src="../static/bicycle-service-high-resolution-logo.png" </img>
             </div>
             <aside id="menu">
-                <button class="menu-button"><i class="bx bx-news"></i>News</button>
+                <button class="menu-button" onclick="showConten('order_table')"><i class="bx bx-news"></i>News</button>
                 <button class="dropdown-btn"><i class="bx bxs-cog"></i>Service</button>
                 <div class="dropdown-content">
                     <a class="drop-button">Add</a>
@@ -72,6 +72,48 @@
                 <button class="menu-button"><i class="bx bx-group"></i>Group</button>
             </aside>
         </div>
+
+        <div id="news" class="content">
+            <div class="article">
+                <p>
+                    <script
+                        src="//rss.bloople.net/?url=https%3A%2F%2Fportal.bikeworld.pl%2Frss%2Farchiwum%2F55%2Fwydarzenia_i_biznes&showtitle=false&type=js"></script>
+                </p>
+            </div>
+        </div>
+
+        <!-- <div id="order_table" class="content">
+            <p>Number of orders: <span th:text="${#lists.size(orderList)}"></span></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="date">Date:</th>
+                        <th class="orderId">Order ID:</th>
+                        <th class="service">Service:</th>
+                        <th class="bikeM">Bike model:</th>
+                        <th class="clientId">Client ID:</th>
+                        <th class="btn"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="order : ${orderList}">
+                        <td th:text="${order.data}"></td>
+                        <td th:text="${order.orderId}"></td>
+                        <td th:text="${order.service}"></td>
+                        <td th:text="${order.bikeModel}"></td>
+                        <td th:text="${order.client}"></td>
+                        <td>
+                            <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
+                                <button class="edit-btn" type="submit">edit</button>
+                            </form>
+                            <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                                <button class="done-btn" type="submit">done</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
     </div>
     </div>
     <script src="../templates/script.js"></script>
