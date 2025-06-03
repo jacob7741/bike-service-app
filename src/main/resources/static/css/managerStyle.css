@@ -172,11 +172,14 @@
     background-color: rgba(232, 232, 219, 0.488);
 }
 
-
+.dropdown-content {
+    display: none;
+}
 .drop-button {
     text-align: center;
     font-size: 15px;
     display: inline-flex;
+    /* display: none; */
     margin-bottom: 1px;
     background-color: rgba(244, 226, 138, 0.786);
     color: rgb(0, 0, 0);

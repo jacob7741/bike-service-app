@@ -20,7 +20,7 @@ for (i = 0; i < dropdown.length; i++) {
         }
     });
 }
-  
+
 function showContent(id) {
     var contents = document.getElementsByClassName('content');
     for (var i = 0; i < contents.length; i++) {
@@ -39,7 +39,7 @@ function validateForm() {
     var isChecked = Array.prototype.slice.call(radios).some(x => x.checked);
 
     return true;
-}
+};
 
 const currentDate = document.querySelector(".current-date");
 daysTag = document.querySelector(".days");
