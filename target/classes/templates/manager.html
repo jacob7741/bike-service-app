@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="panel for menager" />
+    <meta name="panel" content="panel for menager" />
     <link rel="stylesheet" href="../static/css/managerStyle.css" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <title>Menager panel</title>
@@ -118,7 +118,7 @@
         </table>
     </div>
 
-    <div id="add_service" class="content">
+    <!-- <div id="add_service" class="content">
         <div>
             <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
                 <h6 style="
@@ -174,9 +174,9 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> -->
 
-    <div id="new_service" class="content">
+    <!-- <div id="new_service" class="content">
         <p>
             Number of new services:
             <span th:text="${#lists.size(newServiceList)}"></span>
@@ -207,9 +207,9 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div> -->
 
-    <div id="done_service" class="content">
+    <!-- <div id="done_service" class="content">
         <table>
             <thead>
                 <tr>
@@ -230,9 +230,9 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div> -->
 
-    <div id="group" class="content">
+    <!-- <div id="group" class="content">
 
         <form th:action="@{/mechanic/post}" method="post">
             <div class="content-area">
@@ -259,7 +259,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 <script src="../templates/script.js"></script>
