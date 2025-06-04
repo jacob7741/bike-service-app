@@ -205,10 +205,14 @@
     margin-left: 150px;
     margin-right: 200px;
     padding-top: 50px;
+    display: none;
     height: calc(100vh - 1px);
     background:linear-gradient(0deg, rgb(254, 236, 208), rgb(255, 255, 255));
 }
 
+#news {
+    display: block;
+}
 .article {
     max-height: 100%;
     margin: 2px 4px;
