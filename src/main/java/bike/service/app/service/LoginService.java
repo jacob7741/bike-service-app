@@ -53,10 +53,12 @@ public class LoginService {
         }
         return pList;
     }
+    
     // ustawia mi 'annymouseUser' zamiast pobierac nazwe wybranego z listy 
     // dzieje sie tak tylko w przypadku kiedy uzytkownik sie nie zaloguje
     // lecz w metodzie przed refactoringiem ponizej tej z 8 lutego 
     // mozna dodawac serwis do uytkownika nawet kiedy nie jest zalogowany
+
     public List<Order> getPersonalList(AtomicReference<String> fullName) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String mechanicName = authentication.getName();
