@@ -67,8 +67,8 @@ public class LoginService {
         Users user = setFullName(userName, fullName);
         List<Order> personalList;
 
-        //tutaj dodana nowa zaleznosc na potrzeby dashboard przetestoqwać
-        if (user.getRole() == user.getRole().MANAGER) {
+        //tutaj dodana nowa zaleznosc na potrzeby dashboard przetestować
+        if (user.getRole().MANAGER == Users.Role.MANAGER) {
             personalList = orderService.getAllOrders();
         } else {
             personalList = getMechanicList(user);
@@ -88,7 +88,7 @@ public class LoginService {
             }
         }
     }
-
+    
     // old from 08.02.2025 before refactoring
 
     // public List<Order> getPersonalList(AtomicReference<String> fullName) {

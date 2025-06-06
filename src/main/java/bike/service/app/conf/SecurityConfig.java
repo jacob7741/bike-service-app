@@ -72,9 +72,9 @@ public class SecurityConfig {
                     .collect(Collectors.joining());
 
             if (role.contains("ROLE_MECHANIC")) {
-                response.sendRedirect("/mechanic");
+                response.sendRedirect("/dashboard");
             } else if (role.contains("ROLE_MANAGER")) {
-                response.sendRedirect("/manager");
+                response.sendRedirect("/dashboard");
             } else {
                 response.sendRedirect("/");
             }

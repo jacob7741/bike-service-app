@@ -42,14 +42,14 @@
     border-radius: 30px;
 }
 
-#calendar {
+#calendar-side {
     position: fixed;
     margin-top: 40px;
     height: 100%;
     width: 20%;
     max-width: 200px;
     padding: 1px;
-    background-color: rgb(237, 201, 60);
+    background-color: rgb(255, 218, 68);
     right: 0;
     flex-direction: column;
     list-style-type: none;
@@ -57,7 +57,7 @@
 }
 
 .wrapper {
-    background-color: rgb(255, 244, 189);
+    background:linear-gradient(0deg, rgb(255, 218, 68, 0.572), rgb(255, 255, 255));
 }
 
 .wrapper header {
@@ -138,7 +138,7 @@
     width: 15%;
     max-width: 150px;
     padding: 2px;
-    background-color: rgb(237, 201, 60);
+    background-color: rgb(255, 218, 68);
     align-items: center;
     flex-direction: column;
     list-style-type: none;
@@ -206,8 +206,8 @@
     margin-right: 200px;
     padding-top: 50px;
     display: none;
-    height: calc(100vh - 1px);
-    background:linear-gradient(0deg, rgb(254, 236, 208), rgb(255, 255, 255));
+    height: 100%;
+    
 }
 
 #news {
