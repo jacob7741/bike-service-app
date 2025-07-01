@@ -16,9 +16,7 @@
     flex-shrink: 0;
 }
 
-#dropMenu {
-    
-}
+#dropMenu {}
 
 .bx {
     margin-right: 10px;
@@ -56,7 +54,7 @@
 }
 
 .wrapper {
-    background:linear-gradient(0deg, rgb(255, 218, 68, 0.572), rgb(255, 255, 255));
+    background: linear-gradient(0deg, rgb(255, 218, 68, 0.572), rgb(255, 255, 255));
 }
 
 .wrapper header {
@@ -146,7 +144,7 @@
 }
 
 .menu-button,
-.dropdown-btn{
+.dropdown-btn {
     font-size: 17px;
     background-color: rgba(249, 237, 178, 0.786);
     padding: 2%;
@@ -155,17 +153,72 @@
     height: 40px;
     cursor: pointer;
     border: none;
-    text-align:start;
+    text-align: start;
 }
 
 .bx {
     padding-right: 2%;
 }
 
-.menu-button:hover, .dropdown-btn:hover {
-    background-color: rgba(232, 232, 219, 0.488);
+.date {
+    width: 30%;
 }
 
+.clientDt{
+    width: 40%;
+}
+
+.infoDt {
+    width: 30%;
+}
+
+.infoDt p {
+    text-align: left;
+    margin-left: 2px;
+}
+
+.dropdown-contet p {
+    text-align: left;
+    position: relative;
+    padding-right: 2em;
+    margin-left: 2px;
+}
+
+.dropdown-contet p button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.infoDt p button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.infoDt p {
+    position: relative;
+    padding-right: 2em;
+}
+
+.orderId,
+.actions {
+    width: 12%;
+    background-color: blueviolet;
+}
+
+
+
+.table_order {
+    text-align: center;
+}
+
+.menu-button:hover,
+.dropdown-btn:hover {
+    background-color: rgba(232, 232, 219, 0.488);
+}
 
 .active {
     background-color: rgba(171, 153, 77, 0.766);
@@ -209,7 +262,7 @@
     padding-top: 50px;
     display: none;
     height: 100%;
-    
+
 }
 
 #news {

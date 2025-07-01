@@ -68,7 +68,7 @@
                     <a class="drop-button" onclick="showContent('done_service')">Done</a>
                     <a class="drop-button">Rejected</a>
                 </div>
-                
+
                 <button class="menu-button"><i class="bx bx-message"></i>Message</button>
                 <button class="menu-button"><i class="bx bx-chart"></i>Statistic</button>
                 <button class="menu-button"><i class="bx bx-message"></i>Workshop Customers</button>
@@ -90,39 +90,38 @@
         <p>Number of orders: <span th:text="${#lists.size(orderList)}"></span></p>
         <table>
             <thead>
-                <tr >
+                <tr>
                     <!-- <th class="number">No.</th> -->
                     <th class="orderId">ID</th>
-                    <th class="service">Info</th>
-                    <th class="clientId">Client Data</th>
+                    <th class="info">Info</th>
+                    <th class="clientDt">Client Data</th>
                     <th class="date">Date</th>
-                    <th class="btn">Actions</th>
+                    <th class="actions">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="order : ${orderList}">
+                <tr class="table_order" th:each="order : ${orderList}">
                     <td th:text="${order.orderId}"></td>
-                    <td class="info">
+                    <td class="infoDt">
                         <p>Imie Mechanika</p>
-                        <p>Status Serwisu</p>
                         <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
-                            <button class="edit-btn" type="submit">edit</button>
-                        </form>
+                        <p>Status Serwisu
+                            <button type="submit">edit</button>
+                        </p>
+                    </form>
                     </td>
-                    <td class="client_data">
+                    <td th:text="${order.client}">
                         <div class="dropdown-contet">
-                        <p>Client NameSurname <button>+</button></p>
-                        <p>Reservation <button>+</button></p>
+                            <p>Client NameSurname <button>+</button></p>
+                            <p>Reservation Data<button>+</button></p>
                         </div>
-                    </td>
-                    <td th:text="${order.client}"></td>
+                    <td ></td>
                     <td th:text="${order.data}"></td>
-                    <td>
-                        
-                        <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
-                            <button class="done-btn" type="submit">done</button>
-                        </form>
-                    </td>
+                    <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                    <td class="actions">
+                            <!-- <button type="submit">action1</button> -->
+                        </td>
+                    </form>
                 </tr>
             </tbody>
         </table>
