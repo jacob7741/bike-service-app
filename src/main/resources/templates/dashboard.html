@@ -61,16 +61,17 @@
             <aside id="menu">
                 <button class="menu-button" onclick="showContent('news')"><i class="bx bx-news"></i>News</button>
                 <button class="dropdown-btn" onclick="showContent('order_table')"><i
-                        class="bx bxs-cog"></i>Service</button>
+                        class="bx bxs-cog"></i>Services</button>
                 <div class="dropdown-content">
                     <a class="drop-button" onclick="showContent('add_service')">Add</a>
                     <a class="drop-button" onclick="showContent('new_service')">New</a>
                     <a class="drop-button" onclick="showContent('done_service')">Done</a>
                     <a class="drop-button">Rejected</a>
                 </div>
-
+                
                 <button class="menu-button"><i class="bx bx-message"></i>Message</button>
                 <button class="menu-button"><i class="bx bx-chart"></i>Statistic</button>
+                <button class="menu-button"><i class="bx bx-message"></i>Workshop Customers</button>
                 <button class="menu-button" onclick="showContent('group')"><i class="bx bx-group"></i>Group</button>
             </aside>
         </div>
@@ -89,26 +90,35 @@
         <p>Number of orders: <span th:text="${#lists.size(orderList)}"></span></p>
         <table>
             <thead>
-                <tr>
-                    <th class="date">Date:</th>
-                    <th class="orderId">Order ID:</th>
-                    <th class="service">Service:</th>
-                    <th class="bikeM">Bike model:</th>
-                    <th class="clientId">Client ID:</th>
-                    <th class="btn"></th>
+                <tr >
+                    <!-- <th class="number">No.</th> -->
+                    <th class="orderId">ID</th>
+                    <th class="service">Info</th>
+                    <th class="clientId">Client Data</th>
+                    <th class="date">Date</th>
+                    <th class="btn">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="order : ${orderList}">
-                    <td th:text="${order.data}"></td>
                     <td th:text="${order.orderId}"></td>
-                    <td th:text="${order.service}"></td>
-                    <td th:text="${order.bikeModel}"></td>
-                    <td th:text="${order.client}"></td>
-                    <td>
+                    <td class="info">
+                        <p>Imie Mechanika</p>
+                        <p>Status Serwisu</p>
                         <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
                             <button class="edit-btn" type="submit">edit</button>
                         </form>
+                    </td>
+                    <td class="client_data">
+                        <div class="dropdown-contet">
+                        <p>Client NameSurname <button>+</button></p>
+                        <p>Reservation <button>+</button></p>
+                        </div>
+                    </td>
+                    <td th:text="${order.client}"></td>
+                    <td th:text="${order.data}"></td>
+                    <td>
+                        
                         <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
                             <button class="done-btn" type="submit">done</button>
                         </form>
@@ -118,6 +128,62 @@
         </table>
     </div>
 
+    <div id="add_service" class="content">
+        <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
+            <h6 style="
+              padding-left: 1%;
+              font-size: 15px;
+              color: rgba(172, 117, 45, 0.997);
+            ">
+                Client details:
+            </h6>
+            <div class="group_3">
+                <label>Name: <input type="text" name="first_name" required /></label>
+                <label>Lastname: <input type="text" name="last_name" required /></label>
+                <label>Phone number: <input type="text" name="phoneNumber" required /></label>
+                <label>e-mail: <input type="email" name="email" required /></label>
+            </div>
+
+            <div class="group_2">
+                <label>Bike brand: <input type="text" name="brand" required /></label>
+                <label>Bike type: <input type="text" name="modelType" required /></label>
+                <label>Serial number: <input type="text" name="serialNumber" required /></label>
+            </div>
+            <h6 style="
+              padding-left: 1%;
+              margin-top: 2%;
+              font-size: 15px;
+              color: rgba(172, 117, 45, 0.997);
+            ">
+                Service details:
+            </h6>
+            <div class="group_1">
+                <label><input type="radio" name="serviceType" value="smallService" required />
+                    Small service</label>
+                <label><input type="radio" name="serviceType" value="fullService" required />
+                    Full service</label>
+                <label>
+                    <input type="radio" name="serviceType" value="repair" id="repairCheckbox"
+                        onchange="toggleRepairDetails(this)" required />
+                    Other repairs
+                </label>
+                <textarea name="repairDetails" rows="5" placeholder="details other repairs..."></textarea>
+                <label>Price:
+                    <input type="number" name="repairPrice" style="
+                  border-radius: 8px;
+                  border: none;
+                  height: 25px;
+                  margin-top: 1%;
+                " /></label>
+                <div class="centered-button">
+                    <button class="add_service_btn" type="submit" name="services">
+                        Add service
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
     <!-- <div id="add_service" class="content">
         <div>
             <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
@@ -261,8 +327,8 @@
             </div>
         </div> -->
     </div>
-</div>
-<script src="../templates/script.js"></script>
+    </div>
+    <script src="../templates/script.js"></script>
 </body>
 
 </html>

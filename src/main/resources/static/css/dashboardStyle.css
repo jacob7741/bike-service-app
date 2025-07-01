@@ -48,7 +48,6 @@
     height: 100%;
     width: 20%;
     max-width: 200px;
-    padding: 1px;
     background-color: rgb(255, 218, 68);
     right: 0;
     flex-direction: column;
@@ -148,7 +147,7 @@
 
 .menu-button,
 .dropdown-btn{
-    font-size: 18px;
+    font-size: 17px;
     background-color: rgba(249, 237, 178, 0.786);
     padding: 2%;
     margin-bottom: 1px;
@@ -157,7 +156,10 @@
     cursor: pointer;
     border: none;
     text-align:start;
+}
 
+.bx {
+    padding-right: 2%;
 }
 
 .menu-button:hover, .dropdown-btn:hover {
@@ -213,6 +215,7 @@
 #news {
     display: block;
 }
+
 .article {
     max-height: 100%;
     margin: 2px 4px;
