@@ -116,19 +116,21 @@
                             <p>Reservation Data<button>+</button></p>
                         </div>
                     <td class="date_panel_table" th:text="${order.data}">
-                        <p>Added<date>12.04.2024</date></p>
-                        <p>Modification<date>12.04.2024</date></p>
-                        <p>Receipt<date>12.04.2024</date></p>
+                        <p>Added<date>12.04.2024</date>
+                        </p>
+                        <p>Modification<date>12.04.2024</date>
+                        </p>
+                        <p>Receipt<date>12.04.2024</date>
+                        </p>
                     </td>
-    </div>
-    <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
-        <td class="actions" style="border: 0.8px solid rgb(170, 170, 170);">
-            <!-- <button type="submit">action1</button> -->
-        </td>
-    </form>
-    </tr>
-    </tbody>
-    </table>
+                    <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                        <td class="actions" style="border: 0.8px solid rgb(170, 170, 170);">
+                            <!-- <button type="submit">action1</button> -->
+                        </td>
+                    </form>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <div id="add_service" class="content">
