@@ -215,13 +215,9 @@
     position: relative;
     padding-right: 2em;
 }
-
-.orderId,
-.actions {
-    width: 12%;
-    background-color: blueviolet;
+.infoDt {
+    border: 0.8px solid rgb(170, 170, 170);
 }
-
 
 .table_order {
     text-align: center;

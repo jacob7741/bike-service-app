@@ -101,7 +101,7 @@
             </thead>
             <tbody>
                 <tr class="table_order" th:each="order : ${orderList}">
-                    <td th:text="${order.orderId}">34534789</td>
+                    <td th:text="${order.orderId}" style="border: 0.8px solid rgb(170, 170, 170);">34534789</td>
                     <td class="infoDt">
                         <p>Imie Mechanika</p>
                         <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
@@ -122,7 +122,7 @@
                     </td>
     </div>
     <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
-        <td class="actions">
+        <td class="actions" style="border: 0.8px solid rgb(170, 170, 170);">
             <!-- <button type="submit">action1</button> -->
         </td>
     </form>
