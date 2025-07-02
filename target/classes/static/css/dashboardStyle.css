@@ -164,7 +164,7 @@
     width: 30%;
 }
 
-.clientDt{
+.clientDt {
     width: 40%;
 }
 
@@ -178,24 +178,30 @@
 }
 
 .date_panel_table p {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2px;  /* reguluj padding-i w poziomie */
+    border: 0.8px solid rgb(170, 170, 170);
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    /* padding: 0 2px; */
+    /* reguluj padding-i w poziomie */
 }
 
-.dropdown-contet p {
+.dropdown-client p {
     text-align: left;
     position: relative;
-    padding-right: 2em;
-    margin-left: 2px;
 }
 
-.dropdown-contet p button {
+.dropdown-client p button {
     position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.dropdown-client {
+    padding: 5px;
+    border: 0.8px solid rgb(170, 170, 170);
 }
 
 .infoDt p button {
@@ -270,10 +276,11 @@
     height: 100%;
 
 }
- th {
+
+th {
     border-top: 1px solid #3939397c;
     border-bottom: 2px solid;
- }
+}
 
 #news {
     display: block;
