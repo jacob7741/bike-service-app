@@ -177,6 +177,13 @@
     margin-left: 2px;
 }
 
+.date_panel_table p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2px;  /* reguluj padding-i w poziomie */
+}
+
 .dropdown-contet p {
     text-align: left;
     position: relative;
@@ -208,7 +215,6 @@
     width: 12%;
     background-color: blueviolet;
 }
-
 
 
 .table_order {
@@ -264,6 +270,10 @@
     height: 100%;
 
 }
+ th {
+    border-top: 1px solid #3939397c;
+    border-bottom: 2px solid;
+ }
 
 #news {
     display: block;

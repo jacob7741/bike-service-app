@@ -105,26 +105,30 @@
                     <td class="infoDt">
                         <p>Imie Mechanika</p>
                         <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
-                        <p>Status Serwisu
-                            <button type="submit">edit</button>
-                        </p>
-                    </form>
+                            <p>Status Serwisu
+                                <button type="submit">edit</button>
+                            </p>
+                        </form>
                     </td>
                     <td th:text="${order.client}">
                         <div class="dropdown-contet">
                             <p>Client NameSurname <button>+</button></p>
                             <p>Reservation Data<button>+</button></p>
                         </div>
-                    <td ></td>
-                    <td th:text="${order.data}"></td>
-                    <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
-                    <td class="actions">
-                            <!-- <button type="submit">action1</button> -->
-                        </td>
-                    </form>
-                </tr>
-            </tbody>
-        </table>
+                    <td class="date_panel_table" th:text="${order.data}">
+                        <p>add<data>12.04.2024</data></p>
+                        <p>modification<date>12.04.2024</date></p>
+                        <p>receipt<date>12.04.2024</date></p>
+                    </td>
+    </div>
+    <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+        <td class="actions">
+            <!-- <button type="submit">action1</button> -->
+        </td>
+    </form>
+    </tr>
+    </tbody>
+    </table>
     </div>
 
     <div id="add_service" class="content">
