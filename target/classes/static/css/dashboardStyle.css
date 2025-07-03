@@ -161,7 +161,7 @@
 }
 
 .date {
-    width: 30%;
+    width: 20%;
 }
 
 .clientDt {
@@ -172,36 +172,27 @@
     width: 30%;
 }
 
+.actions {
+    width: 30%;
+}
+
 .infoDt p {
     text-align: left;
     margin-left: 2px;
+    padding:0px 0px 2px 0px;
 }
 
 .date_panel_table p {
-    border: 0.8px solid rgb(170, 170, 170);
     font-size: 13px;
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
-    /* padding: 0 2px; */
-    /* reguluj padding-i w poziomie */
+    padding:0px 0px 2px 0px;
 }
 
-.dropdown-client p {
-    text-align: left;
-    position: relative;
-}
-
-.dropdown-client p button {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.dropdown-client {
-    padding: 5px;
-    border: 0.8px solid rgb(170, 170, 170);
+.dropdown-client, .dropdown-bike {
+    display: flex;
+    justify-content: space-between;
+    padding:0px 0px 2px 0px;
 }
 
 .infoDt p button {
@@ -214,9 +205,6 @@
 .infoDt p {
     position: relative;
     padding-right: 2em;
-}
-.infoDt {
-    border: 0.8px solid rgb(170, 170, 170);
 }
 
 .table_order {
