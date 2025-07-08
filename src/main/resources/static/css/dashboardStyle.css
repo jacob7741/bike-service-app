@@ -174,25 +174,31 @@
 
 .actions {
     width: 30%;
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    grid-auto-rows: auto;
+    gap: 8px;d
+    /* odstępy między przyciskami */
 }
 
 .infoDt p {
     text-align: left;
     margin-left: 2px;
-    padding:0px 0px 2px 0px;
+    padding: 0px 0px 2px 0px;
 }
 
 .date_panel_table p {
     font-size: 13px;
     display: flex;
     justify-content: space-between;
-    padding:0px 0px 2px 0px;
+    padding: 0px 0px 2px 0px;
 }
 
-.dropdown-client, .dropdown-bike {
+.dropdown-client,
+.dropdown-bike {
     display: flex;
     justify-content: space-between;
-    padding:0px 0px 2px 0px;
+    padding: 0px 0px 2px 0px;
 }
 
 .infoDt p button {
@@ -264,6 +270,7 @@
 th {
     border-top: 1px solid #3939397c;
     border-bottom: 2px solid;
+   
 }
 
 #news {

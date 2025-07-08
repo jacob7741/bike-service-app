@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import bike.service.app.model.Order;
 import bike.service.app.model.Users;
 import bike.service.app.model.repository.UsersRepository;
-import jakarta.persistence.EnumType;
 
 @Service
 public class LoginService {
