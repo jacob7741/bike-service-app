@@ -87,7 +87,8 @@
     </div>
 
     <div id="order_table" class="content">
-        <p style="justify-content: space-between;">Number of orders: <span th:text="${#lists.size(orderList)}"></span></p>
+        <p style="justify-content: space-between;">Number of orders: <span th:text="${#lists.size(orderList)}"></span>
+        </p>
         <table>
             <thead>
                 <tr>
@@ -144,34 +145,47 @@
 
     <div id="add_service" class="content">
         <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
+            <div id="find">
+                Search client:
+                <input></input>
+            </div>
+            <div id="client_details">
             <h6 style="
-              padding-left: 1%;
+            margin-bottom: 10px;
               font-size: 15px;
-              color: rgba(172, 117, 45, 0.997);
-            ">
+              color: rgba(172, 117, 45, 0.997);">
                 Client details:
             </h6>
-            <div class="group_3">
                 <label>Name: <input type="text" name="first_name" required /></label>
                 <label>Lastname: <input type="text" name="last_name" required /></label>
                 <label>Phone number: <input type="text" name="phoneNumber" required /></label>
                 <label>e-mail: <input type="email" name="email" required /></label>
             </div>
 
-            <div class="group_2">
+            <div id="service_details">
+                <h6 style="
+                  margin-bottom: 10px;
+                  margin-top: 2%;
+                  font-size: 15px;
+                  color: rgba(172, 117, 45, 0.997);
+                  ">
+                    Service details:
+                  </h6>
+                <label>Save bikes:</label>
                 <label>Bike brand: <input type="text" name="brand" required /></label>
                 <label>Bike type: <input type="text" name="modelType" required /></label>
                 <label>Serial number: <input type="text" name="serialNumber" required /></label>
             </div>
-            <h6 style="
-              padding-left: 1%;
-              margin-top: 2%;
-              font-size: 15px;
-              color: rgba(172, 117, 45, 0.997);
-            ">
-                Service details:
-            </h6>
-            <div class="group_1">
+
+            <div id="reservation_details">
+                <h6 style="
+                  margin-bottom: 10px;
+                  margin-top: 2%;
+                  font-size: 15px;
+                  color: rgba(172, 117, 45, 0.997);
+                  ">
+                    Reservation details:
+                  </h6>
                 <label><input type="radio" name="serviceType" value="smallService" required />
                     Small service</label>
                 <label><input type="radio" name="serviceType" value="fullService" required />

@@ -201,15 +201,14 @@
     border-radius: 2px;
 }
 
-/* news */
 .content {
     margin-left: 150px;
     margin-right: 200px;
     padding-top: 50px;
-    display: none;
     height: 100%;
-
 }
+
+/* news */
 #news {
     display: block;
 }
@@ -302,3 +301,15 @@ th {
 }
 
 /* add-service */
+
+#add_service {
+    display:inline-block;
+    margin-left: 15%;
+}
+
+#client_details {
+    display:grid;
+    align-items: center;
+    justify-content: space-between;
+}
+
