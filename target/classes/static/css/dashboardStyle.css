@@ -174,11 +174,21 @@
 
 .actions {
     width: 30%;
-    display: grid;
     grid-template-columns: repeat(2, max-content);
     grid-auto-rows: auto;
-    gap: 8px;d
-    /* odstępy między przyciskami */
+    gap: 8px;
+
+}
+
+.btnA {
+    text-align: center;
+    line-height: 25px;
+    font-size: 8px;
+    width: 30px;
+    height: 25px;
+    display: inline-flex;
+    align-items: center;     /* pionowo */
+    justify-content: center; /* poziomo */
 }
 
 .infoDt p {
