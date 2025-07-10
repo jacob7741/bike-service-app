@@ -145,93 +145,101 @@
 
     <div id="add_service" class="content">
 
-  <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
+        <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
 
-    <!-- 1. Wyszukiwanie klienta -->
-    <div id="find" class="section">
-      <label for="searchClient">Search client:</label>
-      <input id="searchClient" type="text" />
-    </div>
+            <!-- 1. Wyszukiwanie klienta -->
+            <div id="find" class="section">
+                <label for="searchClient">Search client:</label>
+                <input id="searchClient" type="text" />
+            </div>
 
-    <!-- 2. Dane klienta i dane serwisu w dwóch kolumnach -->
-    <div class="form-row">
-      <div id="client_details" class="section">
-        <h6>Client details:</h6>
-        <label>
-          Name:
-          <input type="text" name="first_name" required />
-        </label>
-        <label>
-          Lastname:
-          <input type="text" name="last_name" required />
-        </label>
-        <label>
-          Phone number:
-          <input type="text" name="phoneNumber" required />
-        </label>
-        <label>
-          e-mail:
-          <input type="email" name="email" required />
-        </label>
-      </div>
+            <!-- 2. Dane klienta i dane serwisu w dwóch kolumnach -->
+            <div class="form-row">
+                <div id="client_details" class="section">
+                    <h6>Client details:</h6>
+                    <label>
+                        Name:
+                        <input type="text" name="first_name" required />
+                    </label>
+                    <label>
+                        Lastname:
+                        <input type="text" name="last_name" required />
+                    </label>
+                    <label>
+                        Phone number:
+                        <input type="text" name="phoneNumber" required />
+                    </label>
+                    <label>
+                        e-mail:
+                        <input type="email" name="email" required />
+                    </label>
+                </div>
 
-      <div id="service_details" class="section">
-        <h6>Service details:</h6>
-        <label>
-          Save bikes:
-          <select name="saveBike">
-            <option>Example save bike</option>
-          </select>
-        </label>
-        <label>
-          Bike brand:
-          <input type="text" name="brand" required />
-        </label>
-        <label>
-          Bike type:
-          <input type="text" name="modelType" required />
-        </label>
-        <label>
-          Serial number:
-          <input type="text" name="serialNumber" required />
-        </label>
-      </div>
-    </div>
+                <div id="service_details" class="section">
+                    <h6>Service details:</h6>
+                    <label>
+                        Save bikes:
+                        <select name="saveBike">
+                            <option>Example save bike</option>
+                        </select>
+                    </label>
+                    <label>
+                        Bike brand:
+                        <input type="text" name="brand" required />
+                    </label>
+                    <label>
+                        Bike type:
+                        <input type="text" name="modelType" required />
+                    </label>
+                    <label>
+                        Serial number:
+                        <input type="text" name="serialNumber" required />
+                    </label>
+                </div>
+            </div>
 
-    <!-- 3. Szczegóły rezerwacji -->
-    <div id="reservation_details" class="section">
-      <h6>Reservation details:</h6>
-      <div class="radios">
-        <label><input type="radio" name="serviceType" value="smallService" required /> Small service</label>
-        <label><input type="radio" name="serviceType" value="fullService" required /> Full service</label>
-        <label>
-          <input
-            type="radio"
-            name="serviceType"
-            value="repair"
-            id="repairCheckbox"
-            onchange="toggleRepairDetails(this)"
-            required
-          />
-          Other repairs
-        </label>
-      </div>
-      <textarea name="repairDetails" rows="4" placeholder="details other repairs..."></textarea>
-      <label class="price-field">
-        Price:
-        <input type="number" name="repairPrice" />
-      </label>
-      <div class="centered-button">
-        <button class="add_service_btn" type="submit" name="services">
-          Add service
-        </button>
-      </div>
-    </div>
-
-  </form>
-</div>
-
+            <!-- 3. Szczegóły rezerwacji -->
+            <div id="reservation_details" class="section">
+                <h6>Reservation details:</h6>
+                <div class="form-row">
+                    <div class="right">
+                        <label>
+                            Service type:
+                            <select type="text" name="first_name" required ></select>
+                        </label>
+                        <label>
+                             Type of defects:
+                            <select type="text" name="first_name" required ></select>
+                        </label>
+                        <label>
+                             Status:
+                            <select type="text" name="first_name" required ></select>
+                        </label>
+                        <label>
+                             Mechanic:
+                            <select type="text" name="first_name" required ></select>
+                        </label>
+                    </div>
+                    <div class="left">
+                        <label>
+                            Comment:
+                            <textarea type="text" name="first_name" required > </textarea>
+                        </label>
+                        <label>
+                            Date of receipt:
+                            <input type="text" name="last_name" required />
+                        </label>
+                        <div class="centered-button">
+                                <button class="add_service_btn" type="submit" name="services">
+                                    Add service
+                                </button>
+                            </div>
+                    </div>
+                </div>
         </form>
+    </div>
+
+    </form>
     </div>
     </div>
     <!-- <div id="add_service" class="content">
