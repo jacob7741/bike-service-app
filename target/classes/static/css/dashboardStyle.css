@@ -302,22 +302,120 @@ th {
 
 /* add-service */
 
-#add_service {
-    display:inline-block;
-    margin-left: 15%;
+/* Kontener formularza */
+.content form {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: sans-serif;
+  color: #333;
 }
 
-#client_details, #service_details{
-    display:grid;
-    align-items: center;
+/* Ogólne sekcje */
+.section {
+  margin-bottom: 2rem;
 }
 
-#service_details {
-    padding-left: 25%;
+.section h6 {
+  font-size: 1rem;
+  color: #ac752d;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
 }
 
-.form_row {
-    justify-content: space-between;
-    display: inline-flex;
+/* Wyszukiwanie klienta */
+#find {
+  display: flex;
+  align-items: center;
+}
+
+#find label {
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+/* Ustawienia inputów, select, textarea */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+  box-sizing: border-box;
+}
+
+/* Dwie kolumny: client_details + service_details */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+/* Etykiety w form-row */
+.form-row label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* Radio buttons */
+.radios {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.radios label {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+/* Pole ceny obok etykiety */
+.price-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 200px;
+}
+
+.price-field input {
+  flex: 1;
+  margin-top: 0;
+}
+
+/* Przycisk wyślij */
+.centered-button {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.add_service_btn {
+  background-color: #ac752d;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.add_service_btn:hover {
+  background-color: #76511b;
+}
+
+/* Układ responsywny */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .radios {
+    flex-direction: column;
+  }
 }
 
