@@ -4,30 +4,30 @@
     box-sizing: border-box;
     margin: 0;
 }
+
 /* header-bar */
 /* 1. Cały header przyklejony na górze i w tle gradient */
 #header-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 30px;                           
-  display: flex;                            
-  align-items: center;                       
-  justify-content: space-between;           
-  padding: 0 15px;                           
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
 
 
-  background: linear-gradient(
-    to right,
-    rgb(255, 218, 68) 0%,
-    rgba(255, 255, 255, 1) 80%
-  );
-  background-repeat: no-repeat;
-  background-size: cover;
+    background: linear-gradient(to right,
+            rgb(255, 218, 68) 0%,
+            rgba(255, 255, 255, 1) 80%);
+    background-repeat: no-repeat;
+    background-size: cover;
 
-  z-index: 9999;
+    z-index: 9999;
 }
+
 .content {
     display: none;
 }
@@ -53,6 +53,7 @@
     background-color: rgba(232, 232, 219, 0.488);
     border-radius: 30px;
 }
+
 /* calendar */
 #calendar-side {
     position: fixed;
@@ -142,6 +143,7 @@
     text-align: center;
     font-weight: 500;
 }
+
 /* right-panel */
 
 .navigation-bar {
@@ -186,12 +188,13 @@
     background-color: rgba(232, 232, 219, 0.488);
 }
 
- .dropdown-content {
+.dropdown-content {
     display: none;
-  }
-  .dropdown-btn.active + .dropdown-content {
+}
+
+.dropdown-btn.active+.dropdown-content {
     display: block;
-  }
+}
 
 .drop-button {
     text-align: center;
@@ -208,6 +211,7 @@
 .bx {
     padding-right: 2%;
 }
+
 .logo-type {
     background-color: rgba(250, 235, 215, 0.185);
     align-items: center;
@@ -275,8 +279,10 @@ rejected-table */
     width: 30px;
     height: 25px;
     display: inline-flex;
-    align-items: center;     /* pionowo */
-    justify-content: center; /* poziomo */
+    align-items: center;
+    /* pionowo */
+    justify-content: center;
+    /* poziomo */
 }
 
 .infoDt p {
@@ -318,7 +324,7 @@ rejected-table */
 th {
     border-top: 1px solid #3939397c;
     border-bottom: 2px solid;
-    
+
 }
 
 /* add-service */
@@ -326,34 +332,36 @@ th {
 
 /* Kontener formularza */
 .content form {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: sans-serif;
-  color: #333;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: sans-serif;
+    color: #333;
 }
 
 /* Ogólne sekcje */
 .section {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }
 
 .section h6 {
-  font-size: 1rem;
-  color: #ac752d;
-  margin-bottom: 0.8rem;
-  text-transform: uppercase;
+    border-top: 1px solid #3939397c;
+    border-bottom: 2px solid;
+    font-size: 1rem;
+    color: #000000;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
 }
 
 /* Wyszukiwanie klienta */
 #find {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 #find label {
-  margin-right: 0.5rem;
-  font-weight: bold;
+    margin-right: 0.5rem;
+    font-weight: bold;
 }
 
 /* Ustawienia inputów, select, textarea */
@@ -362,83 +370,82 @@ input[type="email"],
 input[type="number"],
 select,
 textarea {
-  width: 100%;
-  padding: 0.4rem 0.6rem;
-  border: 1px solid #ccc;
-  border-radius: 1px;
-  font-size: 0.9rem;
-  margin-top: 0.2rem;
-  box-sizing: border-box;
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+    box-sizing: border-box;
 }
 
 /* Dwie kolumny: client_details + service_details */
 .form-row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  align-items: start;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-items: start;
 }
 
 /* Etykiety w form-row */
 .form-row label {
-  display: block;
-  margin-bottom: 1rem;
+    display: block;
+    margin-bottom: 1rem;
 }
 
 /* Radio buttons */
 .radios {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .radios label {
-  display: flex;
-  align-items: center;
-  font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
 }
 
 /* Pole ceny obok etykiety */
 .price-field {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  max-width: 200px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 200px;
 }
 
 .price-field input {
-  flex: 1;
-  margin-top: 0;
+    flex: 1;
+    margin-top: 0;
 }
 
 /* Przycisk wyślij */
 .centered-button {
-  text-align: center;
-  margin-top: 1.5rem;
+    text-align: center;
+    margin-top: 1.5rem;
 }
 
 .add_service_btn {
-  background-color: #ac752d;
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  border-radius: 6px;
-  cursor: pointer;
+    background-color: #404105;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 .add_service_btn:hover {
-  background-color: #76511b;
+    background-color: #39761b;
 }
 
 /* Układ responsywny */
 @media (max-width: 768px) {
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-  .radios {
-    flex-direction: column;
-  }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .radios {
+        flex-direction: column;
+    }
 }
-
-
