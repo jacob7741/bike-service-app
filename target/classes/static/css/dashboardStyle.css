@@ -7,16 +7,16 @@
 /* header-bar */
 #header-bar {
     text-align: center;
-    display: flex;
+    display:flex;
     justify-content: space-between;
     position: fixed;
     margin-left: 15%;
     height: 40px;
     width: 85%;
-    flex-shrink: 0;
 }
-
-
+.content {
+    display: none;
+}
 
 #dropMenu {
 
@@ -163,7 +163,7 @@
 
 .menu-button:hover,
 .dropdown-btn:hover {
-    background-color: rgba(232, 232, 219, 0.488);
+    background-color: rgba(211, 202, 148, 0.488);
 }
 
 .active {
