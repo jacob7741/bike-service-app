@@ -16,7 +16,11 @@
     flex-shrink: 0;
 }
 
-#dropMenu {}
+
+
+#dropMenu {
+
+}
 
 .bx {
     margin-right: 10px;
@@ -171,9 +175,12 @@
     background-color: rgba(232, 232, 219, 0.488);
 }
 
-.dropdown-content {
+ .dropdown-content {
     display: none;
-}
+  }
+  .dropdown-btn.active + .dropdown-content {
+    display: block;
+  }
 
 .drop-button {
     text-align: center;
@@ -343,7 +350,7 @@ textarea {
   width: 100%;
   padding: 0.4rem 0.6rem;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 1px;
   font-size: 0.9rem;
   margin-top: 0.2rem;
   box-sizing: border-box;
@@ -418,4 +425,6 @@ textarea {
     flex-direction: column;
   }
 }
+
+/* new-service */ 
 

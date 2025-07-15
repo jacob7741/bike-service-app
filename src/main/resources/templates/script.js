@@ -9,7 +9,7 @@ headerDate.innerHTML = todayDate;
 var dropdown = document.getElementsByClassName("dropdown-btn");
 var i;
 
-for (i = 0; i < dropdown.length; i++) {
+for (i = 0; i < dropdown.length; i--) {
     dropdown[i].addEventListener("click", function() {
         this.classList.toggle("active");
         var dropdownContent = this.nextElementSibling;
@@ -29,17 +29,7 @@ function showContent(id) {
     document.getElementById(id).style.display = 'block';
 };
 
-function toggleRepairDetails(radio) {
-    var repairDetails = document.getElementById('repairDetails');
-    repairDetails.style.display = radio.checked ? 'block' : 'none';
-}
 
-function validateForm() {
-    var radios = document.querySelectorAll("input[type='radio'][name='serviceType']");
-    var isChecked = Array.prototype.slice.call(radios).some(x => x.checked);
-
-    return true;
-};
 
 const currentDate = document.querySelector(".current-date");
 daysTag = document.querySelector(".days");

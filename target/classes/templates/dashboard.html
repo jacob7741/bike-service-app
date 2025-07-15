@@ -54,7 +54,7 @@
             </div>
         </div>
 
-        <div class="navigation-bar">
+        <nav class="navigation-bar">
             <div class="logo-type">
                 <img class="logo" src="../static/bicycle-service-high-resolution-logo.png" </img>
             </div>
@@ -66,15 +66,14 @@
                     <a class="drop-button" onclick="showContent('add_service')">Add</a>
                     <a class="drop-button" onclick="showContent('new_service')">New</a>
                     <a class="drop-button" onclick="showContent('done_service')">Done</a>
-                    <a class="drop-button">Rejected</a>
+                    <a class="drop-button" onclick="showContent('rejected_service')">Rejected</a>
                 </div>
-
                 <button class="menu-button"><i class="bx bx-message"></i>Message</button>
                 <button class="menu-button"><i class="bx bx-chart"></i>Statistic</button>
                 <button class="menu-button"><i class="bx bx-message"></i>Workshop Customers</button>
                 <button class="menu-button" onclick="showContent('group')"><i class="bx bx-group"></i>Group</button>
             </aside>
-        </div>
+        </nav>
     </div>
 
     <div id="news" class="content">
@@ -104,8 +103,8 @@
                 <tr class="table_order" th:each="order : ${orderList}">
                     <td th:text="${order.orderId}">34534789</td>
                     <td class="infoDt">
-                        <p>Imie Mechanika</p>
                         <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
+                            <p>Imie Mechanika</p>
                             <p>Status Serwisu
                                 <button type="submit">edit</button>
                             </p>
@@ -143,8 +142,20 @@
         </table>
     </div>
 
-    <div id="add_service" class="content">
+    <div id="new_service" class="content">
+        test new
+    </div>
+    
 
+    <div id="rejected_service" class="content">
+        test rejected
+    </div>
+    
+    <div id="done_service" class="content">
+        test done
+    </div>
+    
+    <div id="add_service" class="content">
         <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
 
             <!-- 1. Wyszukiwanie klienta -->
@@ -205,100 +216,44 @@
                     <div class="right">
                         <label>
                             Service type:
-                            <select type="text" name="first_name" required ></select>
+                            <select type="text" name="first_name" required></select>
                         </label>
                         <label>
-                             Type of defects:
-                            <select type="text" name="first_name" required ></select>
+                            Type of defects:
+                            <select type="text" name="first_name" required></select>
                         </label>
                         <label>
-                             Status:
-                            <select type="text" name="first_name" required ></select>
+                            Status:
+                            <select type="text" name="first_name" required></select>
                         </label>
                         <label>
-                             Mechanic:
-                            <select type="text" name="first_name" required ></select>
+                            Mechanic:
+                            <select type="text" name="first_name" required></select>
                         </label>
                     </div>
                     <div class="left">
                         <label>
                             Comment:
-                            <textarea type="text" name="first_name" required > </textarea>
+                            <textarea type="text" name="first_name" required> </textarea>
                         </label>
                         <label>
                             Date of receipt:
                             <input type="text" name="last_name" required />
                         </label>
                         <div class="centered-button">
-                                <button class="add_service_btn" type="submit" name="services">
-                                    Add service
-                                </button>
-                            </div>
+                            <button class="add_service_btn" type="submit" name="services">
+                                Add service
+                            </button>
+                        </div>
                     </div>
                 </div>
         </form>
     </div>
 
+    </div>
     </form>
     </div>
     </div>
-    <!-- <div id="add_service" class="content">
-        <div>
-            <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
-                <h6 style="
-              padding-left: 1%;
-              font-size: 15px;
-              color: rgba(172, 117, 45, 0.997);
-            ">
-                    Client details:
-                </h6>
-                <div class="group_3">
-                    <label>Name: <input type="text" name="first_name" required /></label>
-                    <label>Lastname: <input type="text" name="last_name" required /></label>
-                    <label>Phone number: <input type="text" name="phoneNumber" required /></label>
-                    <label>e-mail: <input type="email" name="email" required /></label>
-                </div>
-
-                <div class="group_2">
-                    <label>Bike brand: <input type="text" name="brand" required /></label>
-                    <label>Bike type: <input type="text" name="modelType" required /></label>
-                    <label>Serial number: <input type="text" name="serialNumber" required /></label>
-                </div>
-                <h6 style="
-              padding-left: 1%;
-              margin-top: 2%;
-              font-size: 15px;
-              color: rgba(172, 117, 45, 0.997);
-            ">
-                    Service details:
-                </h6>
-                <div class="group_1">
-                    <label><input type="radio" name="serviceType" value="smallService" required />
-                        Small service</label>
-                    <label><input type="radio" name="serviceType" value="fullService" required />
-                        Full service</label>
-                    <label>
-                        <input type="radio" name="serviceType" value="repair" id="repairCheckbox"
-                            onchange="toggleRepairDetails(this)" required />
-                        Other repairs
-                    </label>
-                    <textarea name="repairDetails" rows="5" placeholder="details other repairs..."></textarea>
-                    <label>Price:
-                        <input type="number" name="repairPrice" style="
-                  border-radius: 8px;
-                  border: none;
-                  height: 25px;
-                  margin-top: 1%;
-                " /></label>
-                    <div class="centered-button">
-                        <button class="add_service_btn" type="submit" name="services">
-                            Add service
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div> -->
 
     <!-- <div id="new_service" class="content">
         <p>
