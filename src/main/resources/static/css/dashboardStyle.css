@@ -233,7 +233,10 @@
     display: none;
 }
 
-/* order-table */
+/* order-table
+new-table
+done-table
+rejected-table */
 .date {
     width: 20%;
 }
@@ -308,6 +311,7 @@ th {
 }
 
 /* add-service */
+
 
 /* Kontener formularza */
 .content form {
@@ -426,5 +430,4 @@ textarea {
   }
 }
 
-/* new-service */ 
 

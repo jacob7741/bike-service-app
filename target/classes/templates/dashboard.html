@@ -143,18 +143,164 @@
     </div>
 
     <div id="new_service" class="content">
-        test new
+        <p style="justify-content: space-between;">Number of orders: <span th:text="${#lists.size(orderList)}"></span>
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <!-- <th class="number">No.</th> -->
+                    <th class="orderId">ID</th>
+                    <th class="add_done_by">Add by</th>
+                    <th class="clientDt">Client Data</th>
+                    <th class="date">Date</th>
+                    <th class="actions">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table_order" th:each="order : ${orderList}">
+                    <td th:text="${order.orderId}">34534789</td>
+                    <td class="infoDt">
+                        <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
+                            <p>Imie Mechanika</p>
+                        </form>
+                    </td>
+                    <td th:text="${order.client}">
+                        <div class="dropdown-container">
+                            <div class="dropdown-client">
+                                <p>Client NameSurname</p>
+                                <button>+</button>
+                            </div>
+                            <div class="dropdown-bike">
+                                <p>Reservation Data</p>
+                                <p>Bike type <button>+</button></p>
+                            </div>
+                        </div>
+                    <td class="date_panel_table" th:text="${order.data}">
+                        <p>Added<date>12.04.2024</date>
+                        </p>
+                        <p>Receipt<date>12.04.2024</date>
+                        </p>
+                    </td>
+                    <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                        <td class="actions">
+                            <button class="btnA" type="submit">Take</button>
+                        </td>
+                    </form>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    
+
+    <div id="done_service" class="content">
+        <p style="justify-content: space-between;">Number of orders: <span th:text="${#lists.size(orderList)}"></span>
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <!-- <th class="number">No.</th> -->
+                    <th class="orderId">ID</th>
+                    <th class="add_done_by">Done by</th>
+                    <th class="clientDt">Client Data</th>
+                    <th class="date">Date</th>
+                    <th class="actions">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table_order" th:each="order : ${orderList}">
+                    <td th:text="${order.orderId}">34534789</td>
+                    <td class="infoDt">
+                        <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
+                            <p>Imie Mechanika</p>
+                        </form>
+                    </td>
+                    <td th:text="${order.client}">
+                        <div class="dropdown-container">
+                            <div class="dropdown-client">
+                                <p>Client NameSurname</p>
+                                <button>+</button>
+                            </div>
+                            <div class="dropdown-bike">
+                                <p>Reservation Data</p>
+                                <p>Bike type <button>+</button></p>
+                            </div>
+                        </div>
+                    <td class="date_panel_table" th:text="${order.data}">
+                        <p>Added<date>12.04.2024</date>
+                        </p>
+                        <p>Modification<date>12.04.2024</date>
+                        </p>
+                        <p>Receipt<date>12.04.2024</date>
+                        </p>
+                    </td>
+                    <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                        <td class="actions">
+                            <button class="btnA" type="submit">Edit</button>
+                            <button class="btnA" type="submit">Print</button>
+                            <button class="btnA" type="submit">Share</button>
+                            <button class="btnA" type="submit">Delete</button>
+                        </td>
+                    </form>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <div id="rejected_service" class="content">
-        test rejected
+        <p style="justify-content: space-between;">Number of orders: <span th:text="${#lists.size(orderList)}"></span>
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <!-- <th class="number">No.</th> -->
+                    <th class="orderId">ID</th>
+                    <th class="add_done_by">Rejected by</th>
+                    <th class="clientDt">Client Data</th>
+                    <th class="date">Date</th>
+                    <th class="actions">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table_order" th:each="order : ${orderList}">
+                    <td th:text="${order.orderId}">34534789</td>
+                    <td class="infoDt">
+                        <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
+                            <p>Imie Mechanika</p>
+                            <p>Comment<button>+</button></p>
+                        </form>
+                    </td>
+                    <td th:text="${order.client}">
+                        <div class="dropdown-container">
+                            <div class="dropdown-client">
+                                <p>Client NameSurname</p>
+                                <button>+</button>
+                            </div>
+                            <div class="dropdown-bike">
+                                <p>Reservation Data</p>
+                                <p>Bike type <button>+</button></p>
+                            </div>
+                        </div>
+                    <td class="date_panel_table" th:text="${order.data}">
+                        <p>Added<date>12.04.2024</date>
+                        </p>
+                        <p>Modification<date>12.04.2024</date>
+                        </p>
+                        <p>Receipt<date>12.04.2024</date>
+                        </p>
+                    </td>
+                    <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                        <td class="actions">
+                            <button class="btnA" type="submit">Edit</button>
+                            <button class="btnA" type="submit">Print</button>
+                            <button class="btnA" type="submit">Share</button>
+                            <button class="btnA" type="submit">Delete</button>
+                        </td>
+                    </form>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    
-    <div id="done_service" class="content">
-        test done
-    </div>
-    
+
+
     <div id="add_service" class="content">
         <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
 
