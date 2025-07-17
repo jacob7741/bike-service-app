@@ -68,7 +68,8 @@
                     <a class="drop-button" onclick="showContent('done_service')">Done</a>
                     <a class="drop-button" onclick="showContent('rejected_service')">Rejected</a>
                 </div>
-                <button class="menu-button"><i class="bx bx-message"></i>Message</button>
+                <button class="menu-button" onclick="showContent('message')"><i
+                        class="bx bx-message"></i>Message</button>
                 <button class="menu-button"><i class="bx bx-chart"></i>Statistic</button>
                 <button class="menu-button"><i class="bx bx-message"></i>Workshop Customers</button>
                 <button class="menu-button" onclick="showContent('group')"><i class="bx bx-group"></i>Group</button>
@@ -85,8 +86,10 @@
         </div>
     </div>
 
+
     <div id="order_table" class="content">
-        <p style="justify-content: space-between;">Number of orders: <span th:text="${#lists.size(orderList)}"></span>
+        <p style="justify-content: space-between;">Number of orders:
+            <span th:text="${#lists.size(orderList)}"></span>
         </p>
         <table>
             <thead>
@@ -141,261 +144,294 @@
             </tbody>
         </table>
     </div>
-
-    <div id="new_service" class="content">
-        <p style="justify-content: space-between;">Number of orders: <span th:text="${#lists.size(orderList)}"></span>
-        </p>
-        <table>
-            <thead>
-                <tr>
-                    <!-- <th class="number">No.</th> -->
-                    <th class="orderId">ID</th>
-                    <th class="add_done_by">Add by</th>
-                    <th class="clientDt">Client Data</th>
-                    <th class="date">Date</th>
-                    <th class="actions">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="table_order" th:each="order : ${orderList}">
-                    <td th:text="${order.orderId}">34534789</td>
-                    <td class="infoDt">
-                        <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
-                            <p>Imie Mechanika</p>
-                        </form>
-                    </td>
-                    <td th:text="${order.client}">
-                        <div class="dropdown-container">
-                            <div class="dropdown-client">
-                                <p>Client NameSurname</p>
-                                <button>+</button>
-                            </div>
-                            <div class="dropdown-bike">
-                                <p>Reservation Data</p>
-                                <p>Bike type <button>+</button></p>
-                            </div>
-                        </div>
-                    <td class="date_panel_table" th:text="${order.data}">
-                        <p>Added<date>12.04.2024</date>
-                        </p>
-                        <p>Receipt<date>12.04.2024</date>
-                        </p>
-                    </td>
-                    <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
-                        <td class="actions">
-                            <button class="btnA" type="submit">Take</button>
+    <div>
+        <div id="new_service" class="content">
+            <p style="justify-content: space-between;">Number of orders: <span
+                    th:text="${#lists.size(orderList)}"></span>
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <!-- <th class="number">No.</th> -->
+                        <th class="orderId">ID</th>
+                        <th class="add_done_by">Add by</th>
+                        <th class="clientDt">Client Data</th>
+                        <th class="date">Date</th>
+                        <th class="actions">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table_order" th:each="order : ${orderList}">
+                        <td th:text="${order.orderId}">34534789</td>
+                        <td class="infoDt">
+                            <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
+                                <p>Imie Mechanika</p>
+                            </form>
                         </td>
-                    </form>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div id="done_service" class="content">
-        <p style="justify-content: space-between;">Number of orders: <span th:text="${#lists.size(orderList)}"></span>
-        </p>
-        <table>
-            <thead>
-                <tr>
-                    <!-- <th class="number">No.</th> -->
-                    <th class="orderId">ID</th>
-                    <th class="add_done_by">Done by</th>
-                    <th class="clientDt">Client Data</th>
-                    <th class="date">Date</th>
-                    <th class="actions">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="table_order" th:each="order : ${orderList}">
-                    <td th:text="${order.orderId}">34534789</td>
-                    <td class="infoDt">
-                        <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
-                            <p>Imie Mechanika</p>
-                        </form>
-                    </td>
-                    <td th:text="${order.client}">
-                        <div class="dropdown-container">
-                            <div class="dropdown-client">
-                                <p>Client NameSurname</p>
-                                <button>+</button>
+                        <td th:text="${order.client}">
+                            <div class="dropdown-container">
+                                <div class="dropdown-client">
+                                    <p>Client NameSurname</p>
+                                    <button>+</button>
+                                </div>
+                                <div class="dropdown-bike">
+                                    <p>Reservation Data</p>
+                                    <p>Bike type <button>+</button></p>
+                                </div>
                             </div>
-                            <div class="dropdown-bike">
-                                <p>Reservation Data</p>
-                                <p>Bike type <button>+</button></p>
-                            </div>
-                        </div>
-                    <td class="date_panel_table" th:text="${order.data}">
-                        <p>Added<date>12.04.2024</date>
-                        </p>
-                        <p>Modification<date>12.04.2024</date>
-                        </p>
-                        <p>Receipt<date>12.04.2024</date>
-                        </p>
-                    </td>
-                    <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
-                        <td class="actions">
-                            <button class="btnA" type="submit">Edit</button>
-                            <button class="btnA" type="submit">Print</button>
-                            <button class="btnA" type="submit">Share</button>
-                            <button class="btnA" type="submit">Delete</button>
+                        <td class="date_panel_table" th:text="${order.data}">
+                            <p>Added<date>12.04.2024</date>
+                            </p>
+                            <p>Receipt<date>12.04.2024</date>
+                            </p>
                         </td>
-                    </form>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div id="rejected_service" class="content">
-        <p style="justify-content: space-between;">Number of orders: <span th:text="${#lists.size(orderList)}"></span>
-        </p>
-        <table>
-            <thead>
-                <tr>
-                    <!-- <th class="number">No.</th> -->
-                    <th class="orderId">ID</th>
-                    <th class="add_done_by">Rejected by</th>
-                    <th class="clientDt">Client Data</th>
-                    <th class="date">Date</th>
-                    <th class="actions">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="table_order" th:each="order : ${orderList}">
-                    <td th:text="${order.orderId}">34534789</td>
-                    <td class="infoDt">
-                        <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
-                            <p>Imie Mechanika</p>
-                            <p>Comment<button>+</button></p>
+                        <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                            <td class="actions">
+                                <button class="btnA" type="submit">Take</button>
+                            </td>
                         </form>
-                    </td>
-                    <td th:text="${order.client}">
-                        <div class="dropdown-container">
-                            <div class="dropdown-client">
-                                <p>Client NameSurname</p>
-                                <button>+</button>
-                            </div>
-                            <div class="dropdown-bike">
-                                <p>Reservation Data</p>
-                                <p>Bike type <button>+</button></p>
-                            </div>
-                        </div>
-                    <td class="date_panel_table" th:text="${order.data}">
-                        <p>Added<date>12.04.2024</date>
-                        </p>
-                        <p>Modification<date>12.04.2024</date>
-                        </p>
-                        <p>Receipt<date>12.04.2024</date>
-                        </p>
-                    </td>
-                    <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
-                        <td class="actions">
-                            <button class="btnA" type="submit">Edit</button>
-                            <button class="btnA" type="submit">Print</button>
-                            <button class="btnA" type="submit">Share</button>
-                            <button class="btnA" type="submit">Delete</button>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="done_service" class="content">
+            <p style="justify-content: space-between;">Number of orders: <span
+                    th:text="${#lists.size(orderList)}"></span>
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <!-- <th class="number">No.</th> -->
+                        <th class="orderId">ID</th>
+                        <th class="add_done_by">Done by</th>
+                        <th class="clientDt">Client Data</th>
+                        <th class="date">Date</th>
+                        <th class="actions">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table_order" th:each="order : ${orderList}">
+                        <td th:text="${order.orderId}">34534789</td>
+                        <td class="infoDt">
+                            <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
+                                <p>Imie Mechanika</p>
+                            </form>
                         </td>
-                    </form>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                        <td th:text="${order.client}">
+                            <div class="dropdown-container">
+                                <div class="dropdown-client">
+                                    <p>Client NameSurname</p>
+                                    <button>+</button>
+                                </div>
+                                <div class="dropdown-bike">
+                                    <p>Reservation Data</p>
+                                    <p>Bike type <button>+</button></p>
+                                </div>
+                            </div>
+                        <td class="date_panel_table" th:text="${order.data}">
+                            <p>Added<date>12.04.2024</date>
+                            </p>
+                            <p>Modification<date>12.04.2024</date>
+                            </p>
+                            <p>Receipt<date>12.04.2024</date>
+                            </p>
+                        </td>
+                        <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                            <td class="actions">
+                                <button class="btnA" type="submit">Edit</button>
+                                <button class="btnA" type="submit">Print</button>
+                                <button class="btnA" type="submit">Share</button>
+                                <button class="btnA" type="submit">Delete</button>
+                            </td>
+                        </form>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="rejected_service" class="content">
+            <p style="justify-content: space-between;">Number of orders: <span
+                    th:text="${#lists.size(orderList)}"></span>
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <!-- <th class="number">No.</th> -->
+                        <th class="orderId">ID</th>
+                        <th class="add_done_by">Rejected by</th>
+                        <th class="clientDt">Client Data</th>
+                        <th class="date">Date</th>
+                        <th class="actions">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table_order" th:each="order : ${orderList}">
+                        <td th:text="${order.orderId}">34534789</td>
+                        <td class="infoDt">
+                            <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
+                                <p>Imie Mechanika</p>
+                                <p>Comment<button>+</button></p>
+                            </form>
+                        </td>
+                        <td th:text="${order.client}">
+                            <div class="dropdown-container">
+                                <div class="dropdown-client">
+                                    <p>Client NameSurname</p>
+                                    <button>+</button>
+                                </div>
+                                <div class="dropdown-bike">
+                                    <p>Reservation Data</p>
+                                    <p>Bike type <button>+</button></p>
+                                </div>
+                            </div>
+                        <td class="date_panel_table" th:text="${order.data}">
+                            <p>Added<date>12.04.2024</date>
+                            </p>
+                            <p>Modification<date>12.04.2024</date>
+                            </p>
+                            <p>Receipt<date>12.04.2024</date>
+                            </p>
+                        </td>
+                        <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                            <td class="actions">
+                                <button class="btnA" type="submit">Edit</button>
+                                <button class="btnA" type="submit">Print</button>
+                                <button class="btnA" type="submit">Share</button>
+                                <button class="btnA" type="submit">Delete</button>
+                            </td>
+                        </form>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
 
-    <div id="add_service" class="content">
-        <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
 
-            <!-- 1. Wyszukiwanie klienta -->
-            <div id="find" class="section">
-                <label for="searchClient">Search client:</label>
-                <input id="searchClient" type="text" />
-            </div>
+        <div id="add_service" class="content">
+            <form th:action="@{/services/submit}" method="POST" onsubmit="return validateForm()">
 
-            <!-- 2. Dane klienta i dane serwisu w dwóch kolumnach -->
-            <div class="form-row">
-                <div id="client_details" class="section">
-                    <h6>Client details:</h6>
-                    <label>
-                        Name:
-                        <input type="text" name="first_name" required />
-                    </label>
-                    <label>
-                        Lastname:
-                        <input type="text" name="last_name" required />
-                    </label>
-                    <label>
-                        Phone number:
-                        <input type="text" name="phoneNumber" required />
-                    </label>
-                    <label>
-                        e-mail:
-                        <input type="email" name="email" required />
-                    </label>
+                <!-- 1. Wyszukiwanie klienta -->
+                <div id="find" class="section">
+                    <label for="searchClient">Search client:</label>
+                    <input id="searchClient" type="text" />
                 </div>
 
-                <div id="service_details" class="section">
-                    <h6>Service details:</h6>
-                    <label>
-                        Save bikes:
-                        <select name="saveBike">
-                            <option>Example save bike</option>
-                        </select>
-                    </label>
-                    <label>
-                        Bike brand:
-                        <input type="text" name="brand" required />
-                    </label>
-                    <label>
-                        Bike type:
-                        <input type="text" name="modelType" required />
-                    </label>
-                    <label>
-                        Serial number:
-                        <input type="text" name="serialNumber" required />
-                    </label>
-                </div>
-            </div>
-
-            <!-- 3. Szczegóły rezerwacji -->
-            <div id="reservation_details" class="section">
-                <h6>Reservation details:</h6>
+                <!-- 2. Dane klienta i dane serwisu w dwóch kolumnach -->
                 <div class="form-row">
-                    <div class="right">
+                    <div id="client_details" class="section">
+                        <h6>Client details:</h6>
                         <label>
-                            Service type:
-                            <select type="text" name="first_name" required></select>
+                            Name:
+                            <input type="text" name="first_name" required />
                         </label>
                         <label>
-                            Type of defects:
-                            <select type="text" name="first_name" required></select>
-                        </label>
-                        <label>
-                            Status:
-                            <select type="text" name="first_name" required></select>
-                        </label>
-                        <label>
-                            Mechanic:
-                            <select type="text" name="first_name" required></select>
-                        </label>
-                    </div>
-                    <div class="left">
-                        <label>
-                            Comment:
-                            <textarea type="text" name="first_name" required> </textarea>
-                        </label>
-                        <label>
-                            Date of receipt:
+                            Lastname:
                             <input type="text" name="last_name" required />
                         </label>
-                        <div class="centered-button">
-                            <button class="add_service_btn" type="submit" name="services">
-                                Add service
-                            </button>
+                        <label>
+                            Phone number:
+                            <input type="text" name="phoneNumber" required />
+                        </label>
+                        <label>
+                            e-mail:
+                            <input type="email" name="email" required />
+                        </label>
+                    </div>
+
+                    <div id="service_details" class="section">
+                        <h6>Service details:</h6>
+                        <label>
+                            Save bikes:
+                            <select name="saveBike">
+                                <option>Example save bike</option>
+                            </select>
+                        </label>
+                        <label>
+                            Bike brand:
+                            <input type="text" name="brand" required />
+                        </label>
+                        <label>
+                            Bike type:
+                            <input type="text" name="modelType" required />
+                        </label>
+                        <label>
+                            Serial number:
+                            <input type="text" name="serialNumber" required />
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 3. Szczegóły rezerwacji -->
+                <div id="reservation_details" class="section">
+                    <h6>Reservation details:</h6>
+                    <div class="form-row">
+                        <div class="right">
+                            <label>
+                                Service type:
+                                <select type="text" name="first_name" required></select>
+                            </label>
+                            <label>
+                                Type of defects:
+                                <select type="text" name="first_name" required></select>
+                            </label>
+                            <label>
+                                Status:
+                                <select type="text" name="first_name" required></select>
+                            </label>
+                            <label>
+                                Mechanic:
+                                <select type="text" name="first_name" required></select>
+                            </label>
+                        </div>
+                        <div class="left">
+                            <label>
+                                Comment:
+                                <textarea type="text" name="first_name" required> </textarea>
+                            </label>
+                            <label>
+                                Date of receipt:
+                                <input type="text" name="last_name" required />
+                            </label>
+                            <div class="centered-button">
+                                <button class="add_service_btn" type="submit" name="services">
+                                    Add service
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+    <div id="message" class="content">
+        <form th:action="@{/mechanic/post}" method="post">
+            <div class="content-area">
+                <div class="post-text">
+                    <textarea name="content" type="text">Make post here...</textarea>
+                    <button class="post-btn" type="submit" name="post">Post</button>
+                </div>
+                <div th:each="post : ${postsList}">
+                    <div class="banner-post">
+                        <div th:text="${post.date}" class="post-date">
+                            12.01.2025
+                        </div>
+                        <div th:text="${post.userName}" class="user-post">
+                            Id: 3
+                        </div>
+                        <div>
+                            <span th:text="${post.content}">Lorem ipsum dolor
+                                sit amet, consectetur adipiscingelit.
+                                Nullam vulputate elementumerat, aĘ
+                                ultrices nisi efficitur a. Phasellus sollicitudin mi non
+                                ligula auctor, sed ultrices lectus.
+                            </span>
                         </div>
                     </div>
                 </div>
-        </form>
+            </div>
     </div>
 
+    </div>
     </div>
     </form>
     </div>
