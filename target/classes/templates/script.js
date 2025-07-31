@@ -29,7 +29,6 @@ function showContent(id) {
     document.getElementById(id).style.display = 'block';
 };
 
-
 const currentDate = document.querySelector(".current-date");
 daysTag = document.querySelector(".days");
 prevNextIcon = document.querySelectorAll(".icons span");

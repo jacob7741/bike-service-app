@@ -27,30 +27,27 @@
         </div>
 
         <div id="calendar-side">
-            <div class="wrapper">
-                <div class="calendar">
-                    <header>
-                        <p class="current-date"></p>
-                        <div class="icons">
-                            <span id="prev" class="bx bx-chevron-left"></span>
-                            <span id="next" class="bx bx-chevron-right"></span>
-                        </div>
-                    </header>
-                    <div class="calendar">
-                        <ul class="weeks">
-                            <li>Mon</li>
-                            <li>Tue</li>
-                            <li>Wen</li>
-                            <li>Thr</li>
-                            <li>Fri</li>
-                            <li>Sat</li>
-                            <li>Sun</li>
-                        </ul>
-                        <ul class="days">
-                            <li></li>
-                        </ul>
+            <div class="calendar">
+                <header>
+                    <p class="current-date"></p>
+                    <div class="icons">
+                        <span id="prev" class="bx bx-chevron-left"></span>
+                        <span id="next" class="bx bx-chevron-right"></span>
                     </div>
-                </div>
+                </header>
+                <ul class="weeks">
+                    <li>Mon</li>
+                    <li>Tue</li>
+                    <li>Wen</li>
+                    <li>Thr</li>
+                    <li>Fri</li>
+                    <li>Sat</li>
+                    <li>Sun</li>
+                </ul>
+                <ul class="days">
+                    <li></li>
+                </ul>
+
             </div>
         </div>
 
@@ -70,8 +67,10 @@
                 </div>
                 <button class="menu-button" onclick="showContent('message')"><i
                         class="bx bx-message"></i>Message</button>
-                <button class="menu-button" onclick="showContent('statistic')"><i class="bx bx-chart"></i>Statistic</button>
-                <button class="menu-button" onclick="showContent('workshop_customers')"><i class="bx bx-message"></i>Workshop Customers</button>
+                <button class="menu-button" onclick="showContent('statistic')"><i
+                        class="bx bx-chart"></i>Statistic</button>
+                <button class="menu-button" onclick="showContent('workshop_customers')"><i
+                        class="bx bx-message"></i>Workshop Customers</button>
                 <button class="menu-button" onclick="showContent('group')"><i class="bx bx-group"></i>Group</button>
             </aside>
         </nav>
@@ -406,6 +405,17 @@
     </div>
 
     <div id="message" class="content">
+    </div>
+
+    <div id="statistic" class="content">
+
+    </div>
+
+    <div id="workshop_customers" class="content">
+
+    </div>
+
+    <div id="group" class="content">
         <form th:action="@{/mechanic/post}" method="post">
             <div class="content-area">
                 <div class="post-text">
@@ -418,7 +428,7 @@
                             12.01.2025
                         </div>
                         <div th:text="${post.userName}" class="user-post">
-                            Id: 3
+                            User Name
                         </div>
                         <div>
                             <span th:text="${post.content}">Lorem ipsum dolor
@@ -431,18 +441,6 @@
                     </div>
                 </div>
             </div>
-    </div>
-
-    <div id="statistic" class="content">
-        
-    </div>
-
-    <div id="workshop_customers" class="content">
-
-    </div>
-
-    <div id="group" class="content">
-
     </div>
 
 
