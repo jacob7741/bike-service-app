@@ -63,7 +63,11 @@
     flex-direction: column;
     list-style-type: none;
     flex-shrink: 0;
-    background:rgb(255, 218, 68);
+    background: rgb(255, 218, 68);
+}
+
+.icons {
+    display: flex;
 }
 
 .calendar header {
@@ -72,6 +76,7 @@
     padding-bottom: 5px;
     justify-content: space-between;
 }
+
 .calendar {
     background: linear-gradient(0deg, rgb(255, 218, 68), rgb(255, 255, 255));
 }
@@ -445,4 +450,13 @@ textarea {
     .radios {
         flex-direction: column;
     }
+}
+
+/* Panel statystyk */
+
+#statistic {
+}
+
+.contents-cart {
+    display: none;
 }
