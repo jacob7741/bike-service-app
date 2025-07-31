@@ -466,6 +466,10 @@ textarea {
     gap: 10px;
 }
 
+.panel-cart:hover {
+    background-color: rgba(200, 173, 18, 0.598);
+}
+
 .panel-cart {
     background-color: rgba(244, 226, 138, 0.786);
     padding: 10px 40px 10px 40px;
