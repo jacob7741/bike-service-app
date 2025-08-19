@@ -194,7 +194,7 @@
     display: none;
 }
 
-.dropdown-btn.active+.dropdown-content {
+.dropdown-btn.active .dropdown-content {
     display: block;
 }
 
@@ -454,27 +454,6 @@ textarea {
 
 /* Panel statystyk */
 
-.contents-cart {
+#services_stat {
     display: none;
-}
-
-#statistic .panel {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    gap: 10px;
-}
-
-.panel-cart:hover {
-    background-color: rgba(200, 173, 18, 0.598);
-}
-
-.panel-cart {
-    background-color: rgba(244, 226, 138, 0.786);
-    padding: 10px 40px 10px 40px;
-    border: none;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
 }
