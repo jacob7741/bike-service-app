@@ -94,11 +94,13 @@ google.charts.load('current', {'packages':['corechart']});
         ]);
 
         var options = {
-          title : 'Monthly Coffee Production by Country',
+          title : 'Monthly Service Done',
           vAxis: {title: 'Cups'},
           hAxis: {title: 'Month'},
           seriesType: 'bars',
-          series: {5: {type: 'line'}}
+          series: {5: {type: 'line'}},
+          width: 900,
+          height: 500
         };
 
         var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));

@@ -455,10 +455,9 @@ textarea {
 /* Panel statystyk */
 
 #services_stat {
-    display: flex;
+    display: none;
 }
 
 #chart_div {
-    width: 1200px;
-    height: 600px;
+
 }
