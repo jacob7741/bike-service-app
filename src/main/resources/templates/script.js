@@ -10,7 +10,7 @@ var dropdown = document.getElementsByClassName("dropdown-btn");
 var i;
 
 for (i = 0; i < dropdown.length; i++) {
-    dropdown[i].addEventListener("click", function() {
+    dropdown[i].addEventListener("click", function () {
         this.classList.toggle("active");
         var dropdownContent = this.nextElementSibling;
         if (dropdownContent.style.display === "block") {
@@ -46,7 +46,7 @@ const renderCalendar = () => {
     lastDateOfLastMonth = new Date(currentYear, currentMonth, 0).getDate();
     let liTag = "";
 
-    for (let i = firstDayOfMonth; i > 0; i--) {  
+    for (let i = firstDayOfMonth; i > 0; i--) {
         liTag += `<li class="inactive">${lastDateOfLastMonth - i + 1}</li>`;
     }
 
@@ -66,9 +66,9 @@ renderCalendar();
 
 prevNextIcon.forEach(icon => {
     icon.addEventListener("click", () => {
-        currentMonth = icon.id === "prev" ?  currentMonth - 1 : currentMonth + 1;
+        currentMonth = icon.id === "prev" ? currentMonth - 1 : currentMonth + 1;
 
-        if(currentMonth < 0 || currentMonth > 11) {
+        if (currentMonth < 0 || currentMonth > 11) {
             date = new Date(currentYear, currentMonth);
             currentYear = date.getFullYear();
             currentMonth = date.getMonth();
@@ -76,33 +76,34 @@ prevNextIcon.forEach(icon => {
             date = new Date();
         }
         renderCalendar();
-    }) 
+    })
 });
 
-google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawVisualization);
+google.charts.load('current', { 'packages': ['corechart'] });
+google.charts.setOnLoadCallback(drawChart);
+// Replace the following line with a valid JavaScript assignment.
+// For example, if chartData is injected server-side, use:
+var chartData = 100;
+// Or, if you want to assign a static value for testing:
+// var chartData = 100;
 
-      function drawChart() {
-        // Some raw data (not necessarily accurate)
-        var data = google.visualization.arrayToDataTable([
-          ['Month', 'Bolivia', 'Ecuador', 'Madagascar', 'Papua New Guinea', 'Rwanda', 'Average'],
-          ['2004/05',  165,      938,         522,             998,           450,      614.6],
-          ['2005/06',  135,      1120,        599,             1268,          288,      682],
-          ['2006/07',  157,      1167,        587,             807,           397,      623],
-          ['2007/08',  139,      1110,        615,             968,           215,      609.4],
-          ['2008/09',  136,      691,         629,             1026,          366,      569.6]
-        ]);
+function drawChart() {
+    // Some raw data (not necessarily accurate)
+    var data = google.visualization.arrayToDataTable([
+        ['Month', 'All'],
+        ['2004/05', chartData],
+    ]);
 
-        var options = {
-          title : 'Monthly Service Done',
-          vAxis: {title: 'Cups'},
-          hAxis: {title: 'Month'},
-          seriesType: 'bars',
-          series: {5: {type: 'line'}},
-          width: 900,
-          height: 500
-        };
+    var options = {
+        title: 'Monthly Service Done',
+        vAxis: { title: 'Services' },
+        hAxis: { title: 'Month' },
+        seriesType: 'bars',
+        series: { 5: { type: 'line' } },
+        width: 900,
+        height: 500
+    };
 
-        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
+    var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+}
