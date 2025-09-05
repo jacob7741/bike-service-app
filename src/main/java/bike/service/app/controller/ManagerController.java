@@ -18,12 +18,12 @@ public class ManagerController {
     @GetMapping("/manager")
     public String managerSite(Model model) {
 
-        model.addAttribute("chartData", getNumberOfDates());
+        model.addAttribute("chartData", getNumberOfServices());
 
         return "manager";
     }
 
-    private int getNumberOfDates() {
+    private int getNumberOfServices() {
         return (int) servicesRepository.count();
     }
 }

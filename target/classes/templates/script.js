@@ -79,31 +79,32 @@ prevNextIcon.forEach(icon => {
     })
 });
 
-google.charts.load('current', { 'packages': ['corechart'] });
-google.charts.setOnLoadCallback(drawChart);
-// Replace the following line with a valid JavaScript assignment.
-// For example, if chartData is injected server-side, use:
-var chartData = 100;
-// Or, if you want to assign a static value for testing:
-// var chartData = 100;
 
-function drawChart() {
-    // Some raw data (not necessarily accurate)
-    var data = google.visualization.arrayToDataTable([
-        ['Month', 'All'],
-        ['2004/05', chartData],
+document.addEventListener("DOMContentLoaded", function () {
+    const chartContainer = document.getElementById("chart_div");
+    const chartData = parseInt(chartContainer.dataset.chartValue, 10);
+
+    google.charts.load('current', { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(() => drawChart(chartData));
+});
+
+function drawChart(chartData) {
+    // Dwie serie: "All" (słupki) i "Target" (linia)
+    const data = google.visualization.arrayToDataTable([
+        ['Month', 'All', 'Target'],
+        ['2004/05', chartData, 50] // 50 to przykładowa wartość celu
     ]);
 
-    var options = {
+    const options = {
         title: 'Monthly Service Done',
         vAxis: { title: 'Services' },
         hAxis: { title: 'Month' },
-        seriesType: 'bars',
-        series: { 5: { type: 'line' } },
+        seriesType: 'bars',       // domyślnie słupki
+        series: { 1: { type: 'line' } }, // druga kolumna ("Target") jako linia
         width: 900,
         height: 500
     };
 
-    var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+    const chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
     chart.draw(data, options);
 }

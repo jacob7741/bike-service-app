@@ -7,7 +7,9 @@
     <meta name="panel" content="info for users" />
     <link rel="stylesheet" href="../static/css/dashboardStyle.css" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" th:inline="javascript" src="https://www.gstatic.com/charts/loader.js">
+
+    </script>
     <title>User panel</title>
 </head>
 
@@ -70,7 +72,7 @@
                         class="bx bx-message"></i>Message</button>
                 <button class="dropdown-btn" onclick="showContent('services_stat')"><i
                         class="bx bx-chart"></i>Statistic</button>
-                        <div class="dropdown-content">
+                <div class="dropdown-content">
                     <a class="drop-button" onclick="showContent('workshop_bills')">Workshop bills</a>
                     <a class="drop-button" onclick="showContent('repair_time')">Repair Time</a>
                     <a class="drop-button" onclick="showContent('general_summary')">General summary</a>
@@ -414,10 +416,8 @@
     </div>
 
     <div id="services_stat" class="content">
-        services_stat 
-        <div id="chart_div">
-            
-        </div>
+        services_stat
+        <div id="chart_div" data-chart-value="$[[{chartData}]]"></div>
     </div>
 
     <div id="workshop_bills" class="content">
