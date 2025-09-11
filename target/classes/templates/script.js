@@ -82,10 +82,14 @@ prevNextIcon.forEach(icon => {
 
 document.addEventListener("DOMContentLoaded", function () {
     const chartContainer = document.getElementById("chart_div");
-    const chartData = parseInt(chartContainer.dataset.chartValue, 10);
+    const chartData = fetch().th
 
     google.charts.load('current', { packages: ['corechart'] });
-    google.charts.setOnLoadCallback(() => drawChart(chartData));
+    google.charts.setOnLoadCallback(() => {
+        fetch('/count')
+            .then(res => res.json()) // poprawka
+            .then(count => drawChart(count));
+    });
 });
 
 function drawChart(chartData) {
