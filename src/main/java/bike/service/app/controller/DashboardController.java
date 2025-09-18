@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import bike.service.app.model.Order;
+import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.service.LoginService;
-import bike.service.app.service.OrderService;
-import bike.service.app.service.PostsService;
 
 @Controller
 public class DashboardController {
@@ -23,10 +22,7 @@ public class DashboardController {
     private LoginService loginService;
 
     @Autowired
-    private OrderService orderService;
-
-    @Autowired
-    private PostsService postsService;
+    private OrderRepository orderRepository;
 
     @GetMapping("/dashboard")
     public String dashboard(Model model) {
@@ -35,12 +31,12 @@ public class DashboardController {
 
         model.addAttribute("orderList", personalList);
 
-        return "dashboard";        
+        return "dashboard";
     }
 
     @GetMapping("/count")
     @ResponseBody
-    public int countServices(){
-        return 100;
+    public int countServices() {
+        return (int) orderRepository.count();
     }
 }

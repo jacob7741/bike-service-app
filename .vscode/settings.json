@@ -1,7 +1,7 @@
 {
-    "workbench.colorTheme": "Monokai Pro",
+    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
     "terminal.integrated.tabs.enabled": false,
-    "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+    "workbench.iconTheme": "vscode-icons",
     "editor.minimap.enabled": false,
     "java.compile.nullAnalysis.mode": "automatic",
     "editor.fontSize": 14,

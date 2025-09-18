@@ -9,6 +9,11 @@ headerDate.innerHTML = todayDate;
 var dropdown = document.getElementsByClassName("dropdown-btn");
 var i;
 
+
+$( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  
 for (i = 0; i < dropdown.length; i++) {
     dropdown[i].addEventListener("click", function () {
         this.classList.toggle("active");
@@ -87,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
     google.charts.load('current', { packages: ['corechart'] });
     google.charts.setOnLoadCallback(() => {
         fetch('/count')
-            .then(res => res.json()) // poprawka
+            .then(res => res.json())
             .then(count => drawChart(count));
     });
 });
@@ -96,15 +101,15 @@ function drawChart(chartData) {
     // Dwie serie: "All" (słupki) i "Target" (linia)
     const data = google.visualization.arrayToDataTable([
         ['Month', 'All', 'Target'],
-        ['2004/05', chartData, 50] // 50 to przykładowa wartość celu
+        ['2004/05', chartData, 50]
     ]);
 
     const options = {
         title: 'Monthly Service Done',
         vAxis: { title: 'Services' },
         hAxis: { title: 'Month' },
-        seriesType: 'bars',       // domyślnie słupki
-        series: { 1: { type: 'line' } }, // druga kolumna ("Target") jako linia
+        seriesType: 'bars',
+        series: { 1: { type: 'line' } },
         width: 900,
         height: 500
     };

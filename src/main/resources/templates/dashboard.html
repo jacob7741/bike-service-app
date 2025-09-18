@@ -7,9 +7,13 @@
     <meta name="panel" content="info for users" />
     <link rel="stylesheet" href="../static/css/dashboardStyle.css" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
     <script type="text/javascript" th:inline="javascript" src="https://www.gstatic.com/charts/loader.js">
 
     </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
     <title>User panel</title>
 </head>
 
@@ -377,19 +381,16 @@
                         <div class="right">
                             <label>
                                 Service type:
-                                <select type="text" name="first_name" required></select>
-                            </label>
-                            <label>
-                                Type of defects:
-                                <select type="text" name="first_name" required></select>
-                            </label>
-                            <label>
-                                Status:
-                                <select type="text" name="first_name" required></select>
+                                <select type="text" name="first_name" required>
+                                    <option>Small service</option>
+                                    <option>Full service</option>
+                                    <option>Other</option>
+                                </select>
                             </label>
                             <label>
                                 Mechanic:
-                                <select type="text" name="first_name" required></select>
+                                <select type="text" required></select>
+                                <option></option>
                             </label>
                         </div>
                         <div class="left">
@@ -399,7 +400,7 @@
                             </label>
                             <label>
                                 Date of receipt:
-                                <input type="text" name="last_name" required />
+                                <input id="datepicker" type="text" name="last_name" required />
                             </label>
                             <div class="centered-button">
                                 <button class="add_service_btn" type="submit" name="services">
