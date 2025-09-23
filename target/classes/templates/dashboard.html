@@ -389,8 +389,12 @@
                             </label>
                             <label>
                                 Mechanic:
-                                <select type="text" required></select>
-                                <option></option>
+                                <select type="text" required>
+                                    <option>***select a mechanic***</option>
+                                    <option>none</option>
+                                    <option th:each="mechanics : ${mechanicList}" th:text="${mechanics.userName}">
+                                    </option>
+                                </select>
                             </label>
                         </div>
                         <div class="left">

@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import bike.service.app.model.Order;
+import bike.service.app.model.Users;
 import bike.service.app.model.repository.OrderRepository;
+import bike.service.app.model.repository.UsersRepository;
 import bike.service.app.service.LoginService;
+import bike.service.app.service.userroles.MechanicService;
 
 @Controller
 public class DashboardController {
@@ -24,15 +27,20 @@ public class DashboardController {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private MechanicService mService;
+
     @GetMapping("/dashboard")
     public String dashboard(Model model) {
 
         List<Order> personalList = loginService.getPersonalList(userFullName);
-
+        List<Users> mechanicList = mService.getAllMechanics();
         model.addAttribute("orderList", personalList);
-
+        model.addAttribute("mechanicList", mechanicList);
         return "dashboard";
     }
+
+
 
     @GetMapping("/count")
     @ResponseBody

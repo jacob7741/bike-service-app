@@ -12,6 +12,7 @@ import bike.service.app.model.Order;
 import bike.service.app.model.Order.Status;
 import bike.service.app.model.Users;
 import bike.service.app.model.repository.OrderRepository;
+import bike.service.app.model.repository.UsersRepository;
 import bike.service.app.service.OrderService;
 import bike.service.app.service.UsersService;
 
@@ -24,6 +25,8 @@ public class MechanicService {
     private OrderService oService;
     @Autowired
     private UsersService userService;
+    @Autowired
+    private UsersRepository usersRepository;
 
     private LocalDate nowDate = LocalDate.now();
     public void newStatusById(int id, AtomicReference<String> name) {
@@ -69,5 +72,9 @@ public class MechanicService {
     public Order getOrderById(int id) {
         Optional<Order> order = orderRepository.findById(id);
         return order.get();
+    }
+
+    public List<Users> getAllMechanics() {
+        return usersRepository.findAll();
     }
 }

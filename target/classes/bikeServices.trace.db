@@ -28122,3 +28122,6 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: /Users/jacobsunn
 	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
 	... 54 more
+2025-09-23 10:17:17.056177+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]REQUESTORDER"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REFRESH"; SQL statement:
+REQUESTORDER [42001-232]
