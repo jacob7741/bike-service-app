@@ -21,7 +21,7 @@
     <div id="main">
         <div id="header-bar">
             <h4
-                style="color: rgba(0, 0, 0, 0.702); ,font-family: 'Courier New', Courier, monospace; font-weight: 500; margin-top: 5px; margin-left: 5px;">
+                style="color: rgba(0, 0, 0, 0.702); font-family: 'Courier New', Courier, monospace; font-weight: 500; margin-top: 5px; margin-left: 5px;">
                 Welcome: User name...
             </h4>
             <div id="header-menu">
@@ -354,12 +354,6 @@
                     <div id="service_details" class="section">
                         <h6>Service details:</h6>
                         <label>
-                            Save bikes:
-                            <select name="saveBike">
-                                <option>Example save bike</option>
-                            </select>
-                        </label>
-                        <label>
                             Bike brand:
                             <input type="text" name="brand" required />
                         </label>
@@ -395,7 +389,7 @@
                                     <option th:each="mechanics : ${mechanicList}" th:text="${mechanics.userName}">
                                     </option>
                                 </select>
-                            </label>
+                            </label> 
                         </div>
                         <div class="left">
                             <label>
@@ -403,7 +397,7 @@
                                 <textarea type="text" name="first_name" required> </textarea>
                             </label>
                             <label>
-                                Date of receipt:
+                                Date of delivery:
                                 <input id="datepicker" type="text" name="last_name" required />
                             </label>
                             <div class="centered-button">
