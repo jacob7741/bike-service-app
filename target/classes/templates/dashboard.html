@@ -343,7 +343,7 @@
                         </label>
                         <label>
                             Phone number:
-                            <input type="text" name="phoneNumber" required />
+                            <input type="tel" name="phoneNumber" required />
                         </label>
                         <label>
                             e-mail:
@@ -375,10 +375,10 @@
                         <div class="right">
                             <label>
                                 Service type:
-                                <select type="text" name="first_name" required>
-                                    <option>Small service</option>
-                                    <option>Full service</option>
-                                    <option>Other</option>
+                                <select name="serviceType">
+                                    <option value="smallService" required>Small service</option>
+                                    <option value="fullService" required>Full service</option>
+                                    <option value="otherService" required>Other</option>
                                 </select>
                             </label>
                             <label>
@@ -407,6 +407,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
             </form>
         </div>
     </div>

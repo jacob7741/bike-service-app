@@ -35,7 +35,7 @@ import bike.service.app.service.userroles.MechanicService;
 public class MechanicControllerTest {
 
     @InjectMocks
-    private MechanicController mController;
+    private DashboardController mController;
 
     @Autowired
     private MockMvc mockMvc;

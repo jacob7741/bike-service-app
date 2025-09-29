@@ -84,15 +84,7 @@ public class DashboardController {
             @ModelAttribute Services services,
             @ModelAttribute Order order,
             @ModelAttribute Bike bike,
-            @ModelAttribute Client client,
-            @RequestParam(required = false) String repairDetails,
-            @RequestParam(required = false) Integer repairPrice) {
-
-        if ("repair".equals(serviceType)) {
-            servicesService.createRepairService(services, repairDetails, repairPrice);
-        } else {
-            servicesService.createNewService(serviceType, services);
-        }
+            @ModelAttribute Client client) {
 
         servicesService.createNewService(serviceType, services);
         bikeService.addNewBike(bike);
@@ -118,7 +110,7 @@ public class DashboardController {
         return "redirect:/dashboard";
     }
 
-    @PostMapping("dashboard/take/{id}")
+    @PostMapping("ć/take/{id}")
     public String takeButton(@PathVariable("id") int id) {
         mechanicService.newStatusById(id, userFullName);
         return "redirect:/dashboard";
@@ -135,7 +127,7 @@ public class DashboardController {
     public String updateService(@RequestParam("service") String service,
             @RequestParam("orderId") int orderId) {
         mechanicService.editOrderById(service, orderId);
-        return "redirect:/mechanic";
+        return "redirect:/dashboard";
     }
 
     @PostMapping("/dashboard/post")
