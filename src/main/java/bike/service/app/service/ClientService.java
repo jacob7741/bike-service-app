@@ -33,12 +33,13 @@ public class ClientService {
         }
     }
 
-    public Client getClientByPhoneNumber(int phoneNumber) {
+    public Client getClientByPhoneNumber(String phoneNumber) {
         System.out.println("getClinetByPhoneNumber");
         List<Client> clientList = getAllClients();
+        String phoneNumberStr = String.valueOf(phoneNumber);
 
         for (Client client : clientList) {
-            if (client.getPhoneNumber() == phoneNumber) {
+            if (client.getPhoneNumber().equals(phoneNumberStr)) {
                 return client;
             }
         }

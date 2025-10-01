@@ -34,7 +34,7 @@ class ClientServiceTest {
         client.setClientId(543);
         client.setFirst_name("Elora");
         client.setLast_name("Kudla");
-        client.setPhoneNumber(708902423);
+        client.setPhoneNumber("708902423");
         client.setEmail("elora@kundla.com");
         return client;
     }
