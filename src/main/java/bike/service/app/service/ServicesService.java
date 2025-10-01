@@ -13,7 +13,7 @@ import bike.service.app.model.repository.ServicesRepository;
 
 @Service
 public class ServicesService {
-    
+
     @Autowired
     private ServicesRepository servicesRepository;
 
@@ -50,17 +50,18 @@ public class ServicesService {
             throw new RuntimeException("serviceNotDeleted");
         }
     }
-    
-    public Services createNewService(String serviceType, Services services ) {
+
+    public Services createNewService(String serviceType, Services services) {
         System.out.println("createUpdateService");
         if (services.getServiceId() == 0) {
             switch (serviceType) {
                 case "smallService":
-                    services.setSmallService(50);// lub inna logika
                     services.setDate(date.toString());
                     break;
-                case "fullService":
-                    services.setFullService(200); // lub inna logika
+                    case "fullService":
+                    services.setDate(date.toString());
+                    break;
+                    case "otherService":
                     services.setDate(date.toString());
                     break;
             }
@@ -68,15 +69,16 @@ public class ServicesService {
         }
         return services;
     }
-
-    public Services createRepairService(Services reprairType, String repairType, int price) {
-        System.out.println("createRepairService");
-        if (reprairType.getServiceId() == 0) {
-            reprairType.setRepairType(repairType);
-            reprairType.setRepair(price);
-            reprairType.setDate(date.toString());
-            servicesRepository.save(reprairType);
-        }
-        return reprairType;
-    }
+    // it's not neede cos I making "other" classes
+    // public Services createRepairService(Services reprairType, String repairType,
+    // int price) {
+    // System.out.println("createRepairService");
+    // if (reprairType.getServiceId() == 0) {
+    // reprairType.setRepairType(repairType);
+    // reprairType.setRepair(price);
+    // reprairType.setDate(date.toString());
+    // servicesRepository.save(reprairType);
+    // }
+    // return reprairType;
+    // }
 }

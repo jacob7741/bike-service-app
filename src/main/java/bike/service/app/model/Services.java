@@ -25,16 +25,22 @@ public class Services {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "serviceId")
     private int serviceId;
-    @Column(name = "smallservice")
-    private int smallService;
-    @Column(name = "fullservice")
-    private int fullService;
-    @Column(name = "repair")
-    private int repair;
-    @Column(name = "repairType")
-    private String repairType;
+    // @Column(name = "price")
+    // private int price;
+    @Column(name = "comment")
+    private String comment;
     @Column(name = "data")
     private String date;
+    @Column(name = "deliveryDate")
+    private String deliveryDate;
+    // @Column(name = "smallservice")
+    // private int smallService;
+    // @Column(name = "fullservice")
+    // private int fullService;
+    // @Column(name = "repair")
+    // private int repair;
+    // @Column(name = "repairType")
+    // private String repairType;
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "orderId")

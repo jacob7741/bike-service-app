@@ -146,16 +146,16 @@ public class OrderService {
 
         System.out.println("saveServiceToOrder");
 
-        if (services.getSmallService() == 50) {
-            order.setService("small service - id: " + services.getServiceId());
-            order.setData(services.getDate());
-        } else if (services.getFullService() == 200) {
-            order.setService("full service - id: " + services.getServiceId());
-            order.setData(services.getDate());
-        } else {
-            order.setService("reprair - id: " + services.getServiceId());
-            order.setData(services.getDate());
-        }
+        // if (services.getSmallService() == 50) {
+        //     order.setService("small service - id: " + services.getServiceId());
+        //     order.setData(services.getDate());
+        // } else if (services.getFullService() == 200) {
+        //     order.setService("full service - id: " + services.getServiceId());
+        //     order.setData(services.getDate());
+        // } else {
+        //     order.setService("reprair - id: " + services.getServiceId());
+        //     order.setData(services.getDate());
+        // }
 
         order.setStatus(Status.NEW);
         orderRepository.save(order);

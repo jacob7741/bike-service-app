@@ -79,7 +79,7 @@ public class DashboardController {
         return (int) orderRepository.count();
     }
 
-    @PostMapping(value = "/services/submit", params = "serviceType")
+    @PostMapping(value = "/services/submit", params = {"serviceType", "comment", "deliveryDate"})
     public String submitService(@RequestParam String serviceType,
             @ModelAttribute Services services,
             @ModelAttribute Order order,
