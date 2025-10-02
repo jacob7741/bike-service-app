@@ -88,7 +88,7 @@ public class DashboardController {
             @RequestParam String comment,
             @RequestParam String deliveryDate) {
 
-        servicesService.createNewService(serviceType, services, comment, deliveryDateg);
+        servicesService.createNewService(serviceType, services, comment, deliveryDate);
         bikeService.addNewBike(bike);
         clientService.addNewClient(client);
 
