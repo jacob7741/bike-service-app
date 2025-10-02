@@ -79,14 +79,16 @@ public class DashboardController {
         return (int) orderRepository.count();
     }
 
-    @PostMapping(value = "/services/submit", params = {"serviceType", "comment", "deliveryDate"})
+    @PostMapping(value = "/services/submit", params = "serviceType")
     public String submitService(@RequestParam String serviceType,
             @ModelAttribute Services services,
             @ModelAttribute Order order,
             @ModelAttribute Bike bike,
-            @ModelAttribute Client client) {
+            @ModelAttribute Client client,
+            @RequestParam String comment,
+            @RequestParam String deliveryDate) {
 
-        servicesService.createNewService(serviceType, services);
+        servicesService.createNewService(serviceType, services, comment, deliveryDateg);
         bikeService.addNewBike(bike);
         clientService.addNewClient(client);
 
@@ -110,7 +112,7 @@ public class DashboardController {
         return "redirect:/dashboard";
     }
 
-    @PostMapping("ć/take/{id}")
+    @PostMapping("/take/{id}")
     public String takeButton(@PathVariable("id") int id) {
         mechanicService.newStatusById(id, userFullName);
         return "redirect:/dashboard";

@@ -51,18 +51,24 @@ public class ServicesService {
         }
     }
 
-    public Services createNewService(String serviceType, Services services) {
+    public Services createNewService(String serviceType, Services services, String comment, String deliveryDate) {
         System.out.println("createUpdateService");
         if (services.getServiceId() == 0) {
             switch (serviceType) {
                 case "smallService":
                     services.setDate(date.toString());
+                    services.setDeliveryDate(deliveryDate);
+                    services.setComment(comment);
                     break;
                     case "fullService":
                     services.setDate(date.toString());
+                    services.setDeliveryDate(deliveryDate);
+                    services.setComment(comment);
                     break;
                     case "otherService":
                     services.setDate(date.toString());
+                    services.setDeliveryDate(deliveryDate);
+                    services.setComment(comment);
                     break;
             }
             servicesRepository.save(services);

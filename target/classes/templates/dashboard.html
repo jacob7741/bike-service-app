@@ -364,7 +364,7 @@
                         <label>
                             Serial number:
                             <input type="text" name="serialNumber" required />
-                        </label>    
+                        </label>
                     </div>
                 </div>
 
@@ -375,13 +375,21 @@
                         <div class="right">
                             <label>
                                 Service type:
-                                <select name="serviceType">
-                                    <option value="smallService" required>Small service</option>
-                                    <option value="fullService" required>Full service</option>
-                                    <option value="otherService" required>Other</option>
-                                </select>
+                                <div name="serviceType">
+                                    <input type="radio" name="serviceType" value="smallService" required>Small
+                                    service</input>
+                                    <input type="radio" name="serviceType" value="fullService" required>Full
+                                    service</input>
+                                    <input type="radio" name="serviceType" value="otherService" required>Other:</input>
+                                </div>
+                                <div name="priceBox">
+                                    Price
+                                    <input type="number"></input>
+                                </div>
                             </label>
-                            <label>
+
+                            <!-- optional if needed to choose mechanics -->
+                            <!-- <label>
                                 Mechanic:
                                 <select type="text" required>
                                     <option>***select a mechanic***</option>
@@ -389,7 +397,7 @@
                                     <option th:each="mechanics : ${mechanicList}" th:text="${mechanics.userName}">
                                     </option>
                                 </select>
-                            </label> 
+                            </label>  -->
                         </div>
                         <div class="left">
                             <label>
@@ -398,10 +406,10 @@
                             </label>
                             <label>
                                 Date of delivery:
-                                <input id="datepicker" type="text" name="delicveryDate" required />
+                                <input id="datepicker" type="text" name="deliveryDate" required />
                             </label>
                             <div class="centered-button">
-                                <button class="add_service_btn" type="submit" name="services">
+                                <button class="add_service_btn" type="submit">
                                     Add service
                                 </button>
                             </div>
