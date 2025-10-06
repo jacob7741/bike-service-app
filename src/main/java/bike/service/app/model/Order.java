@@ -25,7 +25,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "RequestOrder")
+@Table(name = "OrderService")
 public class Order {
 
     public enum Status {
@@ -41,6 +41,8 @@ public class Order {
     private Users mechanic;
     @Column(name = "service")
     private String service;
+    @Column(name = "comment")
+    private String comment;
     @Column(name = "bikeModel")
     private String bikeModel;
     @Column(name = "client")
@@ -51,10 +53,12 @@ public class Order {
     private String doneByUser;
     @Column(name = "data")
     private String data;
+    @Column(name = "deliveryDate")
+    private String deliveryDate;
     @Enumerated(EnumType.STRING)
     @Column(name="status")
     private Status status;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-    private List<Services> services;
+    // @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    // private List<Services> services;
 }

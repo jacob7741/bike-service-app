@@ -14,12 +14,12 @@ import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
 import bike.service.app.model.Order.Status;
-import bike.service.app.model.Services;
+// import bike.service.app.model.Services;
 import bike.service.app.model.Users;
 import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
-import bike.service.app.model.repository.ServicesRepository;
+// import bike.service.app.model.repository.ServicesRepository;
 import bike.service.app.model.repository.UsersRepository;
 
 @Service
@@ -27,8 +27,8 @@ public class OrderService {
 
     @Autowired
     private OrderRepository orderRepository;
-    @Autowired
-    private ServicesRepository servicesRepository;
+    // @Autowired
+    // private ServicesRepository servicesRepository;
     @Autowired
     private BikeRepository bikeRepository;
     @Autowired
@@ -142,7 +142,7 @@ public class OrderService {
             return order;
         }
 
-    public Order saveServiceToOrder(Order order, Services services) {
+    public Order saveServiceToOrder(Order order) {
 
         System.out.println("saveServiceToOrder");
 
@@ -159,8 +159,8 @@ public class OrderService {
 
         order.setStatus(Status.NEW);
         orderRepository.save(order);
-        services.setOrder(order);
-        servicesRepository.save(services);
+        // services.setOrder(order);
+        // servicesRepository.save(services);
         return order;
     }
 

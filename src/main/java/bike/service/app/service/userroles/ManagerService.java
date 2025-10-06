@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
-import bike.service.app.model.Services;
+// import bike.service.app.model.Services;
 import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
-import bike.service.app.model.repository.ServicesRepository;
+// import bike.service.app.model.repository.ServicesRepository;
 
 @Service
 public class ManagerService {
@@ -23,15 +23,15 @@ public class ManagerService {
     private ClientRepository clientRepository;
     @Autowired
     private BikeRepository bikeRepository;
-    @Autowired
-    private ServicesRepository servicesRepository;
+    // @Autowired
+    // private ServicesRepository servicesRepository;
 
     public void deleteOrderById(int id) {
         
         Order order = orderRepository.getReferenceById(id);
         List<Client> clients = clientRepository.findAll();
         List<Bike> bikes = bikeRepository.findAll();
-        List<Services> services = servicesRepository.findAll();
+        // List<Services> services = servicesRepository.findAll();
 
         if (order.getStatus().equals(Order.Status.DONE)) {
             for (Client client : clients) {
@@ -44,11 +44,11 @@ public class ManagerService {
                 bikeRepository.deleteById(bike.getBikeId());
             }
 
-            for (Services service : services) {
-                service.getOrder();
-                clientRepository.deleteById(service.getServiceId());
+            // for (Services service : services) {
+            //     service.getOrder();
+            //     clientRepository.deleteById(service.getServiceId());
 
-            }
+            // }
 
             if (!(order.getOrderId() == 0)) {
                 orderRepository.deleteById(id);

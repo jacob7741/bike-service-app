@@ -1,27 +1,27 @@
-package bike.service.app.controller;
+// package bike.service.app.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+// import org.springframework.stereotype.Controller;
+// import org.springframework.ui.Model;
+// import org.springframework.web.bind.annotation.GetMapping;
 
-import bike.service.app.model.Services;
-import bike.service.app.model.repository.ServicesRepository;
+// // import bike.service.app.model.Services;
+// import bike.service.app.model.repository.ServicesRepository;
 
-@Controller
-public class ManagerController {
+// @Controller
+// public class ManagerController {
 
-    private Services services;
+//     // private Services services;
 
-    private ServicesRepository servicesRepository;
-    @GetMapping("/manager")
-    public String managerSite(Model model) {
+//     private ServicesRepository servicesRepository;
+//     @GetMapping("/manager")
+//     public String managerSite(Model model) {
 
-        model.addAttribute("chartData", getNumberOfServices());
+//         model.addAttribute("chartData", getNumberOfServices());
 
-        return "manager";
-    }
+//         return "manager";
+//     }
 
-    private int getNumberOfServices() {
-        return (int) servicesRepository.count();
-    }
-}
+//     private int getNumberOfServices() {
+//         return (int) servicesRepository.count();
+//     }
+// }

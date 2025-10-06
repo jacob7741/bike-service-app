@@ -17,7 +17,7 @@ import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
 import bike.service.app.model.Posts;
-import bike.service.app.model.Services;
+// import bike.service.app.model.Services;
 import bike.service.app.model.Users;
 import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.service.BikeService;
@@ -25,7 +25,7 @@ import bike.service.app.service.ClientService;
 import bike.service.app.service.LoginService;
 import bike.service.app.service.OrderService;
 import bike.service.app.service.PostsService;
-import bike.service.app.service.ServicesService;
+// import bike.service.app.service.ServicesService;
 import bike.service.app.service.userroles.MechanicService;
 
 @Controller
@@ -43,8 +43,8 @@ public class DashboardController {
     private PostsService postsService;
     @Autowired
     private MechanicService mechanicService;
-    @Autowired
-    private ServicesService servicesService;
+    // @Autowired
+    // private ServicesService servicesService;
     @Autowired
     private BikeService bikeService;
     @Autowired
@@ -81,21 +81,21 @@ public class DashboardController {
 
     @PostMapping(value = "/services/submit", params = "serviceType")
     public String submitService(@RequestParam String serviceType,
-            @ModelAttribute Services services,
+            // @ModelAttribute Services services,
             @ModelAttribute Order order,
             @ModelAttribute Bike bike,
             @ModelAttribute Client client,
             @RequestParam String comment,
             @RequestParam String deliveryDate) {
 
-        servicesService.createNewService(serviceType, services, comment, deliveryDate);
+        // servicesService.createNewService(serviceType, services, comment, deliveryDate);
         bikeService.addNewBike(bike);
         clientService.addNewClient(client);
 
         orderService.saveClientToOrder(order, client);
 
         orderService.saveInfoAddByUser(order, userFullName);
-        orderService.saveServiceToOrder(order, services);
+        // orderService.saveServiceToOrder(order, services);
         orderService.saveBikeToOrder(order, bike);
 
         return "redirect:/dashboard";
