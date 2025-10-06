@@ -20,12 +20,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
-import bike.service.app.model.Services;
 import bike.service.app.model.Users;
 import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
-import bike.service.app.model.repository.ServicesRepository;
 import bike.service.app.model.repository.UsersRepository;
 
 @ExtendWith(MockitoExtension.class)
@@ -34,8 +32,6 @@ class OrderServiceTest {
     @Mock
     ClientRepository clientRepository;
     @Mock
-    private ServicesRepository servicesRepository;
-    @Mock
     private UsersRepository usersRepository;
     @Mock
     private OrderRepository orderRepository;
@@ -43,8 +39,6 @@ class OrderServiceTest {
     private BikeRepository bikeRepository;
     @InjectMocks
     private BikeService bikeService;
-    @InjectMocks
-    private ServicesService servicesService;
     @InjectMocks
     private OrderService orderService;
     @InjectMocks
@@ -56,8 +50,6 @@ class OrderServiceTest {
 
     private Client client;
 
-    private Services services;
-
     private Bike bike;
 
     private Users user;
@@ -65,7 +57,6 @@ class OrderServiceTest {
     // Arrange for all tests
     @BeforeEach
     void setup() {
-        services = new Services();
         
         user = new Users(); 
         user.setUserId(43);

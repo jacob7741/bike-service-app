@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
-import bike.service.app.model.Order.Status;
 // import bike.service.app.model.Services;
 import bike.service.app.model.Users;
 import bike.service.app.model.repository.BikeRepository;
@@ -39,6 +38,8 @@ public class OrderService {
     @Autowired
     private UsersService userService;
 
+    private LocalDate date = LocalDate.now();
+
     public List<Order> getAllOrders() {
         System.out.println("get all orders");
         List<Order> ordersList = orderRepository.findAll();
@@ -49,11 +50,25 @@ public class OrderService {
         }
     }
 
-    
+    public Order createNewOrder(String serviceType, Order service, String comment, String deliveryDate) {
+
+        if (service.getOrderId() == 0) {
+            service.setDate(date.toString());
+            service.setComment(comment);
+            service.setDeliveryDate(deliveryDate);
+            switch (serviceType) {
+                case "smallService":
+                case "fullService":
+                case "otherService":
+                    break;
+            }
+        }
+        orderRepository.save(service);
+        return service;
+    }
 
     @SuppressWarnings("static-access")
     public List<Order> getAllActiveOrders() {
-
         // List<Order> ordersList = orderRepository.findAll();
         // List<Order> activeOrders = new ArrayList<>();
         // for (Order order : ordersList) {
@@ -103,18 +118,17 @@ public class OrderService {
         if (fullName.get() != null) {
             for (Users users : test) {
                 String userName = users.getFirstName() + " " + users.getLastName();
-               if (userName.equals(fullName.get())) {
-                order.setAddByUser(users.getLastName());
-                order.setData(nowDate.toString());
-                orderRepository.save(order);
-                break;
-               }
+                if (userName.equals(fullName.get())) {
+                    order.setAddByUser(users.getLastName());
+                    order.setData(nowDate.toString());
+                    orderRepository.save(order);
+                    break;
+                }
             }
         }
         return order;
     }
 
-    
     public Order saveMechanicToOrder(Order order, int id) {
         System.out.println("saveMechanicToOrder");
 
@@ -134,35 +148,35 @@ public class OrderService {
 
         List<Users> lmechanics = userService.getAllUsers();
 
-        for(Users user : lmechanics) {
-                if ((user.getFirstName()+ " " + user.getLastName()).equals(fullName.get())) {
-                    order.setMechanic(user);                    
-                }
+        for (Users user : lmechanics) {
+            if ((user.getFirstName() + " " + user.getLastName()).equals(fullName.get())) {
+                order.setMechanic(user);
             }
-            return order;
         }
-
-    public Order saveServiceToOrder(Order order) {
-
-        System.out.println("saveServiceToOrder");
-
-        // if (services.getSmallService() == 50) {
-        //     order.setService("small service - id: " + services.getServiceId());
-        //     order.setData(services.getDate());
-        // } else if (services.getFullService() == 200) {
-        //     order.setService("full service - id: " + services.getServiceId());
-        //     order.setData(services.getDate());
-        // } else {
-        //     order.setService("reprair - id: " + services.getServiceId());
-        //     order.setData(services.getDate());
-        // }
-
-        order.setStatus(Status.NEW);
-        orderRepository.save(order);
-        // services.setOrder(order);
-        // servicesRepository.save(services);
         return order;
     }
+
+    // public Order saveServiceToOrder(Order order) {
+
+    // System.out.println("saveServiceToOrder");
+
+    // // if (services.getSmallService() == 50) {
+    // // order.setService("small service - id: " + services.getServiceId());
+    // // order.setData(services.getDate());
+    // // } else if (services.getFullService() == 200) {
+    // // order.setService("full service - id: " + services.getServiceId());
+    // // order.setData(services.getDate());
+    // // } else {
+    // // order.setService("reprair - id: " + services.getServiceId());
+    // // order.setData(services.getDate());
+    // // }
+
+    // order.setStatus(Status.NEW);
+    // orderRepository.save(order);
+    // // services.setOrder(order);
+    // // servicesRepository.save(services);
+    // return order;
+    // }
 
     public Order saveClientToOrder(Order order, Client client) {
         System.out.println("saveClientToOrder");

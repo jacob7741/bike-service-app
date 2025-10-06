@@ -51,8 +51,8 @@ public class Order {
     private String addByUser;
     @Column(name = "donebyuser ")
     private String doneByUser;
-    @Column(name = "data")
-    private String data;
+    @Column(name = "date")
+    private String date;
     @Column(name = "deliveryDate")
     private String deliveryDate;
     @Enumerated(EnumType.STRING)

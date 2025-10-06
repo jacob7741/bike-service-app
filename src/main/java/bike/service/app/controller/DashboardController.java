@@ -45,7 +45,7 @@ public class DashboardController {
     private MechanicService mechanicService;
     // @Autowired
     // private ServicesService servicesService;
-    @Autowired
+    @Autowired 
     private BikeService bikeService;
     @Autowired
     private ClientService clientService;
