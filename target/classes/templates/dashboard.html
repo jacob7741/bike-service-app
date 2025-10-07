@@ -207,7 +207,7 @@
 
         <div id="done_service" class="content">
             <p style="justify-content: space-between;">Number of orders: <span
-                    th:text="${#lists.size(orderList)}"></span>
+                    th:text="${#lists.size(doneList)}"></span>
             </p>
             <table>
                 <thead>
@@ -221,7 +221,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table_order" th:each="order : ${orderList}">
+                    <tr class="table_order" th:each="order : ${doneList}">
                         <td th:text="${order.orderId}">34534789</td>
                         <td class="infoDt">
                             <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">

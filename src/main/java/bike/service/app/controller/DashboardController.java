@@ -55,12 +55,12 @@ public class DashboardController {
         List<Order> personalList = loginService.getPersonalList(userFullName);
         List<Users> mechanicList = mService.getAllMechanics();
         List<Order> newServiceList = orderService.getAllNewOrders();
-        List<Order> doneList = orderService.getAllDoneOrders();
+        // List<Order> doneList = orderService.getAllDoneOrders();
         List<Posts> postsList = postsService.getAllPosts();
 
         model.addAttribute("username", userFullName.get());
         model.addAttribute("orderList", personalList);
-        model.addAttribute("doneList", doneList);
+        model.addAttribute("doneList", orderService.getAllDoneOrders());
         model.addAttribute("newServiceList", newServiceList);
         model.addAttribute("postsList", postsList);
         model.addAttribute("post", new Posts());

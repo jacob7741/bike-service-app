@@ -53,13 +53,12 @@ class OrderServiceTest {
     private Bike bike;
 
     private Users user;
-    private Order orderTest;
 
     // Arrange for all tests
     @BeforeEach
     void setup() {
-        
-        user = new Users(); 
+
+        user = new Users();
         user.setUserId(43);
 
         order = new Order();
@@ -86,14 +85,14 @@ class OrderServiceTest {
         assertNotNull(result);
         assertEquals("comment", result.getComment());
         assertEquals("12.09.2026", result.getDeliveryDate());
-        assertEquals("NEW" ,result.getStatus().toString());
+        assertEquals("NEW", result.getStatus().toString());
     }
 
     @Test
     void saveMechanicToOrder() {
         Users testUser = new Users();
         testUser.setUserId(34);
-    
+
         Order order = new Order();
         order.setOrderId(12);
         order.setMechanic(testUser);
@@ -163,5 +162,18 @@ class OrderServiceTest {
         List<Order> newOrders = orderService.getAllNewOrders();
 
         assertThat(newOrders).containsExactly(order1, order2);
+    }
+
+    @Test
+    void testGetAllDoneOrders() {
+        Order order1 = new Order();
+        order1.setStatus(Order.Status.NEW);
+
+        List<Order> orders = Arrays.asList(order1);
+        when(orderRepository.findAll()).thenReturn(orders);
+
+        List<Order> doneOrders = orderService.getAllDoneOrders();
+
+        assertThat(doneOrders).containsExactly(order1);
     }
 }
