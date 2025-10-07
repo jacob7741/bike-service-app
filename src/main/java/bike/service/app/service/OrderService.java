@@ -13,13 +13,11 @@ import org.springframework.stereotype.Service;
 import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
-// import bike.service.app.model.Services;
 import bike.service.app.model.Users;
 import bike.service.app.model.Order.Status;
 import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
-// import bike.service.app.model.repository.ServicesRepository;
 import bike.service.app.model.repository.UsersRepository;
 import jakarta.persistence.EnumType;
 
@@ -28,8 +26,6 @@ public class OrderService {
 
     @Autowired
     private OrderRepository orderRepository;
-    // @Autowired
-    // private ServicesRepository servicesRepository;
     @Autowired
     private BikeRepository bikeRepository;
     @Autowired
