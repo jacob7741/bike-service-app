@@ -1,27 +1,24 @@
 package bike.service.app.service.userroles;
 
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import bike.service.app.model.Order;
 import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
-import bike.service.app.model.repository.ServicesRepository;
-import bike.service.app.service.userroles.ManagerService;
 
 @ExtendWith(MockitoExtension.class)
 public class ManagerServiceTest {
 
     @Mock
     private OrderRepository orderRepository;
-    @Mock
-    private ServicesRepository servicesRepository;
     @Mock
     private ClientRepository clientRepository;
     @Mock

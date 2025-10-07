@@ -35,7 +35,7 @@ public class MechanicService {
             Order newOrder = optional.get();
             if (newOrder.getStatus().equals(Status.NEW)) {
                 newOrder.setStatus(Order.Status.ACTIVE);
-                newOrder.setData(nowDate.toString());
+                newOrder.setDate(nowDate.toString());
                 oService.saveMechanicToOrder(newOrder, name);
             }
             orderRepository.save(newOrder);
@@ -47,7 +47,7 @@ public class MechanicService {
         if (optional.isPresent()) {
             Order newOrder = optional.get();
             newOrder.setStatus(Order.Status.DONE);
-            newOrder.setData(nowDate.toString());
+            newOrder.setDate(nowDate.toString());
             List<Users> lmechanics = userService.getAllUsers();
 
             for (Users user : lmechanics) {

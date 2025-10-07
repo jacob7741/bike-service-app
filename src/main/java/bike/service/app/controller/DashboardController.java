@@ -81,22 +81,20 @@ public class DashboardController {
 
     @PostMapping(value = "/services/submit", params = "serviceType")
     public String submitService(@RequestParam String serviceType,
-            // @ModelAttribute Services services,
-            @ModelAttribute Order order,
+            @ModelAttribute Order service,
             @ModelAttribute Bike bike,
             @ModelAttribute Client client,
             @RequestParam String comment,
             @RequestParam String deliveryDate) {
 
-        // servicesService.createNewService(serviceType, services, comment, deliveryDate);
+        orderService.createNewOrder(serviceType, service, comment, deliveryDate);
         bikeService.addNewBike(bike);
         clientService.addNewClient(client);
 
-        orderService.saveClientToOrder(order, client);
+        orderService.saveClientToOrder(service, client);
 
-        orderService.saveInfoAddByUser(order, userFullName);
-        // orderService.saveServiceToOrder(order, services);
-        orderService.saveBikeToOrder(order, bike);
+        orderService.saveInfoAddByUser(service, userFullName);
+        orderService.saveBikeToOrder(service, bike);
 
         return "redirect:/dashboard";
     }

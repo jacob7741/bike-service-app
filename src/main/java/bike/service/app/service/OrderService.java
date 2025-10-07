@@ -15,11 +15,13 @@ import bike.service.app.model.Client;
 import bike.service.app.model.Order;
 // import bike.service.app.model.Services;
 import bike.service.app.model.Users;
+import bike.service.app.model.Order.Status;
 import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
 // import bike.service.app.model.repository.ServicesRepository;
 import bike.service.app.model.repository.UsersRepository;
+import jakarta.persistence.EnumType;
 
 @Service
 public class OrderService {
@@ -56,6 +58,7 @@ public class OrderService {
             service.setDate(date.toString());
             service.setComment(comment);
             service.setDeliveryDate(deliveryDate);
+            service.setStatus(Status.NEW);
             switch (serviceType) {
                 case "smallService":
                 case "fullService":
@@ -120,7 +123,7 @@ public class OrderService {
                 String userName = users.getFirstName() + " " + users.getLastName();
                 if (userName.equals(fullName.get())) {
                     order.setAddByUser(users.getLastName());
-                    order.setData(nowDate.toString());
+                    order.setDate(nowDate.toString());
                     orderRepository.save(order);
                     break;
                 }

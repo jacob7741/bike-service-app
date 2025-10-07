@@ -53,6 +53,7 @@ class OrderServiceTest {
     private Bike bike;
 
     private Users user;
+    private Order orderTest;
 
     // Arrange for all tests
     @BeforeEach
@@ -74,6 +75,21 @@ class OrderServiceTest {
     }
 
     @Test
+    void createNewOrder() {
+
+        order.setOrderId(0);
+
+        when(orderRepository.save(any(Order.class))).thenReturn(order);
+
+        Order result = orderService.createNewOrder("smallService", order, "comment", "12.09.2026");
+
+        assertNotNull(result);
+        assertEquals("comment", result.getComment());
+        assertEquals("12.09.2026", result.getDeliveryDate());
+        assertEquals("NEW" ,result.getStatus().toString());
+    }
+
+    @Test
     void saveMechanicToOrder() {
         Users testUser = new Users();
         testUser.setUserId(34);
@@ -87,24 +103,6 @@ class OrderServiceTest {
     }
 
     @Test
-    void saveSmallServiceToOrder() {
-
-        services.setSmallService(50);
-        services.setServiceId(12);
-
-        when(servicesRepository.save(any(Services.class))).thenReturn(services);
-        when(orderRepository.save(any(Order.class))).thenReturn(order);
-
-        // Act
-        Order savedOrder = orderService.saveServiceToOrder(order, services);
-
-        // Assert
-        assertNotNull(savedOrder);
-        assertEquals("small service - id: " + 12, savedOrder.getService());
-        assertEquals(12, savedOrder.getOrderId());
-    }
-
-    @Test
     void saveClientToOrderException() {
 
         client.setClientId(0);
@@ -114,42 +112,6 @@ class OrderServiceTest {
         });
 
         assertEquals("no client found", exception.getMessage());
-    }
-
-    @Test
-    void saveFullServiceToOrder() {
-
-        services.setFullService(200);
-        services.setServiceId(12);
-
-        when(servicesRepository.save(any(Services.class))).thenReturn(services);
-        when(orderRepository.save(any(Order.class))).thenReturn(order);
-
-        // Act
-        Order savedOrder = orderService.saveServiceToOrder(order, services);
-
-        // Assert
-        assertNotNull(savedOrder);
-        assertEquals("full service - id: " + 12, savedOrder.getService());
-        assertEquals(12, savedOrder.getOrderId());
-    }
-
-    @Test
-    void saveReprairServiceToOrder() {
-
-        services.setRepair(73);
-        services.setServiceId(12);
-
-        when(servicesRepository.save(any(Services.class))).thenReturn(services);
-        when(orderRepository.save(any(Order.class))).thenReturn(order);
-
-        // Act
-        Order savedOrder = orderService.saveServiceToOrder(order, services);
-
-        // Assert
-        assertNotNull(savedOrder);
-        assertEquals("reprair - id: " + 12, savedOrder.getService());
-        assertEquals(12, savedOrder.getOrderId());
     }
 
     @Test

@@ -147,7 +147,7 @@ public class UsersService implements UserDetailsService {
             Order newOrder = optional.get();
             if (newOrder.getStatus().equals(Status.NEW)) {
                 newOrder.setStatus(Order.Status.ACTIVE);
-                newOrder.setData(nowDate.toString());
+                newOrder.setDate(nowDate.toString());
                 orderService.saveMechanicToOrder(newOrder, name);
             }
             oRepository.save(newOrder);
@@ -159,7 +159,7 @@ public class UsersService implements UserDetailsService {
         if (optional.isPresent()) {
             Order newOrder = optional.get();
             newOrder.setStatus(Order.Status.DONE);
-            newOrder.setData(nowDate.toString());
+            newOrder.setDate(nowDate.toString());
             List<Users> lmechanics = usersService.getAllUsers();
 
             for (Users user : lmechanics) {
