@@ -17,7 +17,6 @@ import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
 import bike.service.app.model.Posts;
-// import bike.service.app.model.Services;
 import bike.service.app.model.Users;
 import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.service.BikeService;
@@ -25,7 +24,6 @@ import bike.service.app.service.ClientService;
 import bike.service.app.service.LoginService;
 import bike.service.app.service.OrderService;
 import bike.service.app.service.PostsService;
-// import bike.service.app.service.ServicesService;
 import bike.service.app.service.userroles.MechanicService;
 
 @Controller
@@ -43,8 +41,6 @@ public class DashboardController {
     private PostsService postsService;
     @Autowired
     private MechanicService mechanicService;
-    // @Autowired
-    // private ServicesService servicesService;
     @Autowired 
     private BikeService bikeService;
     @Autowired

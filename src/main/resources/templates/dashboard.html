@@ -127,20 +127,18 @@
                     <td th:text="${order.client}">
                         <div class="dropdown-container">
                             <div class="dropdown-client">
-                                <p>Client NameSurname</p>
-                                <button>+</button>
+                                <p>Client Name</p>
+                                <button th:text="${client.first_name}">+</button>
                             </div>
                             <div class="dropdown-bike">
                                 <p>Reservation Data</p>
                                 <p>Bike type <button>+</button></p>
                             </div>
                         </div>
-                    <td class="date_panel_table" th:text="${order.date}">
-                        <p>Added<date>12.04.2024</date>
+                    <td class="date_panel_table">
+                        <p>Added<date  th:text="${order.date}"></date>
                         </p>
-                        <p>Modification<date>12.04.2024</date>
-                        </p>
-                        <p>Receipt<date>12.04.2024</date>
+                        <p>Receipt<date  th:text="${order.deliveryDate}"></date>
                         </p>
                     </td>
                     <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
