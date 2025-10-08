@@ -117,9 +117,9 @@
                 <tr class="table_order" th:each="order : ${orderList}">
                     <td th:text="${order.orderId}">34534789</td>
                     <td class="infoDt">
-                        <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
-                            <p>Imie Mechanika</p>
-                            <p>Status Serwisu
+                        <form method="get" th:action="@{/dashboard/edit/{id}(id=${order.orderId})}">
+                            <p ></p>
+                            <p th:text="${order.status}">
                                 <button type="submit">edit</button>
                             </p>
                         </form>
@@ -127,8 +127,8 @@
                     <td th:text="${order.client}">
                         <div class="dropdown-container">
                             <div class="dropdown-client">
-                                <p>Client Name</p>
-                                <button th:text="${client.first_name}">+</button>
+                                <p th:text="${client.first_name}" >Client Name</p>
+                                <button>+</button>
                             </div>
                             <div class="dropdown-bike">
                                 <p>Reservation Data</p>
@@ -164,7 +164,7 @@
                     <tr>
                         <!-- <th class="number">No.</th> -->
                         <th class="orderId">ID</th>
-                        <th class="add_done_by">Add by</th>
+                        <th class="add_by">Add by</th>
                         <th class="clientDt">Client Data</th>
                         <th class="date">Date</th>
                         <th class="actions">Actions</th>
@@ -174,15 +174,14 @@
                     <tr class="table_order" th:each="order : ${orderList}">
                         <td th:text="${order.orderId}">34534789</td>
                         <td class="infoDt">
-                            <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
-                                <p>Imie Mechanika</p>
+                            <form method="get" th:action="@{/dashboard/edit/{id}(id=${order.orderId})}">
+                                <p th:text="${order.addByUser}"></p>
                             </form>
                         </td>
-                        <td th:text="${order.client}">
+                        <td th:each="client : ${clientList}">
                             <div class="dropdown-container">
                                 <div class="dropdown-client">
-                                    <p>Client NameSurname</p>
-                                    <button>+</button>
+                                    <p th:text="${client.first_name}"><button>+</button> </p>
                                 </div>
                                 <div class="dropdown-bike">
                                     <p>Reservation Data</p>
@@ -195,7 +194,7 @@
                             <p>Receipt<date>12.04.2024</date>
                             </p>
                         </td>
-                        <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                        <form method="post" th:action="@{/take/{id}(id=${order.orderId})}">
                             <td class="actions">
                                 <button class="btnA" type="submit">Take</button>
                             </td>

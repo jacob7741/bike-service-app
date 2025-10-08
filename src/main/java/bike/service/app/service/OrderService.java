@@ -19,7 +19,6 @@ import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.UsersRepository;
-import jakarta.persistence.EnumType;
 
 @Service
 public class OrderService {

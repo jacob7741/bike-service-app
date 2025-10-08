@@ -52,20 +52,13 @@ public class DashboardController {
     @GetMapping("/dashboard")
     public String dashboard(Model model) {
 
-        List<Order> personalList = loginService.getPersonalList(userFullName);
-        List<Users> mechanicList = mService.getAllMechanics();
-        List<Order> newServiceList = orderService.getAllNewOrders();
-        // List<Order> doneList = orderService.getAllDoneOrders();
-        List<Posts> postsList = postsService.getAllPosts();
-
+        model.addAttribute("clientList", clientService.getAllClients());
         model.addAttribute("username", userFullName.get());
-        model.addAttribute("orderList", personalList);
+        model.addAttribute("orderList", loginService.getPersonalList(userFullName));
         model.addAttribute("doneList", orderService.getAllDoneOrders());
-        model.addAttribute("newServiceList", newServiceList);
-        model.addAttribute("postsList", postsList);
+        model.addAttribute("newServiceList", orderService.getAllActiveOrders());
+        model.addAttribute("postsList", postsService.getAllPosts());
         model.addAttribute("post", new Posts());
-        model.addAttribute("orderList", personalList);
-        model.addAttribute("mechanicList", mechanicList);
         return "dashboard";
     }
 
