@@ -52,8 +52,7 @@ public class DashboardController {
 
         model.addAttribute("clientList", clientService.getAllClients());
         model.addAttribute("username", userFullName.get());
-        model.addAttribute("orderPersonalList", loginService.getPersonalList(userFullName));
-        model.addAttribute("orderList", orderService.getAllOrders());
+        model.addAttribute("orderList", loginService.getPersonalList(userFullName));
         model.addAttribute("doneList", orderService.getAllDoneOrders());
         model.addAttribute("newServiceList", orderService.getAllActiveOrders());
         model.addAttribute("postsList", postsService.getAllPosts());

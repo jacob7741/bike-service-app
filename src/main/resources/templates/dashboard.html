@@ -118,7 +118,7 @@
                     <td th:text="${order.orderId}">34534789</td>
                     <td class="infoDt">
                         <form method="get" th:action="@{/dashboard/edit/{id}(id=${order.orderId})}">
-                            <p th:text="${order.mechanic != null ? order.mechanic.lastName : 'no mechanic'}"></p>
+                            <p th:text="${order.mechanic != null ? order.mechanic.lastName + ' ' + order.mechanic.firstName : 'no mechanic'}"></p>
                             <p th:text="${order.status}">
                                 <button type="submit">edit</button>
                             </p>
