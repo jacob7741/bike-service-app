@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,10 +49,12 @@ public class DashboardController {
     AtomicReference<String> userFullName = new AtomicReference<>(new String());
 
     @GetMapping("/dashboard")
-    public String dashboard(Model model) {
+    public String dashboard(Model model, Authentication name) {
+
+        String uName = name.getName();
 
         model.addAttribute("clientList", clientService.getAllClients());
-        model.addAttribute("username", userFullName.get());
+        model.addAttribute("username", uName);
         model.addAttribute("orderList", loginService.getPersonalList(userFullName));
         model.addAttribute("doneList", orderService.getAllDoneOrders());
         model.addAttribute("newServiceList", orderService.getAllActiveOrders());

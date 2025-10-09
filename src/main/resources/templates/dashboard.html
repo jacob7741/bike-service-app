@@ -22,7 +22,9 @@
         <div id="header-bar">
             <h4
                 style="color: rgba(0, 0, 0, 0.702); font-family: 'Courier New', Courier, monospace; font-weight: 500; margin-top: 5px; margin-left: 5px;">
-                Welcome: <span th:text="${username}"></span>
+                Welcome: <span
+                    style="color: rgba(0, 0, 0, 0.702); font-family: 'Courier New', Courier, monospace; font-weight: 500; margin-top: 5px; margin-left: 5px;"
+                    th:text=${username}></span>
             </h4>
             <div id="header-menu">
                 <data id="data" style="font-family: 'Courier New', Courier, 
@@ -127,8 +129,12 @@
                         </form>
                     </td>
                     <td id="client_data">
-                        <p>
+                        <p class="dropdown-clientBike">
                             <span th:text="${order.client}"></span>
+                            <button type="button">+</button>
+                        </p>
+                        <p class="dropdown-clientBike">
+                            <span th:text="${order.bikeModel}"></span>
                             <button type="button">+</button>
                         </p>
                     </td>

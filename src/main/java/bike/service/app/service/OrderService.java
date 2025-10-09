@@ -181,7 +181,7 @@ public class OrderService {
         if (client.getClientId() == 0) {
             throw new RuntimeException("no client found");
         } else {
-            order.setClient(client.getLast_name() + " id: " + client.getClientId());
+            order.setClient(client.getLast_name());
         }
         orderRepository.save(order);
         client.setOrder(order);
