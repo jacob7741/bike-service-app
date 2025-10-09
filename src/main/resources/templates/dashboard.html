@@ -124,20 +124,15 @@
                                 <span th:text="${order.status}"></span>
                                 <button type="button">edit</button>
                             </p>
-                            
                         </form>
                     </td>
-                    <td th:text="${order.client}">
-                        <div class="dropdown-container">
-                            <div class="dropdown-client">
-                                <p th:text="${client.first_name}">Client Name</p>
-                                <button>+</button>
-                            </div>
-                            <div class="dropdown-bike">
-                                <p>Reservation Data</p>
-                                <p>Bike type <button>+</button></p>
-                            </div>
-                        </div>
+                    <td id="client_data">
+                        <p>
+                            <span th:text="${order.client}"></span>
+                            <button type="button">+</button>
+                        </p>
+                    </td>
+
                     <td class="date_panel_table">
                         <p>Added<date th:text="${order.date}"></date>
                         </p>

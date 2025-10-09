@@ -302,7 +302,7 @@ rejected-table */
 
 .dropdown-client,
 .dropdown-bike {
-    display: flex;
+    display:flex;
     justify-content: space-between;
     padding: 0px 0px 2px 0px;
 }
