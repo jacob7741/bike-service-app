@@ -34,8 +34,6 @@ public class DashboardController {
     @Autowired
     private OrderRepository orderRepository;
     @Autowired
-    private MechanicService mService;
-    @Autowired
     private OrderService orderService;
     @Autowired
     private PostsService postsService;
@@ -54,7 +52,8 @@ public class DashboardController {
 
         model.addAttribute("clientList", clientService.getAllClients());
         model.addAttribute("username", userFullName.get());
-        model.addAttribute("orderList", loginService.getPersonalList(userFullName));
+        model.addAttribute("orderPersonalList", loginService.getPersonalList(userFullName));
+        model.addAttribute("orderList", orderService.getAllOrders());
         model.addAttribute("doneList", orderService.getAllDoneOrders());
         model.addAttribute("newServiceList", orderService.getAllActiveOrders());
         model.addAttribute("postsList", postsService.getAllPosts());

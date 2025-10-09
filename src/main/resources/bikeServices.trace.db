@@ -28525,3 +28525,9 @@ alter table orderservice drop column ( data ) [42122-232]
 2025-10-07 19:53:48.189132+02:00 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]ORDERSERVICE"; SQL statement:
 ORDERSERVICE [42000-232]
+2025-10-09 13:07:40.513087+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'Smith' (ORDERSERVICE_COPY_3_0: ""MECHANIC"" INTEGER)"; SQL statement:
+INSERT INTO "PUBLIC"."ORDERSERVICE_COPY_3_0"("ORDERID", "ADDBY", "BIKEMODEL", "CLIENT", "COMMENT", "DELIVERYDATE", "DONEBYUSER", "SERVICE", "STATUS", "MECHANIC", "DATE") OVERRIDING SYSTEM VALUE SELECT "ORDERID", "ADDBY", "BIKEMODEL", "CLIENT", "COMMENT", "DELIVERYDATE", "DONEBYUSER", "SERVICE", "STATUS", "MECHANIC", "DATE" FROM "PUBLIC"."ORDERSERVICE" [22018-232]
+2025-10-09 13:07:53.062630+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "Smith"; SQL statement:
+select o1_0.orderId,o1_0.addby,o1_0.bikeModel,o1_0.client,o1_0.comment,o1_0.date,o1_0.deliveryDate,o1_0.donebyuser,m1_0.userId,m1_0.first_name,m1_0.last_name,m1_0.password,m1_0.role,m1_0.user_name,o1_0.service,o1_0.status from OrderService o1_0 left join Users m1_0 on m1_0.userId=o1_0.mechanic where o1_0.orderId=? [22018-232]

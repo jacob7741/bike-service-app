@@ -22,7 +22,7 @@
         <div id="header-bar">
             <h4
                 style="color: rgba(0, 0, 0, 0.702); font-family: 'Courier New', Courier, monospace; font-weight: 500; margin-top: 5px; margin-left: 5px;">
-                Welcome: User name...
+                Welcome: <span th:text="${username}"></span>
             </h4>
             <div id="header-menu">
                 <data id="data" style="font-family: 'Courier New', Courier, 
@@ -118,7 +118,7 @@
                     <td th:text="${order.orderId}">34534789</td>
                     <td class="infoDt">
                         <form method="get" th:action="@{/dashboard/edit/{id}(id=${order.orderId})}">
-                            <p ></p>
+                            <p th:text="${order.mechanic != null ? order.mechanic.lastName : 'no mechanic'}"></p>
                             <p th:text="${order.status}">
                                 <button type="submit">edit</button>
                             </p>
@@ -127,7 +127,7 @@
                     <td th:text="${order.client}">
                         <div class="dropdown-container">
                             <div class="dropdown-client">
-                                <p th:text="${client.first_name}" >Client Name</p>
+                                <p th:text="${client.first_name}">Client Name</p>
                                 <button>+</button>
                             </div>
                             <div class="dropdown-bike">
@@ -136,9 +136,9 @@
                             </div>
                         </div>
                     <td class="date_panel_table">
-                        <p>Added<date  th:text="${order.date}"></date>
+                        <p>Added<date th:text="${order.date}"></date>
                         </p>
-                        <p>Receipt<date  th:text="${order.deliveryDate}"></date>
+                        <p>Receipt<date th:text="${order.deliveryDate}"></date>
                         </p>
                     </td>
                     <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
