@@ -47,13 +47,14 @@ public class OrderService {
         }
     }
 
-    public Order createNewOrder(String serviceType, Order service, String comment, String deliveryDate) {
+    public Order createNewOrder(String serviceType, Order service, String comment, String deliveryDate, Double price) {
 
         if (service.getOrderId() == 0) {
             service.setDate(date.toString());
             service.setComment(comment);
             service.setDeliveryDate(deliveryDate);
             service.setStatus(Status.NEW);
+            service.setPrice(price);
             switch (serviceType) {
                 case "smallService":
                 case "fullService":

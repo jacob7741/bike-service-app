@@ -75,9 +75,10 @@ public class DashboardController {
             @ModelAttribute Bike bike,
             @ModelAttribute Client client,
             @RequestParam String comment,
-            @RequestParam String deliveryDate) {
+            @RequestParam String deliveryDate,
+            @RequestParam(required = false) Double price)  {
 
-        orderService.createNewOrder(serviceType, service, comment, deliveryDate);
+        orderService.createNewOrder(serviceType, service, comment, deliveryDate, price);
         bikeService.addNewBike(bike);
         clientService.addNewClient(client);
 

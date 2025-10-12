@@ -80,12 +80,13 @@ class OrderServiceTest {
 
         when(orderRepository.save(any(Order.class))).thenReturn(order);
 
-        Order result = orderService.createNewOrder("smallService", order, "comment", "12.09.2026");
+        Order result = orderService.createNewOrder("smallService", order, "comment", "12.09.2026", null);
 
         assertNotNull(result);
         assertEquals("comment", result.getComment());
         assertEquals("12.09.2026", result.getDeliveryDate());
         assertEquals("NEW", result.getStatus().toString());
+        assertEquals(null, result.getPrice());
     }
 
     @Test

@@ -36,6 +36,8 @@ public class Order {
     private Users mechanic;
     @Column(name = "service")
     private String service;
+    @Column(name = "price", nullable = true)
+    private Double price;
     @Column(name = "comment")
     private String comment;
     @Column(name = "bikeModel")
