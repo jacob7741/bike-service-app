@@ -48,7 +48,7 @@ public class LoginService {
         List<Order> pList = new ArrayList<>();
 
         for (Order order : ordersList) {
-            if (order.getMechanic().getLastName().equals(user.getLastName())) {
+            if (order.getMechanic().getUserId() == user.getUserId()) {
                 pList.add(order);
             }
         }
