@@ -57,7 +57,7 @@ public class DashboardController {
         model.addAttribute("username", uName);
         model.addAttribute("orderList", loginService.getPersonalList(userFullName));
         model.addAttribute("doneList", orderService.getAllDoneOrders());
-        model.addAttribute("newServiceList", orderService.getAllActiveOrders());
+        model.addAttribute("newOrderList", orderService.getAllNewOrders());
         model.addAttribute("postsList", postsService.getAllPosts());
         model.addAttribute("post", new Posts());
         return "dashboard";
