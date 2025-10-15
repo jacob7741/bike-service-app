@@ -66,7 +66,7 @@ public class LoginService {
         Users user = setFullName(userName, fullName);
         List<Order> personalList;
 
-        //tutaj dodana nowa zaleznosc na potrzeby dashboard przetestować
+        // tutaj dodana nowa zaleznosc na potrzeby dashboard przetestować
         if (user.getRole().MANAGER == Users.Role.MANAGER) {
             personalList = orderService.getAllOrders();
         } else {
@@ -87,7 +87,29 @@ public class LoginService {
             }
         }
     }
-    
+
+    public List<Order> getPersonalListById(Integer id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName(); // login użytkownika
+        Users user = usersRepository.findByUserName(username); // pobierz encję z bazy
+        Integer userId = user.getUserId();
+
+        List<Order> personalList = new ArrayList<>();
+        List<Users> usersList = usersRepository.findAll();
+
+        for (Users user1 : usersList) {
+            if (id == user.getUserId()) {
+                if (user.getRole().MANAGER == Users.Role.MANAGER) {
+                    personalList = orderService.getAllOrders();
+                } else {
+                    personalList = getMechanicList(user);
+                }
+                break;
+            }
+        }
+        return personalList;
+    }
+
     // old from 08.02.2025 before refactoring
 
     // public List<Order> getPersonalList(AtomicReference<String> fullName) {

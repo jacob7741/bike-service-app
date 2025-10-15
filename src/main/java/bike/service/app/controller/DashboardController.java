@@ -1,5 +1,6 @@
 package bike.service.app.controller;
 
+import java.security.Principal;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import bike.service.app.model.Order;
 import bike.service.app.model.Posts;
 import bike.service.app.model.Users;
 import bike.service.app.model.repository.OrderRepository;
+import bike.service.app.model.repository.UsersRepository;
 import bike.service.app.service.BikeService;
 import bike.service.app.service.ClientService;
 import bike.service.app.service.LoginService;
@@ -40,26 +42,27 @@ public class DashboardController {
     private PostsService postsService;
     @Autowired
     private MechanicService mechanicService;
-    @Autowired 
+    @Autowired
     private BikeService bikeService;
     @Autowired
     private ClientService clientService;
-    
-    
-    AtomicReference<String> userFullName = new AtomicReference<>(new String());
+    @Autowired
+    private UsersRepository userService;
 
-    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    Users userDetails = (Users) authentication.getPrincipal();
-    Integer userId = userDetails.getUserId();
+    // AtomicReference<Integer> userFullName = new AtomicReference<>();
+    // Integer userId;
 
     @GetMapping("/dashboard")
-    public String dashboard(Model model, Authentication name) {
+    public String dashboard(Model model, Authentication authentication) {
 
-        String uName = name.getName();
+        String username = authentication.getName(); // login użytkownika
+        Users user = userService.findByUserName(username); // pobierz encję z bazy
+        Integer userId = user.getUserId();
 
         model.addAttribute("clientList", clientService.getAllClients());
-        model.addAttribute("username", uName);
-        model.addAttribute("orderList", loginService.getPersonalList(userFullName));
+        model.addAttribute("username", username);
+        // model.addAttribute("orderList", loginService.getPersonalList(userFullName));
+        model.addAttribute("orderList", loginService.getPersonalListById(userId));
         model.addAttribute("doneList", orderService.getAllDoneOrders());
         model.addAttribute("newOrderList", orderService.getAllNewOrders());
         model.addAttribute("postsList", postsService.getAllPosts());
@@ -80,15 +83,19 @@ public class DashboardController {
             @ModelAttribute Client client,
             @RequestParam String comment,
             @RequestParam String deliveryDate,
-            @RequestParam(required = false) Double price)  {
+            @RequestParam(required = false) Double price,
+            Authentication authentication) {
+
+        String username = authentication.getName();
+        Users user = userService.findByUserName(username);
+        Integer userId = user.getUserId();
 
         orderService.createNewOrder(serviceType, service, comment, deliveryDate, price);
         bikeService.addNewBike(bike);
         clientService.addNewClient(client);
 
         orderService.saveClientToOrder(service, client);
-
-        orderService.saveInfoAddByUser(service, userFullName);
+        orderService.saveInfoAddByUserId(service, userId);
         orderService.saveBikeToOrder(service, bike);
 
         return "redirect:/dashboard";
@@ -101,13 +108,13 @@ public class DashboardController {
 
     @PostMapping("dashboard/done/{id}")
     public String doneButton(@PathVariable("id") int id) {
-        mechanicService.doneStatusById(id, userFullName);
+        // mechanicService.doneStatusById(id, userFullName);
         return "redirect:/dashboard";
     }
 
     @PostMapping("/take/{id}")
     public String takeButton(@PathVariable("id") int id) {
-        mechanicService.newStatusById(id, userFullName);
+        // mechanicService.newStatusById(id, userFullName);
         return "redirect:/dashboard";
     }
 
@@ -127,9 +134,9 @@ public class DashboardController {
 
     @PostMapping("/dashboard/post")
     public String createPost(@RequestParam("content") String content) {
-            Posts post = new Posts();
-            post.setContent(content);
-            postsService.createPost(post, content, userFullName);
-            return "redirect:/dashboard"; 
-        }
+        Posts post = new Posts();
+        post.setContent(content);
+        // postsService.createPost(post, content, userFullName);
+        return "redirect:/dashboard";
+    }
 }

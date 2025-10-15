@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
-import bike.service.app.model.Users;
 import bike.service.app.model.Order.Status;
+import bike.service.app.model.Users;
 import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
@@ -118,6 +118,22 @@ public class OrderService {
             for (Users users : test) {
                 String userName = users.getFirstName() + " " + users.getLastName();
                 if (userName.equals(fullName.get())) {
+                    order.setAddByUser(users.getLastName());
+                    order.setDate(nowDate.toString());
+                    orderRepository.save(order);
+                    break;
+                }
+            }
+        }
+        return order;
+    }
+    public Order saveInfoAddByUserId(Order order, Integer userId) {
+        List<Users> test = userService.getAllUsers();
+        LocalDate nowDate = LocalDate.now();
+        if (userId != 0) {
+            for (Users users : test) {
+                Integer id = users.getUserId();
+                if (id == userId) {
                     order.setAddByUser(users.getLastName());
                     order.setDate(nowDate.toString());
                     orderRepository.save(order);
