@@ -1,0 +1,105 @@
+2025-10-02 15:14:56.959+0000 INFO  [o.n.g.f.m.GlobalModule] Logging config in use: Embedded default config 'default-server-logs.xml'
+2025-10-02 15:14:57.040+0000 WARN  [o.n.k.i.JvmChecker] You are using an unsupported version of the Java runtime. Please use Java(TM) 17 or Java(TM) 21 to run Neo4j.
+2025-10-02 15:14:57.040+0000 WARN  [o.n.k.i.JvmChecker] The max heap memory has not been configured. It is recommended that it is always explicitly configured, to ensure the system has a balanced configuration. Until then, a JVM computed heuristic of 4294967296 bytes is used instead. If you are running neo4j server, you need to configure server.memory.heap.max_size in neo4j.conf. If you are running neo4j embedded, you have to launch the JVM with -Xmx set to a value. You can run neo4j-admin server memory-recommendation for memory configuration suggestions.
+2025-10-02 15:14:57.040+0000 WARN  [o.n.k.i.JvmChecker] The initial heap memory has not been configured. It is recommended that it is always explicitly configured, to ensure the system has a balanced configuration. Until then, a JVM computed heuristic of 268435456 bytes is used instead. If you are running neo4j server, you need to configure server.memory.heap.initial_size in neo4j.conf. If you are running neo4j embedded, you have to launch the JVM with -Xms set to a value. You can run neo4j-admin server memory-recommendation for memory configuration suggestions.
+2025-10-02 15:14:57.053+0000 WARN  [o.n.i.p.PageCache] The server.memory.pagecache.size setting has not been configured. It is recommended that this setting is always explicitly configured, to ensure the system has a balanced configuration. Until then, a computed heuristic value of 6442450944 bytes will be used instead. Run `neo4j-admin memory-recommendation` for memory configuration suggestions.
+2025-10-02 15:14:57.053+0000 WARN  [o.n.i.p.PageCache] Reflection access to java.nio.DirectByteBuffer is not available, using fallback mode. This could have negative impact on performance and memory usage. Consider adding --add-opens=java.base/java.nio=ALL-UNNAMED to VM options.
+2025-10-02 15:14:57.299+0000 INFO  [o.n.d.i.DefaultIdentityModule] Generated new ServerId: ServerId{3d20a12a} (3d20a12a-1d40-41f3-b4ea-9c4b6d2c7caa)
+2025-10-02 15:14:57.300+0000 INFO  [o.n.d.i.DefaultIdentityModule] This instance is ServerId{3d20a12a} (3d20a12a-1d40-41f3-b4ea-9c4b6d2c7caa)
+2025-10-02 15:14:57.728+0000 INFO  [o.n.d.d.DatabaseLifecycles] Creating 'DatabaseId{00000000[system]}'.
+2025-10-02 15:14:57.758+0000 INFO  [o.n.d.d.DatabaseLifecycles] Starting 'DatabaseId{00000000[system]}'.
+2025-10-02 15:14:58.110+0000 INFO  [o.n.k.a.DatabaseAvailabilityGuard] [system/00000000] Requirement `Database unavailable` makes database system unavailable.
+2025-10-02 15:14:58.111+0000 INFO  [o.n.k.a.DatabaseAvailabilityGuard] [system/00000000] DatabaseId{00000000[system]} is unavailable.
+2025-10-02 15:14:58.116+0000 WARN  [o.n.k.i.s.MetaDataStore] [system/00000000] Missing counts store, rebuilding it.
+2025-10-02 15:14:58.119+0000 WARN  [o.n.k.i.s.MetaDataStore] [system/00000000] Counts store rebuild completed.
+2025-10-02 15:14:58.127+0000 INFO  [o.n.k.d.Database] [system/00000000] Starting transaction log [/Users/jacobsunny/BServiceProject/target/jqassistant/store/data/transactions/system/neostore.transaction.db.0] at version=0
+2025-10-02 15:14:58.132+0000 INFO  [o.n.k.d.Database] [system/00000000] Starting transaction log [/Users/jacobsunny/BServiceProject/target/jqassistant/store/data/transactions/system/checkpoint.0] at version=0
+2025-10-02 15:14:58.133+0000 INFO  [o.n.k.i.t.l.f.c.CheckpointLogFile] [system/00000000] Scanning log file with version 0 for checkpoint entries
+2025-10-02 15:14:58.138+0000 INFO  [o.n.k.a.DatabaseAvailabilityGuard] [system/00000000] Fulfilling of requirement 'Database unavailable' makes database system available.
+2025-10-02 15:14:58.138+0000 INFO  [o.n.k.a.DatabaseAvailabilityGuard] [system/00000000] DatabaseId{00000000[system]} is ready.
+2025-10-02 15:14:58.236+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [system/00000000] Index population started: [Index( id=2, name='index_f7700477', type='LOOKUP', schema=()-[:<any-types>]-(), indexProvider='token-lookup-1.0' )]
+2025-10-02 15:14:58.262+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [system/00000000] Index creation finished for index [Index( id=2, name='index_f7700477', type='LOOKUP', schema=()-[:<any-types>]-(), indexProvider='token-lookup-1.0' )].
+2025-10-02 15:14:58.269+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [system/00000000] Index population started: [Index( id=1, name='index_343aff4e', type='LOOKUP', schema=(:<any-labels>), indexProvider='token-lookup-1.0' )]
+2025-10-02 15:14:58.282+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [system/00000000] Index creation finished for index [Index( id=1, name='index_343aff4e', type='LOOKUP', schema=(:<any-labels>), indexProvider='token-lookup-1.0' )].
+2025-10-02 15:14:58.286+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] [system/00000000] Checkpoint triggered by "Database init completed." @ txId: 3 checkpoint started...
+2025-10-02 15:14:58.386+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] [system/00000000] Checkpoint triggered by "Database init completed." @ txId: 3 checkpoint completed in 99ms. Checkpoint flushed 74 pages (0% of total available pages), in 57 IOs. Checkpoint performed with IO limit: unlimited, paused in total 0 times( 0 millis).
+2025-10-02 15:14:58.386+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] [system/00000000] No log version pruned. The strategy used was '1 entries'. 
+2025-10-02 15:14:58.438+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [system/00000000] Index population started: [Index( id=3, name='constraint_798238d6', type='RANGE', schema=(:DatabaseName {name, namespace}), indexProvider='range-1.0' )]
+2025-10-02 15:14:58.467+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [system/00000000] Index creation finished for index [Index( id=3, name='constraint_798238d6', type='RANGE', schema=(:DatabaseName {name, namespace}), indexProvider='range-1.0' )].
+2025-10-02 15:14:58.484+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [system/00000000] Index population started: [Index( id=4, name='constraint_8014b60a', type='RANGE', schema=(:Database {name}), indexProvider='range-1.0' )]
+2025-10-02 15:14:58.497+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [system/00000000] Index creation finished for index [Index( id=4, name='constraint_8014b60a', type='RANGE', schema=(:Database {name}), indexProvider='range-1.0' )].
+2025-10-02 15:14:58.515+0000 INFO  [o.n.k.i.a.i.IndexingService] [system/00000000] Constraint Index( id=3, name='constraint_798238d6', type='RANGE', schema=(:Label[1] {PropertyKey[11], PropertyKey[12]}), indexProvider='range-1.0' ) is ONLINE.
+2025-10-02 15:14:58.516+0000 INFO  [o.n.k.i.a.i.IndexingService] [system/00000000] Constraint Index( id=4, name='constraint_8014b60a', type='RANGE', schema=(:Label[2] {PropertyKey[11]}), indexProvider='range-1.0' ) is ONLINE.
+2025-10-02 15:14:58.619+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [system/00000000] Index population started: [Index( id=7, name='constraint_5789ae3', type='RANGE', schema=(:User {name}), indexProvider='range-1.0' )]
+2025-10-02 15:14:58.636+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [system/00000000] Index creation finished for index [Index( id=7, name='constraint_5789ae3', type='RANGE', schema=(:User {name}), indexProvider='range-1.0' )].
+2025-10-02 15:14:58.648+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [system/00000000] Index population started: [Index( id=8, name='constraint_74fad970', type='RANGE', schema=(:User {id}), indexProvider='range-1.0' )]
+2025-10-02 15:14:58.664+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [system/00000000] Index creation finished for index [Index( id=8, name='constraint_74fad970', type='RANGE', schema=(:User {id}), indexProvider='range-1.0' )].
+2025-10-02 15:14:58.670+0000 INFO  [o.n.k.i.a.i.IndexingService] [system/00000000] Constraint Index( id=7, name='constraint_5789ae3', type='RANGE', schema=(:Label[3] {PropertyKey[11]}), indexProvider='range-1.0' ) is ONLINE.
+2025-10-02 15:14:58.670+0000 INFO  [o.n.k.i.a.i.IndexingService] [system/00000000] Constraint Index( id=8, name='constraint_74fad970', type='RANGE', schema=(:Label[3] {PropertyKey[26]}), indexProvider='range-1.0' ) is ONLINE.
+2025-10-02 15:14:58.671+0000 INFO  [o.n.s.s.s.UserSecurityGraphComponent] Initializing system graph model for component 'security-users' with version -1 and status UNINITIALIZED
+2025-10-02 15:14:58.675+0000 INFO  [o.n.s.s.s.UserSecurityGraphComponent] Setting up initial user from defaults: neo4j
+2025-10-02 15:14:58.675+0000 INFO  [o.n.s.s.a.CommunitySecurityModule] CREATE USER neo4j PASSWORD ****** CHANGE REQUIRED
+2025-10-02 15:14:58.684+0000 INFO  [o.n.s.s.s.UserSecurityGraphComponent] Setting version for 'security-users' to 4
+2025-10-02 15:14:58.687+0000 INFO  [o.n.s.s.s.UserSecurityGraphComponent] After initialization of system graph model component 'security-users' have version 4 and status CURRENT
+2025-10-02 15:14:58.691+0000 INFO  [o.n.s.s.s.UserSecurityGraphComponent] Performing postInitialization step for component 'security-users' with version 4 and status CURRENT
+2025-10-02 15:14:58.694+0000 INFO  [o.n.d.d.DatabaseLifecycles] Creating 'DatabaseId{c8684a1d[neo4j]}'.
+2025-10-02 15:14:58.695+0000 INFO  [o.n.d.d.DatabaseLifecycles] Starting 'DatabaseId{c8684a1d[neo4j]}'.
+2025-10-02 15:14:58.698+0000 INFO  [o.n.k.i.s.f.RecordFormatSelector] [neo4j/c8684a1d] Selected configured format for store /Users/jacobsunny/BServiceProject/target/jqassistant/store/data/databases/neo4j: RecordFormat:PageAlignedV5_0[aligned-1.1]
+2025-10-02 15:14:58.724+0000 INFO  [o.n.k.a.DatabaseAvailabilityGuard] [neo4j/c8684a1d] Requirement `Database unavailable` makes database neo4j unavailable.
+2025-10-02 15:14:58.727+0000 INFO  [o.n.k.a.DatabaseAvailabilityGuard] [neo4j/c8684a1d] DatabaseId{c8684a1d[neo4j]} is unavailable.
+2025-10-02 15:14:58.728+0000 WARN  [o.n.k.i.s.MetaDataStore] [neo4j/c8684a1d] Missing counts store, rebuilding it.
+2025-10-02 15:14:58.728+0000 WARN  [o.n.k.i.s.MetaDataStore] [neo4j/c8684a1d] Counts store rebuild completed.
+2025-10-02 15:14:58.730+0000 INFO  [o.n.k.d.Database] [neo4j/c8684a1d] Starting transaction log [/Users/jacobsunny/BServiceProject/target/jqassistant/store/data/transactions/neo4j/neostore.transaction.db.0] at version=0
+2025-10-02 15:14:58.733+0000 INFO  [o.n.k.d.Database] [neo4j/c8684a1d] Starting transaction log [/Users/jacobsunny/BServiceProject/target/jqassistant/store/data/transactions/neo4j/checkpoint.0] at version=0
+2025-10-02 15:14:58.734+0000 INFO  [o.n.k.i.t.l.f.c.CheckpointLogFile] [neo4j/c8684a1d] Scanning log file with version 0 for checkpoint entries
+2025-10-02 15:14:58.734+0000 INFO  [o.n.k.a.DatabaseAvailabilityGuard] [neo4j/c8684a1d] Fulfilling of requirement 'Database unavailable' makes database neo4j available.
+2025-10-02 15:14:58.734+0000 INFO  [o.n.k.a.DatabaseAvailabilityGuard] [neo4j/c8684a1d] DatabaseId{c8684a1d[neo4j]} is ready.
+2025-10-02 15:14:58.741+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index population started: [Index( id=2, name='index_f7700477', type='LOOKUP', schema=()-[:<any-types>]-(), indexProvider='token-lookup-1.0' )]
+2025-10-02 15:14:58.752+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index creation finished for index [Index( id=2, name='index_f7700477', type='LOOKUP', schema=()-[:<any-types>]-(), indexProvider='token-lookup-1.0' )].
+2025-10-02 15:14:58.754+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index population started: [Index( id=1, name='index_343aff4e', type='LOOKUP', schema=(:<any-labels>), indexProvider='token-lookup-1.0' )]
+2025-10-02 15:14:58.766+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index creation finished for index [Index( id=1, name='index_343aff4e', type='LOOKUP', schema=(:<any-labels>), indexProvider='token-lookup-1.0' )].
+2025-10-02 15:14:58.768+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j/c8684a1d] Checkpoint triggered by "Database init completed." @ txId: 3 checkpoint started...
+2025-10-02 15:14:58.864+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j/c8684a1d] Checkpoint triggered by "Database init completed." @ txId: 3 checkpoint completed in 95ms. Checkpoint flushed 74 pages (0% of total available pages), in 57 IOs. Checkpoint performed with IO limit: unlimited, paused in total 0 times( 0 millis).
+2025-10-02 15:14:58.864+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] [neo4j/c8684a1d] No log version pruned. The strategy used was '1 entries'. 
+2025-10-02 15:14:58.866+0000 INFO  [o.n.g.f.DatabaseManagementServiceFactory] id: 1217B19854424288F03ACD634A94BF9013676E1E840FD1BD066840894A335012
+2025-10-02 15:14:58.866+0000 INFO  [o.n.g.f.DatabaseManagementServiceFactory] name: system
+2025-10-02 15:14:58.866+0000 INFO  [o.n.g.f.DatabaseManagementServiceFactory] creationDate: 2025-10-02T15:14:58.049Z
+2025-10-02 15:14:59.522+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index population started: [Index( id=3, name='index_25c2773a', type='RANGE', schema=(:Concept {id}), indexProvider='range-1.0' )]
+2025-10-02 15:14:59.522+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index population started: [Index( id=4, name='index_70518a7', type='RANGE', schema=(:Type {fqn}), indexProvider='range-1.0' )]
+2025-10-02 15:14:59.522+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index population started: [Index( id=5, name='index_d40fae3f', type='RANGE', schema=(:GroupId {name}), indexProvider='range-1.0' )]
+2025-10-02 15:14:59.523+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index population started: [Index( id=6, name='index_cbce9035', type='RANGE', schema=(:Package {fqn}), indexProvider='range-1.0' )]
+2025-10-02 15:14:59.523+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index population started: [Index( id=7, name='index_531e9c3c', type='RANGE', schema=(:Project {fqn}), indexProvider='range-1.0' )]
+2025-10-02 15:14:59.523+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index population started: [Index( id=8, name='index_6812e329', type='RANGE', schema=(:Repository {url}), indexProvider='range-1.0' )]
+2025-10-02 15:14:59.524+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index population started: [Index( id=9, name='index_9a9be929', type='RANGE', schema=(:ArtifactId {fqn}), indexProvider='range-1.0' )]
+2025-10-02 15:14:59.524+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index population started: [Index( id=10, name='index_973ea95d', type='RANGE', schema=(:Artifact {fqn}), indexProvider='range-1.0' )]
+2025-10-02 15:14:59.524+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index population started: [Index( id=11, name='index_de4171cd', type='RANGE', schema=(:File {fileName}), indexProvider='range-1.0' )]
+2025-10-02 15:14:59.525+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index population started: [Index( id=12, name='index_d1fba0a2', type='RANGE', schema=(:Version {fqn}), indexProvider='range-1.0' )]
+2025-10-02 15:14:59.539+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index creation finished for index [Index( id=3, name='index_25c2773a', type='RANGE', schema=(:Concept {id}), indexProvider='range-1.0' )].
+2025-10-02 15:14:59.551+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index creation finished for index [Index( id=4, name='index_70518a7', type='RANGE', schema=(:Type {fqn}), indexProvider='range-1.0' )].
+2025-10-02 15:14:59.563+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index creation finished for index [Index( id=5, name='index_d40fae3f', type='RANGE', schema=(:GroupId {name}), indexProvider='range-1.0' )].
+2025-10-02 15:14:59.581+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index creation finished for index [Index( id=6, name='index_cbce9035', type='RANGE', schema=(:Package {fqn}), indexProvider='range-1.0' )].
+2025-10-02 15:14:59.593+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index creation finished for index [Index( id=7, name='index_531e9c3c', type='RANGE', schema=(:Project {fqn}), indexProvider='range-1.0' )].
+2025-10-02 15:14:59.606+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index creation finished for index [Index( id=8, name='index_6812e329', type='RANGE', schema=(:Repository {url}), indexProvider='range-1.0' )].
+2025-10-02 15:14:59.618+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index creation finished for index [Index( id=9, name='index_9a9be929', type='RANGE', schema=(:ArtifactId {fqn}), indexProvider='range-1.0' )].
+2025-10-02 15:14:59.632+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index creation finished for index [Index( id=10, name='index_973ea95d', type='RANGE', schema=(:Artifact {fqn}), indexProvider='range-1.0' )].
+2025-10-02 15:14:59.646+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index creation finished for index [Index( id=11, name='index_de4171cd', type='RANGE', schema=(:File {fileName}), indexProvider='range-1.0' )].
+2025-10-02 15:14:59.660+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] [neo4j/c8684a1d] Index creation finished for index [Index( id=12, name='index_d1fba0a2', type='RANGE', schema=(:Version {fqn}), indexProvider='range-1.0' )].
+2025-10-02 15:15:02.980+0000 INFO  [o.n.g.f.DatabaseManagementServiceFactory] Shutdown started
+2025-10-02 15:15:02.981+0000 INFO  [o.n.d.d.DatabaseLifecycles] Stopping 'DatabaseId{c8684a1d[neo4j]}'.
+2025-10-02 15:15:02.982+0000 INFO  [o.n.k.a.DatabaseAvailabilityGuard] [neo4j/c8684a1d] Requirement `Database unavailable` makes database neo4j unavailable.
+2025-10-02 15:15:02.982+0000 INFO  [o.n.k.a.DatabaseAvailabilityGuard] [neo4j/c8684a1d] DatabaseId{c8684a1d[neo4j]} is unavailable.
+2025-10-02 15:15:02.982+0000 INFO  [o.n.k.d.Database] [neo4j/c8684a1d] Waiting for closing transactions.
+2025-10-02 15:15:02.982+0000 INFO  [o.n.k.d.Database] [neo4j/c8684a1d] All transactions are closed.
+2025-10-02 15:15:02.982+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j/c8684a1d] Checkpoint triggered by "Database shutdown" @ txId: 162 checkpoint started...
+2025-10-02 15:15:03.227+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j/c8684a1d] Checkpoint triggered by "Database shutdown" @ txId: 162 checkpoint completed in 244ms. Checkpoint flushed 558 pages (0% of total available pages), in 298 IOs. Checkpoint performed with IO limit: unlimited, paused in total 0 times( 0 millis).
+2025-10-02 15:15:03.227+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] [neo4j/c8684a1d] No log version pruned. The strategy used was '1 entries'. 
+2025-10-02 15:15:03.339+0000 INFO  [o.n.d.d.DatabaseLifecycles] Stopped 'DatabaseId{c8684a1d[neo4j]}' successfully.
+2025-10-02 15:15:03.339+0000 INFO  [o.n.d.d.DatabaseLifecycles] Stopping 'DatabaseId{00000000[system]}'.
+2025-10-02 15:15:03.340+0000 INFO  [o.n.k.a.DatabaseAvailabilityGuard] [system/00000000] Requirement `Database unavailable` makes database system unavailable.
+2025-10-02 15:15:03.340+0000 INFO  [o.n.k.a.DatabaseAvailabilityGuard] [system/00000000] DatabaseId{00000000[system]} is unavailable.
+2025-10-02 15:15:03.340+0000 INFO  [o.n.k.d.Database] [system/00000000] Waiting for closing transactions.
+2025-10-02 15:15:03.340+0000 INFO  [o.n.k.d.Database] [system/00000000] All transactions are closed.
+2025-10-02 15:15:03.340+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] [system/00000000] Checkpoint triggered by "Database shutdown" @ txId: 37 checkpoint started...
+2025-10-02 15:15:03.538+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] [system/00000000] Checkpoint triggered by "Database shutdown" @ txId: 37 checkpoint completed in 197ms. Checkpoint flushed 69 pages (0% of total available pages), in 69 IOs. Checkpoint performed with IO limit: unlimited, paused in total 0 times( 0 millis).
+2025-10-02 15:15:03.538+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] [system/00000000] No log version pruned. The strategy used was '1 entries'. 
+2025-10-02 15:15:03.618+0000 INFO  [o.n.d.d.DatabaseLifecycles] Stopped 'DatabaseId{00000000[system]}' successfully.

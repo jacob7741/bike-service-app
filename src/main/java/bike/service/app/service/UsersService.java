@@ -1,8 +1,10 @@
 package bike.service.app.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,19 +15,42 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import bike.service.app.model.Bike;
+import bike.service.app.model.Client;
+import bike.service.app.model.Order;
+import bike.service.app.model.Order.Status;
+// import bike.service.app.model.Services;
 import bike.service.app.model.Users;
+import bike.service.app.model.repository.BikeRepository;
+import bike.service.app.model.repository.ClientRepository;
+import bike.service.app.model.repository.OrderRepository;
+// import bike.service.app.model.repository.ServicesRepository;
 import bike.service.app.model.repository.UsersRepository;
 
 @Service
 public class UsersService implements UserDetailsService {
 
+    public static final int AtomicReference = 0;
+
     private final Logger logger = LoggerFactory.getLogger(UsersService.class);
 
     @Autowired
     private UsersRepository userRepository;
-    @SuppressWarnings("unused")
+    // @SuppressWarnings("unused")
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private OrderRepository oRepository;
+    // @Autowired
+    // private ServicesService servicesService;
+    @Autowired
+    private UsersService usersService;
+    // @Autowired
+    // private ServicesRepository servicesRepository;
+    @Autowired
+    private ClientRepository clientRepository;
+    @Autowired
+    private BikeRepository bikeRepository;
 
     public List<Users> getAllUsers() {
         logger.info("getAllUsers");
@@ -44,12 +69,8 @@ public class UsersService implements UserDetailsService {
         if (user.isPresent()) {
             return user.get();
         } else {
-            throw new RuntimeException("no user was found");
+            throw new RuntimeException("User ID not found.");
         }
-    }
-
-    public List<Users> findByIds(List<Integer> userIds) {
-        return userRepository.findAllById(userIds);
     }
 
     public Users addNewMechanic(Users user) {
@@ -58,7 +79,7 @@ public class UsersService implements UserDetailsService {
         if (user.getUserId() == 0) {
             userRepository.save(user);
         } else {
-            throw new RuntimeException("wrong user");
+            throw new RuntimeException("User already exsist");
         }
         return user;
     }
@@ -87,4 +108,82 @@ public class UsersService implements UserDetailsService {
                 .roles(user.getRole().toString().toUpperCase())
                 .build();
     }
+
+    public void deleteOrderById(int id) {
+        
+        Order order = oRepository.getReferenceById(id);
+        List<Client> clients = clientRepository.findAll();
+        List<Bike> bikes = bikeRepository.findAll();
+        // List<Services> services = servicesRepository.findAll();
+
+        if (order.getStatus().equals(Order.Status.DONE)) {
+            for (Client client : clients) {
+                client.getOrder();
+                clientRepository.deleteById(client.getClientId());
+            }
+
+            for (Bike bike : bikes) {
+                bike.getOrder();
+                bikeRepository.deleteById(bike.getBikeId());
+            }
+
+            // for (Services service : services) {
+            //     service.getOrder();
+            //     clientRepository.deleteById(service.getServiceId());
+
+            // }
+
+            if (!(order.getOrderId() == 0)) {
+                oRepository.deleteById(id);
+                System.out.println("order deleted");
+            }
+        }
+    }
+
+     private LocalDate nowDate = LocalDate.now();
+    public void newStatusById(int id, AtomicReference<String> name) {
+        Optional<Order> optional = oRepository.findById(id);
+        if (optional.isPresent()) {
+            Order newOrder = optional.get();
+            if (newOrder.getStatus().equals(Status.NEW)) {
+                newOrder.setStatus(Order.Status.ACTIVE);
+                newOrder.setDate(nowDate.toString());
+                orderService.saveMechanicToOrder(newOrder, name);
+            }
+            oRepository.save(newOrder);
+        }
+    }
+
+    public void doneStatusById(int id, AtomicReference<String> fullName) {
+        Optional<Order> optional = oRepository.findById(id);
+        if (optional.isPresent()) {
+            Order newOrder = optional.get();
+            newOrder.setStatus(Order.Status.DONE);
+            newOrder.setDate(nowDate.toString());
+            List<Users> lmechanics = usersService.getAllUsers();
+
+            for (Users user : lmechanics) {
+                if ((user.getFirstName() + " " + user.getLastName()).equals(fullName.get())) {
+                    newOrder.setDoneByUser(user.getLastName());;
+                }
+                oRepository.save(newOrder);
+            }
+        }
+    }
+
+    public void editOrderById(String edit, int id) {
+        Optional<Order> orderOptional = oRepository.findById(id);
+        if (orderOptional.isPresent()) {
+            Order newOrder = orderOptional.get();
+            newOrder.setService(edit);
+
+            oRepository.save(newOrder);
+        }
+    }
+
+    public Order getOrderById(int id) {
+        Optional<Order> order = oRepository.findById(id);
+        return order.get();
+    }
+
 }

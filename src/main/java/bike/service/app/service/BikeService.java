@@ -12,8 +12,10 @@ import bike.service.app.model.repository.BikeRepository;
 
 @Service
 public class BikeService {
+
     @Autowired
     private BikeRepository bikeRepository;
+
     @SuppressWarnings("unused")
     @Autowired
     private OrderService orderService;
@@ -21,15 +23,18 @@ public class BikeService {
     public Bike getBikeById(int id) {
         System.out.println("getting all bike by Id");
         Optional<Bike> optionalBike = bikeRepository.findById(id);
-        if (optionalBike.isPresent())
+        if (optionalBike.isPresent()) {
             return optionalBike.get();
-        throw new RuntimeException("no id founded");
+        } else {
+            throw new RuntimeException("no id founded");
+        }
+        
     }
-    
+
     public List<Bike> getAllBike() {
         System.out.println("getting all bike");
         List<Bike> bikeList = bikeRepository.findAll();
-        if (!bikeList.isEmpty())
+        if (bikeList.isEmpty())
             return new ArrayList<>();
         return bikeList;
     }
@@ -39,24 +44,27 @@ public class BikeService {
         if (bike.getBikeId() == 0) {
             bikeRepository.save(bike);
         }
-        bikeRepository.save(bike);
         return bike;
     }
-    
+
     public void deletedBikeById(int id) {
         System.out.println("bike deleted...");
         Optional<Bike> optionalBike = bikeRepository.findById(id);
-        if (optionalBike.isPresent())
+        if (optionalBike.isPresent()) {
             bikeRepository.deleteById(id);
-        throw new RuntimeException("no Bike id founded");
+        } else {
+            throw new RuntimeException("no Bike id founded");
+        }
+    }
+    
     // }
 
     // public void deletedBikeByOrderId(int orderId) {
-    //     List<Bike> bikes = bikeRepository.findAll();
-    //     for (Bike bike : bikes) {
-    //         if(bike.getOrder() == orderId) {
-    //             deletedBikeById(bike.getBikeId());
-    //         }
-    //     }
-    }
+    // List<Bike> bikes = bikeRepository.findAll();
+    // for (Bike bike : bikes) {
+    // if(bike.getOrder() == orderId) {
+    // deletedBikeById(bike.getBikeId());
+    // }
+    // }
+
 }

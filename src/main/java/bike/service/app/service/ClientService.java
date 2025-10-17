@@ -33,12 +33,13 @@ public class ClientService {
         }
     }
 
-    public Client getClientByPhoneNumber(int phoneNumber) {
+    public Client getClientByPhoneNumber(String phoneNumber) {
         System.out.println("getClinetByPhoneNumber");
         List<Client> clientList = getAllClients();
+        String phoneNumberStr = String.valueOf(phoneNumber);
 
         for (Client client : clientList) {
-            if (client.getPhoneNumber() == phoneNumber) {
+            if (client.getPhoneNumber().equals(phoneNumberStr)) {
                 return client;
             }
         }
@@ -47,8 +48,11 @@ public class ClientService {
 
     public Client addNewClient(Client client) {
         System.out.println("new Client Added");
-        if (client.getClientId() == 0)
+        if (client.getClientId() == 0) {
             clientRepository.save(client);
+        } else {
+            throw new RuntimeException("client already exsist");
+        }
         return client;
     }
 

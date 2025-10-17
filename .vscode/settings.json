@@ -1,11 +1,10 @@
 {
     "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
     "terminal.integrated.tabs.enabled": false,
-    "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+    "workbench.iconTheme": "vscode-icons",
     "editor.minimap.enabled": false,
     "java.compile.nullAnalysis.mode": "automatic",
     "editor.fontSize": 14,
-<<<<<<< HEAD
     "editor.fontLigatures": false,
     "editor.fontWeight": "normal",
     "editor.tokenColorCustomizations": {
@@ -47,15 +46,8 @@
         "terminal.ansiRed": "#C50F1F",
         "terminal.ansiWhite": "#CCCCCC",
         "terminal.ansiYellow": "#C19C00"
-    }
-<<<<<<< HEAD
-}
-=======
-    "terminal.integrated.fontSize": 14,
+    },
     "liveServer.settings.port": 5500,
+    "liveServer.settings.CustomBrowser": "safari",
     "java.configuration.updateBuildConfiguration": "automatic"
 }
->>>>>>> 6e96a7c (updateLoginWork)
-=======
-}
->>>>>>> refactor

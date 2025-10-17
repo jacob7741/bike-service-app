@@ -1,5 +1,7 @@
 package bike.service.app.model;
 
+import javax.validation.constraints.Pattern;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -30,7 +32,8 @@ public class Client {
     @Column(name = "last_name")
     private String last_name;
     @Column(name = "phoneNumber")
-    private int phoneNumber;
+    @Pattern(regexp = "^[0-9+\\- ]{7,15}$", message = "WRONG PHONE NUMBER!!!")
+    private String phoneNumber;
     @Column(name = "email")
     private String email;
 
@@ -38,14 +41,4 @@ public class Client {
     @JoinColumn(name = "orderId")
     private Order order;
 
-    @Override
-    public String toString() {
-        return "Client{" +
-                "clientId=" + clientId +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }

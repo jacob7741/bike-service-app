@@ -34,9 +34,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authorize) -> authorize
-                .requestMatchers("/", "/static/css/**").permitAll()
-                .requestMatchers("/manager").hasRole("MANAGER")
-                .requestMatchers("/mechanic").hasRole("MECHANIC")
+                .requestMatchers( "/**","/h2-console/**" ,"/static/css/**").permitAll()
+                .requestMatchers("/**", "/order/**").hasAnyRole("MANAGER", "MECHANIC")
+                .requestMatchers("/services/submit/**").authenticated()
                 )
                 .formLogin(
                         (form) -> form
@@ -51,7 +51,6 @@ public class SecurityConfig {
                         headers -> headers
                                 .frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)
                 );
-
         return http.build();
     }
 
@@ -73,9 +72,9 @@ public class SecurityConfig {
                     .collect(Collectors.joining());
 
             if (role.contains("ROLE_MECHANIC")) {
-                response.sendRedirect("/mechanic");
+                response.sendRedirect("/dashboard");
             } else if (role.contains("ROLE_MANAGER")) {
-                response.sendRedirect("/manager");
+                response.sendRedirect("/dashboard");
             } else {
                 response.sendRedirect("/");
             }

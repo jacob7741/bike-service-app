@@ -1,3 +1,4 @@
+
 package bike.service.app.model;
 
 import jakarta.persistence.Column;
@@ -42,10 +43,4 @@ public class Users {
     @Column(name="role")
     private Role role;
 
-
-    @Override
-    public String toString() {
-        return "Users [usersId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
-                + userName + ", password=" + password + "]";
-    }
 }

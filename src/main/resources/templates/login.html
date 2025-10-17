@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link href="../static/css/loginstyle.css" type="text/css" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div id="login">
+        <p th:if="${loginError}" class="errror"></p> 
+        <form th:action="@{/login}" method="post">
+
+            <div class="input-box">
+                <h2 for="username">Username:</h2>
+                <input type="text" id="username" name="username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            
+            <div class="input-box">
+                <h2 for="password">Password:</h2>
+                <input type="password" class="box" name="password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <div class="remember-forgot">
+                <label>
+                    <input type="checkbox"> Remember me</label>
+                <a href="#">Forgot password?</a>
+                </label>
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+
+            <div class="register-link">
+                <p>Don't have account? <a href="#">Register</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

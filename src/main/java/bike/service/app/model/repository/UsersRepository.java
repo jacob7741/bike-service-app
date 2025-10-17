@@ -10,4 +10,5 @@ import bike.service.app.model.Users;
 public interface UsersRepository extends JpaRepository <Users, Integer> {
     //getting user name from repository tzw konwencja nazewnictwa tak dziala w springBoot
     public Users findByUserName(String userName);
+    public Users findByUserId(int userId);
 }
