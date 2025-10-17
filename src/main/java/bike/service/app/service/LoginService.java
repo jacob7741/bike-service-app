@@ -97,7 +97,6 @@ public class LoginService {
         List<Order> personalList = new ArrayList<>();
         List<Users> usersList = usersRepository.findAll();
 
-        
             if (id == user.getUserId()) {
                 if (user.getRole().MANAGER == Users.Role.MANAGER) {
                     personalList = orderService.getAllOrders();
@@ -106,7 +105,6 @@ public class LoginService {
 
                 }
             }
-        
         return personalList;
     }
 
