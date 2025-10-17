@@ -1,3 +1,4 @@
+
 package bike.service.app.model;
 
 import jakarta.persistence.Column;

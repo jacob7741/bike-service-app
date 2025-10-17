@@ -97,16 +97,16 @@ public class LoginService {
         List<Order> personalList = new ArrayList<>();
         List<Users> usersList = usersRepository.findAll();
 
-        for (Users user1 : usersList) {
+        
             if (id == user.getUserId()) {
                 if (user.getRole().MANAGER == Users.Role.MANAGER) {
                     personalList = orderService.getAllOrders();
                 } else {
-                    personalList = getMechanicList(user);
+                    personalList = orderService.getOrderByUserId(userId);
+
                 }
-                break;
             }
-        }
+        
         return personalList;
     }
 

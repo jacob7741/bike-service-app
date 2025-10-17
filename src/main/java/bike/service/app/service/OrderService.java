@@ -97,6 +97,20 @@ public class OrderService {
                 .collect(Collectors.toList());
     }
 
+    public List<Order> getOrderByUserId(Integer userId) {
+        List<Order> orderList = orderRepository.findAll();
+        Users user = userRepository.findByUserId(userId);
+        List<Order> userList = new ArrayList<>();
+
+        for(Order order : orderList) {
+            if (order.getMechanic().getUserId() == userId) {
+                userList.add(order);
+            }
+        }
+
+        return userList;
+    }
+
     // public Order saveMechanicToOrder(Order order, int id) {
     // System.out.println("saveMechanicToOrder");
 
