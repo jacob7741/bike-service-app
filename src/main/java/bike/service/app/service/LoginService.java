@@ -102,7 +102,6 @@ public class LoginService {
                     personalList = orderService.getAllOrders();
                 } else {
                     personalList = orderService.getOrderByUserId(userId);
-
                 }
             }
         return personalList;

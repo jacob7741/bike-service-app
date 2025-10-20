@@ -49,8 +49,7 @@ public class DashboardController {
     @Autowired
     private UsersRepository userService;
 
-    // AtomicReference<Integer> userFullName = new AtomicReference<>();
-    // Integer userId;
+    AtomicReference<String> userFullName = new AtomicReference<String>(new String());
 
     @GetMapping("/dashboard")
     public String dashboard(Model model, Authentication authentication) {
