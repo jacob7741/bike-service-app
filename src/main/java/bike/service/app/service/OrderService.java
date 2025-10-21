@@ -103,13 +103,13 @@ public class OrderService {
         List<Order> userList = new ArrayList<>();
 
         for(Order order : orderList) {
-            if (user.getUserId() == userId) {
-                userList.add(order);
+            if (user.getRole() == Users.Role.MECHANIC ) {
+                
+            } else if (user.getRole() == Users.Role.MANAGER) {
+                
             }
         }
-        
-
-        return orderList;
+        return userList;
     }
 
     // public Order saveMechanicToOrder(Order order, int id) {

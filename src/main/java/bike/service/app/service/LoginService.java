@@ -91,17 +91,17 @@ public class LoginService {
     public List<Order> getPersonalListById(Integer id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName(); // login użytkownika
-        Users user = usersRepository.findByUserName(username); // pobierz encję z bazy
+        Users user = usersRepository.findByUserName(username);
         Integer userId = user.getUserId();
 
         List<Order> personalList = new ArrayList<>();
         List<Users> usersList = usersRepository.findAll();
 
-            if (id == user.getUserId()) {
+            if (id == userId) {
                 if (user.getRole().MANAGER == Users.Role.MANAGER) {
                     personalList = orderService.getAllOrders();
                 } else {
-                    personalList = orderService.getOrderByUserId(userId);
+                    personalList = orderService.getOrderByUserId(id);
                 }
             }
         return personalList;

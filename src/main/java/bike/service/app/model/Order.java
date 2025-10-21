@@ -30,20 +30,22 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "orderId")
-    private int orderId;
+    private long orderId;
     @OneToOne
-    @JoinColumn(name = "mechanic",referencedColumnName = "last_name")
-    private Users mechanic;
+    @JoinColumn(name = "user",referencedColumnName = "userId")
+    private Users userId;
     @Column(name = "service")
     private String service;
     @Column(name = "price", nullable = true)
     private Double price;
     @Column(name = "comment")
     private String comment;
-    @Column(name = "bikeModel")
-    private String bikeModel;
-    @Column(name = "client")
-    private String client;
+    @OneToOne
+    @JoinColumn(name = "bikeId",referencedColumnName = "bikeId")
+    private long bikeId;
+    @OneToOne
+    @JoinColumn(name = "clientId", referencedColumnName = "clientId")
+    private long client;
     @Column(name = "addby")
     private String addByUser;
     @Column(name = "donebyuser ")

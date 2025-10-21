@@ -1,11 +1,9 @@
 package bike.service.app.controller;
 
-import java.security.Principal;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,7 +59,8 @@ public class DashboardController {
         model.addAttribute("clientList", clientService.getAllClients());
         model.addAttribute("username", username);
         // model.addAttribute("orderList", loginService.getPersonalList(userFullName));
-        model.addAttribute("orderList", loginService.getPersonalListById(userId));
+        // model.addAttribute("orderList", loginService.getPersonalListById(userId));
+        model.addAttribute("orderList", orderService.getOrderByUserId(userId));
         model.addAttribute("doneList", orderService.getAllDoneOrders());
         model.addAttribute("newOrderList", orderService.getAllNewOrders());
         model.addAttribute("postsList", postsService.getAllPosts());
