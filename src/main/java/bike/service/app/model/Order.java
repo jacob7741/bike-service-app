@@ -33,7 +33,7 @@ public class Order {
     private long orderId;
     @OneToOne
     @JoinColumn(name = "user",referencedColumnName = "userId")
-    private Users userId;
+    private Users user;
     @Column(name = "service")
     private String service;
     @Column(name = "price", nullable = true)

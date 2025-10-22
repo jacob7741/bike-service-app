@@ -159,12 +159,26 @@ public class OrderService {
         return order;
     }
 
-    public Order saveMechanicToOrder(Order order, int id) {
+    // public Order saveMechanicToOrder(Order order, int id) {
+    //     System.out.println("saveMechanicToOrder");
+
+    //     Users mechanic = userService.getUserById(id);
+
+    //     order.setMechanic(mechanic);
+    //     System.out.println("Order before save: " + order);
+
+    //     orderRepository.save(order);
+    //     System.out.println("Order after save: " + order);
+    //     // mechanicRepository.save(mechanic);
+    //     return order;
+    // }
+
+    public Order saveUserToOrder(Order order, int id) {
         System.out.println("saveMechanicToOrder");
 
-        Users mechanic = userService.getUserById(id);
+        Users user = userService.getUserById(id);
 
-        order.setMechanic(mechanic);
+        order.setUser(user);
         System.out.println("Order before save: " + order);
 
         orderRepository.save(order);
@@ -173,18 +187,18 @@ public class OrderService {
         return order;
     }
 
-    public Order saveMechanicToOrder(Order order, AtomicReference<String> fullName) {
-        System.out.println("saveMechanicToOrder");
+    // public Order saveMechanicToOrder(Order order, AtomicReference<String> fullName) {
+    //     System.out.println("saveMechanicToOrder");
 
-        List<Users> lmechanics = userService.getAllUsers();
+    //     List<Users> lmechanics = userService.getAllUsers();
 
-        for (Users user : lmechanics) {
-            if ((user.getFirstName() + " " + user.getLastName()).equals(fullName.get())) {
-                order.setMechanic(user);
-            }
-        }
-        return order;
-    }
+    //     for (Users user : lmechanics) {
+    //         if ((user.getFirstName() + " " + user.getLastName()).equals(fullName.get())) {
+    //             order.setUser(user);
+    //         }
+    //     }
+    //     return order;
+    // }
 
     // public Order saveServiceToOrder(Order order) {
 

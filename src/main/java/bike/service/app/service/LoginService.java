@@ -43,17 +43,17 @@ public class LoginService {
         throw new RuntimeException("Wrong mechanic name." + mechanicName);
     }
 
-    public List<Order> getMechanicList(Users user) {
-        List<Order> ordersList = orderService.getAllActiveOrders();
-        List<Order> pList = new ArrayList<>();
+    // public List<Order> getMechanicList(Users user) {
+    //     List<Order> ordersList = orderService.getAllActiveOrders();
+    //     List<Order> pList = new ArrayList<>();
 
-        for (Order order : ordersList) {
-            if (order.getMechanic().getUserId() == user.getUserId()) {
-                pList.add(order);
-            }
-        }
-        return pList;
-    }
+    //     for (Order order : ordersList) {
+    //         if (order.getMechanic().getUserId() == user.getUserId()) {
+    //             pList.add(order);
+    //         }
+    //     }
+    //     return pList;
+    // }
 
     // ustawia mi 'annymouseUser' zamiast pobierac nazwe wybranego z listy
     // dzieje sie tak tylko w przypadku kiedy uzytkownik sie nie zaloguje
