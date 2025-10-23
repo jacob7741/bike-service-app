@@ -70,7 +70,7 @@ public class LoginService {
         if (user.getRole().MANAGER == Users.Role.MANAGER) {
             personalList = orderService.getAllOrders();
         } else {
-            personalList = getMechanicList(user);
+            personalList = getPersonalList(fullName);
         }
         return personalList;
     }

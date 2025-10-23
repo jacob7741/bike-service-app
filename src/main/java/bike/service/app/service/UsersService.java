@@ -148,7 +148,7 @@ public class UsersService implements UserDetailsService {
             if (newOrder.getStatus().equals(Status.NEW)) {
                 newOrder.setStatus(Order.Status.ACTIVE);
                 newOrder.setDate(nowDate.toString());
-                orderService.saveMechanicToOrder(newOrder, name);
+                // orderService.saveMechanicToOrder(newOrder, name);
             }
             oRepository.save(newOrder);
         }

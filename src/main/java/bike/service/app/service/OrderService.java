@@ -98,17 +98,16 @@ public class OrderService {
     }
 
     public List<Order> getOrderByUserId(Integer userId) {
-        List<Order> orderList = orderRepository.findAll();
         Users user = userRepository.findByUserId(userId);
         List<Order> userList = new ArrayList<>();
 
-        for(Order order : orderList) {
+       
             if (user.getRole() == Users.Role.MECHANIC ) {
                 
             } else if (user.getRole() == Users.Role.MANAGER) {
                 
             }
-        }
+        
         return userList;
     }
 
@@ -178,7 +177,7 @@ public class OrderService {
 
         Users user = userService.getUserById(id);
 
-        order.setUser(user);
+        order.setUserId(user);
         System.out.println("Order before save: " + order);
 
         orderRepository.save(order);
@@ -227,7 +226,7 @@ public class OrderService {
         if (client.getClientId() == 0) {
             throw new RuntimeException("no client found");
         } else {
-            order.setClient(client.getLast_name());
+            // order.setClientId(client.getClientId());
         }
         orderRepository.save(order);
         client.setOrder(order);
@@ -238,7 +237,7 @@ public class OrderService {
     public Order saveBikeToOrder(Order order, Bike bike) {
         System.out.println("saveBikeToOrder");
         if (!bike.getModelType().isEmpty()) {
-            order.setBikeModel(bike.getModelType());
+            // order.setBikeId(bike.getBikeId());
         } else {
             throw new RuntimeException("no bike found");
         }

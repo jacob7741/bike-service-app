@@ -1,16 +1,15 @@
 package bike.service.app.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
-import java.time.LocalDate;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bike.service.app.model.Posts;
-import bike.service.app.model.repository.PostsRepository;
 import bike.service.app.model.Users;
+import bike.service.app.model.repository.PostsRepository;
 
 @Service
 public class PostsService {

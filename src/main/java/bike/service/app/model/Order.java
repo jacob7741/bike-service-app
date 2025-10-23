@@ -1,13 +1,18 @@
 package bike.service.app.model;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -30,10 +35,10 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "orderId")
-    private long orderId;
+    private int orderId;
     @OneToOne
-    @JoinColumn(name = "user",referencedColumnName = "userId")
-    private Users user;
+    @JoinColumn(name = "userId",referencedColumnName = "userId")
+    private Users userId;
     @Column(name = "service")
     private String service;
     @Column(name = "price", nullable = true)
@@ -42,10 +47,10 @@ public class Order {
     private String comment;
     @OneToOne
     @JoinColumn(name = "bikeId",referencedColumnName = "bikeId")
-    private long bikeId;
+    private Bike bikeId;
     @OneToOne
     @JoinColumn(name = "clientId", referencedColumnName = "clientId")
-    private long client;
+    private Client clientId;
     @Column(name = "addby")
     private String addByUser;
     @Column(name = "donebyuser ")
@@ -54,10 +59,8 @@ public class Order {
     private String date;
     @Column(name = "deliveryDate")
     private String deliveryDate;
+
     @Enumerated(EnumType.STRING)
     @Column(name="status")
     private Status status;
-
-    // @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-    // private List<Services> services;
 }

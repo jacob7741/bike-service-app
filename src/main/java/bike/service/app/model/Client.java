@@ -37,8 +37,7 @@ public class Client {
     @Column(name = "email")
     private String email;
 
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name = "orderId")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "orderId", nullable = true)
     private Order order;
-
 }

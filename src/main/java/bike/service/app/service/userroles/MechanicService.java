@@ -29,14 +29,14 @@ public class MechanicService {
     private UsersRepository usersRepository;
 
     private LocalDate nowDate = LocalDate.now();
-    public void newStatusById(int id, AtomicReference<String> name) {
+    public void newStatusById(int id) {
         Optional<Order> optional = orderRepository.findById(id);
         if (optional.isPresent()) {
             Order newOrder = optional.get();
             if (newOrder.getStatus().equals(Status.NEW)) {
                 newOrder.setStatus(Order.Status.ACTIVE);
                 newOrder.setDate(nowDate.toString());
-                oService.saveMechanicToOrder(newOrder, name);
+                oService.saveUserToOrder(newOrder, id);
             }
             orderRepository.save(newOrder);
         }
