@@ -110,7 +110,7 @@ public class UsersService implements UserDetailsService {
     }
 
     public void deleteOrderById(int id) {
-        
+
         Order order = oRepository.getReferenceById(id);
         List<Client> clients = clientRepository.findAll();
         List<Bike> bikes = bikeRepository.findAll();
@@ -128,8 +128,8 @@ public class UsersService implements UserDetailsService {
             }
 
             // for (Services service : services) {
-            //     service.getOrder();
-            //     clientRepository.deleteById(service.getServiceId());
+            // service.getOrder();
+            // clientRepository.deleteById(service.getServiceId());
 
             // }
 
@@ -140,7 +140,8 @@ public class UsersService implements UserDetailsService {
         }
     }
 
-     private LocalDate nowDate = LocalDate.now();
+    private LocalDate nowDate = LocalDate.now();
+
     public void newStatusById(int id, AtomicReference<String> name) {
         Optional<Order> optional = oRepository.findById(id);
         if (optional.isPresent()) {
@@ -164,7 +165,8 @@ public class UsersService implements UserDetailsService {
 
             for (Users user : lmechanics) {
                 if ((user.getFirstName() + " " + user.getLastName()).equals(fullName.get())) {
-                    newOrder.setDoneByUser(user.getLastName());;
+                    newOrder.setDoneByUser(user.getLastName());
+                    ;
                 }
                 oRepository.save(newOrder);
             }

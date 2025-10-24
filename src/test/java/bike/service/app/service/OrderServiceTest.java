@@ -90,19 +90,6 @@ class OrderServiceTest {
     }
 
     @Test
-    void saveMechanicToOrder() {
-        Users testUser = new Users();
-        testUser.setUserId(34);
-
-        Order order = new Order();
-        order.setOrderId(12);
-        order.setMechanic(testUser);
-
-        assertNotNull(order);
-        assertEquals(testUser.getUserId(), order.getMechanic().getUserId());
-    }
-
-    @Test
     void saveClientToOrderException() {
 
         client.setClientId(0);
@@ -144,7 +131,7 @@ class OrderServiceTest {
         bike.setModelType("");
 
         Exception exception = assertThrows(RuntimeException.class, () -> {
-            orderService.saveBikeToOrder(order, bike);
+            orderService.(order, bike);
         });
 
         assertEquals("no bike found", exception.getMessage());

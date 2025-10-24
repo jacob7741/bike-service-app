@@ -98,17 +98,10 @@ public class OrderService {
     }
 
     public List<Order> getOrderByUserId(Integer userId) {
-        Users user = userRepository.findByUserId(userId);
-        List<Order> userList = new ArrayList<>();
 
-       
-            if (user.getRole() == Users.Role.MECHANIC ) {
-                
-            } else if (user.getRole() == Users.Role.MANAGER) {
-                
-            }
-        
-        return userList;
+        return orderRepository.findAll().stream()
+        .filter(order -> userService.getUserById(userId).equals(userId))
+        .collect(Collectors.toList());
     }
 
     // public Order saveMechanicToOrder(Order order, int id) {
