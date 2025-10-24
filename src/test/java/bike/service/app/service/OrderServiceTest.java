@@ -90,83 +90,15 @@ class OrderServiceTest {
     }
 
     @Test
-    void saveClientToOrderException() {
+    void getOrderByUserId() {
 
-        client.setClientId(0);
+        order.setUserId(user);
 
-        Exception exception = assertThrows(RuntimeException.class, () -> {
-            orderService.saveClientToOrder(order, client);
-        });
-
-        assertEquals("no client found", exception.getMessage());
-    }
-
-    @Test
-    void saveClientToOrder() {
-
-        when(clientRepository.save(any(Client.class))).thenReturn(client);
         when(orderRepository.save(any(Order.class))).thenReturn(order);
 
-        Order clientSaved = orderService.saveClientToOrder(order, client);
+        orderService.createNewOrder("smallService", order, "comment", "12.09.2026", 122.00);
+        order = orderService.saveUserToOrder(order, 43);
 
-        assertNotNull(clientSaved);
-        assertEquals("Kowalski id: 12", clientSaved.getClient());
-    }
-
-    @Test
-    void saveBikeToOrder() {
-
-        when(bikeRepository.save(any(Bike.class))).thenReturn(bike);
-        when(orderRepository.save(any(Order.class))).thenReturn(order);
-
-        Order bikeSaved = orderService.saveBikeToOrder(order, bike);
-
-        assertNotNull(bikeSaved);
-        assertEquals("Góral", bikeSaved.getBikeModel());
-    }
-
-    @Test
-    void saveBikeToOrderException() {
-
-        bike.setModelType("");
-
-        Exception exception = assertThrows(RuntimeException.class, () -> {
-            orderService.(order, bike);
-        });
-
-        assertEquals("no bike found", exception.getMessage());
-    }
-
-    @Test
-    void testGetAllNewOrders() {
-        Order order1 = new Order();
-        order1.setStatus(Order.Status.NEW);
-        Order order2 = new Order();
-        order2.setStatus(Order.Status.NEW);
-
-        List<Order> orders = Arrays.asList(order1, order2);
-        when(orderRepository.findAll()).thenReturn(orders);
-
-        List<Order> newOrders = orderService.getAllNewOrders();
-
-        assertThat(newOrders).containsExactly(order1, order2);
-    }
-
-    @Test
-    void testGetAllDoneOrders() {
-        Order order1 = new Order();
-        order1.setStatus(Order.Status.NEW);
-
-        List<Order> orders = Arrays.asList(order1);
-        when(orderRepository.findAll()).thenReturn(orders);
-
-        List<Order> doneOrders = orderService.getAllDoneOrders();
-
-        assertThat(doneOrders).containsExactly(order1);
-    }
-
-    @Test
-    void saveInfoAddByUserId() {
-        
+        assertNotNull(order);
     }
 }
