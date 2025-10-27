@@ -99,9 +99,7 @@ public class OrderService {
 
     public List<Order> getOrderByUserId(Integer userId) {
 
-        return orderRepository.findAll().stream()
-        .filter(order -> userService.getUserById(userId).equals(userId))
-        .collect(Collectors.toList());
+        return orderRepository.findByUserId(userId);
     }
 
     // public Order saveMechanicToOrder(Order order, int id) {
@@ -163,21 +161,18 @@ public class OrderService {
     //     System.out.println("Order after save: " + order);
     //     // mechanicRepository.save(mechanic);
     //     return order;
-    // }
+    //
 
-    public Order saveUserToOrder(Order order, int id) {
-        System.out.println("saveMechanicToOrder");
-
-        Users user = userService.getUserById(id);
-
-        order.setUserId(user);
-        System.out.println("Order before save: " + order);
-
-        orderRepository.save(order);
-        System.out.println("Order after save: " + order);
-        // mechanicRepository.save(mechanic);
-        return order;
+    public Order saveUserToOrder(Order order, int userId) {
+    Users user = userService.getUserById(userId);
+    if (user == null) {
+        throw new IllegalArgumentException("User with id " + userId + " not found");
     }
+
+    order.setUser(user); // zakładam, że pole w Order to Users user;
+    return orderRepository.save(order);
+}
+
 
     // public Order saveMechanicToOrder(Order order, AtomicReference<String> fullName) {
     //     System.out.println("saveMechanicToOrder");

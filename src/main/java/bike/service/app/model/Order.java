@@ -33,7 +33,7 @@ public class Order {
     private int orderId;
     @OneToOne
     @JoinColumn(name = "userId",referencedColumnName = "userId")
-    private Users userId;
+    private Users user;
     @Column(name = "service")
     private String service;
     @Column(name = "price", nullable = true)
@@ -42,10 +42,10 @@ public class Order {
     private String comment;
     @OneToOne
     @JoinColumn(name = "bikeId",referencedColumnName = "bikeId")
-    private Bike bikeId;
+    private Bike bike;
     @OneToOne
     @JoinColumn(name = "clientId", referencedColumnName = "clientId")
-    private Client clientId;
+    private Client client;
     @Column(name = "addby")
     private String addByUser;
     @Column(name = "donebyuser ")

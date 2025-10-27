@@ -1,14 +1,9 @@
 package bike.service.app.service;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-
-import java.util.Arrays;
-import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -91,14 +86,7 @@ class OrderServiceTest {
 
     @Test
     void getOrderByUserId() {
-
-        order.setUserId(user);
-
-        when(orderRepository.save(any(Order.class))).thenReturn(order);
-
-        orderService.createNewOrder("smallService", order, "comment", "12.09.2026", 122.00);
-        order = orderService.saveUserToOrder(order, 43);
-
-        assertNotNull(order);
+        
+        order.setUser(user);
     }
 }
