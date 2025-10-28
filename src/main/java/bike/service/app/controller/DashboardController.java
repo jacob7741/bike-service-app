@@ -54,13 +54,11 @@ public class DashboardController {
 
         String username = authentication.getName(); // login użytkownika
         Users user = userService.findByUserName(username); // pobierz encję z bazy
-        Integer userId = user.getUserId();
+        int userId = user.getUserId();
 
         model.addAttribute("clientList", clientService.getAllClients());
         model.addAttribute("username", username);
-        // model.addAttribute("orderList", loginService.getPersonalList(userFullName));
         model.addAttribute("orderList", loginService.getPersonalListById(userId));
-        // model.addAttribute("orderList", orderService.getOrderByUserId(userId));
         model.addAttribute("doneList", orderService.getAllDoneOrders());
         model.addAttribute("newOrderList", orderService.getAllNewOrders());
         model.addAttribute("postsList", postsService.getAllPosts());

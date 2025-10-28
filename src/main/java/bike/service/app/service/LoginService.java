@@ -12,10 +12,14 @@ import org.springframework.stereotype.Service;
 
 import bike.service.app.model.Order;
 import bike.service.app.model.Users;
+import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.UsersRepository;
 
 @Service
 public class LoginService {
+
+    @Autowired
+    private OrderRepository orderRepository;
     @Autowired
     private UsersRepository usersRepository;
     @Autowired
@@ -88,19 +92,18 @@ public class LoginService {
         }
     }
 
-    public List<Order> getPersonalListById(Integer id) {
+    public List<Order> getPersonalListById(int id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName(); // login użytkownika
+        String username = authentication.getName();
         Users user = usersRepository.findByUserName(username);
         Integer userId = user.getUserId();
 
         List<Order> personalList = new ArrayList<>();
-        // List<Users> usersList = usersRepository.findAll();
 
             if (id == userId) {
-                if (user.getRole().MANAGER == Users.Role.MANAGER) {
+                if (user.getRole() == Users.Role.MANAGER) {
                     personalList = orderService.getAllOrders();
-                } else {
+                } else if (user.getRole() == Users.Role.MECHANIC) {
                     personalList = orderService.getOrderByUserId(id);
                 }
             }

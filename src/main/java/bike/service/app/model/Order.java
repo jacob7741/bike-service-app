@@ -1,5 +1,6 @@
 package bike.service.app.model;
 
+import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -32,7 +33,7 @@ public class Order {
     @Column(name = "orderId")
     private int orderId;
     @OneToOne
-    @JoinColumn(name = "userId",referencedColumnName = "userId")
+    @JoinColumn(name = "userId",referencedColumnName = "userId",nullable="true")
     private Users user;
     @Column(name = "service")
     private String service;

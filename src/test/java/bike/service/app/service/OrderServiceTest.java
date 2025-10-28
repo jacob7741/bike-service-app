@@ -87,5 +87,12 @@ class OrderServiceTest {
     @Test
     void getOrderByUserId() {
         
+        when(orderRepository.save(any(Order.class))).thenReturn(order);
+        
+        Order result = orderService.createNewOrder("smallService", order, "comment", "12.09.2026", null);
+        
+        result.setUser(user);
+
+        assertEquals(result.getUser().getUserId(), 43);
     }
 }

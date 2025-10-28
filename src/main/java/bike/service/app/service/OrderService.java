@@ -1,6 +1,8 @@
 
 package bike.service.app.service;
 
+import static org.mockito.ArgumentMatchers.notNull;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,7 @@ import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.UsersRepository;
+import io.micrometer.common.lang.Nullable;
 
 @Service
 public class OrderService {
@@ -97,9 +100,17 @@ public class OrderService {
                 .collect(Collectors.toList());
     }
 
-    public List<Order> getOrderByUserId(Integer userId) {
-
-        return orderRepository.findByUserId(userId);
+    public List<Order> getOrderByUserId(int userId) {
+        List<Order> orderList = orderRepository.findAll();
+        List<Order> personalList = new ArrayList<>();
+        for(Order order : orderList) {
+            if (order.getUser().getUserId() == userId && order.getUser().getUserId() != 0) {
+                personalList.add(order);
+            } else {
+                throw new RuntimeException("User not found");
+            }
+        }
+        return orderList;
     }
 
     // public Order saveMechanicToOrder(Order order, int id) {
@@ -132,6 +143,7 @@ public class OrderService {
         }
         return order;
     }
+
     public Order saveInfoAddByUserId(Order order, Integer userId) {
         List<Users> test = userService.getAllUsers();
         LocalDate nowDate = LocalDate.now();
