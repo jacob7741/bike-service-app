@@ -1,7 +1,6 @@
 
 package bike.service.app.model;
 
-import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -30,7 +29,7 @@ public class Users {
     @Id
     @Column(name = "userId")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int userId;
+    private Long userId;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")

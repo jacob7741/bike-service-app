@@ -48,15 +48,15 @@ public class LoginService {
     }
 
     // public List<Order> getMechanicList(Users user) {
-    //     List<Order> ordersList = orderService.getAllActiveOrders();
-    //     List<Order> pList = new ArrayList<>();
+    // List<Order> ordersList = orderService.getAllActiveOrders();
+    // List<Order> pList = new ArrayList<>();
 
-    //     for (Order order : ordersList) {
-    //         if (order.getMechanic().getUserId() == user.getUserId()) {
-    //             pList.add(order);
-    //         }
-    //     }
-    //     return pList;
+    // for (Order order : ordersList) {
+    // if (order.getMechanic().getUserId() == user.getUserId()) {
+    // pList.add(order);
+    // }
+    // }
+    // return pList;
     // }
 
     // ustawia mi 'annymouseUser' zamiast pobierac nazwe wybranego z listy
@@ -65,18 +65,19 @@ public class LoginService {
     // mozna dodawac serwis do uytkownika nawet kiedy nie jest zalogowany
 
     // public List<Order> getPersonalList(AtomicReference<String> fullName) {
-    //     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    //     String userName = authentication.getName();
-    //     Users user = setFullName(userName, fullName);
-    //     List<Order> personalList;
+    // Authentication authentication =
+    // SecurityContextHolder.getContext().getAuthentication();
+    // String userName = authentication.getName();
+    // Users user = setFullName(userName, fullName);
+    // List<Order> personalList;
 
-    //     // tutaj dodana nowa zaleznosc na potrzeby dashboard przetestować
-    //     if (user.getRole().MANAGER == Users.Role.MANAGER) {
-    //         personalList = orderService.getAllOrders();
-    //     } else {
-    //         personalList = getPersonalList(fullName);
-    //     }
-    //     return personalList;
+    // // tutaj dodana nowa zaleznosc na potrzeby dashboard przetestować
+    // if (user.getRole().MANAGER == Users.Role.MANAGER) {
+    // personalList = orderService.getAllOrders();
+    // } else {
+    // personalList = getPersonalList(fullName);
+    // }
+    // return personalList;
     // }
 
     public void updatePasswords() {
@@ -92,23 +93,28 @@ public class LoginService {
         }
     }
 
-    public List<Order> getPersonalListById(int id) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        Users user = usersRepository.findByUserName(username);
-        Integer userId = user.getUserId();
-
-        List<Order> personalList = new ArrayList<>();
-
-            if (id == userId) {
-                if (user.getRole() == Users.Role.MANAGER) {
-                    personalList = orderService.getAllOrders();
-                } else if (user.getRole() == Users.Role.MECHANIC) {
-                    personalList = orderService.getOrderByUserId(id);
-                }
-            }
-        return personalList;
+    public List<Order> getOrderByUserId(Long userId) {
+        return orderRepository.findByUserUserId(userId);
     }
+
+    // public List<Order> getPersonalListById(Long id) {
+    // Authentication authentication =
+    // SecurityContextHolder.getContext().getAuthentication();
+    // String username = authentication.getName();
+    // Users user = usersRepository.findByUserName(username);
+    // Long userId = user.getUserId();
+
+    // List<Order> personalList = new ArrayList<>();
+
+    // if (id == userId) {
+    // if (user.getRole() == Users.Role.MANAGER) {
+    // personalList = orderService.getAllOrders();
+    // } else if (user.getRole() == Users.Role.MECHANIC) {
+    // personalList = orderService.getOrderByUserId(id);
+    // }
+    // }
+    // return personalList;
+    // }
 
     // old from 08.02.2025 before refactoring
 

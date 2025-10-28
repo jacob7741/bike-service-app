@@ -100,7 +100,7 @@ public class OrderService {
                 .collect(Collectors.toList());
     }
 
-    public List<Order> getOrderByUserId(int userId) {
+    public List<Order> getOrderByUserId(Long userId) {
         List<Order> orderList = orderRepository.findAll();
         List<Order> personalList = new ArrayList<>();
         for(Order order : orderList) {
@@ -144,12 +144,12 @@ public class OrderService {
         return order;
     }
 
-    public Order saveInfoAddByUserId(Order order, Integer userId) {
+    public Order saveInfoAddByUserId(Order order, Long userId) {
         List<Users> test = userService.getAllUsers();
         LocalDate nowDate = LocalDate.now();
         if (userId != 0) {
             for (Users users : test) {
-                Integer id = users.getUserId();
+                Long id = users.getUserId();
                 if (id == userId) {
                     order.setAddByUser(users.getLastName());
                     order.setDate(nowDate.toString());

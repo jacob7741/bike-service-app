@@ -13,6 +13,6 @@ import bike.service.app.model.Order;
 public interface OrderRepository extends JpaRepository<Order, Integer> {
 
     @Query("SELECT o FROM Order o WHERE o.user.userId = :userId")
-    List<Order> findByUserId(@Param("userId") Integer userId);
+    List<Order> findByUserUserId(@Param("userId") Long userId);
 
 }
