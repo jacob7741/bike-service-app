@@ -60,20 +60,20 @@ public class LoginService {
     // lecz w metodzie przed refactoringiem ponizej tej z 8 lutego
     // mozna dodawac serwis do uytkownika nawet kiedy nie jest zalogowany
 
-    public List<Order> getPersonalList(AtomicReference<String> fullName) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userName = authentication.getName();
-        Users user = setFullName(userName, fullName);
-        List<Order> personalList;
+    // public List<Order> getPersonalList(AtomicReference<String> fullName) {
+    //     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    //     String userName = authentication.getName();
+    //     Users user = setFullName(userName, fullName);
+    //     List<Order> personalList;
 
-        // tutaj dodana nowa zaleznosc na potrzeby dashboard przetestować
-        if (user.getRole().MANAGER == Users.Role.MANAGER) {
-            personalList = orderService.getAllOrders();
-        } else {
-            personalList = getPersonalList(fullName);
-        }
-        return personalList;
-    }
+    //     // tutaj dodana nowa zaleznosc na potrzeby dashboard przetestować
+    //     if (user.getRole().MANAGER == Users.Role.MANAGER) {
+    //         personalList = orderService.getAllOrders();
+    //     } else {
+    //         personalList = getPersonalList(fullName);
+    //     }
+    //     return personalList;
+    // }
 
     public void updatePasswords() {
         List<Users> usersList = usersService.getAllUsers();
@@ -95,7 +95,7 @@ public class LoginService {
         Integer userId = user.getUserId();
 
         List<Order> personalList = new ArrayList<>();
-        List<Users> usersList = usersRepository.findAll();
+        // List<Users> usersList = usersRepository.findAll();
 
             if (id == userId) {
                 if (user.getRole().MANAGER == Users.Role.MANAGER) {

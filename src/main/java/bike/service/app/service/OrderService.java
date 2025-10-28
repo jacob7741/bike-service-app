@@ -167,9 +167,10 @@ public class OrderService {
     Users user = userService.getUserById(userId);
     if (user == null) {
         throw new IllegalArgumentException("User with id " + userId + " not found");
+    } else {
+        order.setUser(user); // zakładam, że pole w Order to Users user;
     }
 
-    order.setUser(user); // zakładam, że pole w Order to Users user;
     return orderRepository.save(order);
 }
 
@@ -214,7 +215,7 @@ public class OrderService {
         if (client.getClientId() == 0) {
             throw new RuntimeException("no client found");
         } else {
-            // order.setClientId(client.getClientId());
+            order.setClient(client);
         }
         orderRepository.save(order);
         client.setOrder(order);
@@ -225,7 +226,7 @@ public class OrderService {
     public Order saveBikeToOrder(Order order, Bike bike) {
         System.out.println("saveBikeToOrder");
         if (!bike.getModelType().isEmpty()) {
-            // order.setBikeId(bike.getBikeId());
+            order.setBike(bike);
         } else {
             throw new RuntimeException("no bike found");
         }
