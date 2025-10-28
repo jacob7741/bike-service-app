@@ -19,12 +19,10 @@ import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
 import bike.service.app.model.Order.Status;
-// import bike.service.app.model.Services;
 import bike.service.app.model.Users;
 import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
-// import bike.service.app.model.repository.ServicesRepository;
 import bike.service.app.model.repository.UsersRepository;
 
 @Service
@@ -36,17 +34,13 @@ public class UsersService implements UserDetailsService {
 
     @Autowired
     private UsersRepository userRepository;
-    // @SuppressWarnings("unused")
-    @Autowired
-    private OrderService orderService;
+
     @Autowired
     private OrderRepository oRepository;
-    // @Autowired
-    // private ServicesService servicesService;
+
     @Autowired
     private UsersService usersService;
-    // @Autowired
-    // private ServicesRepository servicesRepository;
+
     @Autowired
     private ClientRepository clientRepository;
     @Autowired
@@ -126,12 +120,6 @@ public class UsersService implements UserDetailsService {
                 bike.getOrder();
                 bikeRepository.deleteById(bike.getBikeId());
             }
-
-            // for (Services service : services) {
-            // service.getOrder();
-            // clientRepository.deleteById(service.getServiceId());
-
-            // }
 
             if (!(order.getOrderId() == 0)) {
                 oRepository.deleteById(id);
