@@ -183,11 +183,11 @@
                         </td>
                           <td id="client_data">
                         <p class="dropdown">
-                            <span th:text="${order.client}"></span> 
+                            <span th:text="${order.client.first_name + ' ' + order.client.last_name}"></span> 
                             <button type="button">+</button>
                         </p>
                         <p class="dropdown">
-                            <span th:text="${order.bike}"></span>
+                            <span th:text="${order.bike.brand + ': ' + modelType}"></span>
                             <button type="button">+</button>
                         </p>
                     </td>

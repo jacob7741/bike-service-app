@@ -28,8 +28,8 @@ public class Order {
     } 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "orderId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
     @OneToOne
     @JoinColumn(name = "userId",referencedColumnName = "userId", nullable = true)

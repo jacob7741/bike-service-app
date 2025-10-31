@@ -49,7 +49,7 @@ public class OrderService {
 
     public Order createNewOrder(String serviceType, Order service, String comment, String deliveryDate, Double price) {
 
-        if (service.getOrderId() == 0) {
+        if (service.getOrderId() == null) {
             service.setDate(date.toString());
             service.setComment(comment);
             service.setDeliveryDate(deliveryDate);
