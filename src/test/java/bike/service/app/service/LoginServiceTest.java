@@ -91,22 +91,5 @@ public class LoginServiceTest {
         assertEquals("$2a$encodedPassword2", user2.getPassword());
     }
 
-    // @Test
-    // void testGetPersonalList() {
-
-    //     when(oService.getAllActiveOrders()).thenReturn(lOrders);
-    //     when(uService.getAllUsers()).thenReturn(Arrays.asList(user));
-    //     when(securityContext.getAuthentication()).thenReturn(authentication);
-    //     when(authentication.getName()).thenReturn(user.getUserName());
-    //     SecurityContextHolder.setContext(securityContext);
-
-    //     AtomicReference<String> uAtomicReference = new AtomicReference<>(user.getLastName());
-
-    //     List<Order> personalOrders = lService.getPersonalList(uAtomicReference);
-    //     String mechanicString = personalOrders.get(0).getMechanic().getLastName();
-
-    //     assertNotNull(personalOrders);
-    //     assertEquals(user.getFirstName() + " " + user.getLastName(), uAtomicReference.get());
-    //     assertEquals(user.getLastName(), mechanicString);
-    // }
+    
 }

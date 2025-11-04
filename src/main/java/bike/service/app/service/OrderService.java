@@ -87,7 +87,7 @@ public class OrderService {
                 .filter(order -> Order.Status.NEW.equals(order.getStatus()))
                 .collect(Collectors.toList());
     }
-
+    
     public Order saveInfoAddByUser(Order order, AtomicReference<String> fullName) {
         List<Users> test = userService.getAllUsers();
         LocalDate nowDate = LocalDate.now();
