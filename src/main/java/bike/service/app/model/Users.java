@@ -1,3 +1,4 @@
+
 package bike.service.app.model;
 
 import jakarta.persistence.Column;
@@ -28,7 +29,7 @@ public class Users {
     @Id
     @Column(name = "userId")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int userId;
+    private Long userId;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")

@@ -1,18 +1,13 @@
 package bike.service.app.model;
 
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -33,20 +28,24 @@ public class Order {
     } 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "orderId")
-    private int orderId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long orderId;
     @OneToOne
-    @JoinColumn(name = "mechanic",referencedColumnName = "last_name")
-    private Users mechanic;
+    @JoinColumn(name = "userId",referencedColumnName = "userId", nullable = true)
+    private Users user;
     @Column(name = "service")
     private String service;
+    @Column(name = "price", nullable = true)
+    private Double price;
     @Column(name = "comment")
     private String comment;
-    @Column(name = "bikeModel")
-    private String bikeModel;
-    @Column(name = "client")
-    private String client;
+    @OneToOne
+    @JoinColumn(name = "bikeId",referencedColumnName = "bikeId")
+    private Bike bike;
+    @OneToOne
+    @JoinColumn(name = "clientId", referencedColumnName = "clientId")
+    private Client client;
     @Column(name = "addby")
     private String addByUser;
     @Column(name = "donebyuser ")
@@ -55,10 +54,8 @@ public class Order {
     private String date;
     @Column(name = "deliveryDate")
     private String deliveryDate;
+
     @Enumerated(EnumType.STRING)
     @Column(name="status")
     private Status status;
-
-    // @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-    // private List<Services> services;
 }

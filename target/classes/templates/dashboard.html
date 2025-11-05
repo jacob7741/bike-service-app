@@ -22,7 +22,9 @@
         <div id="header-bar">
             <h4
                 style="color: rgba(0, 0, 0, 0.702); font-family: 'Courier New', Courier, monospace; font-weight: 500; margin-top: 5px; margin-left: 5px;">
-                Welcome: User name...
+                Welcome: <span
+                    style="color: rgba(0, 0, 0, 0.702); font-family: 'Courier New', Courier, monospace; font-weight: 500; margin-top: 5px; margin-left: 5px;"
+                    th:text=${username}></span>
             </h4>
             <div id="header-menu">
                 <data id="data" style="font-family: 'Courier New', Courier, 
@@ -117,30 +119,30 @@
                 <tr class="table_order" th:each="order : ${orderList}">
                     <td th:text="${order.orderId}">34534789</td>
                     <td class="infoDt">
-                        <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
-                            <p>Imie Mechanika</p>
-                            <p>Status Serwisu
-                                <button type="submit">edit</button>
+                        <form method="get" th:action="@{/dashboard/edit/{id}(id=${order.orderId})}">
+                            <p th:text="${order.user != null ? order.user.lastName +
+                                 ' ' + order.user.firstName : 'no mechanic'}"></p>
+                            <p>
+                                <span th:text="${order.status}"></span>
+                                <button type="button">edit</button>
                             </p>
                         </form>
                     </td>
-                    <td th:text="${order.client}">
-                        <div class="dropdown-container">
-                            <div class="dropdown-client">
-                                <p>Client NameSurname</p>
-                                <button>+</button>
-                            </div>
-                            <div class="dropdown-bike">
-                                <p>Reservation Data</p>
-                                <p>Bike type <button>+</button></p>
-                            </div>
-                        </div>
-                    <td class="date_panel_table" th:text="${order.date}">
-                        <p>Added<date>12.04.2024</date>
+                    <td id="client_data">
+                        <p class="dropdown">
+                            <span th:text="${order.client}"></span>
+                            <button type="button">+</button>
                         </p>
-                        <p>Modification<date>12.04.2024</date>
+                        <p class="dropdown">
+                            <span th:text="${order.bike}"></span>
+                            <button type="button">+</button>
                         </p>
-                        <p>Receipt<date>12.04.2024</date>
+                    </td>
+
+                    <td class="date_panel_table">
+                        <p>Added<date th:text="${order.date}"></date>
+                        </p>
+                        <p>Receipt<date th:text="${order.deliveryDate}"></date>
                         </p>
                     </td>
                     <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
@@ -159,45 +161,44 @@
     <div id="drop_side_menu">
         <div id="new_service" class="content">
             <p style="justify-content: space-between;">Number of orders: <span
-                    th:text="${#lists.size(orderList)}"></span>
+                    th:text="${#lists.size(newOrderList)}"></span>
             </p>
             <table>
                 <thead>
                     <tr>
                         <!-- <th class="number">No.</th> -->
                         <th class="orderId">ID</th>
-                        <th class="add_done_by">Add by</th>
+                        <th class="add_by">Add by</th>
                         <th class="clientDt">Client Data</th>
                         <th class="date">Date</th>
                         <th class="actions">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table_order" th:each="order : ${orderList}">
+                    <tr class="table_order" th:each="order : ${newOrderList}">
                         <td th:text="${order.orderId}">34534789</td>
                         <td class="infoDt">
-                            <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
-                                <p>Imie Mechanika</p>
+                            <form method="get" th:action="@{/dashboard/edit/{id}(id=${order.orderId})}">
+                                <p th:text="${order.addByUser}"></p>
                             </form>
                         </td>
-                        <td th:text="${order.client}">
-                            <div class="dropdown-container">
-                                <div class="dropdown-client">
-                                    <p>Client NameSurname</p>
-                                    <button>+</button>
-                                </div>
-                                <div class="dropdown-bike">
-                                    <p>Reservation Data</p>
-                                    <p>Bike type <button>+</button></p>
-                                </div>
-                            </div>
-                        <td class="date_panel_table" th:text="${order.date}">
-                            <p>Added<date>12.04.2024</date>
-                            </p>
-                            <p>Receipt<date>12.04.2024</date>
-                            </p>
-                        </td>
-                        <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                          <td id="client_data">
+                        <p class="dropdown">
+                            <span th:text="${order.client}"></span>
+                            <button type="button">+</button>
+                        </p>
+                        <p class="dropdown">
+                            <span th:text="${order.bike}"></span>
+                            <button type="button">+</button>
+                        </p>
+                    </td>
+                    <td class="date_panel_table">
+                        <p>Added<date th:text="${order.date}"></date>
+                        </p>
+                        <p>Receipt<date th:text="${order.deliveryDate}"></date>
+                        </p>
+                    </td>
+                        <form method="post" th:action="@{/take/{id}(id=${order.orderId})}">
                             <td class="actions">
                                 <button class="btnA" type="submit">Take</button>
                             </td>
@@ -209,7 +210,7 @@
 
         <div id="done_service" class="content">
             <p style="justify-content: space-between;">Number of orders: <span
-                    th:text="${#lists.size(orderList)}"></span>
+                    th:text="${#lists.size(doneList)}"></span>
             </p>
             <table>
                 <thead>
@@ -223,7 +224,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table_order" th:each="order : ${orderList}">
+                    <tr class="table_order" th:each="order : ${doneList}">
                         <td th:text="${order.orderId}">34534789</td>
                         <td class="infoDt">
                             <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
@@ -384,7 +385,7 @@
                                 </div>
                                 <div name="priceBox">
                                     Price
-                                    <input type="number"></input>
+                                    <input type="number" name="price"></input>
                                 </div>
                             </label>
 

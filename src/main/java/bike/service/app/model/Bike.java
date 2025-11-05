@@ -1,3 +1,4 @@
+
 package bike.service.app.model;
 
 import javax.validation.constraints.NotNull;
@@ -22,7 +23,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "Bike")
-public class  Bike {
+public class Bike {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,8 +39,7 @@ public class  Bike {
     @Column(name = "serialNumber")
     private int serialNumber;
 
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name = "orderId")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "orderId", nullable = true)
     private Order order;
-
 }

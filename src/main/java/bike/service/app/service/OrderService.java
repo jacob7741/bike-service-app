@@ -13,23 +13,18 @@ import org.springframework.stereotype.Service;
 import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
-// import bike.service.app.model.Services;
-import bike.service.app.model.Users;
 import bike.service.app.model.Order.Status;
+import bike.service.app.model.Users;
 import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
-// import bike.service.app.model.repository.ServicesRepository;
 import bike.service.app.model.repository.UsersRepository;
-import jakarta.persistence.EnumType;
 
 @Service
 public class OrderService {
 
     @Autowired
     private OrderRepository orderRepository;
-    // @Autowired
-    // private ServicesRepository servicesRepository;
     @Autowired
     private BikeRepository bikeRepository;
     @Autowired
@@ -52,13 +47,14 @@ public class OrderService {
         }
     }
 
-    public Order createNewOrder(String serviceType, Order service, String comment, String deliveryDate) {
+    public Order createNewOrder(String serviceType, Order service, String comment, String deliveryDate, Double price) {
 
-        if (service.getOrderId() == 0) {
+        if (service.getOrderId() == null) {
             service.setDate(date.toString());
             service.setComment(comment);
             service.setDeliveryDate(deliveryDate);
             service.setStatus(Status.NEW);
+            service.setPrice(price);
             switch (serviceType) {
                 case "smallService":
                 case "fullService":
@@ -72,15 +68,6 @@ public class OrderService {
 
     @SuppressWarnings("static-access")
     public List<Order> getAllActiveOrders() {
-        // List<Order> ordersList = orderRepository.findAll();
-        // List<Order> activeOrders = new ArrayList<>();
-        // for (Order order : ordersList) {
-        // if(order.getStatus() != null &&
-        // order.getStatus().equals(Order.Status.ACTIVE)) {
-        // activeOrders.add(order);
-        // }
-        // }
-        // return activeOrders;
 
         return orderRepository.findAll().stream()
                 .filter(order -> Order.Status.ACTIVE.equals(order.getStatus()))
@@ -100,21 +87,7 @@ public class OrderService {
                 .filter(order -> Order.Status.NEW.equals(order.getStatus()))
                 .collect(Collectors.toList());
     }
-
-    // public Order saveMechanicToOrder(Order order, int id) {
-    // System.out.println("saveMechanicToOrder");
-
-    // Users mechanic = userService.getUserById(id);
-
-    // order.setMechanic(mechanic);
-    // System.out.println("Order before save: " + order);
-
-    // orderRepository.save(order);
-    // System.out.println("Order after save: " + order);
-    // // mechanicRepository.save(mechanic);
-    // return order;
-    // }
-
+    
     public Order saveInfoAddByUser(Order order, AtomicReference<String> fullName) {
         List<Users> test = userService.getAllUsers();
         LocalDate nowDate = LocalDate.now();
@@ -132,61 +105,40 @@ public class OrderService {
         return order;
     }
 
-    public Order saveMechanicToOrder(Order order, int id) {
-        System.out.println("saveMechanicToOrder");
-
-        Users mechanic = userService.getUserById(id);
-
-        order.setMechanic(mechanic);
-        System.out.println("Order before save: " + order);
-
-        orderRepository.save(order);
-        System.out.println("Order after save: " + order);
-        // mechanicRepository.save(mechanic);
-        return order;
-    }
-
-    public Order saveMechanicToOrder(Order order, AtomicReference<String> fullName) {
-        System.out.println("saveMechanicToOrder");
-
-        List<Users> lmechanics = userService.getAllUsers();
-
-        for (Users user : lmechanics) {
-            if ((user.getFirstName() + " " + user.getLastName()).equals(fullName.get())) {
-                order.setMechanic(user);
+    public Order saveInfoAddByUserId(Order order, Long userId) {
+        List<Users> test = userService.getAllUsers();
+        LocalDate nowDate = LocalDate.now();
+        if (userId != 0) {
+            for (Users users : test) {
+                Long id = users.getUserId();
+                if (id == userId) {
+                    order.setAddByUser(users.getLastName());
+                    order.setDate(nowDate.toString());
+                    orderRepository.save(order);
+                    break;
+                }
             }
         }
         return order;
     }
 
-    // public Order saveServiceToOrder(Order order) {
+    public Order saveUserToOrder(Order order, int userId) {
+    Users user = userService.getUserById(userId);
+    if (user == null) {
+        throw new IllegalArgumentException("User with id " + userId + " not found");
+    } else {
+        order.setUser(user); // zakładam, że pole w Order to Users user;
+    }
 
-    // System.out.println("saveServiceToOrder");
-
-    // // if (services.getSmallService() == 50) {
-    // // order.setService("small service - id: " + services.getServiceId());
-    // // order.setData(services.getDate());
-    // // } else if (services.getFullService() == 200) {
-    // // order.setService("full service - id: " + services.getServiceId());
-    // // order.setData(services.getDate());
-    // // } else {
-    // // order.setService("reprair - id: " + services.getServiceId());
-    // // order.setData(services.getDate());
-    // // }
-
-    // order.setStatus(Status.NEW);
-    // orderRepository.save(order);
-    // // services.setOrder(order);
-    // // servicesRepository.save(services);
-    // return order;
-    // }
+    return orderRepository.save(order);
+}
 
     public Order saveClientToOrder(Order order, Client client) {
         System.out.println("saveClientToOrder");
         if (client.getClientId() == 0) {
             throw new RuntimeException("no client found");
         } else {
-            order.setClient(client.getLast_name() + " id: " + client.getClientId());
+            order.setClient(client);
         }
         orderRepository.save(order);
         client.setOrder(order);
@@ -197,7 +149,7 @@ public class OrderService {
     public Order saveBikeToOrder(Order order, Bike bike) {
         System.out.println("saveBikeToOrder");
         if (!bike.getModelType().isEmpty()) {
-            order.setBikeModel(bike.getModelType());
+            order.setBike(bike);
         } else {
             throw new RuntimeException("no bike found");
         }

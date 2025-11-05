@@ -19,12 +19,10 @@ import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
 import bike.service.app.model.Order.Status;
-// import bike.service.app.model.Services;
 import bike.service.app.model.Users;
 import bike.service.app.model.repository.BikeRepository;
 import bike.service.app.model.repository.ClientRepository;
 import bike.service.app.model.repository.OrderRepository;
-// import bike.service.app.model.repository.ServicesRepository;
 import bike.service.app.model.repository.UsersRepository;
 
 @Service
@@ -36,17 +34,13 @@ public class UsersService implements UserDetailsService {
 
     @Autowired
     private UsersRepository userRepository;
-    // @SuppressWarnings("unused")
-    @Autowired
-    private OrderService orderService;
+
     @Autowired
     private OrderRepository oRepository;
-    // @Autowired
-    // private ServicesService servicesService;
+
     @Autowired
     private UsersService usersService;
-    // @Autowired
-    // private ServicesRepository servicesRepository;
+
     @Autowired
     private ClientRepository clientRepository;
     @Autowired
@@ -110,7 +104,7 @@ public class UsersService implements UserDetailsService {
     }
 
     public void deleteOrderById(int id) {
-        
+
         Order order = oRepository.getReferenceById(id);
         List<Client> clients = clientRepository.findAll();
         List<Bike> bikes = bikeRepository.findAll();
@@ -127,12 +121,6 @@ public class UsersService implements UserDetailsService {
                 bikeRepository.deleteById(bike.getBikeId());
             }
 
-            // for (Services service : services) {
-            //     service.getOrder();
-            //     clientRepository.deleteById(service.getServiceId());
-
-            // }
-
             if (!(order.getOrderId() == 0)) {
                 oRepository.deleteById(id);
                 System.out.println("order deleted");
@@ -140,7 +128,8 @@ public class UsersService implements UserDetailsService {
         }
     }
 
-     private LocalDate nowDate = LocalDate.now();
+    private LocalDate nowDate = LocalDate.now();
+
     public void newStatusById(int id, AtomicReference<String> name) {
         Optional<Order> optional = oRepository.findById(id);
         if (optional.isPresent()) {
@@ -148,25 +137,24 @@ public class UsersService implements UserDetailsService {
             if (newOrder.getStatus().equals(Status.NEW)) {
                 newOrder.setStatus(Order.Status.ACTIVE);
                 newOrder.setDate(nowDate.toString());
-                orderService.saveMechanicToOrder(newOrder, name);
+                // orderService.saveMechanicToOrder(newOrder, name);
             }
             oRepository.save(newOrder);
         }
     }
 
-    public void doneStatusById(int id, AtomicReference<String> fullName) {
+    public void doneStatusById(int id, Long userId) {
         Optional<Order> optional = oRepository.findById(id);
         if (optional.isPresent()) {
             Order newOrder = optional.get();
             newOrder.setStatus(Order.Status.DONE);
             newOrder.setDate(nowDate.toString());
-            List<Users> lmechanics = usersService.getAllUsers();
+            List<Users> usersList = usersService.getAllUsers();
 
-            for (Users user : lmechanics) {
-                if ((user.getFirstName() + " " + user.getLastName()).equals(fullName.get())) {
-                    newOrder.setDoneByUser(user.getLastName());;
-                }
+            for (Users user : usersList) {
+                if ( user.getUserId() == userId){
                 oRepository.save(newOrder);
+                }
             }
         }
     }
@@ -185,5 +173,4 @@ public class UsersService implements UserDetailsService {
         Optional<Order> order = oRepository.findById(id);
         return order.get();
     }
-
 }

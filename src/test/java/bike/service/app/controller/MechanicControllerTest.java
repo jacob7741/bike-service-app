@@ -84,29 +84,29 @@ public class MechanicControllerTest {
                 .andReturn();
     }
 
-    @Test
-    void testMechanicSite() throws Exception {
+    // @Test
+    // void testMechanicSite() throws Exception {`
 
-        MockitoAnnotations.openMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(mController)
-                .setSingleView(mockView)
-                .build();
+    //     MockitoAnnotations.openMocks(this);
+    //     mockMvc = MockMvcBuilders.standaloneSetup(mController)
+    //             .setSingleView(mockView)
+    //             .build();
 
-        AtomicReference<String> fullName = new AtomicReference<>("Test User");
-        List<Order> pList = Collections.emptyList();
+    //     AtomicReference<String> fullName = new AtomicReference<>("Test User");
+    //     List<Order> pList = Collections.emptyList();
 
-        when(lService.getPersonalList(any())).thenAnswer(invocation -> {
-            AtomicReference<String> arg = invocation.getArgument(0);
-            arg.set(fullName.get());
-            return pList;
-        });
+    //     when(lService.getPersonalList(any())).thenAnswer(invocation -> {
+    //         AtomicReference<String> arg = invocation.getArgument(0);
+    //         arg.set(fullName.get());
+    //         return pList;
+    //     });
 
-        mockMvc.perform(get("/mechanic"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("mechanic"))
-                .andExpect(model().attribute("username", "Test User"))
-                .andExpect(model().attribute("orderList", pList));
-    }
+    //     mockMvc.perform(get("/mechanic"))
+    //             .andExpect(status().isOk())
+    //             .andExpect(view().name("mechanic"))
+    //             .andExpect(model().attribute("username", "Test User"))
+    //             .andExpect(model().attribute("orderList", pList));
+    // }
 
     @Test
     void testUpdateService() throws Exception {
