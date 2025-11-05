@@ -25,35 +25,37 @@ import bike.service.app.service.ClientService;
 import bike.service.app.service.LoginService;
 import bike.service.app.service.OrderService;
 import bike.service.app.service.PostsService;
+import bike.service.app.service.UsersService;
 import bike.service.app.service.userroles.MechanicService;
 
 @Controller
 public class DashboardController {
 
     @Autowired
+    private OrderRepository orderRepository;
+    @Autowired
+    private UsersRepository usersRepository;
+    @Autowired
     private LoginService loginService;
     @Autowired
-    private OrderRepository orderRepository;
+    private UsersService usersService;
     @Autowired
     private OrderService orderService;
     @Autowired
     private PostsService postsService;
     @Autowired
-    private MechanicService mechanicService;
-    @Autowired
     private BikeService bikeService;
     @Autowired
     private ClientService clientService;
-    @Autowired
-    private UsersRepository userService;
 
     AtomicReference<String> userFullName = new AtomicReference<String>(new String());
-
+    Long userId;
+    
     @GetMapping("/dashboard")
     public String dashboard(Model model, Authentication authentication) {
 
         String username = authentication.getName(); // login użytkownika
-        Users user = userService.findByUserName(username); // pobierz encję z bazy
+        Users user = usersRepository.findByUserName(username); // pobierz encję z bazy
         Long userId = user.getUserId();
 
         model.addAttribute("clientList", clientService.getAllClients());
@@ -83,8 +85,8 @@ public class DashboardController {
             Authentication authentication) {
 
         String username = authentication.getName();
-        Users user = userService.findByUserName(username);
-        Long userId = user.getUserId();
+        Users user = usersRepository.findByUserName(username);
+        userId = user.getUserId();
 
         orderService.createNewOrder(serviceType, service, comment, deliveryDate, price);
         bikeService.addNewBike(bike);
@@ -104,7 +106,7 @@ public class DashboardController {
 
     @PostMapping("dashboard/done/{id}")
     public String doneButton(@PathVariable("id") int id) {
-        // mechanicService.doneStatusById(id, userFullName);
+        usersService.doneStatusById(id, userId);
         return "redirect:/dashboard";
     }
 
@@ -116,15 +118,15 @@ public class DashboardController {
 
     @GetMapping("/dashboard/edit/{id}")
     public String getEditForm(@PathVariable("id") int id, Model model) {
-        Order order = mechanicService.getOrderById(id);
-        model.addAttribute("order", order);
+        // Order order = mechanicService.getOrderById(id);
+        // model.addAttribute("order", order);
         return "update";
     }
 
     @PostMapping("/orders/updateService")
     public String updateService(@RequestParam("service") String service,
             @RequestParam("orderId") int orderId) {
-        mechanicService.editOrderById(service, orderId);
+        // mechanicService.editOrderById(service, orderId);
         return "redirect:/dashboard";
     }
 

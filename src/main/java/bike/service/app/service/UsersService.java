@@ -143,20 +143,18 @@ public class UsersService implements UserDetailsService {
         }
     }
 
-    public void doneStatusById(int id, AtomicReference<String> fullName) {
+    public void doneStatusById(int id, Long userId) {
         Optional<Order> optional = oRepository.findById(id);
         if (optional.isPresent()) {
             Order newOrder = optional.get();
             newOrder.setStatus(Order.Status.DONE);
             newOrder.setDate(nowDate.toString());
-            List<Users> lmechanics = usersService.getAllUsers();
+            List<Users> usersList = usersService.getAllUsers();
 
-            for (Users user : lmechanics) {
-                if ((user.getFirstName() + " " + user.getLastName()).equals(fullName.get())) {
-                    newOrder.setDoneByUser(user.getLastName());
-                    ;
-                }
+            for (Users user : usersList) {
+                if ( user.getUserId() == userId){
                 oRepository.save(newOrder);
+                }
             }
         }
     }
