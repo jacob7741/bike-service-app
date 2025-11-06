@@ -120,8 +120,8 @@
                     <td th:text="${order.orderId}">34534789</td>
                     <td class="infoDt">
                         <form method="get" th:action="@{/dashboard/edit/{id}(id=${order.orderId})}">
-                            <p th:text="${order.user != null ? order.user.lastName +
-                                 ' ' + order.user.firstName : 'no mechanic'}"></p>
+                            <p th:text="${order.mechanic != null ? order.mechanic.lastName +
+                                 ' ' + order.mechanic.firstName : 'no mechanic'}"></p>
                             <p>
                                 <span th:text="${order.status}"></span>
                                 <button type="button">edit</button>
@@ -134,7 +134,7 @@
                             <button type="button">+</button>
                         </p>
                         <p class="dropdown">
-                            <span th:text="${order.bike}"></span>
+                            <span th:text="${order.bikeModel}"></span>
                             <button type="button">+</button>
                         </p>
                     </td>
@@ -188,7 +188,7 @@
                             <button type="button">+</button>
                         </p>
                         <p class="dropdown">
-                            <span th:text="${order.bike}"></span>
+                            <span th:text="${order.bikeModel}"></span>
                             <button type="button">+</button>
                         </p>
                     </td>

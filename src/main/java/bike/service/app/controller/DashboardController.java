@@ -49,7 +49,7 @@ public class DashboardController {
     private ClientService clientService;
 
     AtomicReference<String> userFullName = new AtomicReference<String>(new String());
-    Long userId;
+    long userId;
     
     @GetMapping("/dashboard")
     public String dashboard(Model model, Authentication authentication) {

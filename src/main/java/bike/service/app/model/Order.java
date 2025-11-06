@@ -30,7 +30,7 @@ public class Order {
     @Id
     @Column(name = "orderId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderId;
+    private long orderId;
     @OneToOne
     @JoinColumn(name = "userId",referencedColumnName = "userId", nullable = true)
     private Users user;

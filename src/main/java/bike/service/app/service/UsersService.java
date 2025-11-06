@@ -143,7 +143,7 @@ public class UsersService implements UserDetailsService {
         }
     }
 
-    public void doneStatusById(int id, Long userId) {
+    public void doneStatusById(int id, long userId) {
         Optional<Order> optional = oRepository.findById(id);
         if (optional.isPresent()) {
             Order newOrder = optional.get();
