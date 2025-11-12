@@ -56,7 +56,7 @@ public class UsersService implements UserDetailsService {
         }
     }
 
-    public Users getUserById(int id) {
+    public Users getUserById(long id) {
         logger.info("get user by Id");
         Optional<Users> user = userRepository.findById(id);
 
@@ -78,7 +78,7 @@ public class UsersService implements UserDetailsService {
         return user;
     }
 
-    public void deleteUserById(int id) {
+    public void deleteUserById(long id) {
         logger.info("deleted user by id");
         Optional<Users> user = userRepository.findById(id);
 
@@ -145,17 +145,15 @@ public class UsersService implements UserDetailsService {
 
     public void doneStatusById(int id, long userId) {
         Optional<Order> optional = oRepository.findById(id);
-        if (optional.isPresent()) {
+        Optional<Users> oUser = userRepository.findById((userId));
+        if (optional.isPresent() && oUser.isPresent()) {
             Order newOrder = optional.get();
-            newOrder.setStatus(Order.Status.DONE);
+            Users user = oUser.get();
             newOrder.setDate(nowDate.toString());
-            List<Users> usersList = usersService.getAllUsers();
+            newOrder.setUser(user);
+            newOrder.setStatus(Order.Status.DONE);
 
-            for (Users user : usersList) {
-                if ( user.getUserId() == userId){
-                oRepository.save(newOrder);
-                }
-            }
+            oRepository.save(newOrder);
         }
     }
 
