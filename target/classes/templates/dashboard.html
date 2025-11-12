@@ -145,12 +145,12 @@
                         <p>Receipt<date th:text="${order.deliveryDate}"></date>
                         </p>
                     </td>
-                    <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                    <form method="post" th:action="@{/dashboard/done/{id}(id=${order.orderId})}">
                         <td class="actions">
                             <button class="btnA" type="submit">Edit</button>
-                            <button class="btnA" type="submit">Print</button>
+                            <!-- <button class="btnA" type="submit">Print</button>
                             <button class="btnA" type="submit">Share</button>
-                            <button class="btnA" type="submit">Delete</button>
+                            <button class="btnA" type="submit">Delete</button> -->
                         </td>
                     </form>
                 </tr>
@@ -227,7 +227,7 @@
                     <tr class="table_order" th:each="order : ${doneList}">
                         <td th:text="${order.orderId}">34534789</td>
                         <td class="infoDt">
-                            <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
+                            <form method="get" th:action="@{/dashboard/edit/{id}(id=${order.orderId})}">
                                 <p>Imie Mechanika</p>
                             </form>
                         </td>
@@ -250,9 +250,9 @@
                             <p>Receipt<date>12.04.2024</date>
                             </p>
                         </td>
-                        <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                        <form method="post" th:action="@{/dashboard/done/{id}(id=${order.orderId})}">
+                            <button class="btnA" type="submit">Edit</button>
                             <td class="actions">
-                                <button class="btnA" type="submit">Edit</button>
                                 <button class="btnA" type="submit">Print</button>
                                 <button class="btnA" type="submit">Share</button>
                                 <button class="btnA" type="submit">Delete</button>

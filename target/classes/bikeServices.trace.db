@@ -30038,3 +30038,9 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: /Users/jacobsunn
 	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
 	... 54 more
+2025-11-12 16:58:02.737745+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'' (ORDERSERVICE: ""USERID"" BIGINT)"; SQL statement:
+UPDATE "PUBLIC"."ORDERSERVICE" SET "ORDERID"=? ,"ADDBY"=? ,"COMMENT"=? ,"DATE"=? ,"DELIVERYDATE"=? ,"DONEBYUSER"=? ,"PRICE"=? ,"SERVICE"=? ,"STATUS"=? ,"BIKEID"=? ,"CLIENTID"=? ,"USERID"=?  WHERE "ORDERID"=? [22018-232]
+2025-11-12 16:58:02.740456+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'' (ORDERSERVICE: ""USERID"" BIGINT)"; SQL statement:
+UPDATE "PUBLIC"."ORDERSERVICE" SET "ORDERID"=? ,"ADDBY"=? ,"COMMENT"=? ,"DATE"=? ,"DELIVERYDATE"=? ,"DONEBYUSER"=? ,"PRICE"=? ,"SERVICE"=? ,"STATUS"=? ,"BIKEID"=? ,"CLIENTID"=? ,"USERID"=?  WHERE "ORDERID"=? [22018-232]
