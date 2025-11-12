@@ -8,10 +8,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
-
-import javax.swing.text.html.Option;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -58,41 +55,8 @@ class UsersServiceTest {
         verify(oRepository).findById(2);
     }
 
-    // @Test
-    // void shouldNotUpdateStatusWhenUserDoesNotExist() {
-    //     // given
-    //     Users testUser = new Users();
-    //     testUser.setUserId(34);
-
-    //     Order order = new Order();
-    //     order.setStatus(Order.Status.ACTIVE);
-    //     order.setOrderId(123);
-
-    //     // when
-    //     when(oRepository.findById(123)).thenReturn(Optional.of(order));
-    //     when(usersRepository.findAll()).thenReturn(List.of(testUser));
-
-    //     // then
-    //     usersService.doneStatusById(123, 99); // different user id
-    //     assertEquals(Order.Status.DONE, order.getStatus()); // status is set but not saved
-    //     // verify(oRepository, never()).save(any(Order.class)); // verify save was not called
-    // }
-
-    // @Test
-    // void shouldNotUpdateStatusWhenOrderDoesNotExist() {
-    //     // given
-    //     when(oRepository.findById(999)).thenReturn(Optional.empty());
-
-    //     // when
-    //     usersService.doneStatusById(999, 1);
-
-    //     // then
-    //     verify(oRepository, never()).save(any(Order.class));
-    //     verify(usersService, never()).getAllUsers();
-    // }
-
     @Test
-    void shouldSetCurrentDateWhenUpdatingStatus() {
+    void shouldUpdatingDoneStatus() {
         // given
         Users testUser = new Users();
         testUser.setUserId(34);
@@ -112,7 +76,7 @@ class UsersServiceTest {
 
         // then
         assertEquals(Order.Status.DONE, order.getStatus());
-        // verify(oRepository).save(order);
-        // assertEquals(currentDate, order.getDate());
+        verify(oRepository).save(order);
+        assertEquals(currentDate, order.getDate());
     }
 }

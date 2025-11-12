@@ -109,31 +109,31 @@ public class DashboardController {
         return "redirect:/dashboard";
     }
 
-    @PostMapping("/take/{id}")
-    public String takeButton(@PathVariable("id") int id) {
-        // mechanicService.newStatusById(id, userFullName);
-        return "redirect:/dashboard";
-    }
+    // @PostMapping("/take/{id}")
+    // public String takeButton(@PathVariable("id") int id) {
+    //     usersService.newStatusById(id, userId);
+    //     return "redirect:/dashboard";
+    // }
 
-    @GetMapping("/dashboard/edit/{id}")
-    public String getEditForm(@PathVariable("id") int id, Model model) {
-        // Order order = mechanicService.getOrderById(id);
-        // model.addAttribute("order", order);
-        return "update";
-    }
+    // @GetMapping("/dashboard/edit/{id}")
+    // public String getEditForm(@PathVariable("id") int id, Model model) {
+    //     Order order = usersService.getOrderById(id);
+    //     model.addAttribute("order", order);
+    //     return "update";
+    // }
 
-    @PostMapping("/orders/updateService")
-    public String updateService(@RequestParam("service") String service,
-            @RequestParam("orderId") int orderId) {
-        // mechanicService.editOrderById(service, orderId);
-        return "redirect:/dashboard";
-    }
+    // @PostMapping("/orders/updateService")
+    // public String updateService(@RequestParam("service") String service,
+    //         @RequestParam("orderId") int orderId) {
+    //     usersService.editOrderById(service, orderId);
+    //     return "redirect:/dashboard";
+    // }
 
-    @PostMapping("/dashboard/post")
-    public String createPost(@RequestParam("content") String content) {
-        Posts post = new Posts();
-        post.setContent(content);
-        // postsService.createPost(post, content, userFullName);
-        return "redirect:/dashboard";
-    }
+    // @PostMapping("/dashboard/post")
+    // public String createPost(@RequestParam("content") String content) {
+    //     Posts post = new Posts();
+    //     post.setContent(content);
+    //     postsService.createPost(post, content, userFullName);
+    //     return "redirect:/dashboard";
+    // }
 }

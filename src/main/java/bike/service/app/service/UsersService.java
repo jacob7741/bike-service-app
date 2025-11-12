@@ -39,10 +39,8 @@ public class UsersService implements UserDetailsService {
     private OrderRepository oRepository;
 
     @Autowired
-    private UsersService usersService;
-
-    @Autowired
     private ClientRepository clientRepository;
+
     @Autowired
     private BikeRepository bikeRepository;
 
@@ -67,7 +65,7 @@ public class UsersService implements UserDetailsService {
         }
     }
 
-    public Users addNewMechanic(Users user) {
+    public Users addNewUser(Users user) {
         logger.info("add new user");
 
         if (user.getUserId() == 0) {
@@ -130,16 +128,18 @@ public class UsersService implements UserDetailsService {
 
     private LocalDate nowDate = LocalDate.now();
 
-    public void newStatusById(int id, AtomicReference<String> name) {
+    public void newStatusById(int id, long userId) {
         Optional<Order> optional = oRepository.findById(id);
-        if (optional.isPresent()) {
+        Optional<Users> oUser = userRepository.findById((userId));
+        if (optional.isPresent() && oUser.isPresent()) {
             Order newOrder = optional.get();
+            Users user = oUser.get();
             if (newOrder.getStatus().equals(Status.NEW)) {
                 newOrder.setStatus(Order.Status.ACTIVE);
                 newOrder.setDate(nowDate.toString());
-                // orderService.saveMechanicToOrder(newOrder, name);
+                newOrder.setUser(user);
+                oRepository.save(newOrder);
             }
-            oRepository.save(newOrder);
         }
     }
 
