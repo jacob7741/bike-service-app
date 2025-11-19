@@ -145,14 +145,14 @@
                         <p>Receipt<date th:text="${order.deliveryDate}"></date>
                         </p>
                     </td>
-                    <form method="post" th:action="@{/dashboard/done/{id}(id=${order.orderId})}">
-                        <td class="actions">
-                            <button class="btnA" type="submit">Edit</button>
+                    <td class="actions">
+                        <form method="post" th:action="@{/dashboard/done/{id}(id=${order.orderId})}">
+                            <button class="btnA" type="submit">Done</button>
                             <!-- <button class="btnA" type="submit">Print</button>
                             <button class="btnA" type="submit">Share</button>
                             <button class="btnA" type="submit">Delete</button> -->
-                        </td>
-                    </form>
+                        </form>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -182,22 +182,22 @@
                                 <p th:text="${order.addByUser}"></p>
                             </form>
                         </td>
-                          <td id="client_data">
-                        <p class="dropdown">
-                            <span th:text="${order.client}"></span>
-                            <button type="button">+</button>
-                        </p>
-                        <p class="dropdown">
-                            <span th:text="${order.bike}"></span>
-                            <button type="button">+</button>
-                        </p>
-                    </td>
-                    <td class="date_panel_table">
-                        <p>Added<date th:text="${order.date}"></date>
-                        </p>
-                        <p>Receipt<date th:text="${order.deliveryDate}"></date>
-                        </p>
-                    </td>
+                        <td id="client_data">
+                            <p class="dropdown">
+                                <span th:text="${order.client}"></span>
+                                <button type="button">+</button>
+                            </p>
+                            <p class="dropdown">
+                                <span th:text="${order.bike}"></span>
+                                <button type="button">+</button>
+                            </p>
+                        </td>
+                        <td class="date_panel_table">
+                            <p>Added<date th:text="${order.date}"></date>
+                            </p>
+                            <p>Receipt<date th:text="${order.deliveryDate}"></date>
+                            </p>
+                        </td>
                         <form method="post" th:action="@{/take/{id}(id=${order.orderId})}">
                             <td class="actions">
                                 <button class="btnA" type="submit">Take</button>

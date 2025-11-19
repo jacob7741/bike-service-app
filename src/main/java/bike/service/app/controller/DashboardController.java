@@ -48,14 +48,14 @@ public class DashboardController {
     private ClientService clientService;
 
     AtomicReference<String> userFullName = new AtomicReference<String>(new String());
-    long userId;
+    Long userId;
     
     @GetMapping("/dashboard")
     public String dashboard(Model model, Authentication authentication) {
 
         String username = authentication.getName(); // login użytkownika
         Users user = usersRepository.findByUserName(username); // pobierz encję z bazy
-        Long userId = user.getUserId();
+        userId = user.getUserId();
 
         model.addAttribute("clientList", clientService.getAllClients());
         model.addAttribute("username", username);
@@ -103,7 +103,7 @@ public class DashboardController {
         return "script.js";
     }
 
-    @PostMapping("dashboard/done/{id}")
+    @PostMapping("/dashboard/done/{id}")
     public String doneButton(@PathVariable("id") int id) {
         usersService.doneStatusById(id, userId);
         return "redirect:/dashboard";
