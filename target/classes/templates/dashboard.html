@@ -116,7 +116,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="table_order" th:each="order : ${orderList}">
+                <tr class="table_order" th:each="order : ${activeList}">
                     <td th:text="${order.orderId}">34534789</td>
                     <td class="infoDt">
                         <form method="get" th:action="@{/dashboard/edit/{id}(id=${order.orderId})}">

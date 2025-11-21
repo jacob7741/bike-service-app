@@ -1,5 +1,6 @@
 package bike.service.app.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -51,5 +52,17 @@ public class LoginService {
 
     public List<Order> getOrderByUserId(Long userId) {
         return orderRepository.findByUserUserId(userId);
+    }
+
+    public List<Order> getActiveOrderByUserId(Long userId) {
+        List<Order> orderListById = getOrderByUserId(userId);
+        List<Order> activeOrders = new ArrayList<>();
+
+        for(Order order : orderListById) {
+            if (order.getStatus() == Order.Status.ACTIVE) {
+                activeOrders.add(order);
+            }
+        }
+        return activeOrders;
     }
 }
