@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,10 +41,13 @@ public class UsersService implements UserDetailsService {
     private ClientRepository clientRepository;
 
     @Autowired
+    private OrderService orderService;
+
+    @Autowired
     private BikeRepository bikeRepository;
 
     public List<Users> getAllUsers() {
-        logger.info("getAllUsers");
+    logger.info("getAllUsers");
         List<Users> users = userRepository.findAll();
         if (!users.isEmpty()) {
             return users;
@@ -132,13 +134,10 @@ public class UsersService implements UserDetailsService {
         Optional<Order> optional = oRepository.findById(id);
         Optional<Users> oUser = userRepository.findById((userId));
         if (optional.isPresent() && oUser.isPresent()) {
-            Order newOrder = optional.get();
-            if (newOrder.getStatus().equals(Status.NEW)) {
-                newOrder.setStatus(Order.Status.ACTIVE);
-                newOrder.setDate(nowDate.toString());
-                newOrder.setUser(oUser.get());
-                oRepository.save(newOrder);
-            }
+            optional.get().setStatus(Status.ACTIVE);
+            optional.get().setUser(oUser.get());
+            orderService.saveUserToOrder(optional.get(), userId);           
+            oRepository.save(optional.get());
         }
     }
 

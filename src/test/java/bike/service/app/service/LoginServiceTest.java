@@ -65,5 +65,4 @@ public class LoginServiceTest {
         assertEquals("encodedPassword1", user1.getPassword());
         assertEquals("$2a$encodedPassword2", user2.getPassword());
     }
-    
 }

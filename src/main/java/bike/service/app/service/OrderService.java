@@ -122,7 +122,7 @@ public class OrderService {
         return order;
     }
 
-    public Order saveUserToOrder(Order order, int userId) {
+    public Order saveUserToOrder(Order order, long userId) {
     Users user = userService.getUserById(userId);
     if (user == null) {
         throw new IllegalArgumentException("User with id " + userId + " not found");

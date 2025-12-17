@@ -7,6 +7,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.io.ObjectInputFilter.Status;
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -78,5 +79,29 @@ class UsersServiceTest {
         assertEquals(Order.Status.DONE, order.getStatus());
         verify(oRepository).save(order);
         assertEquals(currentDate, order.getDate());
+    }
+
+    @Test
+    void newStatusById() {
+
+        Users testUsers = new Users();
+        testUsers.setUserId(23);
+
+        Users testUsers2= new Users();
+        testUsers.setUserId(33);
+
+        Order testOrder = new Order();
+        testOrder.setOrderId(54);
+        testOrder.setStatus(Order.Status.NEW);
+        testOrder.setUser(testUsers);
+
+        when(oRepository.findById(54)).thenReturn(Optional.of(testOrder));
+        when(usersRepository.findById(testUsers.getUserId())).thenReturn(Optional.of(testUsers));
+        when(usersRepository.findById(testUsers2.getUserId())).thenReturn(Optional.of(testUsers2));
+
+        usersService.newStatusById(54, 33);
+
+        assertEquals(Order.Status.ACTIVE, testOrder.getStatus());
+        assertEquals(testOrder.getUser().getUserId(), testUsers2.getUserId());
     }
 }
