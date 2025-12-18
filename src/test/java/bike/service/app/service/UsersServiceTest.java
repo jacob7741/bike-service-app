@@ -11,6 +11,7 @@ import java.io.ObjectInputFilter.Status;
 import java.time.LocalDate;
 import java.util.Optional;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -65,7 +66,6 @@ class UsersServiceTest {
         Order order = new Order();
         order.setOrderId(123);
         order.setStatus(Order.Status.ACTIVE);
-        order.setUser(testUser);
         
         String currentDate = LocalDate.now().toString();
         
@@ -87,21 +87,15 @@ class UsersServiceTest {
         Users testUsers = new Users();
         testUsers.setUserId(23);
 
-        Users testUsers2= new Users();
-        testUsers.setUserId(33);
-
         Order testOrder = new Order();
         testOrder.setOrderId(54);
         testOrder.setStatus(Order.Status.NEW);
-        testOrder.setUser(testUsers);
 
         when(oRepository.findById(54)).thenReturn(Optional.of(testOrder));
         when(usersRepository.findById(testUsers.getUserId())).thenReturn(Optional.of(testUsers));
-        when(usersRepository.findById(testUsers2.getUserId())).thenReturn(Optional.of(testUsers2));
 
-        usersService.newStatusById(54, 33);
+        usersService.newStatusById(54, 23);
 
         assertEquals(Order.Status.ACTIVE, testOrder.getStatus());
-        assertEquals(testOrder.getUser().getUserId(), testUsers2.getUserId());
     }
 }

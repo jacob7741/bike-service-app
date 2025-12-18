@@ -31,9 +31,8 @@ public class Order {
     @Column(name = "orderId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long orderId;
-    @OneToOne
-    @JoinColumn(name = "userId",referencedColumnName = "userId", nullable = true)
-    private Users user;
+    @Column(name = "userId")
+    private Long userId;
     @Column(name = "service")
     private String service;
     @Column(name = "price", nullable = true)

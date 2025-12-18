@@ -36,7 +36,6 @@ public class MechanicService {
             if (newOrder.getStatus().equals(Status.NEW)) {
                 newOrder.setStatus(Order.Status.ACTIVE);
                 newOrder.setDate(nowDate.toString());
-                oService.saveUserToOrder(newOrder, id);
             }
             orderRepository.save(newOrder);
         }

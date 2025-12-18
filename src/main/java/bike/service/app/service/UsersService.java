@@ -134,9 +134,7 @@ public class UsersService implements UserDetailsService {
         Optional<Order> optional = oRepository.findById(id);
         Optional<Users> oUser = userRepository.findById((userId));
         if (optional.isPresent() && oUser.isPresent()) {
-            optional.get().setStatus(Status.ACTIVE);
-            optional.get().setUser(oUser.get());
-            orderService.saveUserToOrder(optional.get(), userId);           
+            optional.get().setStatus(Status.ACTIVE);        
             oRepository.save(optional.get());
         }
     }
@@ -147,7 +145,6 @@ public class UsersService implements UserDetailsService {
         if (optional.isPresent() && oUser.isPresent()) {
             Order newOrder = optional.get();
             newOrder.setDate(nowDate.toString());
-            newOrder.setUser(oUser.get());
             newOrder.setStatus(Order.Status.DONE);
 
             oRepository.save(newOrder);

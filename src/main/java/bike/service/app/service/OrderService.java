@@ -88,22 +88,22 @@ public class OrderService {
                 .collect(Collectors.toList());
     }
     
-    public Order saveInfoAddByUser(Order order, AtomicReference<String> fullName) {
-        List<Users> test = userService.getAllUsers();
-        LocalDate nowDate = LocalDate.now();
-        if (fullName.get() != null) {
-            for (Users users : test) {
-                String userName = users.getFirstName() + " " + users.getLastName();
-                if (userName.equals(fullName.get())) {
-                    order.setAddByUser(users.getLastName());
-                    order.setDate(nowDate.toString());
-                    orderRepository.save(order);
-                    break;
-                }
-            }
-        }
-        return order;
-    }
+    // public Order saveInfoAddByUser(Order order, AtomicReference<String> fullName) {
+    //     List<Users> test = userService.getAllUsers();
+    //     LocalDate nowDate = LocalDate.now();
+    //     if (fullName.get() != null) {
+    //         for (Users users : test) {
+    //             String userName = users.getFirstName() + " " + users.getLastName();
+    //             if (userName.equals(fullName.get())) {
+    //                 order.setAddByUser(users.getLastName());
+    //                 order.setDate(nowDate.toString());
+    //                 orderRepository.save(order);
+    //                 break;
+    //             }
+    //         }
+    //     }
+    //     return order;
+    // }
 
     public Order saveInfoAddByUserId(Order order, Long userId) {
         List<Users> test = userService.getAllUsers();
@@ -112,8 +112,9 @@ public class OrderService {
             for (Users users : test) {
                 Long id = users.getUserId();
                 if (id == userId) {
-                    order.setAddByUser(users.getLastName());
+                    order.setAddByUser(users.getLastName() + " " + users.getUserId());
                     order.setDate(nowDate.toString());
+                    order.setUserId(userId);
                     orderRepository.save(order);
                     break;
                 }
@@ -122,16 +123,16 @@ public class OrderService {
         return order;
     }
 
-    public Order saveUserToOrder(Order order, long userId) {
-    Users user = userService.getUserById(userId);
-    if (user == null) {
-        throw new IllegalArgumentException("User with id " + userId + " not found");
-    } else {
-        order.setUser(user); // zakładam, że pole w Order to Users user;
-    }
+//     public Order saveUserToOrder(Order order, long userId) {
+//     Users user = userService.getUserById(userId);
+//     if (user == null) {
+//         throw new IllegalArgumentException("User with id " + userId + " not found");
+//     } else {
+//         order.setUser(user); // zakładam, że pole w Order to Users user;
+//     }
 
-    return orderRepository.save(order);
-}
+//     return orderRepository.save(order);
+// }
 
     public Order saveClientToOrder(Order order, Client client) {
         System.out.println("saveClientToOrder");

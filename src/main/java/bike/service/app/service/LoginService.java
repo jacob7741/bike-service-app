@@ -51,7 +51,7 @@ public class LoginService {
     }
 
     public List<Order> getOrderByUserId(Long userId) {
-        return orderRepository.findByUserUserId(userId);
+        return orderRepository.findOrderByUserId(userId);
     }
 
     public List<Order> getActiveOrderByUserId(Long userId) {
