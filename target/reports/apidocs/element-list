@@ -1,0 +1,8 @@
+bike.service.app
+bike.service.app.conf
+bike.service.app.controller
+bike.service.app.DTO
+bike.service.app.model
+bike.service.app.model.repository
+bike.service.app.service
+bike.service.app.service.userroles

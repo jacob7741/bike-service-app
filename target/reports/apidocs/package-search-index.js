@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"bike.service.app"},{"l":"bike.service.app.conf"},{"l":"bike.service.app.controller"},{"l":"bike.service.app.DTO"},{"l":"bike.service.app.model"},{"l":"bike.service.app.model.repository"},{"l":"bike.service.app.service"},{"l":"bike.service.app.service.userroles"}];updateSearchResults();

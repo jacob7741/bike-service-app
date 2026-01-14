@@ -102,7 +102,7 @@
 
     <div id="order_table" class="content">
         <p style="justify-content: space-between;">Number of orders:
-            <span th:text="${#lists.size(activeList)}"></span>
+            <span th:text="${#lists.size(orderList)}"></span>
         </p>
         <table>
             <thead>
@@ -116,12 +116,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="table_order" th:each="order : ${activeList}">
+                <tr class="table_order" th:each="order : ${orderList}">
                     <td th:text="${order.orderId}">34534789</td>
                     <td class="infoDt">
                         <form method="get" th:action="@{/dashboard/edit/{id}(id=${order.orderId})}">
-                            <p th:text="${order.user != null ? order.user.lastName +
-                                 ' ' + order.user.firstName : 'no mechanic'}"></p>
+                            <p th:text="${order.mechanic != null ? order.mechanic.lastName +
+                                 ' ' + order.mechanic.firstName : 'no mechanic'}"></p>
                             <p>
                                 <span th:text="${order.status}"></span>
                                 <button type="button">edit</button>
@@ -134,7 +134,7 @@
                             <button type="button">+</button>
                         </p>
                         <p class="dropdown">
-                            <span th:text="${order.bike}"></span>
+                            <span th:text="${order.bikeModel}"></span>
                             <button type="button">+</button>
                         </p>
                     </td>
@@ -145,14 +145,14 @@
                         <p>Receipt<date th:text="${order.deliveryDate}"></date>
                         </p>
                     </td>
-                    <td class="actions">
-                        <form method="post" th:action="@{/dashboard/done/{id}(id=${order.orderId})}">
-                            <button class="btnA" type="submit">Done</button>
-                            <!-- <button class="btnA" type="submit">Print</button>
+                    <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
+                        <td class="actions">
+                            <button class="btnA" type="submit">Edit</button>
+                            <button class="btnA" type="submit">Print</button>
                             <button class="btnA" type="submit">Share</button>
-                            <button class="btnA" type="submit">Delete</button> -->
-                        </form>
-                    </td>
+                            <button class="btnA" type="submit">Delete</button>
+                        </td>
+                    </form>
                 </tr>
             </tbody>
         </table>
@@ -182,22 +182,22 @@
                                 <p th:text="${order.addByUser}"></p>
                             </form>
                         </td>
-                        <td id="client_data">
-                            <p class="dropdown">
-                                <span th:text="${order.client}"></span>
-                                <button type="button">+</button>
-                            </p>
-                            <p class="dropdown">
-                                <span th:text="${order.bike}"></span>
-                                <button type="button">+</button>
-                            </p>
-                        </td>
-                        <td class="date_panel_table">
-                            <p>Added<date th:text="${order.date}"></date>
-                            </p>
-                            <p>Receipt<date th:text="${order.deliveryDate}"></date>
-                            </p>
-                        </td>
+                          <td id="client_data">
+                        <p class="dropdown">
+                            <span th:text="${order.client}"></span>
+                            <button type="button">+</button>
+                        </p>
+                        <p class="dropdown">
+                            <span th:text="${order.bikeModel}"></span>
+                            <button type="button">+</button>
+                        </p>
+                    </td>
+                    <td class="date_panel_table">
+                        <p>Added<date th:text="${order.date}"></date>
+                        </p>
+                        <p>Receipt<date th:text="${order.deliveryDate}"></date>
+                        </p>
+                    </td>
                         <form method="post" th:action="@{/take/{id}(id=${order.orderId})}">
                             <td class="actions">
                                 <button class="btnA" type="submit">Take</button>
@@ -227,7 +227,7 @@
                     <tr class="table_order" th:each="order : ${doneList}">
                         <td th:text="${order.orderId}">34534789</td>
                         <td class="infoDt">
-                            <form method="get" th:action="@{/dashboard/edit/{id}(id=${order.orderId})}">
+                            <form method="get" th:action="@{/mechanic/edit/{id}(id=${order.orderId})}">
                                 <p>Imie Mechanika</p>
                             </form>
                         </td>
@@ -250,9 +250,9 @@
                             <p>Receipt<date>12.04.2024</date>
                             </p>
                         </td>
-                        <form method="post" th:action="@{/dashboard/done/{id}(id=${order.orderId})}">
-                            <button class="btnA" type="submit">Edit</button>
+                        <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
                             <td class="actions">
+                                <button class="btnA" type="submit">Edit</button>
                                 <button class="btnA" type="submit">Print</button>
                                 <button class="btnA" type="submit">Share</button>
                                 <button class="btnA" type="submit">Delete</button>
