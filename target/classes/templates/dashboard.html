@@ -120,9 +120,13 @@
                     <td th:text="${order.orderId}">34534789</td>
                     <td class="infoDt">
                         <form method="get" th:action="@{/dashboard/edit/{id}(id=${order.orderId})}">
-                            <p th:text="${order.mechanic != null ? order.mechanic.lastName +
-                                 ' ' + order.mechanic.firstName : 'no mechanic'}"></p>
-                            <p>
+
+                            <!-- TODO: utworzyc DTO w celu bezpiecznego przeyslania danych z modeli
+                                do thymeleaf-->
+
+                            <!-- <p th:text="${order.user != null ? order.user.lastName +
+                                 ' ' + order.user.firstName : 'no mechanic'}"></p>
+                            <p> -->
                                 <span th:text="${order.status}"></span>
                                 <button type="button">edit</button>
                             </p>

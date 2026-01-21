@@ -1,5 +1,8 @@
 package bike.service.app.DTO;
 
-public class MapperTest {
+import org.springframework.stereotype.Component;
 
+@Component
+public class MapperTest {
+    
 }
