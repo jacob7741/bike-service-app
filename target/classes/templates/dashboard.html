@@ -124,14 +124,14 @@
                             <!-- TODO: utworzyc DTO w celu bezpiecznego przeyslania danych z modeli
                                 do thymeleaf-->
 
-                            <p th:text="${order.user != null ? order.user.lastName +
-                                 ' ' + order.user.firstName : 'no mechanic'}"></p>
+                            <p th:text="${order.userId != null ? order.lastName +
+                                 ' ' + order.firstName : 'no mechanic'}"></p>
                             <p>
                                 <span th:text="${order.status}"></span>
                                 <button type="button">edit</button>
                             </p>
                         </form>
-                    </td>
+                    <!-- </td>
                     <td id="client_data">
                         <p class="dropdown">
                             <span th:text="${order.client}"></span>
@@ -148,7 +148,7 @@
                         </p>
                         <p>Receipt<date th:text="${order.deliveryDate}"></date>
                         </p>
-                    </td>
+                    </td> -->
                     <form method="post" th:action="@{/mechanic/done/{id}(id=${order.orderId})}">
                         <td class="actions">
                             <button class="btnA" type="submit">Edit</button>
@@ -267,14 +267,13 @@
             </table>
         </div>
 
-        <div id="rejected_service" class="content">
+        <!-- <div id="rejected_service" class="content">
             <p style="justify-content: space-between;">Number of orders: <span
                     th:text="${#lists.size(orderList)}"></span>
             </p>
             <table>
                 <thead>
                     <tr>
-                        <!-- <th class="number">No.</th> -->
                         <th class="orderId">ID</th>
                         <th class="add_done_by">Rejected by</th>
                         <th class="clientDt">Client Data</th>
@@ -321,7 +320,7 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div> -->
 
 
 
