@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import bike.service.app.DTO.OrderWithUserDTO;
 import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
@@ -66,7 +67,6 @@ public class OrderService {
         return service;
     }
 
-    @SuppressWarnings("static-access")
     public List<Order> getAllActiveOrders() {
 
         return orderRepository.findAll().stream()

@@ -59,7 +59,7 @@ public class DashboardController {
 
         model.addAttribute("clientList", clientService.getAllClients());
         model.addAttribute("username", username);
-        model.addAttribute("orderList", loginService.getOrderByUserId(userId));
+        model.addAttribute("orderList", loginService.getOrderByUserIdDTO(userId));
         model.addAttribute("activeList", loginService.getActiveOrderByUserId(userId));
         model.addAttribute("doneList", orderService.getAllDoneOrders());
         model.addAttribute("newOrderList", orderService.getAllNewOrders());

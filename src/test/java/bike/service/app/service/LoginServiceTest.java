@@ -17,7 +17,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import bike.service.app.DTO.OrderWithUserDTO;
+import bike.service.app.model.Order;
 import bike.service.app.model.Users;
+import bike.service.app.model.Order.Status;
+import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.UsersRepository;
 
 @ExtendWith(MockitoExtension.class)
@@ -28,6 +32,9 @@ public class LoginServiceTest {
 
     @Mock
     private UsersRepository uRepository;
+
+    @Mock
+    private OrderRepository oRepository;
 
     @Mock
     private UsersService uService;
@@ -43,10 +50,10 @@ public class LoginServiceTest {
 
     @Mock
     private PasswordEncoder passwordEncoder;
-    
+
     @Test
     void testUpdatePasswords() {
-        
+
         Users user1 = new Users();
         user1.setPassword("plainPassword1");
         Users user2 = new Users();
@@ -64,5 +71,28 @@ public class LoginServiceTest {
 
         assertEquals("encodedPassword1", user1.getPassword());
         assertEquals("$2a$encodedPassword2", user2.getPassword());
+    }
+
+    @Test
+    void testDTOgetUsers() {
+
+        Order order = new Order();
+        Users user = new Users();
+
+        order.setOrderId(3452);
+        order.setStatus(Status.ACTIVE);
+        user.setUserId(48L);
+        user.setFirstName("Jan");
+        user.setLastName("Kowalski");
+
+        when(oRepository.findOrderByUserId(48L)).thenReturn(List.of(order));
+        when(uRepository.findByUserId(48L)).thenReturn(user);
+
+        List<OrderWithUserDTO> listDTO = lService.getOrderByUserIdDTO(user.getUserId());
+
+        OrderWithUserDTO dto = listDTO.get(0);
+
+        assertEquals(3452, dto.getOrderId());
+        assertEquals("Jan", dto.getFirstName());
     }
 }

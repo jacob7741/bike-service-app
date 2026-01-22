@@ -8,15 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import bike.service.app.DTO.OrderWithUserDTO;
 import bike.service.app.model.Order;
 import bike.service.app.model.Users;
 import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.UsersRepository;
 
 @Service
-public class LoginService {
 
-    @Autowired
+public class LoginService {
+@Autowired
     private OrderRepository orderRepository;
     @Autowired
     private UsersRepository usersRepository;
@@ -64,5 +65,16 @@ public class LoginService {
             }
         }
         return activeOrders;
+    }
+
+    // skończyłem tutaj
+    public List<OrderWithUserDTO> getOrderByUserIdDTO(Long id) {
+        
+        List<Order> orders =orderRepository.findOrderByUserId(id);
+        Users user = usersRepository.findByUserId(id);
+
+        return orders.stream()
+        .map(order -> new OrderWithUserDTO(order, user))
+        .toList();
     }
 }
