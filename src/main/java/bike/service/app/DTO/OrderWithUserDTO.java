@@ -1,9 +1,9 @@
 package bike.service.app.DTO;
 
-import bike.service.app.model.Client;
+import bike.service.app.model.Bike;
 import bike.service.app.model.Order;
-import bike.service.app.model.Users;
 import bike.service.app.model.Order.Status;
+import bike.service.app.model.Users;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -19,11 +19,15 @@ public class OrderWithUserDTO {
 
     private long orderId;
     private long userId;
-    private long client;
-    private long bike;
+    private int clientId;
+    private long bikeId;
     private String firstName;
     private String lastName;
     private Status status;
+
+    private String client;
+    private Bike bike;
+    
 
     public OrderWithUserDTO(Order order, Users user) {
         this.orderId = order.getOrderId();
@@ -31,11 +35,11 @@ public class OrderWithUserDTO {
         this.userId = user.getUserId();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
-        this.bike = order.getBike() != null ? order.getBike().getBikeId() : null;
-        this.client = order.getClient() != null ? order.getClient().getClientId() : null;
+        this.bikeId = order.getBike().getBikeId();
+        this.clientId = order.getClient().getClientId();
+        
+        /* skończyłem tutaj */
+        this.client = order.getClient().getFirst_name();
     }
     
-    /* i dalej trzeba utworzyc metody w order sevcie które 
-    będą obsłyugiwać DTO najlepiej jest to zrobić przy uzyciu
-    klasy mapper */
 }

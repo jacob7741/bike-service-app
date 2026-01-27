@@ -67,7 +67,6 @@ public class LoginService {
         return activeOrders;
     }
 
-    // skończyłem tutaj
     public List<OrderWithUserDTO> getOrderByUserIdDTO(Long id) {
         
         List<Order> orders =orderRepository.findOrderByUserId(id);

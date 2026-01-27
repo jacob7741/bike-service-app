@@ -18,6 +18,8 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import bike.service.app.DTO.OrderWithUserDTO;
+import bike.service.app.model.Bike;
+import bike.service.app.model.Client;
 import bike.service.app.model.Order;
 import bike.service.app.model.Order.Status;
 import bike.service.app.model.Users;
@@ -78,11 +80,13 @@ public class LoginServiceTest {
 
         Order order = new Order();
         Users user = new Users();
+        Bike bike = new Bike(12, "Trek", "Mountian", 123423, order);
+        Client client = new Client(34, "Zenon", "Nowak", "234-531-798","nowek@po.pl", order);
 
         order.setOrderId(3452);
         order.setStatus(Status.ACTIVE);
-        order.setClient(null);
-        order.setBike(null);
+        order.setClient(client);
+        order.setBike(bike);
         user.setUserId(48L);
         user.setFirstName("Jan");
         user.setLastName("Kowalski");
@@ -96,5 +100,6 @@ public class LoginServiceTest {
 
         assertEquals(3452, dto.getOrderId());
         assertEquals("Jan", dto.getFirstName());
+        assertEquals("Zenon", dto.getClient());
     }
 }
