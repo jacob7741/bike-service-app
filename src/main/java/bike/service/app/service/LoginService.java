@@ -76,5 +76,5 @@ public class LoginService {
         return orders.stream()
         .map(order -> new OrderWithUserDTO(order, user))
         .toList();
-    }
+    } 
 }

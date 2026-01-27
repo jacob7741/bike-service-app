@@ -19,8 +19,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import bike.service.app.DTO.OrderWithUserDTO;
 import bike.service.app.model.Order;
-import bike.service.app.model.Users;
 import bike.service.app.model.Order.Status;
+import bike.service.app.model.Users;
 import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.UsersRepository;
 
@@ -81,6 +81,8 @@ public class LoginServiceTest {
 
         order.setOrderId(3452);
         order.setStatus(Status.ACTIVE);
+        order.setClient(null);
+        order.setBike(null);
         user.setUserId(48L);
         user.setFirstName("Jan");
         user.setLastName("Kowalski");

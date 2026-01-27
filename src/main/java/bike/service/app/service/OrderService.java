@@ -4,13 +4,11 @@ package bike.service.app.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import bike.service.app.DTO.OrderWithUserDTO;
 import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
