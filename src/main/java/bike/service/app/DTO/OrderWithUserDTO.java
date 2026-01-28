@@ -1,6 +1,5 @@
 package bike.service.app.DTO;
 
-import bike.service.app.model.Bike;
 import bike.service.app.model.Order;
 import bike.service.app.model.Order.Status;
 import bike.service.app.model.Users;
@@ -11,11 +10,14 @@ public class OrderWithUserDTO {
 
     private long orderId;
     private long userId;
+    private String bike;
     private String client;
-    private long bikeId;
     private String firstName;
     private String lastName;
     private Status status;
+    private String date;
+    private String deliveryDate;
+    
     
 
     public OrderWithUserDTO(Order order, Users user) {
@@ -24,8 +26,11 @@ public class OrderWithUserDTO {
         this.userId = user.getUserId();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
-        this.bikeId = order.getBike().getBikeId();
-        this.client = order.getClient().getFirst_name();
+        this.bike = order.getBike().getModelType() + " - " + order.getBike().getBrand();
+        this.client = order.getClient().getFirst_name() + " " + order.getClient().getLast_name();
+        this.date = order.getDate();
+        this.deliveryDate = order.getDeliveryDate();
+
         
         /* skończyłem tutaj, lecz trzeba ustawić aby przy kliencie
         były zapisane te inne dane */

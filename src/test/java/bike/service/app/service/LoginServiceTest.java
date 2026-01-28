@@ -87,6 +87,8 @@ public class LoginServiceTest {
         order.setStatus(Status.ACTIVE);
         order.setClient(client);
         order.setBike(bike);
+        order.setDate("12-02-2024");
+        order.setDeliveryDate("18-02-2024");
         user.setUserId(48L);
         user.setFirstName("Jan");
         user.setLastName("Kowalski");
@@ -100,6 +102,9 @@ public class LoginServiceTest {
 
         assertEquals(3452, dto.getOrderId());
         assertEquals("Jan", dto.getFirstName());
-        assertEquals("Zenon", dto.getClient());
+        assertEquals("Zenon Nowak", dto.getClient());
+        assertEquals("Mountian - Trek", dto.getBike());
+        assertEquals("12-02-2024", dto.getDate());
+        assertEquals("18-02-2024", dto.getDeliveryDate());
     }
 }
