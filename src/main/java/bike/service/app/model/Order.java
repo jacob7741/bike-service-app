@@ -47,6 +47,8 @@ public class Order {
     private Client client;
     @Column(name = "addby")
     private String addByUser;
+    @Column(name = "assignedTo")
+    private String assignedTo;
     @Column(name = "donebyuser ")
     private String doneByUser;
     @Column(name = "date")
