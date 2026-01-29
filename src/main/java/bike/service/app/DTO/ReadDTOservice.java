@@ -6,7 +6,7 @@ import bike.service.app.model.Users;
 import lombok.Data;
 
 @Data
-public class OrderWithUserDTO {
+public class ReadDTOservice {
 
     private long orderId;
     private long userId;
@@ -20,7 +20,7 @@ public class OrderWithUserDTO {
     
     
 
-    public OrderWithUserDTO(Order order, Users user) {
+    public ReadDTOservice(Order order, Users user) {
         this.orderId = order.getOrderId();
         this.status = order.getStatus();
         this.userId = user.getUserId();

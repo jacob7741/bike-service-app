@@ -4,7 +4,6 @@ package bike.service.app.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -79,7 +78,8 @@ public class OrderService {
 
         return orderRepository.findByStatus(Status.NEW);
     }
-
+    // skończyłem tutaj poprawilem metody sortujace zamowienia po statusie
+    // ponizsze metody refaktoryzowac poprzez mapper i DTO aby
     public Order saveInfoAddByUserId(Order order, Long userId) {
         List<Users> test = userService.getAllUsers();
         LocalDate nowDate = LocalDate.now();
