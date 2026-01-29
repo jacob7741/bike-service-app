@@ -67,41 +67,18 @@ public class OrderService {
 
     public List<Order> getAllActiveOrders() {
 
-        return orderRepository.findAll().stream()
-                .filter(order -> Order.Status.ACTIVE.equals(order.getStatus()))
-                .collect(Collectors.toList());
+        return orderRepository.findByStatus(Status.ACTIVE);
     }
 
     public List<Order> getAllDoneOrders() {
 
-        return orderRepository.findAll().stream()
-                .filter(order -> Order.Status.DONE.equals(order.getStatus()))
-                .collect(Collectors.toList());
+        return orderRepository.findByStatus(Status.DONE);
     }
 
     public List<Order> getAllNewOrders() {
 
-        return orderRepository.findAll().stream()
-                .filter(order -> Order.Status.NEW.equals(order.getStatus()))
-                .collect(Collectors.toList());
+        return orderRepository.findByStatus(Status.NEW);
     }
-    
-    // public Order saveInfoAddByUser(Order order, AtomicReference<String> fullName) {
-    //     List<Users> test = userService.getAllUsers();
-    //     LocalDate nowDate = LocalDate.now();
-    //     if (fullName.get() != null) {
-    //         for (Users users : test) {
-    //             String userName = users.getFirstName() + " " + users.getLastName();
-    //             if (userName.equals(fullName.get())) {
-    //                 order.setAddByUser(users.getLastName());
-    //                 order.setDate(nowDate.toString());
-    //                 orderRepository.save(order);
-    //                 break;
-    //             }
-    //         }
-    //     }
-    //     return order;
-    // }
 
     public Order saveInfoAddByUserId(Order order, Long userId) {
         List<Users> test = userService.getAllUsers();
@@ -120,17 +97,6 @@ public class OrderService {
         }
         return order;
     }
-
-//     public Order saveUserToOrder(Order order, long userId) {
-//     Users user = userService.getUserById(userId);
-//     if (user == null) {
-//         throw new IllegalArgumentException("User with id " + userId + " not found");
-//     } else {
-//         order.setUser(user); // zakładam, że pole w Order to Users user;
-//     }
-
-//     return orderRepository.save(order);
-// }
 
     public Order saveClientToOrder(Order order, Client client) {
         System.out.println("saveClientToOrder");

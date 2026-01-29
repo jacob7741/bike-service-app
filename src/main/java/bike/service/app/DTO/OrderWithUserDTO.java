@@ -30,6 +30,5 @@ public class OrderWithUserDTO {
         this.client = order.getClient().getFirst_name() + " " + order.getClient().getLast_name();
         this.date = order.getDate();
         this.deliveryDate = order.getDeliveryDate();
-        
     }
 }
