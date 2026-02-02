@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import bike.service.app.DTO.OrderWithUserDTO;
+import bike.service.app.DTO.ReadDTOservice;
 import bike.service.app.model.Order;
 import bike.service.app.model.Users;
 import bike.service.app.model.repository.OrderRepository;
@@ -67,13 +68,13 @@ public class LoginService {
         return activeOrders;
     }
 
-    public List<OrderWithUserDTO> getOrderByUserIdDTO(Long id) {
+    public List<ReadDTOservice> getOrderByUserIdDTO(Long id) {
         
         List<Order> orders =orderRepository.findOrderByUserId(id);
         Users user = usersRepository.findByUserId(id);
 
         return orders.stream()
-        .map(order -> new OrderWithUserDTO(order, user))
+        .map(order -> new ReadDTOservice(order, user))
         .toList();
     } 
 }
