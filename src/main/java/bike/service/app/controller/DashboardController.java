@@ -60,7 +60,8 @@ public class DashboardController {
         model.addAttribute("clientList", clientService.getAllClients());
         model.addAttribute("username", username);
         model.addAttribute("orderList", loginService.getOrderByUserIdDTO(userId));
-        model.addAttribute("activeList", loginService.getActiveOrderByUserId(userId));
+        // ponizsze trzy metody roznych list skonfigurowac w orderService za pomoca DToO
+        // model.addAttribute("activeList", loginService.getActiveOrderByUserId(userId));
         model.addAttribute("doneList", orderService.getAllDoneOrders());
         model.addAttribute("newOrderList", orderService.getAllNewOrders());
         model.addAttribute("postsList", postsService.getAllPosts());
@@ -83,7 +84,11 @@ public class DashboardController {
             @RequestParam String deliveryDate,
             @RequestParam(required = false) Double price,
             Authentication authentication) {
-
+        
+        // rozwiązać problem: potwierdzenie danego uzytkownika
+        // pobierało się tylko przez userId
+        // gdyz resztę metod będę pisał pod userID
+        // (przy duej bazie uytkownikow imiona z nazwiskami mogą sie powtarzać)
         String username = authentication.getName();
         Users user = usersRepository.findByUserName(username);
         userId = user.getUserId();

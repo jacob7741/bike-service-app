@@ -1,24 +1,31 @@
 package bike.service.app.service;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.checkerframework.checker.units.qual.s;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import bike.service.app.DTO.ReadDTOservice;
 import bike.service.app.model.Order;
-import bike.service.app.model.Users;
 import bike.service.app.model.Order.Status;
+import bike.service.app.model.Users;
 import bike.service.app.model.repository.OrderRepository;
+import bike.service.app.model.repository.UsersRepository;
 
 
 
@@ -27,6 +34,9 @@ public class OrderServiceTest {
 
     @Mock
     private OrderRepository orderRepository;
+
+    @Mock
+    private UsersRepository usersRepository;
 
     @Mock
     private UsersService userService;
@@ -91,11 +101,28 @@ public class OrderServiceTest {
         user.setLastName("Jones");
 
         when(userService.getAllUsers()).thenReturn(Collections.singletonList(user));
-
+        
         Order result = orderService.saveInfoAddByUserId(order, 5L);
-
+        
         verify(orderRepository, never()).save(any());
         assertNull(result.getAddByUser());
         assertNull(result.getDate());
+    }
+    
+    @Test
+    void getActiveOrderByUserId() {
+        Users user = new Users();
+        user.setUserId(342);
+        
+        Order order = new Order();
+        order.setStatus(Status.ACTIVE);
+        
+        
+        when(usersRepository.save(any())).thenReturn(List.of(user));
+        when(orderRepository.save(any())).thenReturn(List.of(order));
+
+        List<ReadDTOservice> activeOrder = orderService.getAllActiveOrdersByUserId(342L);
+
+        assertEquals(Status.ACTIVE, activeOrder.get(0));
     }
 }

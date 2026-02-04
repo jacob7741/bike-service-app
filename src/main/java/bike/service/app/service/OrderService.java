@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import bike.service.app.DTO.ReadDTOservice;
 import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
@@ -35,16 +36,6 @@ public class OrderService {
 
     private LocalDate date = LocalDate.now();
 
-    public List<Order> getAllOrders() {
-        System.out.println("get all orders");
-        List<Order> ordersList = orderRepository.findAll();
-        if (ordersList.isEmpty()) {
-            return new ArrayList<>();
-        } else {
-            return ordersList;
-        }
-    }
-
     public Order createNewOrder(String serviceType, Order service, String comment, String deliveryDate, Double price) {
 
         if (service.getOrderId() == 0) {
@@ -64,9 +55,14 @@ public class OrderService {
         return service;
     }
 
-    public List<Order> getAllActiveOrders() {
+    public List<ReadDTOservice> getAllActiveOrdersByUserId(Long id) {
 
-        return orderRepository.findByStatus(Status.ACTIVE);
+        List<Order> orders = orderRepository.findByStatus(Status.ACTIVE);
+        Users user = userRepository.findByUserId(id);
+
+        return orders.stream()
+        .map(order -> new ReadDTOservice(order, user))
+        .toList();
     }
 
     public List<Order> getAllDoneOrders() {

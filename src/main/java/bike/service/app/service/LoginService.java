@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import bike.service.app.DTO.OrderWithUserDTO;
 import bike.service.app.DTO.ReadDTOservice;
 import bike.service.app.model.Order;
 import bike.service.app.model.Users;
@@ -52,21 +51,21 @@ public class LoginService {
         }
     }
 
-    public List<Order> getOrderByUserId(Long userId) {
-        return orderRepository.findOrderByUserId(userId);
-    }
+    // public List<Order> getOrderByUserId(Long userId) {
+    //     return orderRepository.findOrderByUserId(userId);
+    // }
 
-    public List<Order> getActiveOrderByUserId(Long userId) {
-        List<Order> orderListById = getOrderByUserId(userId);
-        List<Order> activeOrders = new ArrayList<>();
+    // public List<Order> getActiveOrderByUserId(Long userId) {
+    //     List<Order> orderListById = getOrderByUserId(userId);
+    //     List<Order> activeOrders = new ArrayList<>();
 
-        for(Order order : orderListById) {
-            if (order.getStatus() == Order.Status.ACTIVE) {
-                activeOrders.add(order);
-            }
-        }
-        return activeOrders;
-    }
+    //     for(Order order : orderListById) {
+    //         if (order.getStatus() == Order.Status.ACTIVE) {
+    //             activeOrders.add(order);
+    //         }
+    //     }
+    //     return activeOrders;
+    // }
 
     public List<ReadDTOservice> getOrderByUserIdDTO(Long id) {
         

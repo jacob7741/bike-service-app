@@ -17,7 +17,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import bike.service.app.DTO.OrderWithUserDTO;
+import bike.service.app.DTO.ReadDTOservice;
 import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
@@ -96,9 +96,9 @@ public class LoginServiceTest {
         when(oRepository.findOrderByUserId(48L)).thenReturn(List.of(order));
         when(uRepository.findByUserId(48L)).thenReturn(user);
 
-        List<OrderWithUserDTO> listDTO = lService.getOrderByUserIdDTO(user.getUserId());
+        List<ReadDTOservice> listDTO = lService.getOrderByUserIdDTO(user.getUserId());
 
-        OrderWithUserDTO dto = listDTO.get(0);
+        ReadDTOservice dto = listDTO.get(0);
 
         assertEquals(3452, dto.getOrderId());
         assertEquals("Jan", dto.getFirstName());
