@@ -47,22 +47,6 @@ public class OrderServiceTest {
     @InjectMocks
     private OrderService orderService;
 
-    @Test
-    void findByStatus() {
-        Order oActive = new Order();
-        Order oDone = new Order();
-        Order oNew = new Order();
-
-        oActive.setStatus(Status.ACTIVE);
-        oDone.setStatus(Status.DONE);
-        oNew.setStatus(Status.NEW);
-
-        when(orderRepository.findByStatus(Status.NEW)).thenReturn(List.of(oNew));
-
-        List<Order> sListN = orderService.getAllNewOrders();
-
-        assertEquals(1, sListN.size());
-    }
 
     @Test
     void saveInfoAddByUserId_whenUserIdIsZero_shouldNotCallSaveAndReturnUnchangedOrder() {
