@@ -1,18 +1,21 @@
 package bike.service.app.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -36,7 +39,7 @@ public class OrderServiceTest {
     private OrderRepository orderRepository;
 
     @Mock
-    private UsersRepository usersRepository;
+    private UsersRepository userRepository;
 
     @Mock
     private UsersService userService;
@@ -117,12 +120,54 @@ public class OrderServiceTest {
         Order order = new Order();
         order.setStatus(Status.ACTIVE);
         
-        
-        when(usersRepository.save(any())).thenReturn(List.of(user));
-        when(orderRepository.save(any())).thenReturn(List.of(order));
+        when(userRepository.findById(342L)).thenReturn(Optional.of(user));
+        when(orderRepository.findOrderByUserId(342L)).thenReturn(List.of(order));
 
-        List<ReadDTOservice> activeOrder = orderService.getAllActiveOrdersByUserId(342L);
+       List<Order> activeOrder = orderRepository.findByUserIdAndStatus(342L, Status.ACTIVE);
 
-        assertEquals(Status.ACTIVE, activeOrder.get(0));
+        assertNotNull(activeOrder);
+        assertEquals(Status.ACTIVE, activeOrder.get(0).getStatus());
+    }
+
+    @Test
+    void getAllActiveOrdersByUserId_returnsMappedReadDTOs_andCallsRepositories() {
+        // given
+        Long userId = 42L;
+        Users user = new Users();
+        user.setUserId(userId);
+        user.setFirstName("Jan");
+
+        Order order1 = new Order();
+        order1.setOrderId(1L);
+        order1.setUserId(userId);
+        order1.setStatus(Status.ACTIVE);
+
+        Order order2 = new Order();
+        order2.setOrderId(2L);
+        order2.setUserId(userId);
+        order2.setStatus(Status.ACTIVE);
+
+        when(orderRepository.findByUserIdAndStatus(userId, Status.ACTIVE))
+            .thenReturn(Arrays.asList(order1, order2));
+        when(userRepository.findByUserId(userId)).thenReturn(user);
+
+        // when
+        List<ReadDTOservice> result = orderService.getAllActiveOrdersByUserId(userId);
+
+        // then
+        assertNotNull(result);
+        assertEquals(2, result.size(), "Powinny być dwa DTO w wyniku");
+
+        ReadDTOservice dto1 = result.get(0);
+        ReadDTOservice dto2 = result.get(1);
+
+        assertEquals(order1.getOrderId(), dto1.getOrderId());
+        assertEquals(order2.getOrderId(), dto2.getOrderId());
+        assertEquals(user.getUserId(), dto1.getUserId());
+        assertEquals(user.getUserId(), dto2.getUserId());
+
+        verify(orderRepository, times(1)).findByUserIdAndStatus(userId, Status.ACTIVE);
+        verify(userRepository, times(1)).findByUserId(userId);
+        verifyNoMoreInteractions(orderRepository, userRepository);
     }
 }

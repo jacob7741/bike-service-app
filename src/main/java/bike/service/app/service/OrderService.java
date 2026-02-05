@@ -57,7 +57,7 @@ public class OrderService {
 
     public List<ReadDTOservice> getAllActiveOrdersByUserId(Long id) {
 
-        List<Order> orders = orderRepository.findByStatus(Status.ACTIVE);
+        List<Order> orders = orderRepository.findByUserIdAndStatus(id, Status.ACTIVE);
         Users user = userRepository.findByUserId(id);
 
         return orders.stream()
