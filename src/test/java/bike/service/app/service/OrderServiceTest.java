@@ -32,8 +32,6 @@ import bike.service.app.model.Users;
 import bike.service.app.model.repository.OrderRepository;
 import bike.service.app.model.repository.UsersRepository;
 
-
-
 @ExtendWith(MockitoExtension.class)
 public class OrderServiceTest {
 
@@ -48,7 +46,6 @@ public class OrderServiceTest {
 
     @InjectMocks
     private OrderService orderService;
-
 
     @Test
     void saveInfoAddByUserId_whenUserIdIsZero_shouldNotCallSaveAndReturnUnchangedOrder() {
@@ -90,122 +87,121 @@ public class OrderServiceTest {
         user.setLastName("Jones");
 
         when(userService.getAllUsers()).thenReturn(Collections.singletonList(user));
-        
+
         Order result = orderService.saveInfoAddByUserId(order, 5L);
-        
+
         verify(orderRepository, never()).save(any());
         assertNull(result.getAddByUser());
         assertNull(result.getDate());
     }
-    
-@Test
-void getActiveOrderByUserId_returnsMappedReadDTOs_andCallsRepositories() {
-    // given
-    Long userId = 342L;
-
-    Users user = new Users();
-    user.setUserId(userId);
-    user.setFirstName("Jan");
-    user.setLastName("Kowalski");
-
-    Bike bike = new Bike();
-    bike.setModelType("ModelX");
-    bike.setBrand("BrandY");
-
-    Client client = new Client();
-    client.setFirst_name("Adam");
-    client.setLast_name("Nowak");
-
-    Order order = new Order();
-    order.setOrderId(1L);
-    order.setUserId(userId);
-    order.setStatus(Status.ACTIVE);
-    order.setBike(bike);
-    order.setClient(client);
-    order.setDate("2026-02-09");
-    order.setDeliveryDate("2026-02-15");
-
-    when(orderRepository.findByUserIdAndStatus(userId, Status.ACTIVE))
-        .thenReturn(List.of(order));
-    when(userRepository.findByUserId(userId)).thenReturn(user);
-
-    // when
-    List<ReadDTOservice> result = orderService.getActiveOrdersByUserId(userId);
-
-    // then
-    assertNotNull(result);
-    assertEquals(1, result.size());
-
-    ReadDTOservice dto = result.get(0);
-    assertEquals(order.getOrderId(), dto.getOrderId());
-    assertEquals(user.getUserId(), dto.getUserId());
-    assertEquals(Status.ACTIVE, dto.getStatus());
-    assertEquals("ModelX - BrandY", dto.getBike());
-    assertEquals("Adam Nowak", dto.getClient());
-
-    verify(orderRepository, times(1)).findByUserIdAndStatus(userId, Status.ACTIVE);
-    verify(userRepository, times(1)).findByUserId(userId);
-    verifyNoMoreInteractions(orderRepository, userRepository);
-}
-
 
     @Test
-void getAllActiveOrdersByUserId_returnsMappedReadDTOs_andCallsRepositories() {
-    // given
-    Long userId = 42L;
-    Users user = new Users();
-    user.setUserId(userId);
-    user.setFirstName("Jan");
-    user.setLastName("Kowalski");
+    void getActiveOrderByUserId_returnsMappedReadDTOs_andCallsRepositories() {
+        // given
+        Long userId = 342L;
 
-    Bike bike = new Bike();
-    bike.setModelType("ModelX");
-    bike.setBrand("BrandY");
+        Users user = new Users();
+        user.setUserId(userId);
+        user.setFirstName("Jan");
+        user.setLastName("Kowalski");
 
-    Client client = new Client();
-    client.setFirst_name("Adam");
-    client.setLast_name("Nowak");
+        Bike bike = new Bike();
+        bike.setModelType("ModelX");
+        bike.setBrand("BrandY");
 
-    Order order1 = new Order();
-    order1.setOrderId(1L);
-    order1.setUserId(userId);
-    order1.setStatus(Status.ACTIVE);
-    order1.setBike(bike);
-    order1.setClient(client);
-    order1.setDate("2026-02-09");
-    order1.setDeliveryDate("2026-02-15");
+        Client client = new Client();
+        client.setFirst_name("Adam");
+        client.setLast_name("Nowak");
 
-    Order order2 = new Order();
-    order2.setOrderId(2L);
-    order2.setUserId(userId);
-    order2.setStatus(Status.ACTIVE);
-    order2.setBike(bike);
-    order2.setClient(client);
-    order2.setDate("2026-02-10");
-    order2.setDeliveryDate("2026-02-16");
+        Order order = new Order();
+        order.setOrderId(1L);
+        order.setUserId(userId);
+        order.setStatus(Status.ACTIVE);
+        order.setBike(bike);
+        order.setClient(client);
+        order.setDate("2026-02-09");
+        order.setDeliveryDate("2026-02-15");
 
-    when(orderRepository.findByUserIdAndStatus(userId, Status.ACTIVE))
-        .thenReturn(Arrays.asList(order1, order2));
-    when(userRepository.findByUserId(userId)).thenReturn(user);
+        when(orderRepository.findByUserIdAndStatus(userId, Status.ACTIVE))
+                .thenReturn(List.of(order));
+        when(userRepository.findByUserId(userId)).thenReturn(user);
 
-    // when
-    List<ReadDTOservice> result = orderService.getActiveOrdersByUserId(userId);
+        // when
+        List<ReadDTOservice> result = orderService.getActiveOrdersByUserId(userId);
 
-    // then
-    assertNotNull(result);
-    assertEquals(2, result.size(), "Powinny być dwa DTO w wyniku");
+        // then
+        assertNotNull(result);
+        assertEquals(1, result.size());
 
-    ReadDTOservice dto1 = result.get(0);
-    ReadDTOservice dto2 = result.get(1);
+        ReadDTOservice dto = result.get(0);
+        assertEquals(order.getOrderId(), dto.getOrderId());
+        assertEquals(user.getUserId(), dto.getUserId());
+        assertEquals(Status.ACTIVE, dto.getStatus());
+        assertEquals("ModelX - BrandY", dto.getBike());
+        assertEquals("Adam Nowak", dto.getClient());
 
-    assertEquals(order1.getOrderId(), dto1.getOrderId());
-    assertEquals(order2.getOrderId(), dto2.getOrderId());
-    assertEquals(user.getUserId(), dto1.getUserId());
-    assertEquals(user.getUserId(), dto2.getUserId());
+        verify(orderRepository, times(1)).findByUserIdAndStatus(userId, Status.ACTIVE);
+        verify(userRepository, times(1)).findByUserId(userId);
+        verifyNoMoreInteractions(orderRepository, userRepository);
+    }
 
-    verify(orderRepository, times(1)).findByUserIdAndStatus(userId, Status.ACTIVE);
-    verify(userRepository, times(1)).findByUserId(userId);
-    verifyNoMoreInteractions(orderRepository, userRepository);
-}
+    @Test
+    void getAllActiveOrdersByUserId_returnsMappedReadDTOs_andCallsRepositories() {
+        // given
+        Long userId = 42L;
+        Users user = new Users();
+        user.setUserId(userId);
+        user.setFirstName("Jan");
+        user.setLastName("Kowalski");
 
+        Bike bike = new Bike();
+        bike.setModelType("ModelX");
+        bike.setBrand("BrandY");
+
+        Client client = new Client();
+        client.setFirst_name("Adam");
+        client.setLast_name("Nowak");
+
+        Order order1 = new Order();
+        order1.setOrderId(1L);
+        order1.setUserId(userId);
+        order1.setStatus(Status.ACTIVE);
+        order1.setBike(bike);
+        order1.setClient(client);
+        order1.setDate("2026-02-09");
+        order1.setDeliveryDate("2026-02-15");
+
+        Order order2 = new Order();
+        order2.setOrderId(2L);
+        order2.setUserId(userId);
+        order2.setStatus(Status.ACTIVE);
+        order2.setBike(bike);
+        order2.setClient(client);
+        order2.setDate("2026-02-10");
+        order2.setDeliveryDate("2026-02-16");
+
+        when(orderRepository.findByUserIdAndStatus(userId, Status.ACTIVE))
+                .thenReturn(Arrays.asList(order1, order2));
+        when(userRepository.findByUserId(userId)).thenReturn(user);
+
+        // when
+        List<ReadDTOservice> result = orderService.getActiveOrdersByUserId(userId);
+
+        // then
+        assertNotNull(result);
+        assertEquals(2, result.size(), "Powinny być dwa DTO w wyniku");
+
+        ReadDTOservice dto1 = result.get(0);
+        ReadDTOservice dto2 = result.get(1);
+
+        assertEquals(order1.getOrderId(), dto1.getOrderId());
+        assertEquals(order2.getOrderId(), dto2.getOrderId());
+        assertEquals(user.getUserId(), dto1.getUserId());
+        assertEquals(user.getUserId(), dto2.getUserId());
+
+        verify(orderRepository, times(1)).findByUserIdAndStatus(userId, Status.ACTIVE);
+        verify(userRepository, times(1)).findByUserId(userId);
+        verifyNoMoreInteractions(orderRepository, userRepository);
+    }
+    
 }

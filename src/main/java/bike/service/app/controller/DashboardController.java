@@ -94,7 +94,9 @@ public class DashboardController {
         userId = user.getUserId();
 
         orderService.createNewOrder(serviceType, service, comment, deliveryDate, price);
+        // bike ma się dodawać sutomatycznie do orderu
         bikeService.addNewBike(bike);
+        // baza klientow zostaj będzie potrzbna do wysylanie promek i mailingu 
         clientService.addNewClient(client);
 
         orderService.saveClientToOrder(service, client);
