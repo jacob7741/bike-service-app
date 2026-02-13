@@ -94,30 +94,34 @@ public class OrderService {
         return order;
     }
 
-    public Order saveClientToOrder(Order order, Client client) {
-        System.out.println("saveClientToOrder");
-        if (client.getClientId() == 0) {
-            throw new RuntimeException("no client found");
-        } else {
-            order.setClient(client);
-        }
-        orderRepository.save(order);
-        client.setOrder(order);
-        clientRepository.save(client);
-        return order;
-    }
 
-    public Order saveBikeToOrder(Order order, Bike bike) {
-        System.out.println("saveBikeToOrder");
-        if (!bike.getModelType().isEmpty()) {
-            order.setBike(bike);
-        } else {
-            throw new RuntimeException("no bike found");
-        }
+    // te metody do reafktoryzacji gdyz zmienilem w modelu z klasy order 
+    // na typ prymitywny do zapisywania przez DTO
 
-        orderRepository.save(order);
-        bike.setOrder(order);
-        bikeRepository.save(bike);
-        return order;
-    }
+    // public Order saveClientToOrder(Order order, Client client) {
+    //     System.out.println("saveClientToOrder");
+    //     if (client.getClientId() == 0) {
+    //         throw new RuntimeException("no client found");
+    //     } else {
+    //         order.setClient(client);
+    //     }
+    //     orderRepository.save(order);
+    //     client.setOrder(order);
+    //     clientRepository.save(client);
+    //     return order;
+    // }
+
+    // public Order saveBikeToOrder(Order order, Bike bike) {
+    //     System.out.println("saveBikeToOrder");
+    //     if (!bike.getModelType().isEmpty()) {
+    //         order.setBike(bike);
+    //     } else {
+    //         throw new RuntimeException("no bike found");
+    //     }
+
+    //     orderRepository.save(order);
+    //     bike.setOrder(order);
+    //     bikeRepository.save(bike);
+    //     return order;
+    // }
 }

@@ -15,8 +15,8 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -47,6 +47,59 @@ public class OrderServiceTest {
     @InjectMocks
     private OrderService orderService;
 
+    // wspólne obiekty używane w testach
+    private Long commonUserId;
+    private Users commonUser;
+    private Bike commonBike;
+    private Client commonClient;
+    private Order order1;
+    private Order order2;
+
+    @BeforeEach
+    void setUp() {
+        // wspólny user
+        commonUserId = 42L;
+        commonUser = new Users();
+        commonUser.setUserId(commonUserId);
+        commonUser.setFirstName("Jan");
+        commonUser.setLastName("Kowalski");
+
+        // wspólny bike
+        commonBike = new Bike();
+        commonBike.setModelType("ModelX");
+        commonBike.setBrand("BrandY");
+
+        // wspólny client
+        commonClient = new Client();
+        commonClient.setFirst_name("Adam");
+        commonClient.setLast_name("Nowak");
+
+        // wspólne zamówienia
+        order1 = new Order();
+        order1.setOrderId(1L);
+        order1.setUserId(commonUserId);
+        order1.setStatus(Status.ACTIVE);
+        order1.setBike(commonBike);
+        order1.setClient(commonClient);
+        order1.setDate("2026-02-09");
+        order1.setDeliveryDate("2026-02-15");
+
+        order2 = new Order();
+        order2.setOrderId(2L);
+        order2.setUserId(commonUserId);
+        order2.setStatus(Status.ACTIVE);
+        order2.setBike(commonBike);
+        order2.setClient(commonClient);
+        order2.setDate("2026-02-10");
+        order2.setDeliveryDate("2026-02-16");
+
+        // domyślne zachowanie mocków — można nadpisać w konkretnych testach
+        when(userRepository.findByUserId(commonUserId)).thenReturn(commonUser);
+        when(orderRepository.findByUserIdAndStatus(commonUserId, Status.ACTIVE))
+                .thenReturn(Collections.emptyList());
+        when(userService.getAllUsers()).thenReturn(Collections.emptyList());
+    }
+
     @Test
     void saveInfoAddByUserId_whenUserIdIsZero_shouldNotCallSaveAndReturnUnchangedOrder() {
         Order order = new Order();
@@ -68,6 +121,7 @@ public class OrderServiceTest {
         user.setUserId(5L);
         user.setLastName("Smith");
 
+        // nadpisujemy domyślny stub userService tylko dla tego testu
         when(userService.getAllUsers()).thenReturn(Arrays.asList(user));
 
         String expectedDate = LocalDate.now().toString();
@@ -97,97 +151,37 @@ public class OrderServiceTest {
 
     @Test
     void getActiveOrderByUserId_returnsMappedReadDTOs_andCallsRepositories() {
-        // given
-        Long userId = 342L;
+        // używamy wspólnych obiektów, nadpisujemy stuby aby zwrócić konkretną listę
+        when(orderRepository.findByUserIdAndStatus(commonUserId, Status.ACTIVE))
+                .thenReturn(List.of(order1));
+        when(userRepository.findByUserId(commonUserId)).thenReturn(commonUser);
 
-        Users user = new Users();
-        user.setUserId(userId);
-        user.setFirstName("Jan");
-        user.setLastName("Kowalski");
+        List<ReadDTOservice> result = orderService.getActiveOrdersByUserId(commonUserId);
 
-        Bike bike = new Bike();
-        bike.setModelType("ModelX");
-        bike.setBrand("BrandY");
-
-        Client client = new Client();
-        client.setFirst_name("Adam");
-        client.setLast_name("Nowak");
-
-        Order order = new Order();
-        order.setOrderId(1L);
-        order.setUserId(userId);
-        order.setStatus(Status.ACTIVE);
-        order.setBike(bike);
-        order.setClient(client);
-        order.setDate("2026-02-09");
-        order.setDeliveryDate("2026-02-15");
-
-        when(orderRepository.findByUserIdAndStatus(userId, Status.ACTIVE))
-                .thenReturn(List.of(order));
-        when(userRepository.findByUserId(userId)).thenReturn(user);
-
-        // when
-        List<ReadDTOservice> result = orderService.getActiveOrdersByUserId(userId);
-
-        // then
         assertNotNull(result);
         assertEquals(1, result.size());
 
         ReadDTOservice dto = result.get(0);
-        assertEquals(order.getOrderId(), dto.getOrderId());
-        assertEquals(user.getUserId(), dto.getUserId());
+        assertEquals(order1.getOrderId(), dto.getOrderId());
+        assertEquals(commonUser.getUserId(), dto.getUserId());
         assertEquals(Status.ACTIVE, dto.getStatus());
         assertEquals("ModelX - BrandY", dto.getBike());
         assertEquals("Adam Nowak", dto.getClient());
 
-        verify(orderRepository, times(1)).findByUserIdAndStatus(userId, Status.ACTIVE);
-        verify(userRepository, times(1)).findByUserId(userId);
+        verify(orderRepository, times(1)).findByUserIdAndStatus(commonUserId, Status.ACTIVE);
+        verify(userRepository, times(1)).findByUserId(commonUserId);
         verifyNoMoreInteractions(orderRepository, userRepository);
     }
 
     @Test
     void getAllActiveOrdersByUserId_returnsMappedReadDTOs_andCallsRepositories() {
-        // given
-        Long userId = 42L;
-        Users user = new Users();
-        user.setUserId(userId);
-        user.setFirstName("Jan");
-        user.setLastName("Kowalski");
-
-        Bike bike = new Bike();
-        bike.setModelType("ModelX");
-        bike.setBrand("BrandY");
-
-        Client client = new Client();
-        client.setFirst_name("Adam");
-        client.setLast_name("Nowak");
-
-        Order order1 = new Order();
-        order1.setOrderId(1L);
-        order1.setUserId(userId);
-        order1.setStatus(Status.ACTIVE);
-        order1.setBike(bike);
-        order1.setClient(client);
-        order1.setDate("2026-02-09");
-        order1.setDeliveryDate("2026-02-15");
-
-        Order order2 = new Order();
-        order2.setOrderId(2L);
-        order2.setUserId(userId);
-        order2.setStatus(Status.ACTIVE);
-        order2.setBike(bike);
-        order2.setClient(client);
-        order2.setDate("2026-02-10");
-        order2.setDeliveryDate("2026-02-16");
-
-        when(orderRepository.findByUserIdAndStatus(userId, Status.ACTIVE))
+        // nadpisujemy stuby aby zwrócić dwie pozycje
+        when(orderRepository.findByUserIdAndStatus(commonUserId, Status.ACTIVE))
                 .thenReturn(Arrays.asList(order1, order2));
-        when(userRepository.findByUserId(userId)).thenReturn(user);
+        when(userRepository.findByUserId(commonUserId)).thenReturn(commonUser);
 
-        // when
-        List<ReadDTOservice> result = orderService.getActiveOrdersByUserId(userId);
+        List<ReadDTOservice> result = orderService.getActiveOrdersByUserId(commonUserId);
 
-        // then
         assertNotNull(result);
         assertEquals(2, result.size(), "Powinny być dwa DTO w wyniku");
 
@@ -196,12 +190,16 @@ public class OrderServiceTest {
 
         assertEquals(order1.getOrderId(), dto1.getOrderId());
         assertEquals(order2.getOrderId(), dto2.getOrderId());
-        assertEquals(user.getUserId(), dto1.getUserId());
-        assertEquals(user.getUserId(), dto2.getUserId());
+        assertEquals(commonUser.getUserId(), dto1.getUserId());
+        assertEquals(commonUser.getUserId(), dto2.getUserId());
 
-        verify(orderRepository, times(1)).findByUserIdAndStatus(userId, Status.ACTIVE);
-        verify(userRepository, times(1)).findByUserId(userId);
+        verify(orderRepository, times(1)).findByUserIdAndStatus(commonUserId, Status.ACTIVE);
+        verify(userRepository, times(1)).findByUserId(commonUserId);
         verifyNoMoreInteractions(orderRepository, userRepository);
     }
-    
+
+    @Test
+    void CreateDTOClient() {
+        // test placeholder — użyj wspólnych obiektów order1/order2/commonClient jeśli potrzebujesz
+    }
 }

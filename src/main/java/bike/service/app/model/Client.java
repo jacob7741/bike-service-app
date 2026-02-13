@@ -26,7 +26,7 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "clientId")
-    private int clientId;
+    private long clientId;
     @Column(name = "first_name")
     private String first_name;
     @Column(name = "last_name")
@@ -36,8 +36,11 @@ public class Client {
     private String phoneNumber;
     @Column(name = "email")
     private String email;
+    @Column(name = "orderId")
+    private long orderId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "orderId", nullable = true)
-    private Order order;
+    // zmaiana na zwykłą kolumnę
+    // @ManyToOne(fetch = FetchType.EAGER)
+    // @JoinColumn(name = "orderId", nullable = true)
+    // private Order order;
 }
