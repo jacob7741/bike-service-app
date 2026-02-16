@@ -5,12 +5,9 @@ import javax.validation.constraints.NotNull;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,7 +25,7 @@ public class Bike {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "bikeId")
-    private int bikeId;
+    private long bikeId;
     @NotNull
     @Column(name = "brand")
     private String brand;
@@ -38,8 +35,9 @@ public class Bike {
     @NotNull
     @Column(name = "serialNumber")
     private int serialNumber;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "orderId", nullable = true)
-    private Order order;
+    @Column(name = "orderId")
+    private long orderId;
+    // @ManyToOne(fetch = FetchType.EAGER)
+    // @JoinColumn(name = "orderId", nullable = true)
+    // private Order order;
 }

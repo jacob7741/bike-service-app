@@ -2,15 +2,12 @@
 package bike.service.app.service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bike.service.app.DTO.ReadDTOservice;
-import bike.service.app.model.Bike;
-import bike.service.app.model.Client;
 import bike.service.app.model.Order;
 import bike.service.app.model.Order.Status;
 import bike.service.app.model.Users;
@@ -36,24 +33,27 @@ public class OrderService {
 
     private LocalDate date = LocalDate.now();
 
-    public Order createNewOrder(String serviceType, Order service, String comment, String deliveryDate, Double price) {
 
-        if (service.getOrderId() == 0) {
-            service.setDate(date.toString());
-            service.setComment(comment);
-            service.setDeliveryDate(deliveryDate);
-            service.setStatus(Status.NEW);
-            service.setPrice(price);
-            switch (serviceType) {
-                case "smallService":
-                case "fullService":
-                case "otherService":
-                    break;
-            }
-        }
-        orderRepository.save(service);
-        return service;
-    }
+    
+
+    // public Order createNewOrder(String serviceType, Order service, String comment, String deliveryDate, Double price) {
+
+    //     if (service.getOrderId() == 0) {
+    //         service.setDate(date.toString());
+    //         service.setComment(comment);
+    //         service.setDeliveryDate(deliveryDate);
+    //         service.setStatus(Status.NEW);
+    //         service.setPrice(price);
+    //         switch (serviceType) {
+    //             case "smallService":
+    //             case "fullService":
+    //             case "otherService":
+    //                 break;
+    //         }
+    //     }
+    //     orderRepository.save(service);
+    //     return service;
+    // }
 
     public List<ReadDTOservice> getActiveOrdersByUserId(Long id) {
 

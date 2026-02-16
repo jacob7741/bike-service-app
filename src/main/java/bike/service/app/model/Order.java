@@ -39,12 +39,16 @@ public class Order {
     private Double price;
     @Column(name = "comment")
     private String comment;
-    @OneToOne
-    @JoinColumn(name = "bikeId",referencedColumnName = "bikeId")
-    private Bike bike;
-    @OneToOne
-    @JoinColumn(name = "clientId", referencedColumnName = "clientId")
-    private Client client;
+    @Column(name = "bikeId")
+    private long bikeId;
+    @Column(name = "clientId")
+    private long clinetId;
+    // @OneToOne
+    // @JoinColumn(name = "bikeId",referencedColumnName = "bikeId")
+    // private Bike bike;
+    // @OneToOne
+    // @JoinColumn(name = "clientId", referencedColumnName = "clientId")
+    // private Client client;
     @Column(name = "addby")
     private String addByUser;
     @Column(name = "assignedTo")
