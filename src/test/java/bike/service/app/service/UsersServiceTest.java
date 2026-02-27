@@ -7,11 +7,9 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.io.ObjectInputFilter.Status;
 import java.time.LocalDate;
 import java.util.Optional;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -64,7 +62,7 @@ class UsersServiceTest {
         testUser.setUserId(34);
         
         Order order = new Order();
-        order.setOrderId(123);
+        // order.setOrderId(123);
         order.setStatus(Order.Status.ACTIVE);
         
         String currentDate = LocalDate.now().toString();
@@ -88,7 +86,7 @@ class UsersServiceTest {
         testUsers.setUserId(23);
 
         Order testOrder = new Order();
-        testOrder.setOrderId(54);
+        // testOrder.setOrderId(54);
         testOrder.setStatus(Order.Status.NEW);
 
         when(oRepository.findById(54)).thenReturn(Optional.of(testOrder));

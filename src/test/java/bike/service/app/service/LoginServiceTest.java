@@ -18,8 +18,6 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import bike.service.app.DTO.ReadDTOservice;
-import bike.service.app.model.Bike;
-import bike.service.app.model.Client;
 import bike.service.app.model.Order;
 import bike.service.app.model.Order.Status;
 import bike.service.app.model.Users;
