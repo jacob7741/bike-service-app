@@ -80,13 +80,13 @@ public class LoginServiceTest {
 
         Order order = new Order();
         Users user = new Users();
-        Bike bike = new Bike(12, "Trek", "Mountian", 123423, order);
-        Client client = new Client(34, "Zenon", "Nowak", "234-531-798","nowek@po.pl", order);
+        // Bike bike = new Bike(12, "Trek", "Mountian", 123423, order);
+        // Client client = new Client(34, "Zenon", "Nowak", "234-531-798","nowek@po.pl", order);
 
-        order.setOrderId(3452);
+        // order.setOrderId(3452);
         order.setStatus(Status.ACTIVE);
-        order.setClient(client);
-        order.setBike(bike);
+        // order.setClient(client);
+        // order.setBike(bike);
         order.setDate("12-02-2024");
         order.setDeliveryDate("18-02-2024");
         user.setUserId(48L);

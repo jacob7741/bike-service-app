@@ -103,30 +103,30 @@ public class UsersService implements UserDetailsService {
                 .build();
     }
 
-    public void deleteOrderById(int id) {
+    // public void deleteOrderById(int id) {
 
-        Order order = oRepository.getReferenceById(id);
-        List<Client> clients = clientRepository.findAll();
-        List<Bike> bikes = bikeRepository.findAll();
-        // List<Services> services = servicesRepository.findAll();
+    //     Order order = oRepository.getReferenceById(id);
+    //     List<Client> clients = clientRepository.findAll();
+    //     List<Bike> bikes = bikeRepository.findAll();
+    //     // List<Services> services = servicesRepository.findAll();
 
-        if (order.getStatus().equals(Order.Status.DONE)) {
-            for (Client client : clients) {
-                client.getOrder();
-                clientRepository.deleteById(client.getClientId());
-            }
+    //     if (order.getStatus().equals(Order.Status.DONE)) {
+    //         for (Client client : clients) {
+    //             client.getOrder();
+    //             clientRepository.deleteById(client.getClientId());
+    //         }
 
-            for (Bike bike : bikes) {
-                bike.getOrder();
-                bikeRepository.deleteById(bike.getBikeId());
-            }
+    //         for (Bike bike : bikes) {
+    //             bike.getOrder();
+    //             bikeRepository.deleteById(bike.getBikeId());
+    //         }
 
-            if (!(order.getOrderId() == 0)) {
-                oRepository.deleteById(id);
-                System.out.println("order deleted");
-            }
-        }
-    }
+    //         if (!(order.getOrderId() == 0)) {
+    //             oRepository.deleteById(id);
+    //             System.out.println("order deleted");
+    //         }
+    //     }
+    // }
 
     private LocalDate nowDate = LocalDate.now();
 

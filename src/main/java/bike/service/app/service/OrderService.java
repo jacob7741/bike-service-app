@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import bike.service.app.DTO.CreateDTOService;
 import bike.service.app.DTO.ReadDTOservice;
 import bike.service.app.model.Order;
 import bike.service.app.model.Order.Status;
@@ -32,10 +33,7 @@ public class OrderService {
     private UsersService userService;
 
     private LocalDate date = LocalDate.now();
-
-
     
-
     // public Order createNewOrder(String serviceType, Order service, String comment, String deliveryDate, Double price) {
 
     //     if (service.getOrderId() == 0) {

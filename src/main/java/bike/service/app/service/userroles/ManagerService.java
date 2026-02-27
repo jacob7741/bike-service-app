@@ -22,27 +22,27 @@ public class ManagerService {
     @Autowired
     private BikeRepository bikeRepository;
 
-    public void deleteOrderById(int id) {
+    // public void deleteOrderById(int id) {
         
-        Order order = orderRepository.getReferenceById(id);
-        List<Client> clients = clientRepository.findAll();
-        List<Bike> bikes = bikeRepository.findAll();
+    //     Order order = orderRepository.getReferenceById(id);
+    //     List<Client> clients = clientRepository.findAll();
+    //     List<Bike> bikes = bikeRepository.findAll();
 
-        if (order.getStatus().equals(Order.Status.DONE)) {
-            for (Client client : clients) {
-                client.getOrder();
-                clientRepository.deleteById(client.getClientId());
-            }
+    //     if (order.getStatus().equals(Order.Status.DONE)) {
+    //         for (Client client : clients) {
+    //             client.getOrder();
+    //             clientRepository.deleteById(client.getClientId());
+    //         }
 
-            for (Bike bike : bikes) {
-                bike.getOrder();
-                bikeRepository.deleteById(bike.getBikeId());
-            }
+    //         for (Bike bike : bikes) {
+    //             bike.getOrder();
+    //             bikeRepository.deleteById(bike.getBikeId());
+    //         }
 
-            if (!(order.getOrderId() == 0)) {
-                orderRepository.deleteById(id);
-                System.out.println("order deleted");
-            }
-        }
-    }
+    //         if (!(order.getOrderId() == 0)) {
+    //             orderRepository.deleteById(id);
+    //             System.out.println("order deleted");
+    //         }
+    //     }
+    // }
 }

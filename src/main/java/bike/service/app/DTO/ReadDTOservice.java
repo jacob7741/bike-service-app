@@ -26,8 +26,8 @@ public class ReadDTOservice {
         this.userId = user.getUserId();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
-        this.bike = order.getBike().getModelType() + " - " + order.getBike().getBrand();
-        this.client = order.getClient().getFirst_name() + " " + order.getClient().getLast_name();
+        // this.bike = order.getBike().getModelType() + " - " + order.getBike().getBrand();
+        // this.client = order.getClient().getFirst_name() + " " + order.getClient().getLast_name();
         this.date = order.getDate();
         this.deliveryDate = order.getDeliveryDate();
     }

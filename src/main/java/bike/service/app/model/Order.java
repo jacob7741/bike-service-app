@@ -30,7 +30,7 @@ public class Order {
     @Id
     @Column(name = "orderId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long orderId;
+    private Long orderId;
     @Column(name = "userId")
     private Long userId;
     @Column(name = "service")
@@ -40,9 +40,9 @@ public class Order {
     @Column(name = "comment")
     private String comment;
     @Column(name = "bikeId")
-    private long bikeId;
+    private Long bikeId;
     @Column(name = "clientId")
-    private long clinetId;
+    private Long clinetId;
     // @OneToOne
     // @JoinColumn(name = "bikeId",referencedColumnName = "bikeId")
     // private Bike bike;

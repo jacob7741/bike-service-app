@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import bike.service.app.DTO.CreateDTOService;
 import bike.service.app.model.Bike;
 import bike.service.app.model.Client;
 import bike.service.app.model.Order;
@@ -49,7 +51,7 @@ public class DashboardController {
 
     AtomicReference<String> userFullName = new AtomicReference<String>(new String());
     Long userId;
-    
+
     @GetMapping("/dashboard")
     public String dashboard(Model model, Authentication authentication) {
 
@@ -76,15 +78,16 @@ public class DashboardController {
     }
 
     @PostMapping(value = "/services/submit", params = "serviceType")
-    public String submitService(@RequestParam String serviceType,
-            @ModelAttribute Order service,
+    public String submitService(
+            @RequestBody CreateDTOService cDtoService,
             @ModelAttribute Bike bike,
             @ModelAttribute Client client,
+            @RequestParam String serviceType,
             @RequestParam String comment,
             @RequestParam String deliveryDate,
             @RequestParam(required = false) Double price,
             Authentication authentication) {
-        
+
         // rozwiązać problem: potwierdzenie danego uzytkownika
         // pobierało się tylko przez userId
         // gdyz resztę metod będę pisał pod userID
@@ -93,15 +96,16 @@ public class DashboardController {
         Users user = usersRepository.findByUserName(username);
         userId = user.getUserId();
 
-        orderService.createNewOrder(serviceType, service, comment, deliveryDate, price);
+        // orderService.createNewOrder(serviceType, service, comment, deliveryDate,
+        // price);
         // bike ma się dodawać sutomatycznie do orderu
         bikeService.addNewBike(bike);
-        // baza klientow zostaj będzie potrzbna do wysylanie promek i mailingu 
+        // baza klientow zostaj będzie potrzbna do wysylanie promek i mailingu
         clientService.addNewClient(client);
 
-        orderService.saveClientToOrder(service, client);
-        orderService.saveInfoAddByUserId(service, userId);
-        orderService.saveBikeToOrder(service, bike);
+        // orderService.saveClientToOrder(service, client);
+        // orderService.saveInfoAddByUserId(service, userId);
+        // orderService.saveBikeToOrder(service, bike);
 
         return "redirect:/dashboard";
     }
